@@ -8,12 +8,14 @@
 		<languageKey index="default" type="array">
 			<label index="wizard.title">Gallery (small)</label>
 			<label index="wizard.description">Gallery (small)</label>
-			<label index="watchTrailer">Start trailer</label>
+			<label index="watchTrailer">Video</label>
+			<label index="watchGallery">Gallery</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="wizard.title">Gallery (small)</label>
 			<label index="wizard.description">Gallery (small)</label>
-			<label index="watchTrailer">Trailer starten</label>
+			<label index="watchTrailer">Video</label>
+			<label index="watchGallery">Galerie</label>
 		</languageKey>
 	</data>
 </T3locallang>

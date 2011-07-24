@@ -80,7 +80,7 @@ jQuery(document).ready( function() {
 	// event handlers
 	jQuery(".ewgallery .galleryArrowLeft").click( clickPrevBgImage ).dblclick( clickPrevBgImage );
 	jQuery(".ewgallery .galleryArrowRight").click( clickNextBgImage ).dblclick( clickNextBgImage );
-	jQuery(".ewFrontGallery .galleryImage, .ewFrontGallery .galleryEnlargeWrap").click( function() { // ENLARGE IMAGE
+	jQuery(".ewFrontGallery .galleryImage, .ewFrontGallery .galleryEnlargeWrap, .ewFrontGallery .galleryImagesLink").click( function() { // ENLARGE IMAGE
 		enlargeImage(jQuery(this).parents('.ewgallery').attr('id'));
 	} );
 	jQuery(".ewFrontGallery .galleryEnlargeWrap").hover(

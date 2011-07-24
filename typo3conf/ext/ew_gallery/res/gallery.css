@@ -157,9 +157,30 @@
 	display: none;
 }
 
-.galleryVideoLink {
-	margin-top: 17px;
+.galleryVideoLink, .galleryImagesLink {
+	margin-left: 18px;
+	padding-left: 20px;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 16px;
 	cursor: pointer;
+	float: right;
+}
+
+.galleryButtons {
+	margin-top: 15px;
+}
+
+.galleryButtons .galleryVideoLink {
+	background: url(video_button.png) 0px 2px no-repeat;
+}
+
+.galleryButtons .galleryImagesLink {
+	background: url(gallery_button.png) 0px 2px no-repeat;
+}
+
+.galleryButtons .clearall {
+	clear: both;
 }
 
 /*

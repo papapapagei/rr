@@ -128,12 +128,10 @@ class tx_ewgallery_pi1 extends tx_ewpibase {
 		$this->addMarker('FADE_DURATION',$this->fadeDuration);
 		$this->addMarker('VIDEO_AUTOSTART',$this->autostartVideo);
 		$this->addMarker('LANGID',$GLOBALS['TSFE']->sys_language_uid);
-		$gifBuilderConf = $this->conf['videoText.'];
-		$gifBuilderConf['file.']['10.']['file'] = $this->video_button['path'];
-		$teaserText = empty($this->cObj->data['tx_ewgallery_video_title']) ? $this->pi_getLL('watchTrailer') : $this->cObj->data['tx_ewgallery_video_title'];
-		$gifBuilderConf['file.']['30.']['text'] = $teaserText;
-		//$gifBuilderConf['file.']['20.']['text'] = '('.$this->video['alt_text'].')';
-		$this->addMarker('VIDEO_TEXT',empty($this->video) ? '' : $this->cObj->IMAGE($gifBuilderConf));
+		$galleryText = $this->pi_getLL('watchGallery');
+		$this->addMarker('GALLERY_TEXT',$galleryText);
+		$teaserText = $this->pi_getLL('watchTrailer');
+		$this->addMarker('VIDEO_TEXT',$teaserText);
 		$this->addMarker('VIDEO_FILE',empty($this->video) ? '' : $this->video['path']);
 		$this->addMarker('VIDEO_LINK_HIDDEN',empty($this->video) ? 'display:none;' : '');
 		$content = $this->renderSubpart( 'GALLERY' );
