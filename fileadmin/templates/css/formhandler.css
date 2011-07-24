@@ -1,0 +1,80 @@
+#mailform {
+	margin-top: -14px;
+	width: 328px;
+	font-size: 14px;
+}
+
+#mailform input.text-input {
+	border: 0px;
+	background: black;
+	color: #C9C9C9;
+	width: 344px;
+}
+
+#mailform input.checkbox {
+	margin-right: 8px;
+	float: left;
+}
+
+#mailform label {
+	font-style: italic;
+}
+
+#mailform .inputRow {
+	clear: both;
+	padding-bottom: 12px;
+	width: 344px;
+}
+
+#mailform .inputRowSubmit {
+	text-align: right;
+}
+
+#mailform textarea {
+	background: black;
+	color: #C9C9C9;
+	border: 0;
+	width: 344px;
+	overflow: auto;
+	font-family: Georgia,serif;
+}
+
+#mailform label.block {
+	display: block;
+	padding-bottom: 2px;
+}
+
+#mailform .submit {
+	background: #C9C9C9;
+	color: black;
+	border: 0;
+	font-family: Georgia,serif;
+	padding: 4px 34px;
+	font-style: italic;
+}
+
+#mailform .errorBorder {
+	border: 1px solid #E00000!important;
+	background: #100000!important;
+}
+
+#mailform .errors {
+	margin-bottom: 15px;
+	font-style: italic;
+	color: #E00000;
+}
+
+#mailform .disabledField {
+	background: #202020;
+	border: 0;
+	display: none;
+}
+
+.contact_message_confirm {
+	margin: 20px 0 30px 35px;
+	text-indent: 0;
+}
+
+#mailform .checkBoxContainer {
+	margin: 10px 0;
+}

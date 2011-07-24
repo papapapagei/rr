@@ -1,0 +1,131 @@
+plugin.tx_mediacenter_pi1 {
+		# cat=plugin.tx_mediacenter_pi1//01/; type=string; label= Wrap: wrap of the player
+	wrap = 
+
+		# cat=plugin.tx_mediacenter_pi1//02/; type=string; label= noscriptInsideWrap: wrap inside of the noscript tags 
+	noscriptInsideWrap = 
+
+		# cat=plugin.tx_mediacenter_pi1//06/; type=string; label= Width: the width of the players video area
+	width = 400
+
+		# cat=plugin.tx_mediacenter_pi1//07/; type=string; label= Height: the height of the player
+	height = 300
+
+	# cat=plugin.tx_mediacenter_pi1//08/; type=color; label= Background color: the background color of the player
+	bgcolor = 
+		
+	# cat=plugin.tx_mediacenter_pi1//09/; type=options[tt_content, typoscript]; label= Rendering mode: set to typoscript if the player should be included using typoscript only
+	renderingMode = 
+	
+	# cat=plugin.tx_mediacenter_pi1//10/; type=string; label= File (only if renderingMode=typoscript): url to the media file or the xml playlist 
+	file = 
+
+	# cat=plugin.tx_mediacenter_pi1//11/; type=options[window, transparent, opaque]; label= wmode of the flashplayer: may be useful if some dynamic content should be displayed below or above  the flash player 
+	wmode = 
+
+	flashvars {
+		# cat=plugin.tx_mediacenter_pi1//50/; type=int+; label= playlistsize: Playlist Width (only if playlist position set to "right") 
+		playlistsize = 200
+		
+		# cat=plugin.tx_mediacenter_pi1//51/; type=options[none, bottom, over, right]; label= playlist: playlist position
+		playlist = 
+		
+		# cat=plugin.tx_mediacenter_pi1//53/; type=options[bottom, over, none]; label= controlbar: controlbar position
+		controlbar = 
+		
+		# cat=plugin.tx_mediacenter_pi1//54/; type=string; label= logo: url to a logo file (e.g. http://www.your-domain.com/logo.jpg)
+		logo =
+		
+		# cat=plugin.tx_mediacenter_pi1//55/; type=string; label= skin: url to a swf skin file (e.g. http://www.your-domain.com/skin.swf)
+		skin =
+		
+		# cat=plugin.tx_mediacenter_pi1//56/; type=options[false, true]; label= autostart: 
+		autostart = 
+		
+		# cat=plugin.tx_mediacenter_pi1//57/; type=int+; label= bufferlength: number of seconds of the file that has to be loaded before starting.
+		bufferlength = 1
+		
+		# cat=plugin.tx_mediacenter_pi1//58/; type=options[true, false]; label= caption: on/off state of the captions. Is saved as cookie. 
+		caption = 
+		
+		# cat=plugin.tx_mediacenter_pi1//59/; type=options[play, link, fullscreen, mute, next, none]; label= displayclick: what to do when one clicks the display. Can be play, link, fullscreen, none, mute, next.
+		displayclick = 
+
+		# cat=plugin.tx_mediacenter_pi1//60/; type=options[true, false]; label= icons: set this to false to hide the play button and buffering icon in the middle of the video.
+		icons = 
+		
+		# cat=plugin.tx_mediacenter_pi1//61/; type=int+; label= item: playlistitem that should start to play. Use this to set a specific start-item. 
+		item = 
+		
+		# cat=plugin.tx_mediacenter_pi1//62/; type=options[false, true]; label= mute: mute all sounds on startup. Is saved as cookie. 
+		mute = 
+		
+		# cat=plugin.tx_mediacenter_pi1//63/; type=options[High=true, Low=false]; label= quality: enables high-quality playback. This sets the smoothing of videos on/off, the deblocking of videos on/off and the dimensions of the camera small/large. Is saved as cookie.
+		quality = 
+		
+		# cat=plugin.tx_mediacenter_pi1//64/; type=options[none, list, always]; label= repeat: set to list to play the entire playlist once and to always to continously play the song/video/playlist. There's no option to repeat a single entry in a playlist yet. 
+		repeat = 
+		
+		# cat=plugin.tx_mediacenter_pi1//65/; type=options[false, true]; label= shuffle: shuffle playback of playlistitems.
+		shuffle = 
+		
+		# cat=plugin.tx_mediacenter_pi1//66/; type=options[uniform, fill, exactfit, none]; label= stretching: defines how to resize images in the display. Can be none (no stretching), exactfit (disproportionate), uniform (stretch with black borders) or fill (uniform, but completely fill the display).
+		stretching = 
+		
+		# cat=plugin.tx_mediacenter_pi1//67/; type=int[0-100]; label= volume: startup volume of the player. Is saved as cookie.
+		volume = 
+		
+		# cat=plugin.tx_mediacenter_pi1//68/; type=string; label= abouttext: text to show in the rightclick menu. Please do not change this if you don't have a commercial license! 
+		abouttext =
+		
+		# cat=plugin.tx_mediacenter_pi1//69/; type=string; label= aboutlink: url to link to from the rightclick menu. Do not change this if you don't have a commercial license!
+		aboutlink =
+		
+		# cat=plugin.tx_mediacenter_pi1//70/; type=options[_self, _blank, none]; label= linktarget: browserframe where the links from display are opened in. Some possibilities are '_self' (same frame) , '_blank' (new browserwindow) or 'none' (links are ignored in the player, so javascript can handle it).
+		linktarget = 
+		
+		# cat=plugin.tx_mediacenter_pi1//71/; type=string; label= streamer: location of a server to use for streaming. Can be an RTMP application (here's an example) or external PHP/ASP file to use for HTTP streaming. If set to lighttpd, the player presumes a Lighttpd server is used to stream videos.
+		streamer =
+		
+		# cat=plugin.tx_mediacenter_pi1//72/; type=string; label= tracecall: name of a javascript function that can be used for tracing the player activity. All events from the view, model and controller are sent there.
+		tracecall =
+	
+		# cat=plugin.tx_mediacenter_pi1//73/; type=string; label= plugins: a powerful new feature, this is a comma-separated list of swf plugins to load (e.g. yousearch,viral). Each plugin has a unique ID and resides at plugins.longtailvideo.com. Go to the LongTailVideo AddOns section to find and add plugins.
+		plugins =	
+		
+		# cat=plugin.tx_mediacenter_pi1//80/; type=string; label= Background color: background color of the controlbar and playlist
+		backcolor =
+
+		# cat=plugin.tx_mediacenter_pi1//81/; type=string; label= Front color: color of all icons and texts in the controlbar and playlist
+		frontcolor =
+
+		# cat=plugin.tx_mediacenter_pi1//82/; type=string; label= Light color: color of an icon or text when you rollover it with the mouse. If you set this, also set the frontcolor, so the rollovers also have a rollout.
+		lightcolor =
+
+		# cat=plugin.tx_mediacenter_pi1//83/; type=string; label= Scree color: background color of the display
+		screencolor =
+		
+		# cat=plugin.tx_mediacenter_pi1//83/; type=string; label= Scree color: background color of the display
+		screencolor =
+	}
+	
+	export {
+		# cat=plugin.tx_mediacenter_pi1//900/; type=string; label= Page object: name the page object which will be used for the export of the playlist
+		pageObject = media_center_export
+	
+		# cat=plugin.tx_mediacenter_pi1//901/; type=string; label= Update page typeNum: typeNum of the page object for the update
+		typeNum = 66
+		
+		# cat=plugin.tx_mediacenter_pi1//902/; type=options[XSPF=XSPF, RSS + Media=mRSS,RSS + iTunes=iRSS]; label= Format: format of the playlist export  
+		format = 
+
+		# cat=plugin.tx_mediacenter_pi1//903/; type=string; label= channelTitle: title used for the rss feed
+		channelTitle = Media Center RSS Export
+
+		# cat=plugin.tx_mediacenter_pi1//904/; type=string; label= channelLink: link used for the rss feed
+		channelLink = 
+		
+		# cat=plugin.tx_mediacenter_pi1//905/; type=string; label= languageParameter: set this to the language parameter you have configured for your site
+		languageParameter = L
+	}
+}

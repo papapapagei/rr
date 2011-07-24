@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Seite</label>
+			<label index="mlang_labels_tabdescr">Dieses Modul ermöglicht Ihnen, Seiten zu erstellen und zu bearbeiten. Zusätzlich bietet es einen Assistenten zur Auswahl einer Vorlage und Verwaltung verschiedener Übersetzungen einer Seite. Dieses Seiten-Modul ist Bestandteil der Erweiterung &quot;TemplaVoilà&quot;.</label>
+			<label index="mlang_labels_tablabel">Seiten erstellen und bearbeiten</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab" type="integer">26464201</label>
+			<label index="mlang_labels_tabdescr" type="integer">175732957</label>
+			<label index="mlang_labels_tablabel" type="integer">45490521</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Page</label>
+			<label index="mlang_labels_tabdescr">This module allows you to create and edit webpages. It provides a template selector and management for different languages. This page module is part of the extension &quot;TemplaVoilà&quot;.</label>
+			<label index="mlang_labels_tablabel">Create and edit pages</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

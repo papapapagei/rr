@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="undefined">Nicht definiert</label>
+			<label index="text">Text</label>
+			<label index="image">Bild</label>
+			<label index="audio">Audio</label>
+			<label index="video">Video</label>
+			<label index="interactive">Interaktiv</label>
+			<label index="service">Service</label>
+			<label index="font">Schrift</label>
+			<label index="model">Model</label>
+			<label index="dataset">Daten</label>
+			<label index="collection">Sammlung</label>
+			<label index="software">Software</label>
+			<label index="application">Applikation</label>
+			<label index="categories">Kategorien</label>
+			<label index="mediaTypes">Medientypen</label>
+			<label index="status">Status</label>
+			<label index="status_file_ok">Datei OK</label>
+			<label index="status_file_changed">Datei geändert</label>
+			<label index="status_file_missing">Datei fehlt</label>
+			<label index="status_idx_man">Manuell indexiert</label>
+			<label index="status_idx_auto">Automatisch indexiert</label>
+			<label index="status_idx_cron">Durch Cron indexiert</label>
+			<label index="indexRun">Indexierungsdatum</label>
+			<label index="noRecordsInSelection">Keine Datensätze mit der aktuellen Auswahl gefunden.</label>
+			<label index="noSelection">Es ist nichts ausgewählt.</label>
+			<label index="recordsInSelection">%s Datensätze gefunden.</label>
+			<label index="oneRecordInSelection">Einen Datensatz gefunden.</label>
+			<label index="recordsFromSelection">%s von %s</label>
+			<label index="recordsPerPage">zeige: %s</label>
+			<label index="selEquals">Auswählen:</label>
+			<label index="selPlus">Enthält eines dieser:</label>
+			<label index="selMinus">Ausschließen:</label>
+			<label index="options">Einstellungen</label>
+			<label index="deselect">Von Auswahl ausschließen</label>
+			<label index="reselect">In Auswahl einschließen</label>
+			<label index="remove">Entfernen</label>
+			<label index="defaultSorting">Sortierung entfernen</label>
+			<label index="labelSorting">Sortierung:</label>
+			<label index="revertSelection">Zurück zur letzten Auswahl</label>
+			<label index="tx_dam_batchProcess.introduction">Stapelverarbeitung der ausgewählten Medien.</label>
+			<label index="tx_dam_batchProcess.appendDesc">Wählen Sei die Felder aus, denen sie Ihre Eingaben &lt;b&gt;anfügen&lt;/b&gt; wollen.&lt;br /&gt;Ansonsten ersetzen Ihre Eingaben die bereits vorhandenen Daten.</label>
+			<label index="tx_dam_batchProcess.submit">Senden</label>
+			<label index="tx_dam_batchProcess.processed">Stapelverarbeitung abgeschlossen.</label>
+			<label index="field_selector">Feldauswahl</label>
+			<label index="showThumbnails">Vorschaubilder anzeigen</label>
+			<label index="showMultiAction">Optionen zur Stapelverarbeitung anzeigen</label>
+			<label index="showfullTitle">Lange Dateinamen anzeigen</label>
+			<label index="showAlternateBgColors">Wechselnde Zeilenfarben anzeigen</label>
+			<label index="showUnixPerms">Ausführliche Dateirechte anzeigen</label>
+			<label index="showDetailedSize">Dateigröße in Byte anzeigen</label>
+			<label index="folder">Verzeichnis</label>
+			<label index="foldername">Verzeichnisname:</label>
+			<label index="folders">Verzeichnisse</label>
+			<label index="file">Datei</label>
+			<label index="files">Dateien</label>
+			<label index="record">Datensatz</label>
+			<label index="records">Datensätze</label>
+			<label index="newFolder">Verzeichnis anlegen</label>
+			<label index="newTextFile">Textdatei anlegen</label>
+			<label index="viewFile">Datei ansehen</label>
+			<label index="editFile">Datei bearbeiten</label>
+			<label index="replaceFile">Datei ersetzen</label>
+			<label index="cm.move">Verschieben</label>
+			<label index="pathNoAccess">Sie haben keinen Zugriff auf das gewünschte Verzeichnis.</label>
+			<label index="pathNotExists">Das gewünschte Verzeichnis existiert nicht.</label>
+			<label index="fileNotIndexed">Die Datei ist noch nicht indexiert.</label>
+			<label index="fileNotExists">Die Datei ist nicht im Dateisystem vorhanden.</label>
+			<label index="fileNotUsed">Die Datei wird nicht verwendet.</label>
+			<label index="fileReference">Dateireferenz</label>
+			<label index="fileCopy">Dateikopie</label>
+			<label index="selectionClipboard">Auswahlzwischenablage</label>
+			<label index="selectionExport">Auswahlexport</label>
+			<label index="selection">Auswahl</label>
+			<label index="current_selection">Aktuelle Listenauswahl</label>
+			<label index="eb_selection">Element-Browser-Auswahl</label>
+			<label index="eb_addAllToList">Alle zur Liste hinzufügen</label>
+			<label index="displayExtendedInfo">Zusätzliche Informationen anzeigen</label>
+			<label index="submitProcess">Bearbeitung durchführen</label>
+			<label index="submitClearForm">Formular leeren</label>
+			<label index="submitCreate">Erstellen</label>
+			<label index="actionDenied">Aktion nicht erlaubt</label>
+			<label index="accessDenied">Zugriff verwehrt</label>
+			<label index="error">Fehler</label>
+			<label index="showRootline">Rootline anzeigen</label>
+			<label index="references">Referenzen</label>
+			<label index="page">Seite</label>
+			<label index="content_element">Inhaltselement</label>
+			<label index="content_age">Inhaltselement Alter</label>
+			<label index="media_element">Medienelement</label>
+			<label index="media_element_age">Medienelement Alter</label>
+			<label index="browse_first">Anfang</label>
+			<label index="browse_last">Ende</label>
+			<label index="browse_next">Weiter</label>
+			<label index="browse_previous">Zurück</label>
+			<label index="cm_file_sub">Datei ...</label>
+			<label index="submitMultiAction">Ausführen</label>
+			<label index="doForSelected">ausgewählte</label>
+			<label index="doForFullList">gesamte Liste</label>
+			<label index="for">für</label>
+			<label index="actionSelect">Befehl</label>
+			<label index="langCurrentExclusive">exklusiv</label>
+			<label index="langCurrentAndDefault">+ Standard</label>
+			<label index="langCreateTrans">Übersetzung anlegen</label>
+			<label index="serviceinfo">Diensteinformation</label>
+			<label index="content_field">Inhaltsfeld</label>
+			<label index="softref_key">Typ oder Referenz</label>
+			<label index="softref_key_media">Eingefügtes Medium</label>
+			<label index="softref_key_mediatag">Link zu Medium</label>
+			<label index="softref_key_typolink">Link zu Datei</label>
+			<label index="softref_key_typolink_tag">Link zu Datei</label>
+			<label index="softref_key_file_copy">Kopie der Datei eingefügt</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="undefined" type="integer">247528449</label>
+			<label index="text" type="integer">165673974</label>
+			<label index="image" type="integer">199571973</label>
+			<label index="audio" type="integer">186839105</label>
+			<label index="video" type="integer">55455001</label>
+			<label index="interactive" type="integer">38509452</label>
+			<label index="service" type="integer">204187623</label>
+			<label index="font" type="integer">26539321</label>
+			<label index="model" type="integer">173382535</label>
+			<label index="dataset" type="integer">37315982</label>
+			<label index="collection" type="integer">219526405</label>
+			<label index="software" type="integer">119132263</label>
+			<label index="application" type="integer">239699785</label>
+			<label index="categories" type="integer">183613834</label>
+			<label index="mediaTypes" type="integer">132638643</label>
+			<label index="indexRun" type="integer">63394438</label>
+			<label index="noRecordsInSelection" type="integer">239338129</label>
+			<label index="noSelection" type="integer">127967357</label>
+			<label index="recordsInSelection" type="integer">103392679</label>
+			<label index="oneRecordInSelection" type="integer">14295161</label>
+			<label index="recordsFromSelection" type="integer">44970800</label>
+			<label index="recordsPerPage" type="integer">145950599</label>
+			<label index="selEquals" type="integer">252232862</label>
+			<label index="selPlus" type="integer">120646912</label>
+			<label index="selMinus" type="integer">84560748</label>
+			<label index="options" type="integer">229542606</label>
+			<label index="deselect" type="integer">136581076</label>
+			<label index="reselect" type="integer">71489942</label>
+			<label index="remove" type="integer">17186360</label>
+			<label index="defaultSorting" type="integer">85599965</label>
+			<label index="revertSelection" type="integer">196989495</label>
+			<label index="tx_dam_batchProcess.introduction" type="integer">199539112</label>
+			<label index="tx_dam_batchProcess.appendDesc" type="integer">100470813</label>
+			<label index="tx_dam_batchProcess.submit" type="integer">155805401</label>
+			<label index="tx_dam_batchProcess.processed" type="integer">121729627</label>
+			<label index="field_selector" type="integer">188499906</label>
+			<label index="showThumbnails" type="integer">15222013</label>
+			<label index="showfullTitle" type="integer">21823485</label>
+			<label index="showAlternateBgColors" type="integer">210879651</label>
+			<label index="showUnixPerms" type="integer">193310094</label>
+			<label index="showDetailedSize" type="integer">75641753</label>
+			<label index="folder" type="integer">185543575</label>
+			<label index="file" type="integer">11696408</label>
+			<label index="newFolder" type="integer">8105692</label>
+			<label index="newTextFile" type="integer">120709875</label>
+			<label index="viewFile" type="integer">117339883</label>
+			<label index="editFile" type="integer">24704589</label>
+			<label index="replaceFile" type="integer">137137852</label>
+			<label index="pathNoAccess" type="integer">94116496</label>
+			<label index="pathNotExists" type="integer">121378396</label>
+			<label index="fileNotIndexed" type="integer">48900225</label>
+			<label index="fileNotExists" type="integer">177626664</label>
+			<label index="status" type="integer">247806604</label>
+			<label index="status_file_ok" type="integer">101211334</label>
+			<label index="status_file_changed" type="integer">173145144</label>
+			<label index="status_file_missing" type="integer">67031068</label>
+			<label index="status_idx_man" type="integer">253372650</label>
+			<label index="status_idx_auto" type="integer">178779906</label>
+			<label index="status_idx_cron" type="integer">120317629</label>
+			<label index="labelSorting" type="integer">201240133</label>
+			<label index="showMultiAction" type="integer">264302309</label>
+			<label index="foldername" type="integer">138492940</label>
+			<label index="folders" type="integer">185543575</label>
+			<label index="files" type="integer">153041452</label>
+			<label index="record" type="integer">111204842</label>
+			<label index="records" type="integer">229781996</label>
+			<label index="cm.move" type="integer">112997933</label>
+			<label index="fileNotUsed" type="integer">178503409</label>
+			<label index="fileReference" type="integer">98494108</label>
+			<label index="fileCopy" type="integer">136706147</label>
+			<label index="selectionClipboard" type="integer">27377590</label>
+			<label index="selectionExport" type="integer">128375898</label>
+			<label index="selection" type="integer">117415376</label>
+			<label index="current_selection" type="integer">97890081</label>
+			<label index="eb_selection" type="integer">32417620</label>
+			<label index="displayExtendedInfo" type="integer">179233426</label>
+			<label index="submitProcess" type="integer">191809451</label>
+			<label index="submitClearForm" type="integer">160803616</label>
+			<label index="submitCreate" type="integer">109504151</label>
+			<label index="actionDenied" type="integer">79638034</label>
+			<label index="accessDenied" type="integer">9298685</label>
+			<label index="error" type="integer">151171285</label>
+			<label index="showRootline" type="integer">76489572</label>
+			<label index="references" type="integer">227903101</label>
+			<label index="page" type="integer">26464201</label>
+			<label index="content_element" type="integer">233726803</label>
+			<label index="content_age" type="integer">239594597</label>
+			<label index="media_element" type="integer">63666299</label>
+			<label index="media_element_age" type="integer">149689209</label>
+			<label index="browse_first" type="integer">133912045</label>
+			<label index="browse_last" type="integer">223720198</label>
+			<label index="browse_next" type="integer">17482704</label>
+			<label index="browse_previous" type="integer">231864181</label>
+			<label index="cm_file_sub" type="integer">214991988</label>
+			<label index="submitMultiAction" type="integer">67948564</label>
+			<label index="doForSelected" type="integer">251125311</label>
+			<label index="doForFullList" type="integer">105755162</label>
+			<label index="for" type="integer">223700632</label>
+			<label index="actionSelect" type="integer">250182624</label>
+			<label index="langCurrentExclusive" type="integer">172135321</label>
+			<label index="langCurrentAndDefault" type="integer">208253834</label>
+			<label index="langCreateTrans" type="integer">38313374</label>
+			<label index="eb_addAllToList" type="integer">148882338</label>
+			<label index="serviceinfo" type="integer">166127357</label>
+			<label index="content_field" type="integer">1934447</label>
+			<label index="softref_key" type="integer">96510176</label>
+			<label index="softref_key_media" type="integer">176220328</label>
+			<label index="softref_key_mediatag" type="integer">168825660</label>
+			<label index="softref_key_typolink" type="integer">262934670</label>
+			<label index="softref_key_typolink_tag" type="integer">262934670</label>
+			<label index="softref_key_file_copy" type="integer">183938018</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="undefined">Undefined</label>
+			<label index="text">Text</label>
+			<label index="image">Image</label>
+			<label index="audio">Audio</label>
+			<label index="video">Video</label>
+			<label index="interactive">Interactive</label>
+			<label index="service">Service</label>
+			<label index="font">Font</label>
+			<label index="model">Model</label>
+			<label index="dataset">Dataset</label>
+			<label index="collection">Collection</label>
+			<label index="software">Software</label>
+			<label index="application">Application</label>
+			<label index="categories">Categories</label>
+			<label index="mediaTypes">Media types</label>
+			<label index="status">Status</label>
+			<label index="status_file_ok">File ok</label>
+			<label index="status_file_changed">File changed</label>
+			<label index="status_file_missing">File missing</label>
+			<label index="status_idx_man">Manually indexed</label>
+			<label index="status_idx_auto">Auto indexed</label>
+			<label index="status_idx_cron">Cron indexed</label>
+			<label index="indexRun">Indexing date</label>
+			<label index="noRecordsInSelection">The current selection doesn't give a result. No records found.</label>
+			<label index="noSelection">There's nothing selected.</label>
+			<label index="recordsInSelection">%s records found.</label>
+			<label index="oneRecordInSelection">One record found.</label>
+			<label index="recordsFromSelection">%s of %s</label>
+			<label index="recordsPerPage">Show: %s</label>
+			<label index="selEquals">Select:</label>
+			<label index="selPlus">Which match one of these:</label>
+			<label index="selMinus">Exclude:</label>
+			<label index="options">Options</label>
+			<label index="deselect">Remove from selection</label>
+			<label index="reselect">Include in selection</label>
+			<label index="remove">Remove</label>
+			<label index="defaultSorting">Revert to default sorting</label>
+			<label index="labelSorting">Sorting:</label>
+			<label index="revertSelection">Revert to previous selection</label>
+			<label index="tx_dam_batchProcess.introduction">Batch Process of the current selection.</label>
+			<label index="tx_dam_batchProcess.appendDesc">Check the fields you want to &lt;b&gt;append&lt;/b&gt; data.&lt;br /&gt;Otherwise the input will replace the content.</label>
+			<label index="tx_dam_batchProcess.submit">Send</label>
+			<label index="tx_dam_batchProcess.processed">Batch Process finished.</label>
+			<label index="field_selector">Field Selector</label>
+			<label index="showThumbnails">Display thumbnails</label>
+			<label index="showMultiAction">Display batch edit options</label>
+			<label index="showfullTitle">Display full file names</label>
+			<label index="showAlternateBgColors">Display alternating row colors</label>
+			<label index="showUnixPerms">Display detailed file permissions</label>
+			<label index="showDetailedSize">Display file size in bytes</label>
+			<label index="folder">Folder</label>
+			<label index="foldername">Folder name:</label>
+			<label index="folders">Folder</label>
+			<label index="file">File</label>
+			<label index="files">Files</label>
+			<label index="record">Record</label>
+			<label index="records">Records</label>
+			<label index="newFolder">Create new folder</label>
+			<label index="newTextFile">Create new text file</label>
+			<label index="viewFile">View file</label>
+			<label index="editFile">Edit file</label>
+			<label index="replaceFile">Replace file</label>
+			<label index="cm.move">Move</label>
+			<label index="pathNoAccess">You have no access to the requested path.</label>
+			<label index="pathNotExists">The requested path do not exists.</label>
+			<label index="fileNotIndexed">The file is not indexed yet.</label>
+			<label index="fileNotExists">The file does not exist in the filesystem.</label>
+			<label index="fileNotUsed">The file is not used.</label>
+			<label index="fileReference">File reference</label>
+			<label index="fileCopy">File copy</label>
+			<label index="selectionClipboard">Selection clipboard</label>
+			<label index="selectionExport">Selection Export</label>
+			<label index="selection">Selection</label>
+			<label index="current_selection">Current list selection</label>
+			<label index="eb_selection">Element-Browser selection</label>
+			<label index="displayExtendedInfo">Display extended info</label>
+			<label index="submitProcess">Process</label>
+			<label index="submitClearForm">Clear Form</label>
+			<label index="submitCreate">Create</label>
+			<label index="actionDenied">Action denied</label>
+			<label index="accessDenied">Access denied</label>
+			<label index="error">Error</label>
+			<label index="showRootline">Display rootline</label>
+			<label index="references">References</label>
+			<label index="page">Page</label>
+			<label index="content_element">Content Element</label>
+			<label index="content_age">Content Age</label>
+			<label index="media_element">Media Element</label>
+			<label index="media_element_age">Media Element Age</label>
+			<label index="browse_first">First</label>
+			<label index="browse_last">Last</label>
+			<label index="browse_next">Next</label>
+			<label index="browse_previous">Previous</label>
+			<label index="cm_file_sub">File ...</label>
+			<label index="submitMultiAction">Execute</label>
+			<label index="doForSelected">selected</label>
+			<label index="doForFullList">all listed</label>
+			<label index="for">for</label>
+			<label index="actionSelect">Command</label>
+			<label index="langCurrentExclusive">exclusive</label>
+			<label index="langCurrentAndDefault">+ default</label>
+			<label index="langCreateTrans">Create translation</label>
+			<label index="eb_addAllToList">Add all to list</label>
+			<label index="serviceinfo">Services Info</label>
+			<label index="content_field">Content field</label>
+			<label index="softref_key">Type of reference</label>
+			<label index="softref_key_media">Inserted media</label>
+			<label index="softref_key_mediatag">Link to media</label>
+			<label index="softref_key_typolink">Link to file</label>
+			<label index="softref_key_typolink_tag">Link to file</label>
+			<label index="softref_key_file_copy">Inserted file copy</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

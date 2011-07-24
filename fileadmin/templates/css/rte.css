@@ -1,0 +1,19 @@
+p {
+	text-indent: 1em;
+}
+
+p.noIndent {
+	text-indent: 0;
+}
+
+p.align-left {
+	text-align: left;
+}
+
+p.align-right {
+	text-align: right;
+}
+
+p.align-center {
+	text-align: center;
+}

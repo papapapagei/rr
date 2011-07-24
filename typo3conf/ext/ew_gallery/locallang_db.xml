@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'ew_gallery'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.CType_pi1">Gallery (normal)</label>
+			<label index="tt_content.CType_pi2">Gallery (background)</label>
+			<label index="tt_content.tx_ewgallery_type">Gallerie-Typ</label>
+			<label index="tt_content.tx_ewgallery_type.0">Front+Back Gallery</label>
+			<label index="tt_content.tx_ewgallery_type.1">Only Back Gallery</label>
+			<label index="tt_content.tx_ewgallery_smallimage">Start Image (small)</label>
+			<label index="tt_content.tx_ewgallery_bigimage">Start Image (background)</label>
+			<label index="tt_content.tx_ewgallery_list">Gallery List</label>
+			<label index="tt_content.tx_ewgallery_video">Video File</label>
+			<label index="tt_content.tx_ewgallery_video_title">Video Teaser Text</label>
+			<label index="tt_content.tx_ewgallery_video_button">Video Teaser Button</label>
+			<label index="tt_content.tx_ewgallery_video_autostart">Play Video first</label>
+			<label index="pages.tx_ewgallery_header">Video / Image</label>
+			<label index="pages.tx_ewgallery_image">Content's Background Image</label>
+			<label index="pages.tx_ewgallery_image_x">Position from Left (px)</label>
+			<label index="pages.tx_ewgallery_image_y">Position from Top (px)</label>
+			<label index="pages.tx_ewgallery_video">Autostart videos (played in random order)</label>
+		</languageKey>
+	</data>
+</T3locallang>

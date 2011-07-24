@@ -1,0 +1,34 @@
+<asx version="3.0">
+	<title>Example ASX playlist for the JW Player</title>
+	<moreinfo href="http://www.jeroenwijering.com"/>
+
+	<entry>
+		<title>Big Buck Bunny - MP3 Audio with thumb</title>
+		<author>the Peach Open Movie Project</author>
+		<abstract>Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation. Like the foundation's previous film Elephants Dream, the film is made using free and open source software.</abstract>
+		<ref href="http://www.jeroenwijering.com/upload/bunny.mp3" />
+		<moreinfo href="http://www.bigbuckbunny.org/" />
+		<param name="image" value="http://www.jeroenwijering.com/upload/bunny.jpg" />
+	</entry>
+
+	<entry>
+		<title>Big Buck Bunny - FLV Video with captions</title>
+		<author>the Peach Open Movie Project</author>
+		<abstract>Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation. Like the foundation's previous film Elephants Dream, the film is made using free and open source software.</abstract>
+		<moreinfo href="http://www.bigbuckbunny.org/" />
+		<ref href="http://www.jeroenwijering.com/upload/bunny.flv" />
+		<param name="captions" value="http://www.jeroenwijering.com/upload/bunny.xml" />
+		<param name="type" value="video/x-flv" />
+	</entry>
+
+	<entry>
+		<title>Big Buck Bunny - JPG Image with start</title>
+		<author>the Peach Open Movie Project</author>
+		<abstract>Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation. Like the foundation's previous film Elephants Dream, the film is made using free and open source software.</abstract>
+		<moreinfo href="http://www.bigbuckbunny.org/"/>
+		<ref href="http://www.jeroenwijering.com/upload/bunny.jpg" />
+		<duration value="00:00:20" />
+		<starttime value="10" />
+	</entry>
+
+</asx>

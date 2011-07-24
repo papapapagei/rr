@@ -1,0 +1,18 @@
+# ignore typo3 source
+/typo3
+/t3lib
+/index.php
+# ignore user files
+/fileadmin/user_upload
+/uploads
+# ignore cached merged configuration files
+/typo3conf/temp_CACHED*
+# ignore temp folder...
+/typo3temp/*
+# ...except the llxml folder ?? warum?
+#!/typo3temp/llxml/
+
+
+# ignore windows files
+desktop.ini
+Thumbs.db

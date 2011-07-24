@@ -1,0 +1,588 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="title">TemplaVoilà</label>
+			<label index="templateFile">Vorlagendatei</label>
+			<label index="templateObject">Vorlagenobjekt</label>
+			<label index="titleXmlConfiguration">XML-Konfiguration</label>
+			<label index="titleLoadDSXml">DS-XML laden</label>
+			<label index="mappingTitle">Vorlagenabbildung</label>
+			<label index="mappingNEW">[NEU]</label>
+			<label index="mappingHeadParts">Teile des HTML-Kopfs hinzufügen</label>
+			<label index="mappingBodyParts">Datenstruktur, die auf die HTML-Vorlage abgebildet werden soll</label>
+			<label index="rootDescription">Wählen Sie das HTML-Element der Seite, das Sie als übergeordnetes Container-Element der Vorlage möchten.</label>
+			<label index="selectTOrecrdToLoadDSFrom">Wählen Sie einen Vorlagenobjekt-Datensatz, aus dem Datenstruktur und Abbildungsinformationen geladen werden sollen.</label>
+			<label index="noDSDefined">Es wurde im Datensatz keine Datenstruktur definiert... (muss Inhalt vom Typ T3DataStructure XML sein)</label>
+			<label index="pasteDSXml">Alternativ können Sie das XML der Datenstruktur in dieses Formular einfügen</label>
+			<label index="loadDSXml">Datenstruktur laden</label>
+			<label index="instrunctions">Anweisungen</label>
+			<label index="toBeDefined">zu definieren</label>
+			<label index="tabTODetails">Information</label>
+			<label index="tabHeadParts">Kopfteile</label>
+			<label index="tabBodyParts">Abbildung</label>
+			<label index="dsTypes_section">Abschnitt</label>
+			<label index="dsTypes_container">Container</label>
+			<label index="dsTypes_attribute">Attribut</label>
+			<label index="dsTypes_element">Element</label>
+			<label index="dsTypes_notmapped">Nicht abgebildet</label>
+			<label index="buttonGoBack">Zurück</label>
+			<label index="buttonCancel">Abbruch</label>
+			<label index="buttonShowXML">XML anzeigen</label>
+			<label index="buttonClearAll">Alles entfernen</label>
+			<label index="buttonPreview">Vorschau</label>
+			<label index="buttonSave">Speichern</label>
+			<label index="buttonSaveExit">Speichern und Beenden</label>
+			<label index="buttonSaveAs">Speichern unter</label>
+			<label index="buttonLoad">Laden</label>
+			<label index="buttonRefresh">Erneut laden</label>
+			<label index="buttonAdd">Hinzufügen</label>
+			<label index="buttonUpdate">Aktualisieren</label>
+			<label index="buttonDelete">Löschen</label>
+			<label index="buttonCancelClose">Abbruch / Schließen</label>
+			<label index="buttonTitle_showXML">Vorschau der aktuell erzeugten Datenstruktur als XML</label>
+			<label index="buttonTitle_clearAll">Sämtliche Datenstrukturen und Abbildungsinformationen entfernen</label>
+			<label index="buttonTitle_preview">Vorschau der Abbildung der Vorlage</label>
+			<label index="buttonTitle_save">In aktuellem VO und DS speichern</label>
+			<label index="buttonTitle_saveExit">In aktuellem VO und DS speichern und zur Übersicht zurück</label>
+			<label index="buttonTitle_saveAs">Zum Menü Speichern</label>
+			<label index="buttonTitle_load">Zum Menü Laden</label>
+			<label index="buttonTitle_refresh">Bildschirmdarstellung erneuern</label>
+			<label index="buttonSet">Festlegen</label>
+			<label index="buttonSetTitle">Aktualisiert die Sitzungsdaten mit den aktuellen Einstellungen.</label>
+			<label index="buttonClearAllMappingTitle">Entfernt alle derzeit festgelegten Abbildungsinformationen.</label>
+			<label index="buttonPreviewMappingTitle">Fügt entsprechend der aktuellen Abbildung Beispielinhalte in die Vorlage ein.</label>
+			<label index="buttonSaveTOTitle">Speichern aller Abbildungsdaten im Vorlagenobjekt.</label>
+			<label index="buttonSaveAndReturn">Speichern und zurück</label>
+			<label index="buttonSaveAndReturnTitle">Speichern aller Abbildungsdaten im Vorlagenobjekt und zurück.</label>
+			<label index="buttonRevert">Rückgängig machen</label>
+			<label index="buttonRevertTitle">Abbildungsdaten %s auf die ursprünglichen Daten im Vorlagenobjekt zurücksetzen.</label>
+			<label index="createDSTO">Datenstruktur / Vorlagenobjekt ERSTELLEN</label>
+			<label index="updateDSTO">Vorhandene Datenstruktur / Vorlagenobjekt AKTUALISIEREN</label>
+			<label index="updateDSTOshort">VO (und DS) AKTUALISIEREN</label>
+			<label index="saveDSTOconfirm">Den derzeitigen Inhalt dieser Datensätze tatsächlich überschreiben?\nDiese Funktion dient der Erstellung neuer Datenstrukturen, die noch nicht von Hand bearbeitet wurden.</label>
+			<label index="createDSTOshort">DS / VO ERSTELLEN</label>
+			<label index="titleDSTO">Titel DS/VO</label>
+			<label index="templateType">Vorlagentyp</label>
+			<label index="pageTemplate">Seitenvorlage</label>
+			<label index="contentElement">Inhaltselement</label>
+			<label index="undefined">Nicht definiert</label>
+			<label index="storeInPID">In PID speichern</label>
+			<label index="selectTO">VO auswählen</label>
+			<label index="buildingDS">Erstellen der Datenstruktur</label>
+			<label index="renderDSO_dataStructure">Datenstruktur im Datensatz</label>
+			<label index="renderDSO_dataElement">Datenelement</label>
+			<label index="renderDSO_mappingInstructions">Anweisung zur Abbildung</label>
+			<label index="renderDSO_rules">Regeln</label>
+			<label index="renderDSO_uid">Uid</label>
+			<label index="renderDSO_title">Titel</label>
+			<label index="renderDSO_fileRef">Verweis auf Datei</label>
+			<label index="renderDSO_dataLgd">Lgd Abbildungsdaten</label>
+			<label index="renderDSO_usedTO">Vorlagenobjekt, die diese Datenstruktur verwenden</label>
+			<label index="renderDSO_XML">Datenstruktur XML</label>
+			<label index="renderDSO_DSO">Datenstrukturobjekt</label>
+			<label index="renderDSO_noUid">Es wurde keine UID gefunden, die auf ein Datenstrukturobjekt verweist.</label>
+			<label index="renderDSO_notFound">(NICHT GEFUNDEN)</label>
+			<label index="all">(ALLE)</label>
+			<label index="renderTO_toDetails">Details Vorlagenobjekt</label>
+			<label index="renderTO_dsRecord">Datensatz Datenstruktur</label>
+			<label index="renderTO_updateWarningConfirm">Warnung: Es sollten nur Datenstrukturen und Vorlagenobjekte modifiziert werden, die nicht von Hand bearbeitet wurden.\nAndernfalls besteht die Gefahr, dass die von Hand vorgenommenen Änderungen ohne weiteren Hinweis verloren gehen!</label>
+			<label index="renderTO_editDSTO">DS / VO modifizieren</label>
+			<label index="renderTO_dsFile">Datenstrukturdatei</label>
+			<label index="renderTO_toInfo">Vorlagenobjektinformation</label>
+			<label index="rootMultiTemplate_title">Wurzel für Mehrfachvorlage</label>
+			<label index="rootMultiTemplate_description">Den Wurzel-Container für dieses Vorlagenprojekt auswählen. Wahrscheinlich ist der body-Tag oder ein anderes HTML-Element auszuwählen, das ALLE Untervorlagen umschließt.</label>
+			<label index="msgMappingIsDifferent">Die aktuellen Abbildungsinformationen weichen von den Abbildungsinformationen im Vorlagenobjekt ab</label>
+			<label index="msgDSTOSaved">Datenstruktur (UID %s) und Vorlagendatensatz (UID %s) wurden unter PID %s gespeichert</label>
+			<label index="msgDSTOUpdated">Datenstruktur (UID %s) und Vorlagendatensatz (UID %s) wurden aktualisiert</label>
+			<label index="msgMappingSaved">Abbildungsinformationen wurden im aktuellen Vorlagenobjekt gespeichert!</label>
+			<label index="msgHeaderSet">Nach der Änderung von Teilen des Headers &quot;Festlegen&quot; drücken!</label>
+			<label index="include">Einschließen</label>
+			<label index="tag">Tag</label>
+			<label index="tagContent">Tag-Inhalt</label>
+			<label index="mapDataElement">Datenelement</label>
+			<label index="mapField">Feld</label>
+			<label index="mapInstructions">Anweisungen Abbildung</label>
+			<label index="mapSampleData">Beispieldaten</label>
+			<label index="mapElementPreset">Voreinstellungen Element</label>
+			<label index="mapHTMLpath">HTML-Pfad</label>
+			<label index="mapAction">Aktion</label>
+			<label index="mapRules">Regeln</label>
+			<label index="mapEdit">Bearbeiten</label>
+			<label index="mapMappingWindow">Abbildungsfenster</label>
+			<label index="mapPreviewInfo">Vorschau der in die abgebildeten Tags eingefügten Beispieldaten</label>
+			<label index="mapDSelement">Abbildung Datenelement</label>
+			<label index="mapLimitToTags">Einschränken auf Tags</label>
+			<label index="mapWarningElementChange">Durch Änderung des Elementtyps ändern sich die vorhandenen Einstellungen!</label>
+			<label index="displayDSTitleTranslated">Der Titel ist übersetzt!</label>
+			<label index="displayDSContentFound">Inhalt gefunden (%s Zeichen)</label>
+			<label index="displayDSContentEmpty">Inhalt leer.</label>
+			<label index="buttonRemap">Erneut abbilden</label>
+			<label index="buttonRemapTitle">Dieses DS-Element auf ein anderes HTML-Element in der Vorlagendatei abbilden.</label>
+			<label index="buttonChangeMode">Modus ändern</label>
+			<label index="buttonChangeModeTitle">Den Abbildungsmodus ändern, z.B. von INNEN nach AUSSEN usw.</label>
+			<label index="msgNoContentFound">Kein Inhalt gefunden!</label>
+			<label index="msgHowToMap">Zum Abbilden dieses Elements im unteren Fenster ein Tag-Symbol anklicken.</label>
+			<label index="buttonMap">Abbilden</label>
+			<label index="editEntry">Eintrag bearbeiten</label>
+			<label index="deleteEntry">Eintrag LÖSCHEN</label>
+			<label index="confirmDeleteEntry">Diesen Eintrag der Datenstruktur tatsächlich löschen?</label>
+			<label index="noSampleData">Keine Beispieldaten</label>
+			<label index="mapEnterNewFieldname">Neuen Feldnamen eingeben</label>
+			<label index="mapPresets_plainInput">Einfaches Eingabefeld</label>
+			<label index="mapPresets_headerField">Überschriftenfeld</label>
+			<label index="mapPresets_gHederField">Überschriftenfeld, grafisch</label>
+			<label index="mapPresets_textarea">Textbereich für Textinhalt</label>
+			<label index="mapPresets_rte">Rich-Text-Editor für Textinhalt</label>
+			<label index="mapPresets_linkField">Linkfeld</label>
+			<label index="mapPresets_integer">Ganzzahliger Wert</label>
+			<label index="mapPresets_imageFixed">Bildfeld, feste B+H</label>
+			<label index="mapPresets_select">Auswahlliste</label>
+			<label index="mapPresets_check">Markierungsfeld</label>
+			<label index="mapPresets_image">Bildfeld</label>
+			<label index="mapPresets_ce">Seite - Inhaltselemente [Pos.: %s]</label>
+			<label index="mapPresets_TSobjectPath">TypoScript-Objektpfad</label>
+			<label index="mapPresets_none">Keine (nur TypoScript)</label>
+			<label index="mapPresets_customTCA">Benutzerdefinierte Formularkonfiguration (keine Voreinstellung)</label>
+			<label index="mapPresetGroups_tceFields">Formularfelder</label>
+			<label index="mapPresetGroups_ts">TypoScript-Elemente</label>
+			<label index="mapPresetGroups_other">Andere</label>
+			<label index="mapTSconstants">TypoScript-Konstanten</label>
+			<label index="mapTScode">TypoScript-Code</label>
+			<label index="mapExtraOptions">Zusatzoptionen</label>
+			<label index="mapPostProcesses">Angewendete Nachberarbeitung</label>
+			<label index="mapEnablePreview">Datenvorschau in Seitenmodul aktivieren</label>
+			<label index="mapEnablePreview.enable">Aktivieren</label>
+			<label index="mapEnablePreview.disable">Deaktivieren</label>
+			<label index="mapPPcastInteger">Inhalt in Ganzzahl umwandeln</label>
+			<label index="mapPPhsc">Inhalt mit htmlSpecialChars behandeln</label>
+			<label index="mapCustomStdWrap">Benutzerdefiniertes stdWrap</label>
+			<label index="mapTCElabel">Formularbezeichnung</label>
+			<label index="mapTCEconf">Formularkonfiguration</label>
+			<label index="mapTCEextras">Formularzusätze</label>
+			<label index="mapElContainers">Container</label>
+			<label index="mapElElements">Elemente</label>
+			<label index="mapSection">Abschnitt von Elementen</label>
+			<label index="mapContainer">Container für Elemente</label>
+			<label index="mapElement">Element</label>
+			<label index="mapAttribute">Attribut</label>
+			<label index="mapNotMapped">Nicht abgebildet</label>
+			<label index="mapConfiguration">Konfiguration</label>
+			<label index="mapEditConfiguration">Allgemeine Konfiguration bearbeiten</label>
+			<label index="mapDataProcessing">Datenverarbeitung</label>
+			<label index="mapEditDataProcessing">Modifikationen für Datenverarbeitung bearbeiten</label>
+			<label index="mapTyposcript">TypoScript</label>
+			<label index="mapEditTyposcript">TypoScript bearbeiten</label>
+			<label index="mapExtra">Zusatz</label>
+			<label index="mapEditExtra">Zusatzoptionen bearbeiten</label>
+			<label index="mapTCEform">Formular</label>
+			<label index="mapEditTCEform">Formularkonfiguration bearbeiten</label>
+			<label index="mapObjectPath">Objektpfad</label>
+			<label index="mapOldStyleColumnNumber">Frühere Spaltennummer</label>
+			<label index="mapOldStyleColumnNumber_label">Spaltennummer (0 = Normal, 1 = Links, 2 = Rechts, 3 = Rand)</label>
+			<label index="mapEnableDragDrop">Ziehen und Übergeben für diesen Container aktivieren</label>
+			<label index="errorNoContentInFile">Kein Inhalt in Dateiverweis gefunden</label>
+			<label index="errorNoFileToDisplay">Keine anzuzeigende Datei</label>
+			<label index="error">Fehler</label>
+			<label index="errorNoStorageFolder">Kein zugänglicher Speicherordner (Storage Folder) gefunden - bitte sofort einen anlegen!</label>
+			<label index="errorTONotSaved">Es wurde kein Vorlagenobjekt erzeugt, obwohl die Datenstruktur (UID %s) erzeugt wurde!</label>
+			<label index="errorTONotCreated">Keine Datenstruktur erzeugt!</label>
+			<label index="errorNoUidFound">Es wurde keine UID gefunden, die auf einen Vorlagenobjekt-Datensatz verweist.</label>
+			<label index="errorNoDSrecord">FEHLER: Kein Datenstrukturdatensatz mit der UID %s vorhanden</label>
+			<label index="errorInDSO">FEHLER Datenstrukturobjekt</label>
+			<label index="errorNoDSfound">Es konnte kein Datensatz mit einer Datenstruktur mit der UID &quot;%s&quot; gefunden werden!</label>
+			<label index="errorFileNotFound">Die Datei &quot;%s&quot; konnte nicht gefunden werden!</label>
+			<label index="errorNoTOfound">Kein Datensatz eines Vorlagenobjekts mit der UID &quot;%s&quot;!</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="title" type="integer">254510048</label>
+			<label index="templateFile" type="integer">92664688</label>
+			<label index="templateObject" type="integer">8469471</label>
+			<label index="titleXmlConfiguration" type="integer">130957800</label>
+			<label index="titleLoadDSXml" type="integer">166087882</label>
+			<label index="mappingTitle" type="integer">9019887</label>
+			<label index="tabTODetails" type="integer">176340495</label>
+			<label index="tabHeadParts" type="integer">210682165</label>
+			<label index="tabBodyParts" type="integer">85899</label>
+			<label index="mappingHeadParts" type="integer">21371934</label>
+			<label index="mappingBodyParts" type="integer">29485337</label>
+			<label index="rootDescription" type="integer">68003547</label>
+			<label index="selectTOrecrdToLoadDSFrom" type="integer">50584552</label>
+			<label index="noDSDefined" type="integer">255368467</label>
+			<label index="loadDSXml" type="integer">53651009</label>
+			<label index="msgDSTOSaved" type="integer">262840518</label>
+			<label index="msgDSTOUpdated" type="integer">48159214</label>
+			<label index="msgMappingSaved" type="integer">241988607</label>
+			<label index="error" type="integer">151171285</label>
+			<label index="errorNoStorageFolder" type="integer">219791783</label>
+			<label index="errorTONotSaved" type="integer">174218346</label>
+			<label index="errorTONotCreated" type="integer">85638123</label>
+			<label index="errorNoUidFound" type="integer">217628090</label>
+			<label index="pasteDSXml" type="integer">114719321</label>
+			<label index="instrunctions" type="integer">77383910</label>
+			<label index="toBeDefined" type="integer">172811630</label>
+			<label index="dsTypes_section" type="integer">220996821</label>
+			<label index="dsTypes_container" type="integer">15148940</label>
+			<label index="dsTypes_attribute" type="integer">254524921</label>
+			<label index="dsTypes_element" type="integer">36810724</label>
+			<label index="dsTypes_notmapped" type="integer">41184054</label>
+			<label index="buttonGoBack" type="integer">36398395</label>
+			<label index="buttonCancel" type="integer">245659783</label>
+			<label index="buttonShowXML" type="integer">159261940</label>
+			<label index="buttonClearAll" type="integer">135963143</label>
+			<label index="buttonPreview" type="integer">52420219</label>
+			<label index="buttonSave" type="integer">211601612</label>
+			<label index="buttonSaveAs" type="integer">135951399</label>
+			<label index="buttonLoad" type="integer">253352946</label>
+			<label index="buttonRefresh" type="integer">104491656</label>
+			<label index="buttonAdd" type="integer">247599607</label>
+			<label index="buttonUpdate" type="integer">6894342</label>
+			<label index="buttonDelete" type="integer">254438473</label>
+			<label index="buttonCancelClose" type="integer">136871479</label>
+			<label index="buttonTitle_showXML" type="integer">59033474</label>
+			<label index="buttonTitle_clearAll" type="integer">108279097</label>
+			<label index="buttonTitle_preview" type="integer">231838378</label>
+			<label index="buttonTitle_saveAs" type="integer">253583269</label>
+			<label index="buttonTitle_load" type="integer">205366407</label>
+			<label index="buttonTitle_refresh" type="integer">228951005</label>
+			<label index="buttonSet" type="integer">97892230</label>
+			<label index="buttonSetTitle" type="integer">115681696</label>
+			<label index="buttonClearAllMappingTitle" type="integer">185296437</label>
+			<label index="buttonPreviewMappingTitle" type="integer">217452112</label>
+			<label index="buttonSaveTOTitle" type="integer">71350109</label>
+			<label index="buttonSaveAndReturn" type="integer">146915206</label>
+			<label index="buttonSaveAndReturnTitle" type="integer">74865553</label>
+			<label index="buttonRevert" type="integer">86547441</label>
+			<label index="buttonRevertTitle" type="integer">95018552</label>
+			<label index="createDSTO" type="integer">233257990</label>
+			<label index="updateDSTO" type="integer">258979858</label>
+			<label index="updateDSTOshort" type="integer">64809176</label>
+			<label index="saveDSTOconfirm" type="integer">43403037</label>
+			<label index="createDSTOshort" type="integer">179919680</label>
+			<label index="titleDSTO" type="integer">107663062</label>
+			<label index="templateType" type="integer">252865423</label>
+			<label index="pageTemplate" type="integer">247659805</label>
+			<label index="contentElement" type="integer">233726803</label>
+			<label index="undefined" type="integer">247528449</label>
+			<label index="storeInPID" type="integer">112745056</label>
+			<label index="selectTO" type="integer">210497444</label>
+			<label index="buildingDS" type="integer">162502849</label>
+			<label index="renderDSO_dataStructure" type="integer">218648503</label>
+			<label index="renderDSO_dataElement" type="integer">28744766</label>
+			<label index="renderDSO_mappingInstructions" type="integer">110910014</label>
+			<label index="renderDSO_rules" type="integer">32823958</label>
+			<label index="renderDSO_uid" type="integer">71156930</label>
+			<label index="renderDSO_title" type="integer">192455458</label>
+			<label index="renderDSO_fileRef" type="integer">98494108</label>
+			<label index="renderDSO_dataLgd" type="integer">221789797</label>
+			<label index="renderDSO_usedTO" type="integer">139050271</label>
+			<label index="renderDSO_XML" type="integer">258029817</label>
+			<label index="renderDSO_DSO" type="integer">244695952</label>
+			<label index="renderDSO_noUid" type="integer">133840074</label>
+			<label index="renderDSO_notFound" type="integer">120404126</label>
+			<label index="all" type="integer">243870905</label>
+			<label index="renderTO_toDetails" type="integer">244814684</label>
+			<label index="renderTO_dsRecord" type="integer">158197867</label>
+			<label index="renderTO_updateWarningConfirm" type="integer">174185666</label>
+			<label index="renderTO_editDSTO" type="integer">263539031</label>
+			<label index="renderTO_dsFile" type="integer">16996684</label>
+			<label index="renderTO_toInfo" type="integer">20759005</label>
+			<label index="rootMultiTemplate_title" type="integer">27457671</label>
+			<label index="rootMultiTemplate_description" type="integer">207537402</label>
+			<label index="msgMappingIsDifferent" type="integer">1124977</label>
+			<label index="msgHeaderSet" type="integer">99192666</label>
+			<label index="include" type="integer">256733862</label>
+			<label index="tag" type="integer">202379352</label>
+			<label index="tagContent" type="integer">176551893</label>
+			<label index="mapDataElement" type="integer">28744766</label>
+			<label index="mapField" type="integer">116484703</label>
+			<label index="mapInstructions" type="integer">110910014</label>
+			<label index="mapSampleData" type="integer">235769727</label>
+			<label index="mapElementPreset" type="integer">233087204</label>
+			<label index="mapHTMLpath" type="integer">128151933</label>
+			<label index="mapAction" type="integer">311148</label>
+			<label index="mapRules" type="integer">32823958</label>
+			<label index="mapEdit" type="integer">131916066</label>
+			<label index="mapMappingWindow" type="integer">122827338</label>
+			<label index="mapPreviewInfo" type="integer">170710219</label>
+			<label index="mapDSelement" type="integer">192583772</label>
+			<label index="mapLimitToTags" type="integer">250704520</label>
+			<label index="displayDSTitleTranslated" type="integer">133513497</label>
+			<label index="displayDSContentFound" type="integer">207545584</label>
+			<label index="displayDSContentEmpty" type="integer">122435545</label>
+			<label index="buttonRemap" type="integer">44884533</label>
+			<label index="buttonRemapTitle" type="integer">150627671</label>
+			<label index="buttonChangeMode" type="integer">177893784</label>
+			<label index="buttonChangeModeTitle" type="integer">222041898</label>
+			<label index="msgNoContentFound" type="integer">168000557</label>
+			<label index="msgHowToMap" type="integer">256244826</label>
+			<label index="buttonMap" type="integer">74399392</label>
+			<label index="editEntry" type="integer">71054114</label>
+			<label index="deleteEntry" type="integer">185170182</label>
+			<label index="confirmDeleteEntry" type="integer">257048006</label>
+			<label index="noSampleData" type="integer">16773354</label>
+			<label index="mapEnterNewFieldname" type="integer">65307694</label>
+			<label index="mapPresets_plainInput" type="integer">12636478</label>
+			<label index="mapPresets_headerField" type="integer">265864108</label>
+			<label index="mapPresets_gHederField" type="integer">255305610</label>
+			<label index="mapPresets_textarea" type="integer">13774567</label>
+			<label index="mapPresets_rte" type="integer">232870296</label>
+			<label index="mapPresets_linkField" type="integer">245965492</label>
+			<label index="mapPresets_integer" type="integer">254170092</label>
+			<label index="mapPresets_imageFixed" type="integer">38951731</label>
+			<label index="mapPresets_select" type="integer">189682630</label>
+			<label index="mapPresets_image" type="integer">169448997</label>
+			<label index="mapPresets_ce" type="integer">217170417</label>
+			<label index="mapPresets_TSobjectPath" type="integer">121486459</label>
+			<label index="mapPresets_none" type="integer">20821728</label>
+			<label index="mapPresets_customTCA" type="integer">18625182</label>
+			<label index="mapPresetGroups_tceFields" type="integer">55057865</label>
+			<label index="mapPresetGroups_ts" type="integer">162052827</label>
+			<label index="mapPresetGroups_other" type="integer">103881441</label>
+			<label index="mapTSconstants" type="integer">161610555</label>
+			<label index="mapTScode" type="integer">58468380</label>
+			<label index="mapExtraOptions" type="integer">177904867</label>
+			<label index="mapPostProcesses" type="integer">101077119</label>
+			<label index="mapPPcastInteger" type="integer">241268330</label>
+			<label index="mapPPhsc" type="integer">107482394</label>
+			<label index="mapCustomStdWrap" type="integer">80074268</label>
+			<label index="mapTCElabel" type="integer">157833487</label>
+			<label index="mapTCEconf" type="integer">156939160</label>
+			<label index="mapTCEextras" type="integer">191925218</label>
+			<label index="mapElContainers" type="integer">87567023</label>
+			<label index="mapElElements" type="integer">178612782</label>
+			<label index="mapSection" type="integer">199751403</label>
+			<label index="mapContainer" type="integer">181928343</label>
+			<label index="mapElement" type="integer">36810724</label>
+			<label index="mapAttribute" type="integer">254524921</label>
+			<label index="mapNotMapped" type="integer">133681898</label>
+			<label index="mapConfiguration" type="integer">39122498</label>
+			<label index="mapEditConfiguration" type="integer">116573024</label>
+			<label index="mapDataProcessing" type="integer">9415104</label>
+			<label index="mapEditDataProcessing" type="integer">157168727</label>
+			<label index="mapTyposcript" type="integer">95234571</label>
+			<label index="mapEditTyposcript" type="integer">205333890</label>
+			<label index="mapExtra" type="integer">144939179</label>
+			<label index="mapEditExtra" type="integer">96449071</label>
+			<label index="mapTCEform" type="integer">221617261</label>
+			<label index="mapEditTCEform" type="integer">216522675</label>
+			<label index="mapObjectPath" type="integer">158609005</label>
+			<label index="errorNoContentInFile" type="integer">158782593</label>
+			<label index="errorNoFileToDisplay" type="integer">182144907</label>
+			<label index="errorNoDSrecord" type="integer">72419772</label>
+			<label index="errorInDSO" type="integer">25674229</label>
+			<label index="errorNoDSfound" type="integer">175457920</label>
+			<label index="errorFileNotFound" type="integer">126489353</label>
+			<label index="errorNoTOfound" type="integer">76079238</label>
+			<label index="mappingNEW" type="integer">4415436</label>
+			<label index="buttonSaveExit" type="integer">13743945</label>
+			<label index="buttonTitle_save" type="integer">59672090</label>
+			<label index="buttonTitle_saveExit" type="integer">7390291</label>
+			<label index="mapWarningElementChange" type="integer">227015339</label>
+			<label index="mapPresets_check" type="integer">35664037</label>
+			<label index="mapEnablePreview" type="integer">119575811</label>
+			<label index="mapEnablePreview.enable" type="integer">49998879</label>
+			<label index="mapEnablePreview.disable" type="integer">198159566</label>
+			<label index="mapOldStyleColumnNumber" type="integer">56710295</label>
+			<label index="mapOldStyleColumnNumber_label" type="integer">266192337</label>
+			<label index="mapEnableDragDrop" type="integer">165482997</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="title">TemplaVoilà</label>
+			<label index="templateFile">Template File</label>
+			<label index="templateObject">Template Object</label>
+			<label index="titleXmlConfiguration">XML configuration</label>
+			<label index="titleLoadDSXml">Load DS XML</label>
+			<label index="mappingTitle">Template Mapping</label>
+			<label index="tabTODetails">Information</label>
+			<label index="tabHeadParts">Header Parts</label>
+			<label index="tabBodyParts">Mapping</label>
+			<label index="mappingHeadParts">Adding parts from HTML header</label>
+			<label index="mappingBodyParts">Data Structure to be mapped to HTML template</label>
+			<label index="rootDescription">Select the HTML element on the page which you want to be the overall container element for the template.</label>
+			<label index="selectTOrecrdToLoadDSFrom">Select a Template Object record to load a Data Structure/Mapping information from</label>
+			<label index="noDSDefined">No Data Structure was defined in the record... (Must be T3DataStructure XML content)</label>
+			<label index="loadDSXml">Load Data Structure</label>
+			<label index="msgDSTOSaved">Data Structure (UID %s) and Template Record (UID %s) was saved in PID %s</label>
+			<label index="msgDSTOUpdated">Data Structure (UID %s) and Template Record (UID %s) was updated</label>
+			<label index="msgMappingSaved">Mapping information was saved to the current Template Object!</label>
+			<label index="error">Error</label>
+			<label index="errorNoStorageFolder">No accessible Storage Folder found - please create one immediately!</label>
+			<label index="errorTONotSaved">No Template Object was created although the Data Structure was (UID %s)!</label>
+			<label index="errorTONotCreated">No Data Structure was created!</label>
+			<label index="errorNoUidFound">No UID was found pointing to a Template Object record.</label>
+			<label index="pasteDSXml">Alternatively, paste the Data Structure XML into this form</label>
+			<label index="instrunctions">Instructions</label>
+			<label index="toBeDefined">to be defined</label>
+			<label index="dsTypes_section">Section</label>
+			<label index="dsTypes_container">Container</label>
+			<label index="dsTypes_attribute">Attribute</label>
+			<label index="dsTypes_element">Element</label>
+			<label index="dsTypes_notmapped">Not Mapped</label>
+			<label index="buttonGoBack">Go back</label>
+			<label index="buttonCancel">Cancel</label>
+			<label index="buttonShowXML">Show XML</label>
+			<label index="buttonClearAll">Clear all</label>
+			<label index="buttonPreview">Preview</label>
+			<label index="buttonSave">Save</label>
+			<label index="buttonSaveAs">Save as</label>
+			<label index="buttonLoad">Load</label>
+			<label index="buttonRefresh">Refresh</label>
+			<label index="buttonAdd">Add</label>
+			<label index="buttonUpdate">Update</label>
+			<label index="buttonDelete">Delete</label>
+			<label index="buttonCancelClose">Cancel / Close</label>
+			<label index="buttonTitle_showXML">Preview the currently build Data Structure as XML</label>
+			<label index="buttonTitle_clearAll">Clear all Data Structure and Mapping information</label>
+			<label index="buttonTitle_preview">Preview the mapping to the template</label>
+			<label index="buttonTitle_saveAs">Go to save menu</label>
+			<label index="buttonTitle_load">Go to load menu</label>
+			<label index="buttonTitle_refresh">Redraw screen</label>
+			<label index="buttonSet">Set</label>
+			<label index="buttonSetTitle">Will update session data with current settings.</label>
+			<label index="buttonClearAllMappingTitle">Clears all mapping information currently set.</label>
+			<label index="buttonPreviewMappingTitle">Will merge sample content into the template according to the current mapping information.</label>
+			<label index="buttonSaveTOTitle">Saving all mapping data into the Template Object.</label>
+			<label index="buttonSaveAndReturn">Save and Return</label>
+			<label index="buttonSaveAndReturnTitle">Saving all mapping data into the Template Object and return.</label>
+			<label index="buttonRevert">Revert</label>
+			<label index="buttonRevertTitle">Reverting %s mapping data to original data in the Template Object.</label>
+			<label index="createDSTO">CREATE Data Structure / Template Object</label>
+			<label index="updateDSTO">UPDATE existing Data Structure / Template Object</label>
+			<label index="updateDSTOshort">UPDATE TO (and DS)</label>
+			<label index="saveDSTOconfirm">Are you sure you want to override the current contents of these records?\nThis feature is meant to support the process of creating new Data Structures which have not been manually edited yet.</label>
+			<label index="createDSTOshort">CREATE DS / TO</label>
+			<label index="titleDSTO">Title of DS/TO</label>
+			<label index="templateType">Template Type</label>
+			<label index="pageTemplate">Page Template</label>
+			<label index="contentElement">Content Element</label>
+			<label index="undefined">Undefined</label>
+			<label index="storeInPID">Store in PID</label>
+			<label index="selectTO">Select TO</label>
+			<label index="buildingDS">Building Data Structure</label>
+			<label index="renderDSO_dataStructure">Data Structure in record</label>
+			<label index="renderDSO_dataElement">Data Element</label>
+			<label index="renderDSO_mappingInstructions">Mapping Instructions</label>
+			<label index="renderDSO_rules">Rules</label>
+			<label index="renderDSO_uid">Uid</label>
+			<label index="renderDSO_title">Title</label>
+			<label index="renderDSO_fileRef">File reference</label>
+			<label index="renderDSO_dataLgd">Mapping Data Lgd</label>
+			<label index="renderDSO_usedTO">Template Objects using this Data Structure</label>
+			<label index="renderDSO_XML">Data Structure XML</label>
+			<label index="renderDSO_DSO">Data Structure Object</label>
+			<label index="renderDSO_noUid">No UID was found pointing to a Data Structure Object record.</label>
+			<label index="renderDSO_notFound">(NOT FOUND)</label>
+			<label index="all">(ALL)</label>
+			<label index="renderTO_toDetails">Template Object Details</label>
+			<label index="renderTO_dsRecord">Data Structure Record</label>
+			<label index="renderTO_updateWarningConfirm">Warning: You should only modify Data Structures and Template Objects which have not been manually edited\nYou risk that manual changes will be removed without further notice!</label>
+			<label index="renderTO_editDSTO">Modify DS / TO</label>
+			<label index="renderTO_dsFile">Data Structure File</label>
+			<label index="renderTO_toInfo">Template Object Information</label>
+			<label index="rootMultiTemplate_title">ROOT of MultiTemplate</label>
+			<label index="rootMultiTemplate_description">Select the ROOT container for this template project. Probably just select a body-tag or some other HTML element which encapsulates ALL sub templates!</label>
+			<label index="msgMappingIsDifferent">The current mapping information is different from the mapping information in the Template Object</label>
+			<label index="msgHeaderSet">Do not forget to press &quot;Set&quot; if header parts are changed!</label>
+			<label index="include">Include</label>
+			<label index="tag">Tag</label>
+			<label index="tagContent">Tag Content</label>
+			<label index="mapDataElement">Data Element</label>
+			<label index="mapField">Field</label>
+			<label index="mapInstructions">Mapping Instructions</label>
+			<label index="mapSampleData">Sample Data</label>
+			<label index="mapElementPreset">Element Preset</label>
+			<label index="mapHTMLpath">HTML-path</label>
+			<label index="mapAction">Action</label>
+			<label index="mapRules">Rules</label>
+			<label index="mapEdit">Edit</label>
+			<label index="mapMappingWindow">Mapping Window</label>
+			<label index="mapPreviewInfo">Preview of Data Structure sample data merged into the mapped tags</label>
+			<label index="mapDSelement">Mapping Data Element</label>
+			<label index="mapLimitToTags">Limiting to tags</label>
+			<label index="displayDSTitleTranslated">This title is translated!</label>
+			<label index="displayDSContentFound">Content found (%s chars)</label>
+			<label index="displayDSContentEmpty">Content empty.</label>
+			<label index="buttonRemap">Re-Map</label>
+			<label index="buttonRemapTitle">Map this DS element to another HTML element in template file.</label>
+			<label index="buttonChangeMode">Change Mode</label>
+			<label index="buttonChangeModeTitle">Change mapping mode, eg. from INNER to OUTER etc.</label>
+			<label index="msgNoContentFound">No content found!</label>
+			<label index="msgHowToMap">Click a tag-icon in the window below to map this element.</label>
+			<label index="buttonMap">Map</label>
+			<label index="editEntry">Edit entry</label>
+			<label index="deleteEntry">DELETE entry</label>
+			<label index="confirmDeleteEntry">Are you sure to delete this Data Structure entry?</label>
+			<label index="noSampleData">No sample data</label>
+			<label index="mapEnterNewFieldname">Enter new fieldname</label>
+			<label index="mapPresets_plainInput">Plain input field</label>
+			<label index="mapPresets_headerField">Header field</label>
+			<label index="mapPresets_gHederField">Header field, Graphical</label>
+			<label index="mapPresets_textarea">Text area for bodytext</label>
+			<label index="mapPresets_rte">Rich text editor for bodytext</label>
+			<label index="mapPresets_linkField">Link field</label>
+			<label index="mapPresets_integer">Integer value</label>
+			<label index="mapPresets_imageFixed">Image field, fixed W+H</label>
+			<label index="mapPresets_select">Selector box</label>
+			<label index="mapPresets_image">Image field</label>
+			<label index="mapPresets_ce">Page-Content Elements [Pos.: %s]</label>
+			<label index="mapPresets_TSobjectPath">TypoScript Object Path</label>
+			<label index="mapPresets_none">None (TypoScript only)</label>
+			<label index="mapPresets_customTCA">Custom form setup (no preset used)</label>
+			<label index="mapPresetGroups_tceFields">Form Fields</label>
+			<label index="mapPresetGroups_ts">TypoScript Elements</label>
+			<label index="mapPresetGroups_other">Other</label>
+			<label index="mapTSconstants">TypoScript Constants</label>
+			<label index="mapTScode">TypoScript Code</label>
+			<label index="mapExtraOptions">Extra options</label>
+			<label index="mapPostProcesses">Applied post-processes</label>
+			<label index="mapPPcastInteger">Cast content to integer</label>
+			<label index="mapPPhsc">Pass content through htmlSpecialChars (HSC)</label>
+			<label index="mapCustomStdWrap">Custom stdWrap</label>
+			<label index="mapTCElabel">Form label</label>
+			<label index="mapTCEconf">Form configuration</label>
+			<label index="mapTCEextras">Form extras</label>
+			<label index="mapElContainers">Containers</label>
+			<label index="mapElElements">Elements</label>
+			<label index="mapSection">Section of elements</label>
+			<label index="mapContainer">Container for elements</label>
+			<label index="mapElement">Element</label>
+			<label index="mapAttribute">Attribute</label>
+			<label index="mapNotMapped">Not mapped</label>
+			<label index="mapConfiguration">Configuration</label>
+			<label index="mapEditConfiguration">Edit general configuration</label>
+			<label index="mapDataProcessing">Data processing</label>
+			<label index="mapEditDataProcessing">Edit data processing modifications</label>
+			<label index="mapTyposcript">Typoscript</label>
+			<label index="mapEditTyposcript">Edit Typoscript</label>
+			<label index="mapExtra">Extra</label>
+			<label index="mapEditExtra">Edit extra options</label>
+			<label index="mapTCEform">Form</label>
+			<label index="mapEditTCEform">Edit form configuration</label>
+			<label index="mapObjectPath">Object path</label>
+			<label index="errorNoContentInFile">No content found in file reference</label>
+			<label index="errorNoFileToDisplay">No file to display</label>
+			<label index="errorNoDSrecord">ERROR: No Data Structure Record with the UID %s</label>
+			<label index="errorInDSO">Data Structure Object ERROR</label>
+			<label index="errorNoDSfound">No Data Structure Record could be found with UID &quot;%s&quot;!</label>
+			<label index="errorFileNotFound">The file &quot;%s&quot; could not be found!</label>
+			<label index="errorNoTOfound">No Template Object Record with the UID &quot;%s&quot;!</label>
+			<label index="mappingNEW">[NEW]</label>
+			<label index="buttonSaveExit">Save and Exit</label>
+			<label index="buttonTitle_save">Save to current TO and DS</label>
+			<label index="buttonTitle_saveExit">Save to current TO and DS and return to Overview</label>
+			<label index="mapWarningElementChange">Changing element type will change your existing settings!</label>
+			<label index="mapPresets_check">Check box</label>
+			<label index="mapEnablePreview">Enable data preview in Page-Module</label>
+			<label index="mapEnablePreview.enable">Enable</label>
+			<label index="mapEnablePreview.disable">Disable</label>
+			<label index="mapOldStyleColumnNumber">Old style column number</label>
+			<label index="mapOldStyleColumnNumber_label">Column number (0=normal, 1=left, 2=right, 3=border)</label>
+			<label index="mapEnableDragDrop">Enable Drag&amp;Drop in this container</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

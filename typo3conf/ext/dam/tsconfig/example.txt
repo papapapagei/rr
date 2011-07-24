@@ -1,0 +1,105 @@
+
+tx_dam.devel = 0
+
+mod.txdamM1_SHARED.alternateBgColors = 0
+
+mod.txdamM1_file.modfunc.tx_dam_list_list.optionsCollapse = 0
+mod.txdamM1_list.modfunc.tx_dam_list_list.optionsCollapse = 1
+mod.txdamM1_list.optionsCollapse = 0
+
+mod.txdamM1_SHARED.options.tx_dam_list_list_showMultiActions = 0
+mod.txdamM1_SHARED.options.tx_dam_list_list_showMultiActions.value = 0
+
+mod.txdamM1_SHARED.options.tx_dam_list_list_showThumb = 0
+mod.txdamM1_SHARED.options.tx_dam_list_list_showThumb.value = 0
+
+mod.txdamM1_file.contextMenuOnListItems = 0
+//mod.txdamM1_file.filesDisplayExcludeByRegex = \.png,0\d
+
+mod.txdamM1_list.guiElements.getSearchBox = 0
+
+mod.txdamM1_file.menu.function.tx_dam_file_upload = 0
+
+tx_dam.selections.txdamCat.sublevelDepth = 1
+
+
+tx_dam.selections.default.modeSelIcons = 0
+// tx_dam.selections.txdamStatus.modeSelIcons = 0
+// tx_dam.selections.txdamStatus = 0
+// tx_dam.selections.txdamFolder.hidden = 0
+
+
+
+
+
+
+tx_dam.indexing {
+	skipFileTypes = 
+	
+	auto = 0
+	autoMaxInteractive = 5
+	
+	replaceFile.reindexingMode = 2
+	editFile.reindexingMode = 1
+}
+
+tx_dam.indexing.defaultSetup (
+<phparray>
+	<pid>0</pid>
+	<pathlist type="array">
+		<numIndex index="0">fileadmin/</numIndex>
+	</pathlist>
+	<recursive>0</recursive>
+	<ruleConf type="array">
+		<tx_damdemo_indexRule type="array">
+			<enabled>0</enabled>
+			<option1>0</option1>
+		</tx_damdemo_indexRule>
+		<tx_damindex_rule_recursive type="array">
+			<enabled>0</enabled>
+		</tx_damindex_rule_recursive>
+		<tx_damindex_rule_folderAsCat type="array">
+			<enabled>0</enabled>
+			<fuzzy>0</fuzzy>
+		</tx_damindex_rule_folderAsCat>
+		<tx_damindex_rule_doReindexing type="array">
+			<enabled>0</enabled>
+			<mode>0</mode>
+		</tx_damindex_rule_doReindexing>
+		<tx_damindex_rule_dryRun type="array">
+			<enabled>0</enabled>
+		</tx_damindex_rule_dryRun>
+		<tx_damindex_rule_devel type="array">
+			<enabled>0</enabled>
+		</tx_damindex_rule_devel>
+	</ruleConf>
+	<dataPreset type="array">
+		<title></title>
+		<keywords></keywords>
+		<description></description>
+		<caption></caption>
+		<alt_text></alt_text>
+		<file_orig_location></file_orig_location>
+		<file_orig_loc_desc></file_orig_loc_desc>
+		<ident></ident>
+		<creator></creator>
+		<publisher></publisher>
+		<copyright></copyright>
+		<instructions></instructions>
+		<date_cr></date_cr>
+		<date_mod></date_mod>
+		<loc_desc></loc_desc>
+		<loc_country></loc_country>
+		<loc_city></loc_city>
+		<language></language>
+		<category></category>
+		<tx_damdemo_info></tx_damdemo_info>
+	</dataPreset>
+	<dataPostset type="array">
+	</dataPostset>
+	<dryRun>0</dryRun>
+	<doReindexing>0</doReindexing>
+	<collectMeta type="boolean">1</collectMeta>
+	<extraSetup></extraSetup>
+</phparray>
+)

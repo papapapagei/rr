@@ -1,0 +1,78 @@
+(add new changes on top of this file)
+
+18-11-09 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* feature: updated player.swf to version 4.6
+	* feature: updated swfobject to version 2.2
+	* feature: updated item types to the changes in the player
+	* feature: added param wmode to the javascript call, configurable via typoscript constants
+	* bugfix: urlencode the link entries due to a php bug: http://bugs.php.net/bug.php?id=31191
+	* bugfix: typo in german language wrong flash version error text
+
+10-11-08 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* bugfix: fixed wrong table declaration for multilanguage support in tca.php.
+	* bugfix: fixed settings for flashvar replay from false/true to none/list/always
+	* feature: mutlilingual support of media files
+
+22-10-08 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* bugfix: fixed settings for flashvar replay from false/true to none/list/always
+	* feature: added a couple of example skins to use from http://code.jeroenwijering.com/trac/browser/skins/as3
+	* feature: added support for icons flashvar
+	* feature: added support for plugins integration
+
+21-10-08 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* updated player.swf to version 4.2.90
+	* feature: added suppport for typoscript integration
+	* feature: added streaming support using the streamer flashvar and the typoscript rendering mode
+	* feature: added the new flashvars backcolor, frontcolor, lightcolor, screencolor. Removed old bgcolor flashvar, so make sure to update your color definitions
+	* removed unsupported fullscreen setting  
+
+23-08-08 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* updated player.swf to version 4.1.6
+	* feature: added new xml export format XSPF and format constant
+	* feature: added captions support using XSPF export format, extended media center file to add captions as xml file
+
+24-07-08 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* bugfix: added missing yt.swf (youtube proxy) to display youtube videos.
+	* bugfix: fixed processing of urls inserted in media files and flexform configuration using the link wizards
+	* removed inactive field type from tca, and sql  
+	* feature: added new xml export format iRSS (RSS+iTunes) and format constant
+
+16-07-08 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* bugfix: changed required flash version back to 9.0.0 (was set to 10.0.0 for testing purposes before)
+
+16-07-08 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* feature: allow to add pages to the media files section of the plugin flexform configuration
+	* feature: added link wizards to logo, skin and aboutlink fields of flexform configuration
+	* updated manual
+	* bug: added item link in rss (xml) output if no link has been entered manually
+	* bug: fixed playlist size (height and width) calculation based on playlist positioning
+	* feature: made Media Center File records sortable in the Backend	
+	* feature: added new flexform sheet for fallback content assignment which overides the noflash and noscrip text messages
+
+
+15-07-08 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* bugfix: added htmlspecialchars() to title, description, channelTitle of playlist
+	* bugfix: added utf8_encode() to url from file_url 
+	* bugfix: corrected german autostart description (was upside-down)
+	* bugfix: removed flaws in german translation
+	* feature: added link wizards to file_url and link fields of Media Center File records	
+
+13-07-08 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* added german translations
+	* updated manual
+	* added t3lib_extMgm::allowTableOnStandardPages('tx_mediacenter_item'); to ext_tables.php so Media Center files can be created on standard pages as well
+
+
+12-07-08 Patrick Rodacker  <patrick.rodacker@the-reflection.de>
+
+	* Initial release

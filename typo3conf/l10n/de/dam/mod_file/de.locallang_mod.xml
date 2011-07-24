@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Datei</label>
+			<label index="mlang_labels_tablabel">Dateiverwaltung</label>
+			<label index="mlang_labels_tabdescr">Dies ist das Dateiverwaltungssystem von TYPO3. Es erlaubt den Zugriff auf die für Ihr Benutzerkonto gültigen Dateifreigaben. Mit diesem Modul können Dateien auf den Server hochgeladen, kopiert, verschoben und gelöscht werden.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab" type="integer">11696408</label>
+			<label index="mlang_labels_tablabel" type="integer">151415539</label>
+			<label index="mlang_labels_tabdescr" type="integer">48584464</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">File</label>
+			<label index="mlang_labels_tablabel">File administration</label>
+			<label index="mlang_labels_tabdescr">This is the file administration system in TYPO3. It allows you to access the file mounts of your login. Through this module you can upload, copy, move an delete files on the server.</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

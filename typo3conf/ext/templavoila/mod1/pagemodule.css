@@ -1,0 +1,127 @@
+/* PAGEMODULE CSS */
+
+/* general */
+table {
+	position:relative;
+}
+.sortableItem .sortable_handle {
+	cursor:move;
+}
+
+/* warning */
+div.warning {
+	background-color:#ddeef9;
+	border-color:#8aafc4;
+	border:1px solid;
+	margin: 4px 0;
+	padding:6px;
+	font-weight: bold;
+	font-size: 11px;
+}
+div.warning img {
+	vertical-align: middle;
+	padding: 2px 1px;
+}
+div.warning a {
+	text-decoration: underline;
+}
+
+
+/* link icons */
+.tpm-bottom-controls {
+	display:block;
+	margin-bottom: 5px;
+}
+.tpm-bottom-controls img {
+	border: none ; 
+	text-align: center; 
+	vertical-align: middle;
+	padding: 0 1px;
+}
+
+/* element titlebars */
+.tpm-title-cell {
+	vertical-align: top;
+	padding-top:0; 
+	padding-bottom:0;
+}
+.tpm-content-cell {
+	vertical-align: top;
+	padding: 5px;
+	border: 1px dashed #000;
+}
+.tpm-container-element {
+	width: 100%; 
+	border: 1px solid black; 
+	margin-bottom:5px;
+}
+.tpm-container-element tr.tpm-titlebar-page {
+	background-color: #B8BEC9;
+}
+.tpm-container-element tr.tpm-titlebar {
+	background-color: #f8f9fb;
+}
+.tpm-container-element tr.tpm-titlebar-fromOtherPage {
+	background-color: #e6e9eb;
+}
+.tpm-container-element tr.tpm-titlebar img, 
+.tpm-container-element tr.tpm-titlebar-fromOtherPage img,
+.tpm-container-element tr.tpm-titlebar-page img {
+	vertical-align: middle;
+	padding: 2px 1px;
+}
+.tpm-container-element tr.tpm-titlebar span img, 
+.tpm-container-element tr.tpm-titlebar-fromOtherPage span img,
+.tpm-container-element tr.tpm-titlebar-page span img {
+	padding-right: 3px;
+}
+
+.tpm-element-control {
+	text-align: right; 
+	vertical-align:top;
+}
+.tpm-element-title {
+	vertical-align:top;
+}
+
+/* non-used elements */
+.tpm-nonused-element {
+	
+}
+.tpm-nonused-controls {
+	width: 40px;
+	padding-left: 4px;
+}
+.tpm-nonused-ref {
+	width: 20px;
+}
+.tpm-nonused-element img,
+.tpm-nonused-deleteall img {
+	vertical-align: middle;
+	padding: 2px 1px;
+}
+.tpm-nonused-element .tpm-nonused-preview img {
+	padding-right: 3px;
+}
+.tpm-nonused-deleteall {
+	padding: 5px 0;
+}
+
+/* outline view */
+.tpm-outline-table .tpm-container img,
+.tpm-outline-table .tpm-element img,
+.tpm-outline-table .tpm-elementRef img {
+	vertical-align: middle;
+	padding: 0 1px;
+}
+.tpm-outline-table .tpm-container td.nobr img,
+.tpm-outline-table .tpm-element td.nobr img,
+.tpm-outline-table .tpm-elementRef td.nobr img {
+	padding-right: 3px;
+}
+.tpm-outline-table .tpm-outline-level0 {
+	background-color: #b8bec9;
+}
+.tpm-outline-table .tpm-outline-level1 {
+	background-color: #f8f9fb;
+}

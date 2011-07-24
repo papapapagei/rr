@@ -1,0 +1,24 @@
+plugin.tx_ewcalendar_pi1.archiveTitle {
+	file = GIFBUILDER
+	file{
+		XY = [10.w],[10.h]+8
+		backColor = #0d0d0d
+		10 = TEXT
+		10 {
+			text = Archive
+			text.case = upper
+			fontSize = 14
+			fontColor = #ffffff
+			offset = 0,14
+			fontFile = fileadmin/templates/fonts/Neutra2Text-Demi.pfb
+			splitRendering.10 = charRange
+			splitRendering.10 {
+			  value = 48-57
+			  fontFile = fileadmin/templates/fonts/Neutra2Text-Demi-Numbers.pfb
+			}
+		}
+	}
+}
+
+plugin.tx_ewcalendar_pi1.image.width = 78
+plugin.tx_ewcalendar_pi1.image.height = 78

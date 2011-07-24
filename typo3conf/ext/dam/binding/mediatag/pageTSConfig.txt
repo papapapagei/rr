@@ -1,0 +1,10 @@
+## Add txdam_media to RTE processing rules
+RTE.default.proc.overruleMode = ts_css,txdam_media
+ 
+## Use same RTE processing rules in FE
+RTE.default.FE.proc.overruleMode = ts_css,txdam_media
+ 
+## RTE processing rules for bodytext column of tt_content table
+RTE.config.tt_content.bodytext.proc.overruleMode = ts_css,txdam_media
+RTE.config.tt_content.bodytext.types.text.proc.overruleMode = ts_css,txdam_media
+RTE.config.tt_content.bodytext.types.textpic.proc.overruleMode = ts_css,txdam_media

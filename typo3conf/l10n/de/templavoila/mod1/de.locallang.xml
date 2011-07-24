@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="title">MODUL WEB &gt; SEITE</label>
+			<label index="default_introduction">Wenn Sie den Inhalt einer Seite bearbeiten möchten, klicken Sie bitte im Seitenbaum auf der linken Seite auf einen Seitentitel.</label>
+			<label index="csh_whatisthetemplavoilapagemodule">Was ist das TemplaVoilà-Seitenmodul?</label>
+			<label index="createnewpage_selecttemplate">Vorlage für die neue Seite auswählen:</label>
+			<label index="createnewpage_defaultlayoutsubmitlabel">Neue Seite mit Standardlayout erstellen</label>
+			<label index="createnewpage_templateobject_createemptypage">Eine leere Seite basierend auf folgender Vorlage erstellen:</label>
+			<label index="createnewpage_templateobject_createpagewithdefaultcontent">Eine Seite mit vorausgefülltem Inhalt, basierend auf folgender Vorlage erstellen:</label>
+			<label index="createnewcontent_newContentElement">Neues Inhaltselement</label>
+			<label index="warning_elementusedmorethanonce">Dieses Element wird auf der aktuellen Seite %s mal verwendet! ID:%s</label>
+			<label index="warning_containerSeparate">ACHTUNG: Für dieses Container-Element wurde Lokalisierung ohne Vererbung aktiviert (langChildren = 0). Dabei handelt es sich vermutlich um eine Fehlkonfiguration, weil die Standardoberfläche von TemplaVoilà die Darstellung lokalisierter Container-Felder nicht unterstützt! Bitte informieren Sie den Systemadministrator.</label>
+			<label index="warning_containerInheritance">Für dieses Container-Element wurde Lokalisierung mit Vererbung aktiviert (langChildren = 1). Diese Konfiguration kann zu verwirrenden Darstellungen in TemplaVoilà führen, und es wird empfohlen, die Lokalisierung für dieses Container-Element komplett auszuschalten, indem Sie langDisable auf &quot;1&quot; setzen. Bitte informieren Sie den Systemadministrator.</label>
+			<label index="warning_containerSeparate_short">Übersetzungsmodus: Separat!</label>
+			<label index="warning_containerInheritance_short">Übersetzungsmodus: Vererbung</label>
+			<label index="cannotedit_doktypemountpoint">Diese Seite dient als Freigabe und ihr Inhalt wird durch den einer anderen Seite (&quot;%s&quot;) ersetzt. Sie können den Inhalt dieser Seite daher nicht direkt bearbeiten.</label>
+			<label index="jumptomountsourcepage">Springe zur Ursprungsseite für diese Freigabe</label>
+			<label index="cannotedit_contentfrompid">Diese Seite wurde so konfiguriert, dass sie selbst keine Inhalte enthält, sondern stattdessen die Inhalte einer anderen Seite (&quot;%s&quot;) anzeigt. Daher können Sie den Inhalt dieser Seite nicht direkt bearbeiten.</label>
+			<label index="jumptocontentfrompidpage">Springe zur Seite, die die Inhaltselemente enthält</label>
+			<label index="cannotedit_shortcut_0">Diese Seite ist vom Typ &quot;Verweis&quot; und enthält keinen eigenen Inhaltselemente. Stattdessen wird der Inhalt der Seite &quot;%s&quot; angezeigt. Daher können Sie den Inhalt dieser Seite nicht direkt bearbeiten.</label>
+			<label index="cannotedit_shortcut_1">Diese Seite ist vom Typ &quot;Verweis&quot; und enthält keinen eigenen Inhaltselemente. Stattdessen wird der Inhalt der ersten Unterseite angezeigt. Daher können Sie den Inhalt dieser Seite nicht direkt bearbeiten.</label>
+			<label index="cannotedit_shortcut_2">Diese Seite ist vom Typ &quot;Verweis&quot; und enthält keinen eigenen Inhaltselemente. Stattdessen wird der Inhalt einer zufälligen Unterseite angezeigt. Daher können Sie den Inhalt dieser Seite nicht direkt bearbeiten.</label>
+			<label index="jumptoshortcutdestination">Springe zum Ziel des Verweises</label>
+			<label index="cannotedit_externalurl_1">Diese Seite verweist auf eine externe Web-Site. Daher können Sie den Inhalt dieser Seite nicht direkt bearbeiten.</label>
+			<label index="cannotedit_externalurl_2">Diese Seite verweist auf einen FTP-Server. Daher können Sie den Inhalt dieser Seite nicht direkt bearbeiten.</label>
+			<label index="cannotedit_externalurl_3">Diese Seite verweist auf eine E-Mail-Adresse. Daher können Sie den Inhalt dieser Seite nicht direkt bearbeiten.</label>
+			<label index="jumptoexternalurl">Zu externer URL springen (%s)</label>
+			<label index="editpage_sysfolder_intro">Die aktuelle Seite ist vom Typ &quot;Systemordner&quot;. Systemordner enthalten üblicherweise keine Inhaltselemente, sondern werden zur Ablage anderer Arten von Datensätzen verwendet.</label>
+			<label index="editpage_sysfolder_listview_noaccess">Der Inhalt eines Systemordners wird normalerweise über das Modul &quot;Liste&quot; verwaltet. Zur Zeit haben Sie jedoch keinen Zugriff auf dieses Modul. Wenn Sie dennoch auf die Daten in diesem Systemordner zugreifen möchten, bitten Sie Ihren Systemadministrator, Ihnen Zugriff auf das Modul &quot;Liste&quot; zu gewähren.</label>
+			<label index="editpage_sysfolder_switchtolistview">Zur Listenansicht wechseln</label>
+			<label index="template_nodescriptionavailable">Keine Beschreibung verfügbar.</label>
+			<label index="template_titledefault">Standardvorlage</label>
+			<label index="template_titleInherit">Keine Auswahl (Vererbung)</label>
+			<label index="willbereplacedbydefaultlanguage">(wird durch Inhalt der Standardsprache ersetzt)</label>
+			<label index="newce_defaulttext_text">Bitte geben Sie hier Text ein</label>
+			<label index="view_basic">Standardansicht</label>
+			<label index="view_tree">Baumstruktur</label>
+			<label index="createnewtranslation">Neue Seitenübersetzung anlegen</label>
+			<label index="selectlanguageversion">Ausgewählte Sprache</label>
+			<label index="pageLocalizationMode">Übersetzungsmodus der Seite</label>
+			<label index="pageLocalizationMode_separate">Separate Strukturen</label>
+			<label index="pageLocalizationMode_inheritance">Vererbung der Werte</label>
+			<label index="pageLocalizationMode_inheritance.disableInheritance">Struktur nicht vererben</label>
+			<label index="pageLocalizationParadigm_bound">1:1</label>
+			<label index="pageLocalizationDisplayMode">Darstellungsmodus</label>
+			<label index="pageLocalizationDisplayMode_selectedLanguage">Ausgewählte Sprache</label>
+			<label index="pageLocalizationDisplayMode_onlyLocalized">Nur übersetzte Elemente</label>
+			<label index="clickToEditTranslation">Zum Bearbeiten der Übersetzung klicken</label>
+			<label index="editlanguageversion">Seiteneigenschaften bearbeiten</label>
+			<label index="multipleLanguages">Mehrere Sprachen</label>
+			<label index="languageDisabled">Sprache deaktiviert</label>
+			<label index="viewsubelements">Unterelemente anzeigen</label>
+			<label index="gobacktooverview">Zurück zur Ansicht der ganzen Seite</label>
+			<label index="createnewrecord">Neues Element anlegen</label>
+			<label index="editrecord">Element bearbeiten</label>
+			<label index="editrecord_d">Bearbeiten dieses Elements ist nicht erlaubt!</label>
+			<label index="pasterecord">Element einfügen</label>
+			<label index="pastefce_andcopyallsubs">Kopie des Elements mit Kopien aller Unterelemente einfügen</label>
+			<label index="pastefce_andreferencesubs">Kopie des Elements mit Verknüpfung zu den ursprünglichen Unterelementen einfügen</label>
+			<label index="copyrecord">Element kopieren</label>
+			<label index="cutrecord">Element ausschneiden</label>
+			<label index="createreference">Verknüpfung erstellen</label>
+			<label index="unlinkRecord">Verknüpfung entfernen</label>
+			<label index="deleteRecord">Element löschen(!)</label>
+			<label index="deleteRecordMsg">Dieses Element tatsächlich löschen?</label>
+			<label index="deleteRecordWithReferencesMsg">Auf dieses Element wird auf anderen Seiten verwiesen. Dieses Element tatsächlich löschen?</label>
+			<label index="unlinkRecordMsg">Verknüpfung für diese Element lösen?</label>
+			<label index="pagerelatedinformation">Seitenbezogene Informationen</label>
+			<label index="advancedfunctions">Erweiterte Funktionen</label>
+			<label index="localization">Übersetzungen</label>
+			<label index="availabletranslations">Übersetzungen</label>
+			<label index="versioning">Versionierung</label>
+			<label index="nonusedelements">Nicht verwendete Elemente</label>
+			<label index="makeLocal">Lokale Kopie erstellen</label>
+			<label index="makeLocalMsg">Eine lokale Kopie dieses verknüpften Elements erstellen?</label>
+			<label index="path">Pfad</label>
+			<label index="defaultLanguage">Standardsprache</label>
+			<label index="createcopyfortranslation">Kopie für Übersetzung erstellen</label>
+			<label index="inititemno_elementsNotBeingUsed">Elemente, die in diesem Blatt oder Sprache nicht verwendet werden</label>
+			<label index="rendernonusedelements_deleteall">Alle obigen mit einem Löschen-Symbol gekennzeichneten Datensätze löschen</label>
+			<label index="renderreferencecount_delete">Löschen!</label>
+			<label index="sidebar_advancedfunctions_labelshowhidden">Verborgene Elemente anzeigen</label>
+			<label index="sidebar_advancedfunctions_labelshowoutline">Listendarstellung anzeigen</label>
+			<label index="sidebar_advancedfunctions_labelcachefunctions">Cache-Funktionen</label>
+			<label index="sidebar_renderitem_showtranslationinformation">Übersetzungsinformationen anzeigen</label>
+			<label index="sidebar_versionSelector">Versionierung</label>
+			<label index="sidebar_versionSelector_createVersion">Version dieser Seite erstellen</label>
+			<label index="outline_header_title">Titel:</label>
+			<label index="outline_header_controls">Bedienungselemente:</label>
+			<label index="outline_header_status">Status:</label>
+			<label index="outline_header_element">Element:</label>
+			<label index="outline_status_dirty">Zum Bereinigen des XML klicken...</label>
+			<label index="outline_status_clean">XML ist sauber.</label>
+			<label index="outline_status_cleanAll">XML um alle obigen Elemente bereinigen!</label>
+			<label index="element_localizations">Übersetzungen</label>
+			<label index="records">Andere Elemente (Nicht-Inhalt)</label>
+			<label index="displayRecordsFrom">Elemente anzeigen von:</label>
+			<label index="content_from_pid_title">Seite verwendet Inhalt dieser Seite: %s</label>
+			<label index="template_descriptiondefault">Standard Layout, definiert durch den Designer dieser Website.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="title" type="integer">122302581</label>
+			<label index="default_introduction" type="integer">187457778</label>
+			<label index="createnewpage_selecttemplate" type="integer">229501621</label>
+			<label index="createnewpage_defaultlayoutsubmitlabel" type="integer">89213016</label>
+			<label index="createnewpage_templateobject_createemptypage" type="integer">123158855</label>
+			<label index="createnewpage_templateobject_createpagewithdefaultcontent" type="integer">107228338</label>
+			<label index="createnewcontent_newContentElement" type="integer">44759206</label>
+			<label index="template_nodescriptionavailable" type="integer">237805099</label>
+			<label index="template_titledefault" type="integer">87443604</label>
+			<label index="template_descriptiondefault" type="integer">222419149</label>
+			<label index="newce_defaulttext_text" type="integer">126932675</label>
+			<label index="view_basic" type="integer">232928892</label>
+			<label index="view_tree" type="integer">141103821</label>
+			<label index="createnewtranslation" type="integer">42184284</label>
+			<label index="multipleLanguages" type="integer">221168267</label>
+			<label index="willbereplacedbydefaultlanguage" type="integer">232991398</label>
+			<label index="viewsubelements" type="integer">88802235</label>
+			<label index="gobacktooverview" type="integer">131424272</label>
+			<label index="createnewrecord" type="integer">123561390</label>
+			<label index="editrecord" type="integer">31852556</label>
+			<label index="pasterecord" type="integer">42732080</label>
+			<label index="pastefce_andcopyallsubs" type="integer">42574249</label>
+			<label index="pastefce_andreferencesubs" type="integer">177729765</label>
+			<label index="copyrecord" type="integer">207918426</label>
+			<label index="cutrecord" type="integer">6863945</label>
+			<label index="createreference" type="integer">28318206</label>
+			<label index="unlinkRecord" type="integer">169362831</label>
+			<label index="deleteRecord" type="integer">171870182</label>
+			<label index="deleteRecordMsg" type="integer">144295558</label>
+			<label index="pagerelatedinformation" type="integer">133529542</label>
+			<label index="advancedfunctions" type="integer">155530193</label>
+			<label index="makeLocal" type="integer">126296530</label>
+			<label index="makeLocalMsg" type="integer">47258179</label>
+			<label index="path" type="integer">180814866</label>
+			<label index="defaultLanguage" type="integer">211199871</label>
+			<label index="availabletranslations" type="integer">12114219</label>
+			<label index="nonusedelements" type="integer">79071216</label>
+			<label index="inititemno_elementsNotBeingUsed" type="integer">172090278</label>
+			<label index="localization" type="integer">12114219</label>
+			<label index="versioning" type="integer">26780425</label>
+			<label index="selectlanguageversion" type="integer">142579090</label>
+			<label index="sidebar_renderitem_showtranslationinformation" type="integer">265074500</label>
+			<label index="createcopyfortranslation" type="integer">23684975</label>
+			<label index="cannotedit_doktypemountpoint" type="integer">34764162</label>
+			<label index="jumptomountsourcepage" type="integer">152991370</label>
+			<label index="languageDisabled" type="integer">126691050</label>
+			<label index="unlinkRecordMsg" type="integer">243556365</label>
+			<label index="sidebar_advancedfunctions_labelshowhidden" type="integer">9993936</label>
+			<label index="sidebar_advancedfunctions_labelcachefunctions" type="integer">59652325</label>
+			<label index="cannotedit_contentfrompid" type="integer">6549882</label>
+			<label index="jumptocontentfrompidpage" type="integer">92008296</label>
+			<label index="cannotedit_shortcut_0" type="integer">106433218</label>
+			<label index="cannotedit_shortcut_1" type="integer">179887715</label>
+			<label index="cannotedit_shortcut_2" type="integer">178406769</label>
+			<label index="jumptoshortcutdestination" type="integer">256154171</label>
+			<label index="cannotedit_externalurl_1" type="integer">29073647</label>
+			<label index="cannotedit_externalurl_2" type="integer">154821175</label>
+			<label index="cannotedit_externalurl_3" type="integer">183086125</label>
+			<label index="jumptoexternalurl" type="integer">265247811</label>
+			<label index="editpage_sysfolder_intro" type="integer">197488510</label>
+			<label index="editpage_sysfolder_listview_noaccess" type="integer">209992014</label>
+			<label index="editpage_sysfolder_switchtolistview" type="integer">34594545</label>
+			<label index="warning_elementusedmorethanonce" type="integer">267297614</label>
+			<label index="warning_containerSeparate" type="integer">151682318</label>
+			<label index="warning_containerInheritance" type="integer">157435552</label>
+			<label index="warning_containerSeparate_short" type="integer">148011</label>
+			<label index="warning_containerInheritance_short" type="integer">80566348</label>
+			<label index="pageLocalizationMode" type="integer">165035107</label>
+			<label index="pageLocalizationMode_separate" type="integer">213560612</label>
+			<label index="pageLocalizationMode_inheritance" type="integer">198701355</label>
+			<label index="clickToEditTranslation" type="integer">251265515</label>
+			<label index="editlanguageversion" type="integer">219852795</label>
+			<label index="sidebar_advancedfunctions_labelshowoutline" type="integer">203866131</label>
+			<label index="outline_header_title" type="integer">85903807</label>
+			<label index="outline_header_controls" type="integer">44875680</label>
+			<label index="outline_header_status" type="integer">38413271</label>
+			<label index="outline_header_element" type="integer">56009923</label>
+			<label index="outline_status_dirty" type="integer">75943687</label>
+			<label index="outline_status_clean" type="integer">98978315</label>
+			<label index="outline_status_cleanAll" type="integer">166974424</label>
+			<label index="csh_whatisthetemplavoilapagemodule" type="integer">117206236</label>
+			<label index="pageLocalizationParadigm_bound" type="integer">218879345</label>
+			<label index="pageLocalizationDisplayMode" type="integer">194991965</label>
+			<label index="pageLocalizationDisplayMode_selectedLanguage" type="integer">103373794</label>
+			<label index="pageLocalizationDisplayMode_onlyLocalized" type="integer">37658458</label>
+			<label index="rendernonusedelements_deleteall" type="integer">148873757</label>
+			<label index="renderreferencecount_delete" type="integer">200610258</label>
+			<label index="element_localizations" type="integer">61972872</label>
+			<label index="editrecord_d" type="integer">71059211</label>
+			<label index="records" type="integer">198252782</label>
+			<label index="displayRecordsFrom" type="integer">135320543</label>
+			<label index="deleteRecordWithReferencesMsg" type="integer">39974897</label>
+			<label index="template_titleInherit" type="integer">35143126</label>
+			<label index="sidebar_versionSelector" type="integer">26780425</label>
+			<label index="sidebar_versionSelector_createVersion" type="integer">91848760</label>
+			<label index="content_from_pid_title" type="integer">234117072</label>
+			<label index="pageLocalizationMode_inheritance.disableInheritance" type="integer">55582787</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="title">WEB &gt; PAGE MODULE</label>
+			<label index="default_introduction">If you wish to edit the content of a page, please click the page title in the page tree to the left.</label>
+			<label index="csh_whatisthetemplavoilapagemodule">What is the TemplaVoilà page module?</label>
+			<label index="createnewpage_selecttemplate">Select a template for your new page:</label>
+			<label index="createnewpage_defaultlayoutsubmitlabel">Create page with default layout</label>
+			<label index="createnewpage_templateobject_createemptypage">Create an empty page based on this template:</label>
+			<label index="createnewpage_templateobject_createpagewithdefaultcontent">Create a page with default content based on this template:</label>
+			<label index="createnewcontent_newContentElement">New content element</label>
+			<label index="warning_elementusedmorethanonce">This element has been used %s times on this page! ID:%s</label>
+			<label index="warning_containerSeparate">WARNING: This container element has localization without inheritance enabled (langChildren = 0). This is most likely a misconfiguration since the localization features of TemplaVoilà does not support localized container fields in the native interface! Please inform the system administrator!</label>
+			<label index="warning_containerInheritance">This container element has localization enabled but with inheritance (langChildren = 1). This situation might produce confusing displays in TemplaVoilà and you are encouraged to disable localization of this container element completely by setting langDisable = 1. Please inform the system administrator!</label>
+			<label index="warning_containerSeparate_short">L10N mode: Separate!</label>
+			<label index="warning_containerInheritance_short">L10N mode: Inheritance</label>
+			<label index="cannotedit_doktypemountpoint">This page acts as a mount point and its content is being replaced by another page (&quot;%s&quot;). Therefore you cannot edit the content of this page directly.</label>
+			<label index="jumptomountsourcepage">Jump to source page of this mount point</label>
+			<label index="cannotedit_contentfrompid">This page has been configured in a way that it doesn't have any content itself but instead the content of another page (&quot;%s&quot;) is shown. Therefore you cannot edit the content of this page directly.</label>
+			<label index="jumptocontentfrompidpage">Jump to page containing the content elements</label>
+			<label index="cannotedit_shortcut_0">This page is of the type &quot;shortcut&quot;. Instead of having content on its own, this page shows the content the page &quot;%s&quot;. Therefore you cannot edit the content of this page directly.</label>
+			<label index="cannotedit_shortcut_1">This page is of the type &quot;shortcut&quot;. Instead of having content on its own, this page shows the content from the first sub page. Therefore you cannot edit the content of this page directly.</label>
+			<label index="cannotedit_shortcut_2">This page is of the type &quot;shortcut&quot;. Instead of having content on its own, this page shows the content of a random sub page. Therefore you cannot edit the content of this page directly.</label>
+			<label index="jumptoshortcutdestination">Jump to shortcut destination</label>
+			<label index="cannotedit_externalurl_1">This page refers to an external website, you therefore cannot edit the content of this page directly.</label>
+			<label index="cannotedit_externalurl_2">This page refers to an external FTP location, you therefore cannot edit the content of this page directly.</label>
+			<label index="cannotedit_externalurl_3">This page refers to an email address, you therefore cannot edit the content of this page directly.</label>
+			<label index="jumptoexternalurl">Jump to external URL (%s)</label>
+			<label index="editpage_sysfolder_intro">The current page is of the type &quot;Sysfolder&quot;. Sysfolders usually don't contain content elements but are used for collecting other types of records in a single folder.</label>
+			<label index="editpage_sysfolder_listview_noaccess">The content of a Sysfolder is usually managed by the &quot;List&quot; module but you currently don't have access to that module. If you need to access the data in the Sysfolder anyway, please ask your system administrator to grant you access to the List module.</label>
+			<label index="editpage_sysfolder_switchtolistview">Switch to list view</label>
+			<label index="template_nodescriptionavailable">No description available.</label>
+			<label index="template_titledefault">Default template</label>
+			<label index="willbereplacedbydefaultlanguage">(will be replaced by content of default language)</label>
+			<label index="newce_defaulttext_text">Please enter some text here</label>
+			<label index="view_basic">Basic view</label>
+			<label index="view_tree">Tree view</label>
+			<label index="createnewtranslation">Create new page translation</label>
+			<label index="selectlanguageversion">Show page language version</label>
+			<label index="pageLocalizationMode">Page localization mode</label>
+			<label index="pageLocalizationMode_separate">Separate structures</label>
+			<label index="pageLocalizationMode_inheritance">Inheritance of values</label>
+			<label index="pageLocalizationParadigm_bound">1:1</label>
+			<label index="pageLocalizationDisplayMode">Display mode</label>
+			<label index="pageLocalizationDisplayMode_selectedLanguage">Selected language</label>
+			<label index="pageLocalizationDisplayMode_onlyLocalized">Only localized elements</label>
+			<label index="clickToEditTranslation">Click to edit translation</label>
+			<label index="editlanguageversion">Edit page properties</label>
+			<label index="multipleLanguages">Multiple languages</label>
+			<label index="languageDisabled">Language disabled</label>
+			<label index="viewsubelements">View sub elements</label>
+			<label index="gobacktooverview">Go back to whole page view</label>
+			<label index="createnewrecord">Create new element</label>
+			<label index="editrecord">Edit element</label>
+			<label index="pasterecord">Paste element</label>
+			<label index="pastefce_andcopyallsubs">Paste copy of element and make copies of all sub elements</label>
+			<label index="pastefce_andreferencesubs">Paste copy of element and keep references to original sub elements</label>
+			<label index="copyrecord">Copy element</label>
+			<label index="cutrecord">Cut element</label>
+			<label index="createreference">Create reference</label>
+			<label index="unlinkRecord">Unlink element</label>
+			<label index="deleteRecord">Delete element (!)</label>
+			<label index="deleteRecordMsg">Do you really want to delete this element?</label>
+			<label index="unlinkRecordMsg">Unlink element?</label>
+			<label index="pagerelatedinformation">Page related information</label>
+			<label index="advancedfunctions">Advanced functions</label>
+			<label index="localization">Translations</label>
+			<label index="availabletranslations">Translations</label>
+			<label index="versioning">Versioning</label>
+			<label index="nonusedelements">Non-used elements</label>
+			<label index="makeLocal">Create local copy</label>
+			<label index="makeLocalMsg">Do you want to create a local copy of this referenced element?</label>
+			<label index="path">Path</label>
+			<label index="defaultLanguage">Default language</label>
+			<label index="createcopyfortranslation">Create a copy for translation</label>
+			<label index="inititemno_elementsNotBeingUsed">Elements not being used in this language or sheet</label>
+			<label index="rendernonusedelements_deleteall">Delete all records above marked with delete-icon</label>
+			<label index="renderreferencecount_delete">Delete!</label>
+			<label index="sidebar_advancedfunctions_labelshowhidden">Show hidden elements</label>
+			<label index="sidebar_advancedfunctions_labelshowoutline">Show outline</label>
+			<label index="sidebar_advancedfunctions_labelcachefunctions">Cache functions</label>
+			<label index="sidebar_renderitem_showtranslationinformation">Display translation information</label>
+			<label index="outline_header_title">Title:</label>
+			<label index="outline_header_controls">Controls:</label>
+			<label index="outline_header_status">Status:</label>
+			<label index="outline_header_element">Element:</label>
+			<label index="outline_status_dirty">Click to clean up XML...</label>
+			<label index="outline_status_clean">XML is clean.</label>
+			<label index="outline_status_cleanAll">Clean XML of all dirty elements above!</label>
+			<label index="element_localizations">Localizations</label>
+			<label index="editrecord_d">Editing is not allowed for this element!</label>
+			<label index="records">Other elements (non-content)</label>
+			<label index="displayRecordsFrom">Display elements from:</label>
+			<label index="deleteRecordWithReferencesMsg">This element is also referenced on other pages. Do you really want to delete this element?</label>
+			<label index="template_titleInherit">No selection (inherit)</label>
+			<label index="sidebar_versionSelector">Versioning</label>
+			<label index="sidebar_versionSelector_createVersion">Create version of this page</label>
+			<label index="content_from_pid_title">Page uses content from this page: %s</label>
+			<label index="pageLocalizationMode_inheritance.disableInheritance">Don't inherit structure</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

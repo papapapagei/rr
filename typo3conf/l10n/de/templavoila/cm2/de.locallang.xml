@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="title">Flexform-XML-Daten anzeigen</label>
+			<label index="needsCleaning">Es scheint, als könne das FlexForm-XML ein wenig aufgeräumt werden. Bitte vergleichen Sie die aktuelle und die vorgeschlagene XML-Struktur und klicken Sie dann die Schaltfläche &quot;Bereinigen&quot;, wenn Sie diese aufräumen lassen möchten.</label>
+			<label index="XMLclean">XML ist sauber</label>
+			<label index="cleanUp">Bereinigtes XML im Datensatz speichern!</label>
+			<label index="current">Aktuelles XML:</label>
+			<label index="clean">Bereinigtes XML:</label>
+			<label index="diff">Unterschied:</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="title" type="integer">152153588</label>
+			<label index="needsCleaning" type="integer">162682697</label>
+			<label index="XMLclean" type="integer">164831210</label>
+			<label index="cleanUp" type="integer">249719649</label>
+			<label index="current" type="integer">96679863</label>
+			<label index="clean" type="integer">201146938</label>
+			<label index="diff" type="integer">224106594</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="title">View FlexForm XML data</label>
+			<label index="needsCleaning">It seems the FlexForm XML can be cleaned up a bit. Please compare the current and suggested XML structure and press the &quot;Clean&quot; button below if you wish to clean it!</label>
+			<label index="XMLclean">XML is clean</label>
+			<label index="cleanUp">Save clean XML to record!</label>
+			<label index="current">Current XML:</label>
+			<label index="clean">Clean XML:</label>
+			<label index="diff">Difference:</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /misc/
+Disallow: /typo3/
+Disallow: /t3lib/
+Allow: /
+Disallow: /typo3conf/
+Disallow: /diff/
+

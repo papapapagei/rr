@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_templavoila_ds.description">Wählen Sie die Art (Struktur) der Seite, die Sie erstellen möchten. Das grundlegende Layout der Seite können Sie in einem Vorschaubild unter dem Auswahlfeld erkennen.</label>
+			<label index="tx_templavoila_next_ds.description">Wählen Sie eine alternative Seitenstruktur, die für die Unterseiten gilt.</label>
+			<label index="tx_templavoila_next_ds.details">Unterseiten verwenden normalerweise dieselbe Struktur, die für eine darüberliegende Seite ausgewählt wurde. Wenn Sie möchten, können Sie hier für die Unterseiten eine abweichende Struktur festlegen.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_templavoila_ds.description" type="integer">197440446</label>
+			<label index="tx_templavoila_next_ds.description" type="integer">190446267</label>
+			<label index="tx_templavoila_next_ds.details" type="integer">90156684</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_templavoila_ds.description">Select the kind of page you want to create. You can see the basic layout in the icon below the selector box.</label>
+			<label index="tx_templavoila_next_ds.description">Select alternative page structure for subpages.</label>
+			<label index="tx_templavoila_next_ds.details">Subpages to this page will normally use the same structure as you have set in the &quot;Page Template Structure&quot; field above. However you can select an alternative structure here to be used by all subpages.</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

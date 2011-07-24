@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="sel1">Wählen Sie bitte den Typ des Seiteninhalts aus, den Sie erzeugen wollen:</label>
+			<label index="sel2">Wählen Sie nun die Position aus, an der das Element auf der Seite positioniert werden soll:</label>
+			<label index="common">Typischer Seiteninhalt</label>
+			<label index="common_1_title">Normaler Text</label>
+			<label index="common_1_description">Fügt ein normales Textelement ein.</label>
+			<label index="common_2_title">Text mit darunter liegendem Bild</label>
+			<label index="common_2_description">Fügt ein normales Textelement ein, unter dem eine Reihe von Bilder angezeigt werden kann.</label>
+			<label index="common_3_title">Text mit rechts liegendem Bild</label>
+			<label index="common_3_description">Fügt einen normales Textelement ein, an dessen rechter Seite eine Reihe von Bildern angezeigt werden kann.</label>
+			<label index="common_4_title">Nur Bilder</label>
+			<label index="common_4_description">Eine beliebige Anzahl in Zeilen und Spalten angeordneter Bilder mit Beschriftung.</label>
+			<label index="common_5_title">Aufzählung</label>
+			<label index="common_5_description">Eine einzelne Aufzählungsliste.</label>
+			<label index="common_6_title">Tabelle</label>
+			<label index="common_6_description">Eine einfache Tabelle mit bis zu 8 Spalten.</label>
+			<label index="special">Spezielle Elemente</label>
+			<label index="special_1_title">Dateiverweise</label>
+			<label index="special_1_description">Fügt eine Liste von Dateien zum Herunterladen ein.</label>
+			<label index="special_2_title">Multimedia</label>
+			<label index="special_2_description">Fügt ein Medienelement (Flash-Animation, Video, Musikstück usw.) ein.</label>
+			<label index="special_3_title">Sitemap</label>
+			<label index="special_3_description">Erzeugt eine Sitemap für die Web-Site.</label>
+			<label index="special_4_title">HTML</label>
+			<label index="special_4_description">Mit diesem Element kann reiner HTML-Quelltext auf der Seite eingefügt werden.</label>
+			<label index="forms">Formulare</label>
+			<label index="forms_1_title">Mail-Formular</label>
+			<label index="forms_1_description">Ein Mail-Formular, mit dem Besucher der Web-Site Ihnen Bemerkungen zuschicken können.</label>
+			<label index="forms_2_title">Suchformular</label>
+			<label index="forms_2_description">Fügt ein Suchformular auf der Seite ein, sowie ggf. das Suchergebnis.</label>
+			<label index="forms_3_title">Anmeldeformular</label>
+			<label index="forms_3_description">An-/Abmeldeformular für Benutzer. Dies wird für passwortgeschützte Web-Seiten benutzt. Sie müssen Web-Site-Benutzer und Benutzergruppen anlegen, um den Seitenschutz benutzen zu können.</label>
+			<label index="plugins">Plug-Ins</label>
+			<label index="plugins_1_title">Allgemeines Plug-In</label>
+			<label index="plugins_1_description">Wenn Sie ein Plug-In einfügen wollen, welches nicht in den nachstehenden Optionen aufgeführt ist, dann wählen Sie diesen Element-Typ und anschließend das gewünschte Plug-In aus der Auswahlliste.</label>
+			<label index="fce">Flexibler Inhalt</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="sel1" type="integer">257792844</label>
+			<label index="sel2" type="integer">2777796</label>
+			<label index="common" type="integer">57063941</label>
+			<label index="common_1_title" type="integer">134955826</label>
+			<label index="common_1_description" type="integer">29135748</label>
+			<label index="common_2_title" type="integer">153490096</label>
+			<label index="common_2_description" type="integer">215746919</label>
+			<label index="common_3_title" type="integer">13066984</label>
+			<label index="common_3_description" type="integer">57201809</label>
+			<label index="common_4_title" type="integer">62677049</label>
+			<label index="common_4_description" type="integer">233905425</label>
+			<label index="common_5_title" type="integer">88917113</label>
+			<label index="common_5_description" type="integer">136121208</label>
+			<label index="common_6_title" type="integer">85738935</label>
+			<label index="common_6_description" type="integer">145590635</label>
+			<label index="special" type="integer">183531399</label>
+			<label index="special_1_title" type="integer">23062602</label>
+			<label index="special_1_description" type="integer">154390211</label>
+			<label index="special_2_title" type="integer">49638223</label>
+			<label index="special_2_description" type="integer">87627445</label>
+			<label index="special_3_title" type="integer">92355808</label>
+			<label index="special_3_description" type="integer">36006628</label>
+			<label index="special_4_title" type="integer">238583373</label>
+			<label index="special_4_description" type="integer">92097111</label>
+			<label index="forms" type="integer">14172094</label>
+			<label index="forms_1_title" type="integer">173513512</label>
+			<label index="forms_1_description" type="integer">149875491</label>
+			<label index="forms_2_title" type="integer">184654558</label>
+			<label index="forms_2_description" type="integer">71325784</label>
+			<label index="forms_3_title" type="integer">149378624</label>
+			<label index="forms_3_description" type="integer">64416876</label>
+			<label index="plugins" type="integer">196313238</label>
+			<label index="plugins_1_title" type="integer">188310073</label>
+			<label index="plugins_1_description" type="integer">4113831</label>
+			<label index="fce" type="integer">125197975</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="sel1">Please select which kind of page content you wish to create:</label>
+			<label index="sel2">Now, click at the position where you wish to place the element on the page:</label>
+			<label index="common">Typical page content</label>
+			<label index="common_1_title">Regular text element</label>
+			<label index="common_1_description">A regular text element with header and bodytext fields.</label>
+			<label index="common_2_title">Text with image below</label>
+			<label index="common_2_description">Regular text element with a field which can contain any number of images which are positioned below the text.</label>
+			<label index="common_3_title">Text with image to the right</label>
+			<label index="common_3_description">Like above but with the images placed to the right of the text with the text wrapping around the images.</label>
+			<label index="common_4_title">Images only</label>
+			<label index="common_4_description">Any number of images aligned in columns and rows with caption. Like the image options above but without text.</label>
+			<label index="common_5_title">Bullet list</label>
+			<label index="common_5_description">A single bullet list.</label>
+			<label index="common_6_title">Table</label>
+			<label index="common_6_description">A simple table with up to 8 columns.</label>
+			<label index="special">Special elements</label>
+			<label index="special_1_title">Filelinks</label>
+			<label index="special_1_description">Makes a list of files for download.</label>
+			<label index="special_2_title">Multimedia</label>
+			<label index="special_2_description">Inserts a media element like a Flash animation, audio file or video clip.</label>
+			<label index="special_3_title">Sitemap</label>
+			<label index="special_3_description">Creates a sitemap of the website.</label>
+			<label index="special_4_title">Plain HTML</label>
+			<label index="special_4_description">With this element you can insert raw HTML code on the page.</label>
+			<label index="forms">Form elements</label>
+			<label index="forms_1_title">Mail form</label>
+			<label index="forms_1_description">A response mail form by which users of the website can submit responses.</label>
+			<label index="forms_2_title">Search form</label>
+			<label index="forms_2_description">Draws a search form and the searchresult if a search is performed.</label>
+			<label index="forms_3_title">Login form</label>
+			<label index="forms_3_description">Login/logout form for website users. This is used to password protect pages. You must create website users and groups for this to work.</label>
+			<label index="plugins">Plugins</label>
+			<label index="plugins_1_title">General Plugin</label>
+			<label index="plugins_1_description">If you want to insert a plugin which cannot be found among the options below, just select this element type and you can select your specific plugin in a selector box afterward.</label>
+			<label index="fce">Flexible content</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

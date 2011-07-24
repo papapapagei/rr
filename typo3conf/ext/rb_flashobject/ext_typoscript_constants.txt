@@ -1,0 +1,6 @@
+
+plugin.rb_flashobject_pi1.defaultVersion = 6
+
+plugin.tx_rbflashobject_pi1.JSFile = typo3conf/ext/rb_flashobject/js/flashobject.js
+
+plugin.tx_rbflashobject_pi1.backgroundColor = #ffffff

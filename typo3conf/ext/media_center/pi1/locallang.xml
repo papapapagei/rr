@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'media_center'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="wizard.title">Media Center</label>
+			<label index="wizard.description">Displays multiple media files in a Media Center in the Frontend.</label>
+			<label index="flexform.sheets.files.title">Media Files</label>
+			<label index="flexform.sheets.files.playlist">Playlist</label>
+			<label index="flexform.sheets.files.files">Files</label>
+			<label index="flexform.sheets.layout.title">Layout</label>
+			<label index="flexform.sheets.embed.height">Height (added to playlist size if playlist position set to bottom)</label>
+			<label index="flexform.sheets.embed.width">Video Area Width</label>
+			<label index="flexform.sheets.layout.backcolor">Background Colour</label>
+			<label index="flexform.sheets.layout.frontcolor">Front Colour</label>
+			<label index="flexform.sheets.layout.lightcolor">Light Colour</label>
+			<label index="flexform.sheets.layout.screencolor">Screen Colour</label>
+			<label index="flexform.sheets.layout.controlbar">Controlbar</label>
+			<label index="flexform.sheets.layout.controlbar.0">Bottom (default)</label>
+			<label index="flexform.sheets.layout.controlbar.1">Over</label>
+			<label index="flexform.sheets.layout.controlbar.2">None</label>
+			<label index="flexform.sheets.layout.logo">Url to logo file</label>
+			<label index="flexform.sheets.layout.playlist">Playlist Position</label>
+			<label index="flexform.sheets.layout.playlist.0">None (default)</label>
+			<label index="flexform.sheets.layout.playlist.1">Bottom</label>
+			<label index="flexform.sheets.layout.playlist.2">Over</label>
+			<label index="flexform.sheets.layout.playlist.3">Right</label>
+			<label index="flexform.sheets.layout.playlistsize">Playlist Size (width if playlist position is "right", height if playlist position is "bottom")</label>
+			<label index="flexform.sheets.layout.skin">Url to swf skin file</label>
+			<label index="flexform.sheets.behaviour.title">Behaviour</label>
+			<label index="flexform.sheets.behaviour.autostart">Autostart</label>
+			<label index="flexform.sheets.behaviour.autostart.0">false (default)</label>
+			<label index="flexform.sheets.behaviour.autostart.1">true</label>
+			<label index="flexform.sheets.behaviour.bufferlength">Bufferlength</label>
+			<label index="flexform.sheets.behaviour.caption">Caption</label>
+			<label index="flexform.sheets.behaviour.caption.0">true (default)</label>
+			<label index="flexform.sheets.behaviour.caption.1">false</label>
+			<label index="flexform.sheets.behaviour.displayclick">Displayclick</label>
+			<label index="flexform.sheets.behaviour.displayclick.0">Play (default)</label>
+			<label index="flexform.sheets.behaviour.displayclick.1">Link</label>
+			<label index="flexform.sheets.behaviour.displayclick.2">Fullscreen</label>
+			<label index="flexform.sheets.behaviour.displayclick.3">Mute</label>
+			<label index="flexform.sheets.behaviour.displayclick.4">Next</label>
+			<label index="flexform.sheets.behaviour.displayclick.5">None</label>
+			<label index="flexform.sheets.behaviour.icons">Icons</label>
+			<label index="flexform.sheets.behaviour.icons.0">True (default)</label>
+			<label index="flexform.sheets.behaviour.icons.1">False</label>
+			<label index="flexform.sheets.behaviour.item">Playlistitem that should start to play. Use this to set a specific start-item.</label>
+			<label index="flexform.sheets.behaviour.mute">Mute</label>
+			<label index="flexform.sheets.behaviour.mute.0">false (default)</label>
+			<label index="flexform.sheets.behaviour.mute.1">true</label>
+			<label index="flexform.sheets.behaviour.quality">Quality</label>
+			<label index="flexform.sheets.behaviour.quality.0">high (default)</label>
+			<label index="flexform.sheets.behaviour.quality.1">low</label>
+			<label index="flexform.sheets.behaviour.repeat">Repeat</label>
+			<label index="flexform.sheets.behaviour.repeat.0">none (default)</label>
+			<label index="flexform.sheets.behaviour.repeat.1">list</label>
+			<label index="flexform.sheets.behaviour.repeat.2">always</label>
+			<label index="flexform.sheets.behaviour.shuffle">Shuffle</label>
+			<label index="flexform.sheets.behaviour.shuffle.0">false (default)</label>
+			<label index="flexform.sheets.behaviour.shuffle.1">true</label>
+			<label index="flexform.sheets.behaviour.stretching">Stretching</label>
+			<label index="flexform.sheets.behaviour.stretching.0">uniform (default)</label>
+			<label index="flexform.sheets.behaviour.stretching.1">fill</label>
+			<label index="flexform.sheets.behaviour.stretching.2">exactfit</label>
+			<label index="flexform.sheets.behaviour.stretching.3">none</label>
+			<label index="flexform.sheets.behaviour.volume">Volume (0-100)</label>
+			<label index="flexform.sheets.external.title">External Communication</label>
+			<label index="flexform.sheets.external.abouttext">Abouttext (only covered by a commercial licence. Go to: http://www.jeroenwijering.com/?page=order )</label>
+			<label index="flexform.sheets.external.aboutlink">Aboutlink (only covered by a commercial licence. Go to: http://www.jeroenwijering.com/?page=order )</label>
+			<label index="flexform.sheets.external.linktarget">Linktarget</label>
+			<label index="flexform.sheets.external.linktarget.0">_blank (default)</label>
+			<label index="flexform.sheets.external.linktarget.1">_self</label>
+			<label index="flexform.sheets.external.linktarget.2">none</label>
+			<label index="flexform.sheets.external.streamer">Streamer</label>
+			<label index="flexform.sheets.external.tracecall">Tracecall</label>
+			<label index="flexform.sheets.external.plugins">Plugins</label>
+			<label index="flexform.sheets.fallback.title">Fallback</label>
+			<label index="flexform.sheets.fallback.noflash">No Flash</label>
+			<label index="flexform.sheets.fallback.noscript">No Scrip</label>
+			<label index="noflash-text">Your flash plugin version does not match the required version %s for this website. Please go to http://www.adobe.com/shockwave/download/</label>
+			<label index="noscript-text">>Javascript has to be enabled in your browser to view the content.</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="wizard.title">Mediathek</label>
+			<label index="wizard.description">Anzeige unterschiedlicher Multimedia Dateien in einer Mediathek im Frontend.</label>
+			<label index="flexform.sheets.files.title">Multimedia Dateien</label>
+			<label index="flexform.sheets.files.playlist">Playlist</label>
+			<label index="flexform.sheets.files.files">Dateien</label>
+			<label index="flexform.sheets.layout.title">Aussehen</label>
+			<label index="flexform.sheets.embed.height">Höhe (wird zu der Playlist Größe addiert, wenn die Position der Playlist auf unten eingestellt ist)</label>
+			<label index="flexform.sheets.embed.width">Video Bereich Breite </label>
+			<label index="flexform.sheets.layout.backcolor">Hintergrundfarbe</label>
+			<label index="flexform.sheets.layout.frontcolor">Vordergrundfarbe</label>
+			<label index="flexform.sheets.layout.lightcolor">Highlight Farbe</label>
+			<label index="flexform.sheets.layout.screencolor">Videofensterfarbe</label>
+			<label index="flexform.sheets.layout.controlbar">Position Steuerungsleiste</label>
+			<label index="flexform.sheets.layout.controlbar.0">Unten (Standard)</label>
+			<label index="flexform.sheets.layout.controlbar.1">Über</label>
+			<label index="flexform.sheets.layout.controlbar.2">Ausblenden</label>
+			<label index="flexform.sheets.layout.logo">Url zu einer Logo Datei</label>
+			<label index="flexform.sheets.layout.playlist">Position der Playlist</label>
+			<label index="flexform.sheets.layout.playlist.0">Ausblenden (Standard)</label>
+			<label index="flexform.sheets.layout.playlist.1">Unten</label>
+			<label index="flexform.sheets.layout.playlist.2">Überlagerung</label>
+			<label index="flexform.sheets.layout.playlist.3">Rechts</label>
+			<label index="flexform.sheets.layout.playlistsize">Playlist Größe (Breite, wenn Playlist Position "rechts", Höhe wenn Playlist Position "Unte")</label>
+			<label index="flexform.sheets.layout.skin">Url zu einer swf Skin Datei</label>
+			<label index="flexform.sheets.behaviour.title">Verhalten</label>
+			<label index="flexform.sheets.behaviour.autostart">Autostart</label>
+			<label index="flexform.sheets.behaviour.autostart.0">nein</label>
+			<label index="flexform.sheets.behaviour.autostart.1">ja (Standard)</label>
+			<label index="flexform.sheets.behaviour.bufferlength">Pufferlänge</label>
+			<label index="flexform.sheets.behaviour.caption">Legende</label>
+			<label index="flexform.sheets.behaviour.caption.0">ja (Standard)</label>
+			<label index="flexform.sheets.behaviour.caption.1">nein</label>
+			<label index="flexform.sheets.behaviour.displayclick">Aktion bei Displayclick</label>
+			<label index="flexform.sheets.behaviour.displayclick.0">Abspielen (Standard)</label>
+			<label index="flexform.sheets.behaviour.displayclick.1">Link</label>
+			<label index="flexform.sheets.behaviour.displayclick.2">Vollbild</label>
+			<label index="flexform.sheets.behaviour.displayclick.3">Stummschalten</label>
+			<label index="flexform.sheets.behaviour.displayclick.4">Nächster Eintrag</label>
+			<label index="flexform.sheets.behaviour.displayclick.5">Keine</label>
+			<label index="flexform.sheets.behaviour.icons">Icons</label>
+			<label index="flexform.sheets.behaviour.icons.0">Ja (Standard)</label>
+			<label index="flexform.sheets.behaviour.icons.1">Nein</label>			
+			<label index="flexform.sheets.behaviour.item">Eintrag der Playlist, der beim Start abgespielt werden soll.</label>
+			<label index="flexform.sheets.behaviour.mute">Stummschalten</label>
+			<label index="flexform.sheets.behaviour.mute.0">nein (Standard)</label>
+			<label index="flexform.sheets.behaviour.mute.1">ja</label>
+			<label index="flexform.sheets.behaviour.quality">Qualität</label>
+			<label index="flexform.sheets.behaviour.quality.0">hoch (Standard)</label>
+			<label index="flexform.sheets.behaviour.quality.1">niedrig</label>
+			<label index="flexform.sheets.behaviour.repeat">Wiederholung</label>
+			<label index="flexform.sheets.behaviour.repeat.0">nein (Standard)</label>
+			<label index="flexform.sheets.behaviour.repeat.1">einmal</label>
+			<label index="flexform.sheets.behaviour.repeat.2">immer</label>
+			<label index="flexform.sheets.behaviour.shuffle">Zufällige Wiedergabe</label>
+			<label index="flexform.sheets.behaviour.shuffle.0">nein (Standard)</label>
+			<label index="flexform.sheets.behaviour.shuffle.1">ja</label>
+			<label index="flexform.sheets.behaviour.stretching">Größenanpassung</label>
+			<label index="flexform.sheets.behaviour.stretching.0">gleichförmig (Standard)</label>
+			<label index="flexform.sheets.behaviour.stretching.1">ausfüllend</label>
+			<label index="flexform.sheets.behaviour.stretching.2">exakt passend</label>
+			<label index="flexform.sheets.behaviour.stretching.3">keine</label>
+			<label index="flexform.sheets.behaviour.volume">Lautstärke (0-100)</label>
+			<label index="flexform.sheets.external.title">Externe Kommunikation</label>
+			<label index="flexform.sheets.external.abouttext">Abouttext (Änderung nur durch eine kommerzielle Lizenz gültig. Lizenz Erwerb: http://www.jeroenwijering.com/?page=order )</label>
+			<label index="flexform.sheets.external.aboutlink">Aboutlink (Änderung nur durch eine kommerzielle Lizenz gültig. Lizenz Erwerb: : http://www.jeroenwijering.com/?page=order )</label>
+			<label index="flexform.sheets.external.linktarget">Linkziel</label>
+			<label index="flexform.sheets.external.linktarget.0">_blank (Standard)</label>
+			<label index="flexform.sheets.external.linktarget.1">_self</label>
+			<label index="flexform.sheets.external.linktarget.2">none</label>
+			<label index="flexform.sheets.external.streamer">Streamer</label>
+			<label index="flexform.sheets.external.tracecall">Tracecall</label>
+			<label index="flexform.sheets.external.plugins">Plugins</label>			
+			<label index="flexform.sheets.fallback.title">Fallback</label>
+			<label index="flexform.sheets.fallback.noflash">Kein Flash</label>
+			<label index="flexform.sheets.fallback.noscript">Kein Script</label>
+			<label index="noflash-text">Deine flash Version entspricht nicht der benötigten Version %s für diese Website. Aktualisiere dein Plugin unter http://www.adobe.com/shockwave/download/</label>
+			<label index="noscript-text">Javascript muss in deinem Browser aktiviert sein, um den Inhalt anzeigen zu können.</label>
+		</languageKey>
+	</data>
+</T3locallang>

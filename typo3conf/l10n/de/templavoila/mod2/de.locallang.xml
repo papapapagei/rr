@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="title">TemplaVoilà-Kontrollzentrum</label>
+			<label index="storagefolders">Speicherordner</label>
+			<label index="datastructures">Datenstrukturen</label>
+			<label index="templateobjects">Vorlagenobjekte</label>
+			<label index="templatefiles">Vorlagendateien</label>
+			<label index="pagetemplates">Seiten-Templates</label>
+			<label index="filereference">Dateiverweis</label>
+			<label index="description">Folgende Seiten in der Rootline enthalten Datenstrukturen und Vorlagenobjekte</label>
+			<label index="fces">Flexible CE</label>
+			<label index="other">Andere</label>
+			<label index="unknown">Unbekannt &quot;%s&quot;</label>
+			<label index="losttos">Verlorene VOs [%s]</label>
+			<label index="overview">XML-Datei</label>
+			<label index="dstotitle">DS/VO-Titel</label>
+			<label index="localization">Lokalisierung</label>
+			<label index="containerstatus">Container-Status</label>
+			<label index="mappingstatus">Abbildungsstatus</label>
+			<label index="usagecount">Verwendungshäufigkeit</label>
+			<label index="templatestatus">Vorlagenstatus</label>
+			<label index="rendertype">Darstellungstyp</label>
+			<label index="language">Sprache</label>
+			<label index="globalprocessing_xml">Globale Verarbeitung &lt;strong&gt;XML&lt;/strong&gt;</label>
+			<label index="localprocessing_xml">Lokale Verarbeitung &lt;strong&gt;XML&lt;/strong&gt;</label>
+			<label index="usedby">Verwendet von</label>
+			<label index="created">Erstellt</label>
+			<label index="updated">Aktualisiert</label>
+			<label index="noicon">[Kein Symbol]</label>
+			<label index="filenotfound">[Datei nicht gefunden!]</label>
+			<label index="containerwithseparatelocalization">Container-Element mit separater Lokalisierung!</label>
+			<label index="mixofcontentandref">Mischung aus Inhalt und Referenzierung. In Ordnung, aber Vorsicht ist geboten!</label>
+			<label index="nocontentfields">Kein Inhaltsfeld. Es wird empfohlen, &quot;&lt;langDisable&gt;&quot; = 1 zu setzen</label>
+			<label index="towasupdated">Die Vorlagendatei wurde seit der letzten Abbildung geändert. Das Vorlagenobjekt muss ggf. neu abgebildet werden.</label>
+			<label index="warning_mappingstatus">%s (VO: &quot;%s&quot;)</label>
+			<label index="mapping_uptodate">Abbildung ist auf aktuellem Stand.</label>
+			<label index="update_mapping">Abbildung aktualisieren</label>
+			<label index="notmapped">Noch keine Abbildung durchgeführt!</label>
+			<label index="updatemapping_info">- &lt;em&gt;(Dies kann auch bedeuten, dass das VO mit einer älteren TemplaVoilà-Version bearbeitet wurde. In diesem Fall die Abbildungs nochmals speichern und dadurch aktualisieren.)&lt;/em&gt;</label>
+			<label index="map">Abbilden</label>
+			<label index="remap">Erneut Abbilden</label>
+			<label index="preview">Vorschau</label>
+			<label index="toused_title">Titel</label>
+			<label index="toused_pid">Seiten-ID</label>
+			<label index="toused_path">Pfad</label>
+			<label index="toused_workspace">Arbeitsumgebung</label>
+			<label index="toused_uid">UID</label>
+			<label index="toused_header">Kopfbereich</label>
+			<label index="toused_usedin">In %s Elementen verwendet</label>
+			<label index="noaccess">Kein Zugriff</label>
+			<label index="usage">Verwendung</label>
+			<label index="action">Aktion</label>
+			<label index="refresh">Auffrischen</label>
+			<label index="invalidtemplatevalues">Ungültige Werte in %s Elementen</label>
+			<label index="noerrorsfound">Keine Fehler gefunden!</label>
+			<label index="byuser">von Benutzer</label>
+			<label index="file">Datei</label>
+			<label index="newdsto">Neue DS/VO</label>
+			<label index="usedfiles">Verwendete Dateien</label>
+			<label index="templatearchive">Vorlagenarchiv</label>
+			<label index="configuration">Konfiguration</label>
+			<label index="fceislocalized">FCE-Element ist lokalisiert</label>
+			<label index="fceinlineislocalized">Unter-FCEs des FCE sind lokalisiert</label>
+			<label index="casttointeger">Aus dem eingegebenen Wert wird eine ganze Zahl erstellt</label>
+			<label index="hsced">Im eingegebenen Wert vorhandene Sonderzeichen werden in HTML-Entitäten umgewandelt</label>
+			<label index="hsc_on">[HTML-Code ist nicht verfügbar]</label>
+			<label index="hsc_off">[HTML-Code wird wie eingegeben dargestellt]</label>
+			<label index="stdwrap">Der eingegebene/berechnete Wert wird umschlossen</label>
+			<label index="redundant">redundant</label>
+			<label index="illegalcharacters">Eingabe enthält unzulässige Zeichen und/oder mehrere Zeilen</label>
+			<label index="newsitewizard_menuhtmlcode">Hier der HTML-Code aus dem Template, der das Menü umschließt</label>
+			<label index="newsitewizard_menuenc">Das Menü scheint aus Menüeinträgen zu bestehen, die in %s eingeschlossen sind.</label>
+			<label index="newsitewizard_menunoa">Das Menü scheint aus Menüeinträgen zu bestehen, die abgesehen von den a-Tags nicht in Blocktags eingeschlossen sind.</label>
+			<label index="newsitewizard_menuwrap">Darüber hinaus scheint das gesamte Menü mit dem Tag %s umschlossen zu sein.</label>
+			<label index="newsitewizard_menudiv">Zwischen den Menüeinträgen scheint sich ein visuelles Trennelement mit folgendem HTML-Code zu befinden: &quot;%s&quot; Es wird zwischen allen Elementen eingefügt.</label>
+			<label index="newsitewizard_menuimg">Die Menüeinträge wurden als Bilder erkannt - TYPO3 wird versuchen, automatisch grafische Menüeinträge zu erzeugen (GMENU). Diese müssen angepaßt werden, damit sie dem Originalerscheinungsbild entsprechen!</label>
+			<label index="newsitewizard_menumouseover">Es scheint, daß zuvor eine Mouseover-Funktion verwendet wurde, daher wurde auch ein Roll-Over-Effekt hinzugefügt.</label>
+			<label index="newsitewizard_menuts">Basierend auf dieser Analyse wird für das Menü folgende TypoScript-Konfiguration vorgeschlagen:</label>
+			<label index="newsitewizard_menufinetune">Die Konfiguration kann hier vor dem Speichern angepaßt werden:</label>
+			<label index="newsitewizard_menuwritets">%s TypoScript-Code schreiben</label>
+			<label index="newsitewizard_menufinished">Die grundlegende Web-Site sollte nun funktionieren. Wie es scheint, haben Sie %s keinem Element zugewiesen, daher wird der Konfigurationsvorgang für das Menü übersprungen.</label>
+			<label index="newsitewizard_menunext">Weiter...</label>
+			<label index="newsitewizard_step5">Schritt 5 %s: Versuch, ein dynamisches Menü zu erstellen</label>
+			<label index="newsitewizard_sitecreated">&lt;b&gt;Herzlichen Glückwunsch!&lt;/b&gt; Sie haben die grundlegende Erstellung einer neuen Web-Site unter TYPO3 mit der TemplaVoilà-Engine abgeschlossen. Nach Drücken von &quot;Assistent beenden!&quot; können Sie mit dem Modul Web&gt;Seite Seiten bearbeiten!</label>
+			<label index="newsitewizard_finish">Assistent beenden!</label>
+			<label index="newsitewizard_done">Schritt 6: Fertig</label>
+			<label index="newsitewizard_headerselect">Teile des HTML-Headers auswählen</label>
+			<label index="newsitewizard_step4">Schritt 4: Teile des HTML-Headers auswählen</label>
+			<label index="newsitewizard_maintemplate">Haupt-Template</label>
+			<label index="newsitewizard_created">Eine neue Site wurde erstellt und übernommen.</label>
+			<label index="newsitewizard_step3error">Ein Fehler ist aufgetreten. Entweder haben Sie in letzten Formular keinen Namen für die Web-Site oder keinen Benutzernamen eingegeben!</label>
+			<label index="newsitewizard_startmapping">Abbildungsvorgang starten</label>
+			<label index="newsitewizard_beginmapping">Schritt 3: Abbildungsvorgang starten</label>
+			<label index="newsitewizard_selecttemplate">Schritt 1: Die HTML-Vorlagendatei auswählen</label>
+			<label index="newsitewizard_error">Fehler im TemplaVoilà-Assistenten</label>
+			<label index="newsitewizard_errornodir">%s ist kein Verzeichnis! Bitte vor Starten des Assistenten erstellen.</label>
+			<label index="newsitewizard_templateselected">Die Vorlagendatei &quot;%s&quot; ist nun ausgewählt:</label>
+			<label index="newsitewizard_step2next">Als nächstes sollten Sie Standardwerte für die neue Web-Site eingeben. Mit diesen Grundinformationen kann die Grundstruktur der Web-Site erstellt werden!</label>
+			<label index="newsitewizard_step2_name">Name der Site</label>
+			<label index="newsitewizard_step2_url">URL der Web-Site</label>
+			<label index="newsitewizard_step2_editor">Benutzername des Redakteurs</label>
+			<label index="newsitewizard_step2_required">(Pflichtangabe)</label>
+			<label index="newsitewizard_step2_optional">(Optional)</label>
+			<label index="newsitewizard_step2_createnewsite">Neue Site erstellen</label>
+			<label index="newsitewizard_step2_notemplatefound">Keine Vorlagendatei gefunden!?</label>
+			<label index="newsitewizard_step2_valuename">Dieser Wert wird in der Titelleiste des Browsers angezeigt und ist der Standardname der ersten Seite im Seitenbaum.</label>
+			<label index="newsitewizard_step2_valueurl">Wenn die URL der Web-Site bekannt ist, geben Sie sie hier bitte ein, z.B. &quot;www.meinedomaene.com&quot;.</label>
+			<label index="newsitewizard_step2_username">Geben Sie den Benutzernamen eines neuen Benutzers bzw. einer Benutzergruppe ein, die in der Lage sein soll, die Seiten der neuen Web-Site zu bearbeiten. (Das Passwort wird standardmäßig auf &quot;password&quot; gesetzt. Vergessen Sie nicht, es zu ändern!)</label>
+			<label index="newsitewizard_step2">Schritt 2: Standardwerte für die neue Site festlegen</label>
+			<label index="newsitewizard_usedtimes">%s Mal verwendet</label>
+			<label index="newsitewizard_notused">Noch nicht verwendet</label>
+			<label index="newsitewizard_preview">[Erst Vorschau anzeigen]</label>
+			<label index="newsitewizard_choose">[Als Template auswählen]</label>
+			<label index="dsdetails_nobasicdefinitions">Das Element besitzt keine grundlegenden Definitionen!</label>
+			<label index="dsdetails_notceformdefinitions">Das Element besitzt keine TCE-form-Definitionen!</label>
+			<label index="dsdetails_notes">Bemerkungen</label>
+			<label index="dsdetails_ts">TypoScript</label>
+			<label index="dsdetails_column">Spalten-Positionierung</label>
+			<label index="dsdetails_preset">Für das Element verwendete Voreinstellung</label>
+			<label index="warnings">Warnungen</label>
+			<label index="fatalerrors">Schwere Fehler</label>
+			<label index="wiz_title">Neue-Site-Assistent</label>
+			<label index="wiz_step">Schritt %s</label>
+			<label index="newsitewizard_startnow">Assistent jetzt starten!</label>
+			<label index="newsitewizard_cancel">Assistent abbrechen</label>
+			<label index="newsitewizard_missingext">Erweiterung fehlt!</label>
+			<label index="newsitewizard_missingconf">Konfiguration fehlt!</label>
+			<label index="newsitewizard_missingdir">Verzeichnis fehlt!</label>
+			<label index="newsitewizard_missingext_extkey">Erweiterungsschlüssel:</label>
+			<label index="newsitewizard_missingext_installed">Installiert?</label>
+			<label index="newsitewizard_missingext_yes">Ja</label>
+			<label index="newsitewizard_missingext_no">Nein</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="title" type="integer">198935957</label>
+			<label index="wiz_title" type="integer">205980870</label>
+			<label index="wiz_step" type="integer">256549070</label>
+			<label index="storagefolders" type="integer">111352151</label>
+			<label index="datastructures" type="integer">76615866</label>
+			<label index="templateobjects" type="integer">257832695</label>
+			<label index="templatefiles" type="integer">197699424</label>
+			<label index="pagetemplates" type="integer">164973201</label>
+			<label index="filereference" type="integer">98494108</label>
+			<label index="description" type="integer">134421673</label>
+			<label index="fces" type="integer">104735264</label>
+			<label index="other" type="integer">103881441</label>
+			<label index="unknown" type="integer">230072688</label>
+			<label index="losttos" type="integer">93570905</label>
+			<label index="overview" type="integer">16322047</label>
+			<label index="dstotitle" type="integer">18048855</label>
+			<label index="localization" type="integer">57239651</label>
+			<label index="containerstatus" type="integer">205828523</label>
+			<label index="mappingstatus" type="integer">77372066</label>
+			<label index="usagecount" type="integer">75448882</label>
+			<label index="templatestatus" type="integer">263031370</label>
+			<label index="rendertype" type="integer">30970361</label>
+			<label index="language" type="integer">77154959</label>
+			<label index="globalprocessing_xml" type="integer">210766683</label>
+			<label index="localprocessing_xml" type="integer">168420364</label>
+			<label index="usedby" type="integer">18666673</label>
+			<label index="created" type="integer">15527604</label>
+			<label index="updated" type="integer">267428791</label>
+			<label index="noicon" type="integer">126641526</label>
+			<label index="filenotfound" type="integer">23663792</label>
+			<label index="containerwithseparatelocalization" type="integer">195592048</label>
+			<label index="mixofcontentandref" type="integer">179831898</label>
+			<label index="nocontentfields" type="integer">64068901</label>
+			<label index="towasupdated" type="integer">241600679</label>
+			<label index="warning_mappingstatus" type="integer">92156312</label>
+			<label index="mapping_uptodate" type="integer">193709654</label>
+			<label index="update_mapping" type="integer">136144374</label>
+			<label index="notmapped" type="integer">208646741</label>
+			<label index="updatemapping_info" type="integer">27848290</label>
+			<label index="map" type="integer">74399392</label>
+			<label index="remap" type="integer">49922927</label>
+			<label index="preview" type="integer">52420219</label>
+			<label index="toused_title" type="integer">192455458</label>
+			<label index="toused_pid" type="integer">50799274</label>
+			<label index="toused_path" type="integer">180814866</label>
+			<label index="toused_workspace" type="integer">3809681</label>
+			<label index="toused_uid" type="integer">243081769</label>
+			<label index="toused_header" type="integer">200609118</label>
+			<label index="toused_usedin" type="integer">248339166</label>
+			<label index="noaccess" type="integer">185835220</label>
+			<label index="usage" type="integer">207901063</label>
+			<label index="action" type="integer">311148</label>
+			<label index="refresh" type="integer">104491656</label>
+			<label index="invalidtemplatevalues" type="integer">117079083</label>
+			<label index="noerrorsfound" type="integer">199569469</label>
+			<label index="byuser" type="integer">233399841</label>
+			<label index="file" type="integer">11696408</label>
+			<label index="newdsto" type="integer">54612111</label>
+			<label index="usedfiles" type="integer">123805336</label>
+			<label index="templatearchive" type="integer">74413879</label>
+			<label index="configuration" type="integer">39122498</label>
+			<label index="fceislocalized" type="integer">183240036</label>
+			<label index="fceinlineislocalized" type="integer">11582389</label>
+			<label index="casttointeger" type="integer">38058039</label>
+			<label index="hsced" type="integer">47943145</label>
+			<label index="hsc_on" type="integer">134457957</label>
+			<label index="hsc_off" type="integer">12945719</label>
+			<label index="stdwrap" type="integer">9813954</label>
+			<label index="redundant" type="integer">30210897</label>
+			<label index="illegalcharacters" type="integer">187558632</label>
+			<label index="newsitewizard_menuhtmlcode" type="integer">2499238</label>
+			<label index="newsitewizard_menuenc" type="integer">92740342</label>
+			<label index="newsitewizard_step2" type="integer">73731747</label>
+			<label index="newsitewizard_usedtimes" type="integer">199101950</label>
+			<label index="newsitewizard_notused" type="integer">100469911</label>
+			<label index="newsitewizard_preview" type="integer">252602089</label>
+			<label index="newsitewizard_choose" type="integer">178038741</label>
+			<label index="dsdetails_notes" type="integer">256667525</label>
+			<label index="dsdetails_ts" type="integer">6141239</label>
+			<label index="dsdetails_column" type="integer">99541577</label>
+			<label index="warnings" type="integer">236453302</label>
+			<label index="fatalerrors" type="integer">180862383</label>
+			<label index="newsitewizard_startnow" type="integer">45271679</label>
+			<label index="newsitewizard_cancel" type="integer">261520755</label>
+			<label index="newsitewizard_missingext" type="integer">186197267</label>
+			<label index="newsitewizard_missingconf" type="integer">236627024</label>
+			<label index="newsitewizard_missingdir" type="integer">92246142</label>
+			<label index="newsitewizard_missingext_extkey" type="integer">81025106</label>
+			<label index="newsitewizard_missingext_installed" type="integer">227112371</label>
+			<label index="newsitewizard_missingext_yes" type="integer">154974727</label>
+			<label index="newsitewizard_missingext_no" type="integer">196073266</label>
+			<label index="newsitewizard_menunoa" type="integer">74840802</label>
+			<label index="newsitewizard_menuwrap" type="integer">197003373</label>
+			<label index="newsitewizard_menudiv" type="integer">97886837</label>
+			<label index="newsitewizard_menuimg" type="integer">53503508</label>
+			<label index="newsitewizard_menumouseover" type="integer">41844257</label>
+			<label index="newsitewizard_menuts" type="integer">25615667</label>
+			<label index="newsitewizard_menufinetune" type="integer">250248603</label>
+			<label index="newsitewizard_menuwritets" type="integer">117899731</label>
+			<label index="newsitewizard_menufinished" type="integer">53648884</label>
+			<label index="newsitewizard_menunext" type="integer">141102991</label>
+			<label index="newsitewizard_step5" type="integer">7779258</label>
+			<label index="newsitewizard_sitecreated" type="integer">90069183</label>
+			<label index="newsitewizard_finish" type="integer">153040964</label>
+			<label index="newsitewizard_done" type="integer">230933835</label>
+			<label index="newsitewizard_headerselect" type="integer">113310771</label>
+			<label index="newsitewizard_step4" type="integer">55602642</label>
+			<label index="newsitewizard_maintemplate" type="integer">1131417</label>
+			<label index="newsitewizard_created" type="integer">10149524</label>
+			<label index="newsitewizard_step3error" type="integer">232527233</label>
+			<label index="newsitewizard_startmapping" type="integer">174898371</label>
+			<label index="newsitewizard_beginmapping" type="integer">18464084</label>
+			<label index="newsitewizard_selecttemplate" type="integer">96321799</label>
+			<label index="newsitewizard_error" type="integer">57588735</label>
+			<label index="newsitewizard_errornodir" type="integer">188734461</label>
+			<label index="newsitewizard_templateselected" type="integer">141630035</label>
+			<label index="newsitewizard_step2next" type="integer">21951076</label>
+			<label index="newsitewizard_step2_name" type="integer">86145525</label>
+			<label index="newsitewizard_step2_url" type="integer">36897721</label>
+			<label index="newsitewizard_step2_editor" type="integer">233639355</label>
+			<label index="newsitewizard_step2_required" type="integer">213327726</label>
+			<label index="newsitewizard_step2_optional" type="integer">228486964</label>
+			<label index="newsitewizard_step2_createnewsite" type="integer">60879006</label>
+			<label index="newsitewizard_step2_notemplatefound" type="integer">210628344</label>
+			<label index="newsitewizard_step2_valuename" type="integer">214474037</label>
+			<label index="newsitewizard_step2_valueurl" type="integer">18266523</label>
+			<label index="newsitewizard_step2_username" type="integer">156643814</label>
+			<label index="dsdetails_nobasicdefinitions" type="integer">118146554</label>
+			<label index="dsdetails_notceformdefinitions" type="integer">148236161</label>
+			<label index="dsdetails_preset" type="integer">178880941</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="title">TemplaVoilà Control Center</label>
+			<label index="wiz_title">New site wizard</label>
+			<label index="wiz_step">Step %s</label>
+			<label index="storagefolders">Storage Folders</label>
+			<label index="datastructures">Data Structures</label>
+			<label index="templateobjects">Template Objects</label>
+			<label index="templatefiles">Template Files</label>
+			<label index="pagetemplates">Page templates</label>
+			<label index="filereference">File reference</label>
+			<label index="description">The following pages in the root line contain data structures and template objects</label>
+			<label index="fces">Flexible CE</label>
+			<label index="other">Other</label>
+			<label index="unknown">Unknown &quot;%s&quot;</label>
+			<label index="losttos">Lost TOs [%d]</label>
+			<label index="overview">XML file</label>
+			<label index="dstotitle">DS/TO Title</label>
+			<label index="localization">Localization</label>
+			<label index="containerstatus">Container status</label>
+			<label index="mappingstatus">Mapping status</label>
+			<label index="usagecount">Usage count</label>
+			<label index="templatestatus">Template Status</label>
+			<label index="rendertype">Render Type</label>
+			<label index="language">Language</label>
+			<label index="globalprocessing_xml">Global Processing &lt;strong&gt;XML&lt;/strong&gt;</label>
+			<label index="localprocessing_xml">Local Processing &lt;strong&gt;XML&lt;/strong&gt;</label>
+			<label index="usedby">Used by</label>
+			<label index="created">Created</label>
+			<label index="updated">Updated</label>
+			<label index="noicon">[No icon]</label>
+			<label index="filenotfound">[File not found!]</label>
+			<label index="containerwithseparatelocalization">Container element with separate localization!</label>
+			<label index="mixofcontentandref">Mix of content and references, OK, but be careful!</label>
+			<label index="nocontentfields">No content fields, recommended to set &quot;&lt;langDisable&gt;&quot; = 1</label>
+			<label index="towasupdated">Template file was updated since last mapping (%s) and you might need to remap the Template Object!</label>
+			<label index="warning_mappingstatus">%s (TO: &quot;%s&quot;)</label>
+			<label index="mapping_uptodate">Mapping is up to date.</label>
+			<label index="update_mapping">Update mapping</label>
+			<label index="notmapped">Not mapped yet!</label>
+			<label index="updatemapping_info"> - &lt;em&gt;(It might also mean that the TO was mapped with an older version of TemplaVoila - then just go and save the mapping again at this will be updated.)&lt;/em&gt;</label>
+			<label index="map">Map</label>
+			<label index="remap">Remap</label>
+			<label index="preview">Preview</label>
+			<label index="toused_title">Title</label>
+			<label index="toused_pid">Page ID</label>
+			<label index="toused_path">Path</label>
+			<label index="toused_workspace">Workspace</label>
+			<label index="toused_uid">UID</label>
+			<label index="toused_header">Header</label>
+			<label index="toused_usedin">Used in %d Elements</label>
+			<label index="noaccess">No Access</label>
+			<label index="usage">Usage</label>
+			<label index="action">Action</label>
+			<label index="refresh">Refresh</label>
+			<label index="invalidtemplatevalues">Invalid template values in %d elements</label>
+			<label index="noerrorsfound">No errors found!</label>
+			<label index="byuser">by user</label>
+			<label index="file">File</label>
+			<label index="newdsto">New DS/TO</label>
+			<label index="usedfiles">Used files</label>
+			<label index="templatearchive">Template Archive</label>
+			<label index="configuration">Configuration</label>
+			<label index="fceislocalized">FCE-element is localized</label>
+			<label index="fceinlineislocalized">FCE-inline-elements of the FCE-element are localized</label>
+			<label index="casttointeger">the entered/computed value will be cast to an integer</label>
+			<label index="hsced">the entered/computed value will be passed to htmlentities</label>
+			<label index="hsc_on">[HTML-code won't be available]</label>
+			<label index="hsc_off">[HTML-code will be displayed as-is]</label>
+			<label index="stdwrap">the entered/computed value will be wrapped</label>
+			<label index="redundant">redundant</label>
+			<label index="illegalcharacters">entry contains illegal characters and/or has multiple lines</label>
+			<label index="newsitewizard_menuhtmlcode">Here is the HTML code from the Template that encapsulated the menu</label>
+			<label index="newsitewizard_menuenc">It seems that the menu consists of menu items encapsulated with %s.</label>
+			<label index="newsitewizard_step2">Step 2: Enter default values for new site</label>
+			<label index="newsitewizard_usedtimes">Used %d times</label>
+			<label index="newsitewizard_notused">Not used yet</label>
+			<label index="newsitewizard_preview">[Preview first]</label>
+			<label index="newsitewizard_choose">[Choose as Template]</label>
+			<label index="dsdetails_notes">Notes</label>
+			<label index="dsdetails_ts">TypoScript</label>
+			<label index="dsdetails_column">Column-positioning</label>
+			<label index="warnings">Warnings</label>
+			<label index="fatalerrors">Fatal errors</label>
+			<label index="newsitewizard_startnow">Start wizard now!</label>
+			<label index="newsitewizard_cancel">Cancel wizard</label>
+			<label index="newsitewizard_missingext">Missing extension!</label>
+			<label index="newsitewizard_missingconf">Missing configuration!</label>
+			<label index="newsitewizard_missingdir">Missing directory!</label>
+			<label index="newsitewizard_missingext_extkey">Extension Key:</label>
+			<label index="newsitewizard_missingext_installed">Installed?</label>
+			<label index="newsitewizard_missingext_yes">Yes</label>
+			<label index="newsitewizard_missingext_no">No</label>
+			<label index="newsitewizard_menunoa">It seems that the menu consists of menu items not wrapped in any block tags except A-tags.</label>
+			<label index="newsitewizard_menuwrap">It also seems that the whole menu is wrapped in this tag %s</label>
+			<label index="newsitewizard_menudiv">Between the menu elements there seems to be a visual division element with this HTML code: &quot;%s&quot;. That will be added between each element as well.</label>
+			<label index="newsitewizard_menuimg">The menu items were detected to be images - TYPO3 will try to generate graphical menu items automatically (GMENU). You will need to customize the look of these before it will match the originals!</label>
+			<label index="newsitewizard_menumouseover">It seems like a mouseover functionality has been applied previously, so roll-over effect has been applied as well.</label>
+			<label index="newsitewizard_menuts">Based on this analysis, this TypoScript configuration for the menu is suggested:</label>
+			<label index="newsitewizard_menufinetune">You can fine tune the configuration here before it is saved:</label>
+			<label index="newsitewizard_menuwritets">Write %s TypoScript code</label>
+			<label index="newsitewizard_menufinished">The basics of your website should be working now. It seems like you did not map the %s to any element, so the menu configuration process will be skipped.</label>
+			<label index="newsitewizard_menunext">Next...</label>
+			<label index="newsitewizard_step5">Step 5 %s: Trying to create dynamic menu</label>
+			<label index="newsitewizard_sitecreated">&lt;b&gt;Congratulations!&lt;/b&gt; You have completed the initial creation of a new website in TYPO3 based on the TemplaVoila engine. After you click the &quot;Finish&quot; button you can go to the Web&gt;Page module to edit your pages!</label>
+			<label index="newsitewizard_finish">Finish Wizard!</label>
+			<label index="newsitewizard_done">Step 6: Done</label>
+			<label index="newsitewizard_headerselect">Select HTML header parts</label>
+			<label index="newsitewizard_step4">Step 4: Select HTML header parts</label>
+			<label index="newsitewizard_maintemplate">Main template:</label>
+			<label index="newsitewizard_created">New site has been created and adapted.</label>
+			<label index="newsitewizard_step3error">Error happened: Either you did not specify a website name or username in the previous form!</label>
+			<label index="newsitewizard_startmapping">Start the mapping process</label>
+			<label index="newsitewizard_beginmapping">Step 3: Begin mapping</label>
+			<label index="newsitewizard_selecttemplate">Step 1: Select the template HTML file</label>
+			<label index="newsitewizard_error">TemplaVoila wizard error</label>
+			<label index="newsitewizard_errornodir">%s is not a directory! Please, create it before starting this wizard.</label>
+			<label index="newsitewizard_templateselected">The template file &quot;%s&quot; is now selected:</label>
+			<label index="newsitewizard_step2next">Next, you should enter default values for the new website. With this basic set of information we are ready to create the initial website structure!</label>
+			<label index="newsitewizard_step2_name">Name of the site</label>
+			<label index="newsitewizard_step2_url">URL of the website</label>
+			<label index="newsitewizard_step2_editor">Editor username</label>
+			<label index="newsitewizard_step2_required">(Required)</label>
+			<label index="newsitewizard_step2_optional">(Optional)</label>
+			<label index="newsitewizard_step2_createnewsite">Create new site</label>
+			<label index="newsitewizard_step2_notemplatefound">No template file found!?</label>
+			<label index="newsitewizard_step2_valuename">This value is shown in the browsers title bar and will be the default name of the first page in the page tree.</label>
+			<label index="newsitewizard_step2_valueurl">If you know the URL of the website already please enter it here, eg. &quot;www.mydomain.com&quot;.</label>
+			<label index="newsitewizard_step2_username">Enter the username of a new backend user/group who will be able to edit the pages on the new website. (Password will be &quot;password&quot; by default, make sure to change that!)</label>
+			<label index="dsdetails_nobasicdefinitions">The element has no basic definitions!</label>
+			<label index="dsdetails_notceformdefinitions">The element has no TCE-form definitions!</label>
+			<label index="dsdetails_preset">Preset used for the element</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

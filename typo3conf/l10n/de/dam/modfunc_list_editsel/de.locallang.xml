@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_list_editsel.title">Auswahl</label>
+			<label index="tx_dam_list_editsel.onlyDeselected">Nur abgewählte anzeigen</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_list_editsel.title" type="integer">117415376</label>
+			<label index="tx_dam_list_editsel.onlyDeselected" type="integer">83906574</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_list_editsel.title">Selection</label>
+			<label index="tx_dam_list_editsel.onlyDeselected">Show deselected only</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

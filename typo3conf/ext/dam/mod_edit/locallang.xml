@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description></description>
+        <type>module</type>
+        <csh_table></csh_table>
+        <fileId>EXT:dam/mod_edit/locallang.xml</fileId>
+        <labelContext type="array">
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="messageNoEditorFound">No editor is available to handle the file '%s'.</label>
+            <label index="messageAvailableEditors">Following editors are available to handle the file '%s'.</label>
+            <label index="tx_dam_edit.title">Edit file</label>
+            <label index="tx_dam_edit_text.title">Edit text file</label>
+            <label index="tx_dam_edit_text.descr">Simple text editor.</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+            <label index="messageNoEditorFound">Es steht kein Editor für die Datei '%s' zur Verfügung.</label>
+            <label index="messageAvailableEditors">Folgende Bearbeitungsmöglichkeiten stehen für die Datei '%s' zur Verfügung.</label>
+            <label index="tx_dam_edit.title">Datei bearbeiten</label>
+            <label index="tx_dam_edit_text.title">Text-Datei Bearbeiten</label>
+            <label index="tx_dam_edit_text.descr">Einfacher Texteditor.</label>
+        </languageKey>
+    </data>
+    <orig_hash type="array">
+        <languageKey index="default" type="array">
+            <label index="tx_dam_cmd_nothing.title" type="integer">72590348</label>
+            <label index="tx_dam_cmd_nothing.messageNoCmd" type="integer">65945249</label>
+            <label index="tx_dam_cmd_nothing.messageUnknownCmd" type="integer">231607270</label>
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+    </orig_hash>
+    <orig_text type="array">
+        <languageKey index="default" type="array">
+        </languageKey>
+        <languageKey index="de" type="array">
+        </languageKey>
+    </orig_text>
+</T3locallang>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_item">Medien</label>
+			<label index="tx_dam_item.div_overview">Übersicht</label>
+			<label index="tx_dam_item.div_metrics">Maße</label>
+			<label index="tx_dam_item.div_copyright">Urheber</label>
+			<label index="tx_dam_item.div_extraMeta">Zusatzdaten</label>
+			<label index="tx_dam_item.div_usage">Verwendung</label>
+			<label index="tx_dam_item.div_custom">Benutzerdefiniert</label>
+			<label index="tx_dam_item.media_type">Medientyp:</label>
+			<label index="tx_dam_item.file_name">Dateiname:</label>
+			<label index="tx_dam_item.file_path">Dateipfad:</label>
+			<label index="tx_dam_item.file_dl_name">Dateiname für Herunterladen:</label>
+			<label index="tx_dam_item.file_type">Dateityp:</label>
+			<label index="tx_dam_item.file_type_version">Dateityp, Version:</label>
+			<label index="tx_dam_item.file_size">Dateigröße:</label>
+			<label index="tx_dam_item.file_orig_location">Dateiquelle, Standort:</label>
+			<label index="tx_dam_item.file_orig_loc_desc">Dateiquelle, Beschreibung:</label>
+			<label index="tx_dam_item.file_creator">Erzeugt mit:</label>
+			<label index="tx_dam_item.file_mime_type">MIME-Typ:</label>
+			<label index="tx_dam_item.file_mime_subtype">MIME-Subtyp:</label>
+			<label index="tx_dam_item.file_ctime">Erzeugt am:</label>
+			<label index="tx_dam_item.file_mtime">Verändert am:</label>
+			<label index="tx_dam_item.file_usage">Verwendung:</label>
+			<label index="tx_dam_item.thumb">THUMB:</label>
+			<label index="tx_dam_item.thumb_path">THUMB_PATH:</label>
+			<label index="tx_dam_item.iptc_subject">IPTC_SUBJECT:</label>
+			<label index="tx_dam_item.ident">Ident-Nr:</label>
+			<label index="tx_dam_item.creator">Urheber:</label>
+			<label index="tx_dam_item.publisher">Herausgeber:</label>
+			<label index="tx_dam_item.copyright">Copyright:</label>
+			<label index="tx_dam_item.instructions">Anweisung/Verwendung:</label>
+			<label index="tx_dam_item.abstract">Zusammenfassung, Auszug:</label>
+			<label index="tx_dam_item.alt_text">ALT-Text (www):</label>
+			<label index="tx_dam_item.date_cr">Erzeugt am:</label>
+			<label index="tx_dam_item.date_mod">Verändert am:</label>
+			<label index="tx_dam_item.loc_pheader">Ortsangabe:</label>
+			<label index="tx_dam_item.loc_desc">Ortsangabe, Beschreibung:</label>
+			<label index="tx_dam_item.loc_country">Ortsangabe, Land:</label>
+			<label index="tx_dam_item.loc_city">Ortsangabe, Stadt:</label>
+			<label index="tx_dam_item.language">Sprache des Inhalts:</label>
+			<label index="tx_dam_item.metrics">Maße:</label>
+			<label index="tx_dam_item.hres">Hor. Auflösung:</label>
+			<label index="tx_dam_item.vres">Vert. Auflösung:</label>
+			<label index="tx_dam_item.hpixels">Hor. Größe:</label>
+			<label index="tx_dam_item.vpixels">Vert. Größe:</label>
+			<label index="tx_dam_item.color_space">Farbraum:</label>
+			<label index="tx_dam_item.width">Breite</label>
+			<label index="tx_dam_item.width_unit">Einheit:</label>
+			<label index="tx_dam_item.height">Höhe:</label>
+			<label index="tx_dam_item.height_unit">Einheit:</label>
+			<label index="tx_dam_item.pages">Seitenanzahl:</label>
+			<label index="tx_dam_item.category">Kategorien:</label>
+			<label index="tx_dam_item.date_pheader">Datum:</label>
+			<label index="tx_dam_item.file_pheader">Datei:</label>
+			<label index="tx_dam_item.frontend_pheader">Frontend:</label>
+			<label index="tx_dam_item.meta">Zusätzliche Metadaten:</label>
+			<label index="tx_dam_cat_item">Medienkategorie</label>
+			<label index="tx_dam_cat_item.parent_id">Oberkategorie:</label>
+			<label index="label.tx_dam_mountpoints">DAM-Freigaben</label>
+			<label index="media_type.text">Text</label>
+			<label index="media_type.image">Bild</label>
+			<label index="media_type.audio">Audio</label>
+			<label index="media_type.video">Video</label>
+			<label index="media_type.dataset">Daten</label>
+			<label index="media_type.interactive">Interaktiv</label>
+			<label index="media_type.software">Software</label>
+			<label index="media_type.model">Modell</label>
+			<label index="media_type.font">Schrift</label>
+			<label index="media_type.collection">Sammlung</label>
+			<label index="media_type.service">Service</label>
+			<label index="media_type.application">Applikation</label>
+			<label index="media_type.undefined">Sonstiges</label>
+			<label index="tx_dam_lightbox">Medienleuchttisch</label>
+			<label index="tx_dam_lightbox.be_groups">Mit Benutzergruppe teilen:</label>
+			<label index="tx_dam_lightbox.be_users">Mit Benutzer teilen:</label>
+			<label index="tx_dam_lightbox.items">Leuchttischeinträge:</label>
+			<label index="tx_dam_lightbox.share_writeable">Anderen Benutzern Änderungen erlauben:</label>
+			<label index="tx_dam_selection">Auswahl</label>
+			<label index="tx_dam_selection.type.I.0">Auswahlregel</label>
+			<label index="tx_dam_selection.type.I.1">Feste Einträge</label>
+			<label index="tx_dam_selection.type">Auswahltyp</label>
+			<label index="tx_dam_selection.definition">Auswahldefinition:</label>
+			<label index="tx_dam_log_download">Protokoll für Herunterladen</label>
+			<label index="tx_dam_log_download.file_id">Medien ID:</label>
+			<label index="tx_dam_log_download.protected">Geschützt:</label>
+			<label index="tx_dam_log_download.host">Host (IP):</label>
+			<label index="tx_dam_log_download.user_id">Benutzerkennung:</label>
+			<label index="tx_dam_log_download.user_name">Benutzer:</label>
+			<label index="tx_dam_log_download.user_group">Benutzergruppen:</label>
+			<label index="tx_dam_log_download.page_id">Seiten-ID:</label>
+			<label index="tx_dam_log_download.app_id">Erweiterungs-/Anwendungs-ID:</label>
+			<label index="tx_dam_log_download.typo3_mode">TYPO3 Modus:</label>
+			<label index="tx_dam_log_download.bytes_downloaded">Heruntergeladene Bytes:</label>
+			<label index="tx_dam_log_download.sitetitle">Titel der Website:</label>
+			<label index="ffds_mode.sheet_label">Modus</label>
+			<label index="ffds_mode.mode">Modus:</label>
+			<label index="ffds_layout.sheet_label">Layout</label>
+			<label index="ffds_layout.layout">Layout:</label>
+			<label index="ffds_selection.sheet_label">Auswahl</label>
+			<label index="ffds_selection.selection_type.I.from_mode">Definiert durch Modus (TypoScript)</label>
+			<label index="ffds_selection.selection_type.I.items">Ausgewählte Elemente (anzuzeigende Elemente)</label>
+			<label index="ffds_selection.selection_type.I.folder">Ausgewählte Verzeichnisse (anzuzeigende Verzeichnisse)</label>
+			<label index="ffds_selection.selection_type.I.selection">Gespeicherte Auswahlregeln (anzuzeigende Auswahl)</label>
+			<label index="ffds_selection.selection_type.I.categories">Ausgewählte Kategorien (anzuzeigende Kategorien)</label>
+			<label index="ffds_selection.selection_type.I.merged">zusammengeführte Auswahl (Elemente, Auswahl, Kategorien)</label>
+			<label index="ffds_selection.selection_type">Elemente anzeigen ab ...:</label>
+			<label index="ffds_selection.items">Anzuzeigende Elemente:</label>
+			<label index="ffds_selection.selections">Anzuzueigende Auswahl:</label>
+			<label index="ffds_selection.folder">Anzuzeigendes Verzeichnis:</label>
+			<label index="ffds_selection.categories">Anzuzeigende Kategorien:</label>
+			<label index="ffds_selection.categories_display.I.0">Elemente aus Unterkategorien ausschließen</label>
+			<label index="ffds_selection.categories_display.I.1">Elemente aus Unterkategorien einbeziehen</label>
+			<label index="ffds_selection.categories_display">Kategorien Anzeigeoptionen:</label>
+			<label index="ffds_selection.categories_where">Auf Kategorien begrenzen (werden nicht angezeigt):</label>
+			<label index="ffds_selection.categories_where_mode.I.0">AND (Elemente müssen auch in den gewählten Kategorien sein)</label>
+			<label index="ffds_selection.categories_where_mode.I.1">NOT (Elemente dürfen nicht in den gewählten Kategorien sein)</label>
+			<label index="ffds_selection.categories_where_mode">Kategorien begrenzen, Modus:</label>
+			<label index="ffds_selection.default_sorting.I.0">Standard</label>
+			<label index="ffds_selection.default_sorting">Standardsortierung:</label>
+			<label index="ffds_selection.default_sorting_reverse">Absteigend sortieren:</label>
+			<label index="ffds_selection.limit">Maximale Anzahl Elemente:</label>
+			<label index="ffds_options.sheet_label">Optionen</label>
+			<label index="cm.edit_popup">Bearbeiten (neues Fenster)</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_item.div_overview" type="integer">62421031</label>
+			<label index="tx_dam_item.div_metrics" type="integer">254985197</label>
+			<label index="tx_dam_item.div_copyright" type="integer">100756011</label>
+			<label index="tx_dam_item.div_extraMeta" type="integer">70292128</label>
+			<label index="tx_dam_item.div_usage" type="integer">207901063</label>
+			<label index="tx_dam_item.media_type" type="integer">146901466</label>
+			<label index="tx_dam_item.file_name" type="integer">139311905</label>
+			<label index="tx_dam_item.file_path" type="integer">9678633</label>
+			<label index="tx_dam_item.file_dl_name" type="integer">61761555</label>
+			<label index="tx_dam_item.file_type" type="integer">151230091</label>
+			<label index="tx_dam_item.file_type_version" type="integer">16400899</label>
+			<label index="tx_dam_item.file_size" type="integer">177808239</label>
+			<label index="tx_dam_item.file_orig_location" type="integer">166158657</label>
+			<label index="tx_dam_item.file_orig_loc_desc" type="integer">58618983</label>
+			<label index="tx_dam_item.file_creator" type="integer">154403344</label>
+			<label index="tx_dam_item.file_mime_type" type="integer">188407382</label>
+			<label index="tx_dam_item.file_mime_subtype" type="integer">95004627</label>
+			<label index="tx_dam_item.file_ctime" type="integer">52688901</label>
+			<label index="tx_dam_item.file_mtime" type="integer">224523695</label>
+			<label index="tx_dam_item.file_usage" type="integer">194366178</label>
+			<label index="tx_dam_item.ident" type="integer">185573412</label>
+			<label index="tx_dam_item.creator" type="integer">143241231</label>
+			<label index="tx_dam_item.publisher" type="integer">54320969</label>
+			<label index="tx_dam_item.copyright" type="integer">66871040</label>
+			<label index="tx_dam_item.instructions" type="integer">88915109</label>
+			<label index="tx_dam_item.abstract" type="integer">81888755</label>
+			<label index="tx_dam_item.date_cr" type="integer">52688901</label>
+			<label index="tx_dam_item.date_mod" type="integer">224523695</label>
+			<label index="tx_dam_item.loc_pheader" type="integer">199837335</label>
+			<label index="tx_dam_item.loc_desc" type="integer">211711076</label>
+			<label index="tx_dam_item.loc_country" type="integer">220692501</label>
+			<label index="tx_dam_item.loc_city" type="integer">27240159</label>
+			<label index="tx_dam_item.language" type="integer">213573427</label>
+			<label index="tx_dam_item.metrics" type="integer">95338909</label>
+			<label index="tx_dam_item.hres" type="integer">172572883</label>
+			<label index="tx_dam_item.vres" type="integer">163363344</label>
+			<label index="tx_dam_item.hpixels" type="integer">72335581</label>
+			<label index="tx_dam_item.vpixels" type="integer">206488378</label>
+			<label index="tx_dam_item.color_space" type="integer">135589173</label>
+			<label index="tx_dam_item.width" type="integer">76336968</label>
+			<label index="tx_dam_item.width_unit" type="integer">167314328</label>
+			<label index="tx_dam_item.height" type="integer">244530626</label>
+			<label index="tx_dam_item.height_unit" type="integer">167314328</label>
+			<label index="tx_dam_item.pages" type="integer">142478444</label>
+			<label index="tx_dam_item.category" type="integer">147031926</label>
+			<label index="tx_dam_item.date_pheader" type="integer">14210432</label>
+			<label index="tx_dam_item.file_pheader" type="integer">182590850</label>
+			<label index="tx_dam_item.meta" type="integer">55648148</label>
+			<label index="tx_dam_cat_item" type="integer">113910241</label>
+			<label index="tx_dam_cat_item.parent_id" type="integer">107949520</label>
+			<label index="media_type.text" type="integer">165673974</label>
+			<label index="media_type.image" type="integer">199571973</label>
+			<label index="media_type.audio" type="integer">186839105</label>
+			<label index="media_type.dataset" type="integer">37315982</label>
+			<label index="media_type.interactive" type="integer">38509452</label>
+			<label index="media_type.software" type="integer">119132263</label>
+			<label index="media_type.model" type="integer">173382535</label>
+			<label index="media_type.font" type="integer">26539321</label>
+			<label index="media_type.collection" type="integer">219526405</label>
+			<label index="media_type.service" type="integer">204187623</label>
+			<label index="media_type.application" type="integer">239699785</label>
+			<label index="media_type.undefined" type="integer">247528449</label>
+			<label index="tx_dam_lightbox" type="integer">129171333</label>
+			<label index="tx_dam_lightbox.be_groups" type="integer">122173291</label>
+			<label index="tx_dam_lightbox.be_users" type="integer">32892521</label>
+			<label index="tx_dam_lightbox.items" type="integer">88044898</label>
+			<label index="tx_dam_lightbox.share_writeable" type="integer">236971531</label>
+			<label index="tx_dam_selection" type="integer">117415376</label>
+			<label index="tx_dam_selection.type.I.0" type="integer">68710676</label>
+			<label index="tx_dam_selection.type.I.1" type="integer">62480818</label>
+			<label index="tx_dam_selection.type" type="integer">84847074</label>
+			<label index="tx_dam_selection.definition" type="integer">62854914</label>
+			<label index="tx_dam_item" type="integer">62219090</label>
+			<label index="media_type.video" type="integer">55455001</label>
+			<label index="tx_dam_log_download.file_id" type="integer">103876583</label>
+			<label index="tx_dam_log_download.protected" type="integer">224429058</label>
+			<label index="tx_dam_log_download.page_id" type="integer">36562266</label>
+			<label index="tx_dam_log_download.app_id" type="integer">200081922</label>
+			<label index="tx_dam_log_download.typo3_mode" type="integer">266435970</label>
+			<label index="tx_dam_log_download.bytes_downloaded" type="integer">242081611</label>
+			<label index="tx_dam_log_download.sitetitle" type="integer">161875242</label>
+			<label index="ffds_mode.sheet_label" type="integer">105954913</label>
+			<label index="ffds_mode.mode" type="integer">32382020</label>
+			<label index="ffds_layout.sheet_label" type="integer">247307244</label>
+			<label index="ffds_layout.layout" type="integer">229574886</label>
+			<label index="ffds_selection.sheet_label" type="integer">117415376</label>
+			<label index="ffds_selection.selection_type.I.from_mode" type="integer">66390037</label>
+			<label index="ffds_selection.selection_type.I.items" type="integer">145876815</label>
+			<label index="ffds_selection.selection_type.I.folder" type="integer">250737153</label>
+			<label index="ffds_selection.selection_type.I.selection" type="integer">256524268</label>
+			<label index="ffds_selection.selection_type.I.categories" type="integer">251735333</label>
+			<label index="ffds_selection.selection_type.I.merged" type="integer">35521889</label>
+			<label index="ffds_selection.selection_type" type="integer">209752129</label>
+			<label index="ffds_selection.items" type="integer">96724401</label>
+			<label index="ffds_selection.selections" type="integer">268139841</label>
+			<label index="ffds_selection.folder" type="integer">123658505</label>
+			<label index="ffds_selection.categories" type="integer">107076478</label>
+			<label index="ffds_selection.categories_display.I.0" type="integer">213190889</label>
+			<label index="ffds_selection.categories_display.I.1" type="integer">260466476</label>
+			<label index="ffds_selection.categories_display" type="integer">200734581</label>
+			<label index="ffds_selection.categories_where" type="integer">174948809</label>
+			<label index="ffds_selection.categories_where_mode.I.0" type="integer">9055077</label>
+			<label index="ffds_selection.categories_where_mode.I.1" type="integer">99748770</label>
+			<label index="ffds_selection.categories_where_mode" type="integer">189016962</label>
+			<label index="ffds_selection.default_sorting.I.0" type="integer">128029197</label>
+			<label index="ffds_selection.default_sorting" type="integer">94455260</label>
+			<label index="ffds_selection.default_sorting_reverse" type="integer">125470589</label>
+			<label index="ffds_selection.limit" type="integer">216407396</label>
+			<label index="ffds_options.sheet_label" type="integer">229542606</label>
+			<label index="tx_dam_item.div_custom" type="integer">151357892</label>
+			<label index="tx_dam_item.alt_text" type="integer">76311365</label>
+			<label index="tx_dam_item.frontend_pheader" type="integer">124443204</label>
+			<label index="label.tx_dam_mountpoints" type="integer">195362673</label>
+			<label index="tx_dam_log_download" type="integer">93196695</label>
+			<label index="tx_dam_log_download.host" type="integer">129446530</label>
+			<label index="tx_dam_log_download.user_id" type="integer">64060132</label>
+			<label index="tx_dam_log_download.user_name" type="integer">100638193</label>
+			<label index="tx_dam_log_download.user_group" type="integer">80592103</label>
+			<label index="tx_dam_item.thumb" type="integer">28022738</label>
+			<label index="tx_dam_item.thumb_path" type="integer">157794651</label>
+			<label index="tx_dam_item.iptc_subject" type="integer">195412938</label>
+			<label index="cm.edit_popup" type="integer">192934809</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_item">Media</label>
+			<label index="tx_dam_item.div_overview">Overview</label>
+			<label index="tx_dam_item.div_metrics">Metrics</label>
+			<label index="tx_dam_item.div_copyright">Copyright</label>
+			<label index="tx_dam_item.div_extraMeta">Extra data</label>
+			<label index="tx_dam_item.div_usage">Usage</label>
+			<label index="tx_dam_item.media_type">Media type:</label>
+			<label index="tx_dam_item.file_name">File name:</label>
+			<label index="tx_dam_item.file_path">File path:</label>
+			<label index="tx_dam_item.file_dl_name">File download name:</label>
+			<label index="tx_dam_item.file_type">File type:</label>
+			<label index="tx_dam_item.file_type_version">File type version:</label>
+			<label index="tx_dam_item.file_size">File size:</label>
+			<label index="tx_dam_item.file_orig_location">Source/Original location:</label>
+			<label index="tx_dam_item.file_orig_loc_desc">Source/Original location description:</label>
+			<label index="tx_dam_item.file_creator">File creator:</label>
+			<label index="tx_dam_item.file_mime_type">Mime type:</label>
+			<label index="tx_dam_item.file_mime_subtype">Mime subtype:</label>
+			<label index="tx_dam_item.file_ctime">Creation date:</label>
+			<label index="tx_dam_item.file_mtime">Modified date:</label>
+			<label index="tx_dam_item.file_usage">Usage:</label>
+			<label index="tx_dam_item.ident">Ident key (sku):</label>
+			<label index="tx_dam_item.creator">Creator:</label>
+			<label index="tx_dam_item.publisher">Publisher:</label>
+			<label index="tx_dam_item.copyright">Copyright:</label>
+			<label index="tx_dam_item.instructions">Instruction/Usage:</label>
+			<label index="tx_dam_item.abstract">Abstract, excerpt:</label>
+			<label index="tx_dam_item.date_cr">Creation date:</label>
+			<label index="tx_dam_item.date_mod">Modified date:</label>
+			<label index="tx_dam_item.loc_pheader">Location:</label>
+			<label index="tx_dam_item.loc_desc">Location description:</label>
+			<label index="tx_dam_item.loc_country">Location country:</label>
+			<label index="tx_dam_item.loc_city">Location city:</label>
+			<label index="tx_dam_item.language">Content language:</label>
+			<label index="tx_dam_item.metrics">Metrics:</label>
+			<label index="tx_dam_item.hres">Hor. resolution:</label>
+			<label index="tx_dam_item.vres">Vert. resolution:</label>
+			<label index="tx_dam_item.hpixels">Hor. size:</label>
+			<label index="tx_dam_item.vpixels">Vert. size:</label>
+			<label index="tx_dam_item.color_space">Color space:</label>
+			<label index="tx_dam_item.width">Width:</label>
+			<label index="tx_dam_item.width_unit">Unit:</label>
+			<label index="tx_dam_item.height">Height:</label>
+			<label index="tx_dam_item.height_unit">Unit:</label>
+			<label index="tx_dam_item.pages">Content pages:</label>
+			<label index="tx_dam_item.category">Categories:</label>
+			<label index="tx_dam_item.date_pheader">Date:</label>
+			<label index="tx_dam_item.file_pheader">File:</label>
+			<label index="tx_dam_item.meta">Additional meta data:</label>
+			<label index="tx_dam_cat_item">Media Category</label>
+			<label index="tx_dam_cat_item.parent_id">Parent category:</label>
+			<label index="media_type.text">Text</label>
+			<label index="media_type.image">Image</label>
+			<label index="media_type.audio">Audio</label>
+			<label index="media_type.video">Video</label>
+			<label index="media_type.dataset">Dataset</label>
+			<label index="media_type.interactive">Interactive</label>
+			<label index="media_type.software">Software</label>
+			<label index="media_type.model">Model</label>
+			<label index="media_type.font">Font</label>
+			<label index="media_type.collection">Collection</label>
+			<label index="media_type.service">Service</label>
+			<label index="media_type.application">Application</label>
+			<label index="media_type.undefined">Undefined</label>
+			<label index="tx_dam_lightbox">Media Lightbox</label>
+			<label index="tx_dam_lightbox.be_groups">Share with usergroups:</label>
+			<label index="tx_dam_lightbox.be_users">Share with users:</label>
+			<label index="tx_dam_lightbox.items">Lightbox items:</label>
+			<label index="tx_dam_lightbox.share_writeable">Allow other users to make changes:</label>
+			<label index="tx_dam_selection">Selection</label>
+			<label index="tx_dam_selection.type.I.0">Selection rule</label>
+			<label index="tx_dam_selection.type.I.1">Fixed items</label>
+			<label index="tx_dam_selection.type">Selection type:</label>
+			<label index="tx_dam_selection.definition">Selection definition:</label>
+			<label index="tx_dam_log_download.file_id">Media ID:</label>
+			<label index="tx_dam_log_download.protected">Protected:</label>
+			<label index="tx_dam_log_download.page_id">Page ID:</label>
+			<label index="tx_dam_log_download.app_id">Plugin/Application ID:</label>
+			<label index="tx_dam_log_download.typo3_mode">TYPO3 mode:</label>
+			<label index="tx_dam_log_download.bytes_downloaded">Downloaded bytes:</label>
+			<label index="tx_dam_log_download.sitetitle">Website title:</label>
+			<label index="ffds_mode.sheet_label">Mode</label>
+			<label index="ffds_mode.mode">Mode:</label>
+			<label index="ffds_layout.sheet_label">Layout</label>
+			<label index="ffds_layout.layout">Layout:</label>
+			<label index="ffds_selection.sheet_label">Selection</label>
+			<label index="ffds_selection.selection_type.I.from_mode">Defined by Modus (TypoScript)</label>
+			<label index="ffds_selection.selection_type.I.items">selected items (Items to display)</label>
+			<label index="ffds_selection.selection_type.I.folder">selected Folder (Folder to display)</label>
+			<label index="ffds_selection.selection_type.I.selection">exported selection rule(s) (Selections to display)</label>
+			<label index="ffds_selection.selection_type.I.categories">categories (Categories to display)</label>
+			<label index="ffds_selection.selection_type.I.merged">merged queries (Items, Selections, Categories)</label>
+			<label index="ffds_selection.selection_type">Display items from ...:</label>
+			<label index="ffds_selection.items">Items to display:</label>
+			<label index="ffds_selection.selections">Selections to display:</label>
+			<label index="ffds_selection.folder">Folder to display:</label>
+			<label index="ffds_selection.categories">Categories to display:</label>
+			<label index="ffds_selection.categories_display.I.0">Exclude items from sub-categories</label>
+			<label index="ffds_selection.categories_display.I.1">Include items from sub-categories</label>
+			<label index="ffds_selection.categories_display">Categories display option:</label>
+			<label index="ffds_selection.categories_where">Limit to categories (not displayed):</label>
+			<label index="ffds_selection.categories_where_mode.I.0">AND (Item have to be in the limit-categories too)</label>
+			<label index="ffds_selection.categories_where_mode.I.1">NOT (Item must not be in the limit-categories)</label>
+			<label index="ffds_selection.categories_where_mode">Limit categories mode:</label>
+			<label index="ffds_selection.default_sorting.I.0">Default</label>
+			<label index="ffds_selection.default_sorting">Default sorting:</label>
+			<label index="ffds_selection.default_sorting_reverse">Reverse sorting:</label>
+			<label index="ffds_selection.limit">Maximum items to display:</label>
+			<label index="ffds_options.sheet_label">Options</label>
+			<label index="tx_dam_item.div_custom">Custom</label>
+			<label index="tx_dam_item.alt_text">Alt Text (www):</label>
+			<label index="tx_dam_item.frontend_pheader">Frontend:</label>
+			<label index="label.tx_dam_mountpoints">DAM Mounts:</label>
+			<label index="tx_dam_log_download">Download log</label>
+			<label index="tx_dam_log_download.host">Host (IP):</label>
+			<label index="tx_dam_log_download.user_id">User ID:</label>
+			<label index="tx_dam_log_download.user_name">User:</label>
+			<label index="tx_dam_log_download.user_group">User groups:</label>
+			<label index="tx_dam_item.thumb">THUMB:</label>
+			<label index="tx_dam_item.thumb_path">THUMB_PATH:</label>
+			<label index="tx_dam_item.iptc_subject">IPTC_SUBJECT:</label>
+			<label index="cm.edit_popup">Edit (new window)</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

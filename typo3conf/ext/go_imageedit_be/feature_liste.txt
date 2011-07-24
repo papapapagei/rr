@@ -1,0 +1,27 @@
+
+/**
+ *	Feature Liste
+ **/
+
+
+- 	MEHRERE LAYER!!! durch render_goImage auswählbar!
+-	Bilder runterskalieren auf 500px (mit dem Hinweis für den Kunden)			
+-	Hinweis das kein Bild geladen wurde, weil nicht vorhanden							done
+
+MehrBildBetrieb
+- 	Rendering
+	-	Plugins und Extensions
+		-	class.imageedit_ext.php, rechnet bildgroesse um nach crop_gotest...			
+
+
+-	mit TABs zwischen den Bilder umschalten (jQuery UI)	nope, aber jquery
+- 	selector kann nicht kleiner werden als die angabe minWidth, minHeight
+
+
+/**
+ *	Todo Liste
+ **/
+
+-	Andauerndes Abspeichern verhindern
+-	DMHTL Goodies Bug Report
+-	DHTML Goodies Script Bug fixen

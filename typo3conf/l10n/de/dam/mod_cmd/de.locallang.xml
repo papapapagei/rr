@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="messageCmdDenied">Sie sind nicht berechtigt, den Befehl &quot;%s&quot; auszuführen.</label>
+			<label index="labelWarning">Warnung:</label>
+			<label index="labelCmdProcess">Ausführen</label>
+			<label index="labelCmdSave">Speichern</label>
+			<label index="labelCmdSaveClose">Speichern &amp; Schließen</label>
+			<label index="tx_dam_cmd_nothing.title">[kein Befehl]</label>
+			<label index="tx_dam_cmd_nothing.messageNoCmd">Diesem Modul wurde kein Befehl übergeben. (Sie sollten diese Meldung nicht sehen.)</label>
+			<label index="tx_dam_cmd_nothing.messageUnknownCmd">Der diesem Modul übergebene Befehl ist nicht bekannt. (Sie sollten diese Meldung nicht sehen.)</label>
+			<label index="labelTargetFolder">Zielverzeichnis:</label>
+			<label index="tx_dam_cmd_filerename.title_file">Datei umbenennen</label>
+			<label index="tx_dam_cmd_filerename.title_folder">Ordner umbenennen</label>
+			<label index="tx_dam_cmd_filereplace.title">Datei ersetzen</label>
+			<label index="tx_dam_cmd_filedelete.warning">Achtung</label>
+			<label index="tx_dam_cmd_filedelete.title">Datei löschen</label>
+			<label index="tx_dam_cmd_filedelete.message">Die Datei(en) und zugehörige Metadaten tatsächlich löschen?</label>
+			<label index="tx_dam_cmd_filedelete.messageReferencesUsed">Datei wird als Inhalt verwendet!</label>
+			<label index="tx_dam_cmd_filedelete.messageReferencesDelete">Wird die Datei gelöscht, so wird sie auch aus den Inhaltselementen entfernt.</label>
+			<label index="tx_dam_cmd_filedelete.messageReferences">Die Datei wird in folgenden Datensätzen verwendet.</label>
+			<label index="tx_dam_cmd_filedelete.references">Verwendung</label>
+			<label index="tx_dam_cmd_filedelete.submit">Datei löschen</label>
+			<label index="tx_dam_cmd_foldernew.title">Ordner erstellen</label>
+			<label index="tx_dam_cmd_folderdelete.title">Verzeichnis löschen</label>
+			<label index="tx_dam_cmd_folderdelete.messageRecursive">Das Verzeichnis ist nicht leer.</label>
+			<label index="tx_dam_cmd_folderdelete.messageRecursiveDenied">Das Verzeichnis ist nicht leer und kann nicht gelöscht werden.</label>
+			<label index="tx_dam_cmd_filenew.title">Textdatei erstellen</label>
+			<label index="tx_dam_cmd_filenew.text_content">Textinhalt:</label>
+			<label index="tx_dam_cmd_filecopy.title">Datei kopieren</label>
+			<label index="tx_dam_cmd_filecopy.selectTarget">Ein Verzeichnis auswählen, in das die Dateien kopiert werden sollen.</label>
+			<label index="tx_dam_cmd_filecopy.message">Die Datei(en) tatsächlich nach &quot;%s&quot; kopieren?</label>
+			<label index="tx_dam_cmd_filecopy.submit">Datei kopieren</label>
+			<label index="tx_dam_cmd_filemove.title">Datei verschieben</label>
+			<label index="tx_dam_cmd_filemove.selectTarget">Ein Verzeichnis auswählen, in das die Dateien verschoben werden sollen.</label>
+			<label index="tx_dam_cmd_filemove.message">Datei(en) tatsächlich nach &quot;%s&quot; verschieben?</label>
+			<label index="tx_dam_cmd_filemove.submit">Datei verschieben</label>
+			<label index="tx_dam_cmd_fileedit.title">Datei bearbeiten</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_cmd_filereplace.title" type="integer">137137852</label>
+			<label index="tx_dam_cmd_filedelete.warning" type="integer">15379892</label>
+			<label index="tx_dam_cmd_filedelete.title" type="integer">163509798</label>
+			<label index="tx_dam_cmd_filedelete.message" type="integer">100916</label>
+			<label index="tx_dam_cmd_filedelete.messageReferences" type="integer">159807315</label>
+			<label index="tx_dam_cmd_filedelete.references" type="integer">207901063</label>
+			<label index="tx_dam_cmd_filedelete.submit" type="integer">163509798</label>
+			<label index="messageCmdDenied" type="integer">247306804</label>
+			<label index="labelWarning" type="integer">66315062</label>
+			<label index="labelCmdSave" type="integer">211601612</label>
+			<label index="tx_dam_cmd_nothing.title" type="integer">72590348</label>
+			<label index="tx_dam_cmd_nothing.messageNoCmd" type="integer">215828572</label>
+			<label index="tx_dam_cmd_nothing.messageUnknownCmd" type="integer">55448332</label>
+			<label index="labelTargetFolder" type="integer">71103549</label>
+			<label index="tx_dam_cmd_filerename.title_file" type="integer">141321795</label>
+			<label index="tx_dam_cmd_filerename.title_folder" type="integer">230121524</label>
+			<label index="tx_dam_cmd_filedelete.messageReferencesUsed" type="integer">259075986</label>
+			<label index="tx_dam_cmd_filedelete.messageReferencesDelete" type="integer">212132444</label>
+			<label index="tx_dam_cmd_foldernew.title" type="integer">98311831</label>
+			<label index="tx_dam_cmd_folderdelete.title" type="integer">44233043</label>
+			<label index="tx_dam_cmd_folderdelete.messageRecursive" type="integer">168542161</label>
+			<label index="tx_dam_cmd_folderdelete.messageRecursiveDenied" type="integer">247435868</label>
+			<label index="tx_dam_cmd_filenew.title" type="integer">163060686</label>
+			<label index="tx_dam_cmd_filenew.text_content" type="integer">26248166</label>
+			<label index="tx_dam_cmd_fileedit.title" type="integer">24704589</label>
+			<label index="tx_dam_cmd_filecopy.title" type="integer">125663901</label>
+			<label index="tx_dam_cmd_filecopy.selectTarget" type="integer">206912252</label>
+			<label index="tx_dam_cmd_filecopy.message" type="integer">160631427</label>
+			<label index="tx_dam_cmd_filecopy.submit" type="integer">125663901</label>
+			<label index="tx_dam_cmd_filemove.title" type="integer">216534244</label>
+			<label index="tx_dam_cmd_filemove.selectTarget" type="integer">70496373</label>
+			<label index="tx_dam_cmd_filemove.message" type="integer">67945667</label>
+			<label index="tx_dam_cmd_filemove.submit" type="integer">216534244</label>
+			<label index="labelCmdProcess" type="integer">191809451</label>
+			<label index="labelCmdSaveClose" type="integer">253224394</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="messageCmdDenied">You're not allowed to execute the command '%s'.</label>
+			<label index="labelWarning">Warning:</label>
+			<label index="labelCmdSave">Save</label>
+			<label index="tx_dam_cmd_nothing.title">[no command]</label>
+			<label index="tx_dam_cmd_nothing.messageNoCmd">There's no command passed to this module. (You shouldn't see this message.)</label>
+			<label index="tx_dam_cmd_nothing.messageUnknownCmd">The command passed to this module is unknown. (You shouldn't see this message.)</label>
+			<label index="labelTargetFolder">Target folder:</label>
+			<label index="tx_dam_cmd_filerename.title_file">Rename file</label>
+			<label index="tx_dam_cmd_filerename.title_folder">Rename folder</label>
+			<label index="tx_dam_cmd_filereplace.title">Replace file</label>
+			<label index="tx_dam_cmd_filedelete.warning">Warning</label>
+			<label index="tx_dam_cmd_filedelete.title">Delete file</label>
+			<label index="tx_dam_cmd_filedelete.message">Are you sure to delete the file(s) and it's meta data?</label>
+			<label index="tx_dam_cmd_filedelete.messageReferencesUsed">File is in use as content!</label>
+			<label index="tx_dam_cmd_filedelete.messageReferencesDelete">Deleting the file will remove the media item from the content elements.</label>
+			<label index="tx_dam_cmd_filedelete.messageReferences">The file is used in following content elements.</label>
+			<label index="tx_dam_cmd_filedelete.references">Usage</label>
+			<label index="tx_dam_cmd_filedelete.submit">Delete file</label>
+			<label index="tx_dam_cmd_foldernew.title">Create folder</label>
+			<label index="tx_dam_cmd_folderdelete.title">Delete folder</label>
+			<label index="tx_dam_cmd_folderdelete.messageRecursive">The folder is not empty .</label>
+			<label index="tx_dam_cmd_folderdelete.messageRecursiveDenied">The folder is not empty and can't be deleted.</label>
+			<label index="tx_dam_cmd_filenew.title">Create text file</label>
+			<label index="tx_dam_cmd_filenew.text_content">Text content:</label>
+			<label index="tx_dam_cmd_fileedit.title">Edit file</label>
+			<label index="tx_dam_cmd_filecopy.title">Copy file</label>
+			<label index="tx_dam_cmd_filecopy.selectTarget">Select a target folder to copy the files to.</label>
+			<label index="tx_dam_cmd_filecopy.message">Are you sure to copy the file(s) to '%'?</label>
+			<label index="tx_dam_cmd_filecopy.submit">Copy file</label>
+			<label index="tx_dam_cmd_filemove.title">Move file</label>
+			<label index="tx_dam_cmd_filemove.selectTarget">Select a target folder to move the files to.</label>
+			<label index="tx_dam_cmd_filemove.message">Are you sure to move the file(s) to '%s'?</label>
+			<label index="tx_dam_cmd_filemove.submit">Move file</label>
+			<label index="labelCmdProcess">Process</label>
+			<label index="labelCmdSaveClose">Save &amp; Close</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

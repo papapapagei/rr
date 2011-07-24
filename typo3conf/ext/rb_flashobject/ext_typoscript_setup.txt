@@ -1,0 +1,47 @@
+#plugin setup
+
+plugin.tx_rbflashobject_pi1 {
+	allowCaching = 1
+	includeJSFile = 1;
+	headerData = TEXT
+	headerData{
+  		value={$plugin.tx_rbflashobject_pi1.JSFile}
+  		wrap = <script src="|" type="text/javascript"><!--//--></script>
+	}
+	default {
+		bgColor = #ffffff
+		version = 6
+		redirecturl =
+		#default content uid from tt_content
+		altContentUid =
+	}
+	tsMode = 0
+	ts_content {
+		flashmovie = 
+		requiredversion = 6
+		width = 
+		height = 
+		quality = high
+		displaymenu = 0
+		redirecturl = 
+		backgroundcolor = #ffffff
+		additionalparams (
+		) 
+		additionalvars  (
+		)
+	}
+	
+	detectkey = tx_rbflashobject_pi1[detectflash]
+	
+	altContent = RECORDS
+	altContent {
+		tables = tt_content
+	}
+	movieIDPrefix = flash_
+	altContentIDPrefix = alt_
+	altContent_stdWrap.wrap = |
+	
+	#typolink settings for the redirect url
+	redirecturl.returnLast = url
+}
+

@@ -1,0 +1,68 @@
+plugin.tx_ewgallery_pi1 {
+	# small front galery
+	maxW = 331
+	maxH = 0
+	width = 331
+	height = 221
+	# max width+height for background gallery
+	bgMaxW = 1000
+	bgMaxH = 800
+	# background images: lower gamma
+	# bgParams = -gamma 0.5
+	fadeDuration = 0
+	bgFadeDuration = 500
+	# auto slideshow duration (seconds)
+	slideDuration = 22
+	
+	# config for rendered video link
+	videoText {
+		file = GIFBUILDER
+		file {
+			backColor = #0A0A0A
+			XY = 331,39
+			# THE BACKGROUND IMAGE
+			10 = IMAGE
+			10 {
+				file.width = 331
+				offset = 0,0
+			}
+			20 = IMAGE
+			20 {
+				file = typo3conf/ext/ew_gallery/res/video_button_overlay.png
+				offset = 0,0
+			}
+			#20 < .10
+			#20 {
+			#	offset = [10.w]+10,16
+			#	text = (2:33)
+			#	fontFile = fileadmin/templates/fonts/Neutra2Text-Book-kerning90.pfb
+			#}
+			30 = TEXT
+			30 {
+				offset = 190,25
+				text = Watch the trailer
+				text.case = upper
+				fontSize = 14
+				fontColor = #FFFFFF
+				fontFile = fileadmin/templates/fonts/Neutra2TextDemi-kerning90-custom.pfb
+			}
+			40 = IMAGE
+			40 {
+				file = typo3conf/ext/ew_gallery/res/gallery_video_play.png
+				offset = 150,5
+			}
+		}
+	}
+}
+
+page.includeJS {
+	ewgallery = typo3conf/ext/ew_gallery/res/gallery.js
+}
+
+page.includeCSS {
+	ewgallery = typo3conf/ext/ew_gallery/res/gallery.css
+}
+
+page.77 = USER
+page.77.userFunc = tx_ewgallery_pi1->renderPageVideoList
+

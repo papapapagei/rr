@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_tools_indexsetup.title">Indexierungseinstellungen</label>
+			<label index="tx_dam_tools_indexsetup.func_defindex">Indexierungseinstellung anlegen</label>
+			<label index="tx_dam_tools_indexsetup.func_cron_info">Übersicht Cron-Job-Einstellungen</label>
+			<label index="tx_dam_tools_indexsetup.finish">Fertigstellen</label>
+			<label index="tx_dam_tools_indexsetup.start_point">Startverzeichnis für Indexierung</label>
+			<label index="tx_dam_tools_indexsetup.desc">Mit diesem Assistenten kann eine Indexierungskonfiguration erstellt und abgespeichert werden. Die Konfiguration kann für die Automatische Indexierung oder das seperate Cron-Indexierungsskript verwendet werden.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_tools_indexsetup.title" type="integer">83329</label>
+			<label index="tx_dam_tools_indexsetup.func_defindex" type="integer">26813670</label>
+			<label index="tx_dam_tools_indexsetup.func_cron_info" type="integer">117689437</label>
+			<label index="tx_dam_tools_indexsetup.finish" type="integer">169926092</label>
+			<label index="tx_dam_tools_indexsetup.start_point" type="integer">267719360</label>
+			<label index="tx_dam_tools_indexsetup.desc" type="integer">170776628</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_tools_indexsetup.title">Indexing Setup</label>
+			<label index="tx_dam_tools_indexsetup.func_defindex">Define index setup</label>
+			<label index="tx_dam_tools_indexsetup.func_cron_info">Cron job index setup overview</label>
+			<label index="tx_dam_tools_indexsetup.finish">Finish</label>
+			<label index="tx_dam_tools_indexsetup.start_point">Indexing start point</label>
+			<label index="tx_dam_tools_indexsetup.desc">With this wizard you can define and save a setup for the auto indexing feature or the stand-alone indexing script usable for cron jobs.</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

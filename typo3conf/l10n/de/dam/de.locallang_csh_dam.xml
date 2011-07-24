@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index=".description">Metadaten für Mediendateien</label>
+			<label index=".details">Mediendateien können mit Metainformationen ausgestattet werden. Diese Informationen können beispielsweise den Inhalt beschreiben (Beschreibung, Schlagwörter, Ort), technische Daten bereitstellen (Bildgröße) oder urheberrechtsspezifische Daten enthalten.
+All diese Informationen lassen sich zur Handhabung, Suche und Kategorisierung der Mediendateien verwenden.</label>
+			<label index="title.description">Titel des Dokuments</label>
+			<label index="title.details">Der Titel des Mediums wird in den Ansichten Liste und Eintrag angezeigt. Wählen Sie bitte einen kurzen, aussagekräftigen Namen, der nicht den Typ des Eintrags umfaßt.</label>
+			<label index="language.description">Sprache des Dateiinhaltes.</label>
+			<label index="abstract.description">Zusammenfassung des Dateinhaltes.</label>
+			<label index="abstract.details">Bei der Zusammenfassung handelt es sich um eine automatisch erzeugte oder von Hand bearbeitete Zusammenfassung des Inhaltes der Datei. Sie sollte eine Übersicht des Inhaltes geben.</label>
+			<label index="creator.description">Fotograf, Redakteur...</label>
+			<label index="creator.details">Kann Informationen über die Person enthalten, welche die Datei erstellt hat, z.B. den Fotografen...</label>
+			<label index="ident.details">Kann Informationen wie Artikelnummern enthalten. Das Feld ist für benutzerdefinierte Zwecke vorgesehen und hat kein vordefiniertes Format.</label>
+			<label index="file_dl_name.details">Ein Dateiname, der verwendet werden soll, wenn Frontend-Anwendungen die Datei zum Herunterladen anbieten.</label>
+			<label index="mime_type.details">Ein MIME-TYP beschreibt den Typ einer Datei ist bei Internet-Anwendungen für E-Mail und WWW verbreitet. Beispiel: image/jpeg.</label>
+			<label index="file_type.details">Beinhaltet den Dateityp, meist die Dateiendung.</label>
+			<label index="file_creator.description">Das Programm, mit dem die Datei erstellt wurde.</label>
+			<label index="file_creator.details">Beinhaltet Informationen über das Programm, mit dem die Datei erstellt wurde, z.B. Acrobat Distiller.</label>
+			<label index="file_type_version.description">Version des Dateiformats.</label>
+			<label index="file_type_version.details">Die Version des Dateiformats. Bei PDF 1.3 wäre dies &quot;1.3&quot;.</label>
+			<label index="file_usage.description">Verwendung des Mediums</label>
+			<label index="file_usage.details">Anzeige der Inhaltselemente, in denen der Datensatz verwendet wird.</label>
+			<label index="pages.description">Anzahl der Seiten eines Dokuments</label>
+			<label index="date_cr.description">Erstellungsdatum des Dateiinhaltes</label>
+			<label index="date_cr.details">Kann Informationen über die Erstellung einer Datei enthalten, die unabhängig von der Erstellung des Dokuments auf dem Server sind. Beispiel: Das Datum, an dem ein Foto aufgenommen wurde, im Gegensatz zum Datum, an dem das JPEG-Dokument eingescannt wurde.</label>
+			<label index="date_mod.description">Änderungsdatum des Dateiinhalts</label>
+			<label index="date_mod.details">Kann Informationen über die Änderung einer Datei enthalten, die unabhängig von der Änderung des Dokuments auf dem Server sind. Beispiel: Das Datum, an dem ein Bild bearbeitet wurde, im Gegensatz zum Datum, an dem das Dokument zuletzt gespeichert wurde.</label>
+			<label index="loc_desc.details">Beispiel: Beschreibung des Ortes, an dem ein Foto aufgenommen wurde.</label>
+			<label index="loc_country.details">Beispiel: Das Land, in dem ein Foto aufgenommen wurde.</label>
+			<label index="loc_city.details">Beispiel: Die Stadt, in der ein Foto aufgenommen wurde.</label>
+			<label index="file_orig_location.description">Ort der Originaldatei, z.B. der Name einer Foto-CD</label>
+			<label index="file_orig_location.details">Die hier verwendete Datei könnte auf eine nutzbare Größe geändert worden sein (herunterskaliert). Dieses Feld könnte dann Informationen darüber enthalten, wo sich die Originaldatei befindet, z.B. &quot;Klasse Fotos CD 3&quot;.</label>
+			<label index="file_orig_loc_desc.details">Eine Beschreibung des Ortes, an dem sich die Originaldatei befindet.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index=".description" type="integer">4889184</label>
+			<label index=".details" type="integer">38139884</label>
+			<label index="title.description" type="integer">250082196</label>
+			<label index="title.details" type="integer">236067509</label>
+			<label index="language.description" type="integer">154827543</label>
+			<label index="abstract.description" type="integer">248276202</label>
+			<label index="abstract.details" type="integer">148498556</label>
+			<label index="creator.description" type="integer">9726519</label>
+			<label index="creator.details" type="integer">244836751</label>
+			<label index="ident.details" type="integer">79728987</label>
+			<label index="file_dl_name.details" type="integer">34131942</label>
+			<label index="mime_type.details" type="integer">174420764</label>
+			<label index="file_type.details" type="integer">245465949</label>
+			<label index="file_creator.description" type="integer">117700459</label>
+			<label index="file_creator.details" type="integer">255064343</label>
+			<label index="file_type_version.description" type="integer">250468048</label>
+			<label index="file_type_version.details" type="integer">230495558</label>
+			<label index="file_usage.description" type="integer">262043086</label>
+			<label index="file_usage.details" type="integer">35699128</label>
+			<label index="pages.description" type="integer">146088979</label>
+			<label index="date_cr.description" type="integer">74398064</label>
+			<label index="date_cr.details" type="integer">233491284</label>
+			<label index="date_mod.description" type="integer">120976172</label>
+			<label index="date_mod.details" type="integer">236750572</label>
+			<label index="loc_desc.details" type="integer">189528943</label>
+			<label index="loc_country.details" type="integer">137826061</label>
+			<label index="loc_city.details" type="integer">25447617</label>
+			<label index="file_orig_location.description" type="integer">161086537</label>
+			<label index="file_orig_location.details" type="integer">110202927</label>
+			<label index="file_orig_loc_desc.details" type="integer">231813118</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index=".description">Meta data for media files.</label>
+			<label index=".details">Media files can be attributed with meta information. Such information can describe the content (description, keywords, location), provide technical data (image size) or copyright information for example.
+All these information can be used to handle, find and categorize the media files.</label>
+			<label index="title.description">Title of document</label>
+			<label index="title.details">The title of the media item will be displayed in list and item views. Please choose a short descriptive name, not including the type of item.</label>
+			<label index="language.description">Language of the files content.</label>
+			<label index="abstract.description">Abstract of the files content.</label>
+			<label index="abstract.details">The abstract is an automatically created excerpt of the files content or manually edited and should give an overview about the content.</label>
+			<label index="creator.description">Photographer, editor, ....</label>
+			<label index="creator.details">Could hold information about which person created the file. i.e. Photographer ...</label>
+			<label index="ident.details">Could hold information like product number. This is for custom use and has no predefined format.</label>
+			<label index="file_dl_name.details">A file name which should be used to download the file in a potential frontend application.</label>
+			<label index="mime_type.details">A mime type describes the type of a file and is widely used in internet applications like email and www. Example: image/jpeg.</label>
+			<label index="file_type.details">Holds the file type, normally the file suffix.</label>
+			<label index="file_creator.description">Program that created the file</label>
+			<label index="file_creator.details">Holds information about the program used to create the file. i.e. Acrobat Distiller.</label>
+			<label index="file_type_version.description">File format version</label>
+			<label index="file_type_version.details">This is the version of the file format. For PDF 1.3 it is &quot;1.3&quot;</label>
+			<label index="file_usage.description">Usage of the media item</label>
+			<label index="file_usage.details">Display of the content elements in which the record is used.</label>
+			<label index="pages.description">Number of pages of a document</label>
+			<label index="date_cr.description">Creation date of the files content</label>
+			<label index="date_cr.details">Can hold information about the creation of a file independent of the creation of the actual document on the server. Example: the date on which a photo was taken as opposed to the date on which the actual jpg-document was scanned.</label>
+			<label index="date_mod.description">Date of the files content modification</label>
+			<label index="date_mod.details">Can hold information about the changedate of a file independent of the changedate of the actual document on the server. Example: the date on which a digital artwork was modified as opposed to the date on which the actual document was saved last.</label>
+			<label index="loc_desc.details">Example: description where a photo was taken.</label>
+			<label index="loc_country.details">Example: the country where a photo was taken.</label>
+			<label index="loc_city.details">Example: the city where a photo was taken.</label>
+			<label index="file_orig_location.description">Location of the original file like a photo CD name</label>
+			<label index="file_orig_location.details">The file used here might be converted to a usable format (downscaled). This field can hold information where the original file resides. i.e. &quot;Groovy Photos CD 3&quot;</label>
+			<label index="file_orig_loc_desc.details">This is a description of the location the original file can be found.</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_file_upload.title">Hochladen</label>
+			<label index="tx_dam_file_upload.showBrowser">Dateiliste anzeigen</label>
+			<label index="tx_dam_file_upload.submitProcess">Ausgewählte Dateien bearbeiten</label>
+			<label index="tx_dam_file_upload.submitMeta">Metadaten übernehmen</label>
+			<label index="tx_dam_file_upload.uploadStarted">Hochladen gestartet</label>
+			<label index="tx_dam_file_upload.uploadProgress">Fortschritt:</label>
+			<label index="tx_dam_file_upload.uploadFinished">Hochladen abgeschlossen</label>
+			<label index="tx_dam_file_upload.uploadFiles">Hochgeladene Dateien</label>
+			<label index="tx_dam_file_upload.uploadFilesNeedsMeta">Dateien, die noch Metadaten benötigen</label>
+			<label index="tx_dam_file_upload.uploadFailed">Hochladen war nicht erfolgreich</label>
+			<label index="tx_dam_file_upload.uploadFailedDesc">Es scheint, die Dateien waren zu groß zum Hochladen.</label>
+			<label index="tx_dam_file_upload.indexingFailed">Indexierung fehlgeschlagen</label>
+			<label index="tx_dam_file_upload.maxSizeHint">(Maximale Dateigröße für Hochladen: %s)</label>
+			<label index="tx_dam_file_upload.uploadNothing">Keine Dateien hochgeladen!</label>
+			<label index="tx_dam_file_upload.uploadMessages">Meldungen:</label>
+			<label index="tx_dam_file_upload.maxSizeExceeded">Maximale Dateigröße (%s) überschritten?</label>
+			<label index="tx_dam_file_upload.noProcSelection">Es sind keine Dateien zur Bearbeitung ausgewählt!</label>
+			<label index="tx_dam_file_upload.uploadTargetFilemount">Gewähltes Verzeichnis</label>
+			<label index="tx_dam_file_upload.uploadTargetIncoming">Eingangsordner</label>
+			<label index="tx_dam_file_upload.uploadTarget">Ziel:</label>
+			<label index="tx_dam_file_upload.editMeta">Metadaten bearbeiten</label>
+			<label index="tx_dam_file_upload.flashUploader">Hochladen über Flash aktiviert. Zur Nutzung die Hochladeschaltfläche %s im Kopfbereich des Dateimoduls Liste verwenden.</label>
+			<label index="tx_dam_file_upload.uploadFilesNeedsMetaDesc">Diese Dateien können noch nicht übernommen werden, da zwingend notwendige Metadaten fehlen. Bitte füllen Sie diese zuerst aus.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_file_upload.title" type="integer">152310342</label>
+			<label index="tx_dam_file_upload.showBrowser" type="integer">30102871</label>
+			<label index="tx_dam_file_upload.submitProcess" type="integer">99552025</label>
+			<label index="tx_dam_file_upload.submitMeta" type="integer">67831259</label>
+			<label index="tx_dam_file_upload.uploadStarted" type="integer">241143903</label>
+			<label index="tx_dam_file_upload.uploadProgress" type="integer">23405510</label>
+			<label index="tx_dam_file_upload.uploadFinished" type="integer">69808692</label>
+			<label index="tx_dam_file_upload.uploadFiles" type="integer">139552052</label>
+			<label index="tx_dam_file_upload.uploadFilesNeedsMeta" type="integer">58636427</label>
+			<label index="tx_dam_file_upload.uploadFailed" type="integer">43633408</label>
+			<label index="tx_dam_file_upload.uploadFailedDesc" type="integer">84242246</label>
+			<label index="tx_dam_file_upload.indexingFailed" type="integer">177004077</label>
+			<label index="tx_dam_file_upload.maxSizeHint" type="integer">252736060</label>
+			<label index="tx_dam_file_upload.uploadNothing" type="integer">69824257</label>
+			<label index="tx_dam_file_upload.uploadMessages" type="integer">87328996</label>
+			<label index="tx_dam_file_upload.maxSizeExceeded" type="integer">229571959</label>
+			<label index="tx_dam_file_upload.noProcSelection" type="integer">77572729</label>
+			<label index="tx_dam_file_upload.uploadTargetFilemount" type="integer">156471517</label>
+			<label index="tx_dam_file_upload.uploadTargetIncoming" type="integer">69399914</label>
+			<label index="tx_dam_file_upload.uploadTarget" type="integer">199837335</label>
+			<label index="tx_dam_file_upload.editMeta" type="integer">14813675</label>
+			<label index="tx_dam_file_upload.flashUploader" type="integer">35951271</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_file_upload.title">Upload</label>
+			<label index="tx_dam_file_upload.showBrowser">Show upload location browser</label>
+			<label index="tx_dam_file_upload.submitProcess">Process selected files</label>
+			<label index="tx_dam_file_upload.submitMeta">Save meta data</label>
+			<label index="tx_dam_file_upload.uploadStarted">Upload started</label>
+			<label index="tx_dam_file_upload.uploadProgress">Upload progress:</label>
+			<label index="tx_dam_file_upload.uploadFinished">Upload finished</label>
+			<label index="tx_dam_file_upload.uploadFiles">Uploaded files</label>
+			<label index="tx_dam_file_upload.uploadFilesNeedsMeta">Files which needs meta data</label>
+			<label index="tx_dam_file_upload.uploadFailed">Upload failed</label>
+			<label index="tx_dam_file_upload.uploadFailedDesc">It seems the file(s) were too large for uploading.</label>
+			<label index="tx_dam_file_upload.indexingFailed">Indexing failed</label>
+			<label index="tx_dam_file_upload.maxSizeHint">(Maximum upload size: %s)</label>
+			<label index="tx_dam_file_upload.uploadNothing">No files uploaded!</label>
+			<label index="tx_dam_file_upload.uploadMessages">Messages:</label>
+			<label index="tx_dam_file_upload.maxSizeExceeded">Files size exceeded? (%s)</label>
+			<label index="tx_dam_file_upload.noProcSelection">There are no files selected for processing!</label>
+			<label index="tx_dam_file_upload.uploadTargetFilemount">Selected folder</label>
+			<label index="tx_dam_file_upload.uploadTargetIncoming">Incoming folder</label>
+			<label index="tx_dam_file_upload.uploadTarget">Location:</label>
+			<label index="tx_dam_file_upload.editMeta">Edit meta data</label>
+			<label index="tx_dam_file_upload.flashUploader">Flash uploader is enabled - to make use of it, click on the upload button %s in the header of the File list module.</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

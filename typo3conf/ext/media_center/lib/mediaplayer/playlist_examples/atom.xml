@@ -1,0 +1,34 @@
+<feed xmlns='http://www.w3.org/2005/Atom' xmlns:media='http://search.yahoo.com/mrss/'>
+	<title>Example ATOM playlist for the JW Player</title>
+	<link rel='alternate' type='text/html' href='http://www.jeroenwijering.com' />
+
+
+	<entry>
+		<title>Big Buck Bunny - MP3 Audio with thumb</title>
+		<link rel="alternate" type="text/html" href="http://www.bigbuckbunny.org/" />
+		<summary>Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation. Like the foundation's previous film Elephants Dream, the film is made using free and open source software.</summary>
+		<media:group>
+			<media:credit role="author">the Peach Open Movie Project</media:credit>
+			<media:content url="http://www.jeroenwijering.com/upload/bunny.mp3" type="audio/mpeg" duration="33" />
+			<media:thumbnail url="http://www.jeroenwijering.com/upload/bunny.jpg" />
+		</media:group>
+	</entry>
+
+	<entry>
+		<title>Big Buck Bunny - FLV Video with captions</title>
+		<link rel="alternate" href="http://www.bigbuckbunny.org/" />
+		<summary>Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation. Like the foundation's previous film Elephants Dream, the film is made using free and open source software.</summary>
+		<media:credit role="author">the Peach Open Movie Project</media:credit>
+		<media:content url="http://www.jeroenwijering.com/upload/bunny.flv" type="video/x-flv" duration="33" />
+		<media:text url="http://www.jeroenwijering.com/upload/bunny.xml" type="text/xml" />
+	</entry>
+
+	<entry>
+		<title>Big Buck Bunny - JPG Image with start</title>
+		<link rel="alternate" href="http://www.bigbuckbunny.org/" />
+		<summary>Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation. Like the foundation's previous film Elephants Dream, the film is made using free and open source software.</summary>
+		<media:credit role="author">the Peach Open Movie Project</media:credit>
+		<media:content url="http://www.jeroenwijering.com/upload/bunny.jpg" type="image/jpeg" duration="33" start="15" />
+	</entry>
+
+</feed>

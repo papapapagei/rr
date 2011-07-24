@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+    <meta type="array">
+        <description></description>
+        <type>module</type>
+        <csh_table></csh_table>
+        <fileId>EXT:dam/mod_main/locallang_mod.xml</fileId>
+        <labelContext type="array">
+            <label index="mlang_tabs_tab"></label>
+            <label index="mlang_labels_tablabel"></label>
+            <label index="mlang_labels_tabdescr"></label>
+        </labelContext>
+    </meta>
+    <data type="array">
+        <languageKey index="default" type="array">
+            <label index="mlang_tabs_tab">Media</label>
+            <label index="mlang_labels_tablabel">Media</label>
+            <label index="mlang_labels_tabdescr">Digital Asset Management</label>
+        </languageKey>
+    </data>
+    <orig_hash type="array">
+        <languageKey index="default" type="array">
+            <label index="mlang_tabs_tab" type="integer">62219090</label>
+            <label index="mlang_labels_tablabel" type="integer">62219090</label>
+            <label index="mlang_labels_tabdescr" type="integer">267914768</label>
+        </languageKey>
+    </orig_hash>
+    <orig_text type="array">
+        <languageKey index="default" type="array">
+        </languageKey>
+    </orig_text>
+</T3locallang>

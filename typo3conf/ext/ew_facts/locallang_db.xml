@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'ew_facts'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.CType_pi1">Production Facts</label>
+			<label index="tt_content.bodytext">Facts, row-wise, divided by the first colon in the row (:)</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tt_content.CType_pi1">Produktionsdetails</label>
+			<label index="tt_content.bodytext">Details, Zeilenweise, getrennt wird mit dem ersten Doppelpunkt (:) der Zeile</label>
+		</languageKey>
+	</data>
+</T3locallang>

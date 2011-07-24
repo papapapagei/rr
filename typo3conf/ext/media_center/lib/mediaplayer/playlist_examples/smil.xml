@@ -1,0 +1,25 @@
+<smil xmlns="http://www.w3.org/2001/SMIL20/Language">
+	<head>
+		<meta name="title" content="Example SMIL playlist for the JW Player"/>
+		<meta name="link" content="http://www.jeroenwijering.com"/>
+	</head>
+	<body>
+		<seq>
+
+			<par>
+				<audio src="http://www.jeroenwijering.com/upload/bunny.mp3" title="Big Buck Bunny - MP3 Audio with thumb and start" alt="A short animated film by the Blender Institute, part of the Blender Foundation." author="the Peach Open Movie Project" dur="33" begin="12s" />
+				<anchor href="http://www.bigbuckbunny.org/"/>
+				<img src="http://www.jeroenwijering.com/upload/bunny.jpg"/>
+			</par>
+
+			<par>
+				<video src="http://www.jeroenwijering.com/upload/bunny.flv" title="Big Buck Bunny - FLV Video with captions" author="the Peach Open Movie Project" alt="A short animated film by the Blender Institute, part of the Blender Foundation." dur="00:00:33.1" />
+				<anchor href="http://www.bigbuckbunny.org/"/>
+				<textstream src="http://www.jeroenwijering.com/upload/bunny.xml"/>
+			</par>
+
+			<img src="http://www.jeroenwijering.com/upload/bunny.jpg" title="Big Buck Bunny - simple JPG Image" alt="A short animated film by the Blender Institute, part of the Blender Foundation." type="image/jpeg" dur="10" />
+
+		</seq>
+	</body>
+</smil>

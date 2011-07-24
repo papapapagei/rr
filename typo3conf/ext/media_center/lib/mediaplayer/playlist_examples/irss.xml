@@ -1,0 +1,34 @@
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+	<channel>
+		<title>Example itunes RSS playlist for the JW Player</title>
+		<link>http://www.jeroenwijering.com</link>
+
+		<item>
+			<title>Big Buck Bunny - MP3 Audio</title>
+			<itunes:author>the Peach Open Movie Project</itunes:author>
+			<link>http://www.bigbuckbunny.org/</link>
+			<description>Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation. Like the foundation's previous film Elephants Dream, the film is made using free and open source software.</description>
+			<enclosure url="http://www.jeroenwijering.com/upload/bunny.mp3" type="audio/mpeg" />
+			<itunes:duration>00:33</itunes:duration>
+		</item>
+
+		<item>
+			<title>Big Buck Bunny - FLV Video</title>
+			<itunes:author>the Peach Open Movie Project</itunes:author>
+			<link>http://www.bigbuckbunny.org/</link>
+			<description>Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation. Like the foundation's previous film Elephants Dream, the film is made using free and open source software.</description>
+			<enclosure url="http://www.jeroenwijering.com/upload/bunny.flv" type="video/x-flv" />
+			<itunes:duration>00:33</itunes:duration>
+		</item>
+
+		<item>
+			<title>Big Buck Bunny - JPG Image</title>
+			<itunes:author>the Peach Open Movie Project</itunes:author>
+			<link>http://www.bigbuckbunny.org/</link>
+			<description>Big Buck Bunny is a short animated film by the Blender Institute, part of the Blender Foundation. Like the foundation's previous film Elephants Dream, the film is made using free and open source software.</description>
+			<enclosure url="http://www.jeroenwijering.com/upload/bunny.jpg" type="image/jpeg" />
+			<itunes:duration>00:10</itunes:duration>
+		</item>
+
+	</channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index=".alttitle">TemplaVoilà</label>
+			<label index=".description">Die Erweiterung TemplaVoilà enthält eine neuartige Vorlagen-Engine für die Integration von HTML-Vorlagen mit einigen Mausklicks, einen neuen Typ für flexible Inhaltselemente (&quot;Flexible Content&quot;) und ein neues Seiten-Modul, das die Erstellung von Web-Sites mit verschachtelten Inhaltselementen erlaubt.</label>
+			<label index=".image_descr">Ein Teil von TemplaVoilà ist das neuartige System zur Abbildung auf Vorlagen, welches HTML-Tags einer HTML-Vorlage visuell darstellt und dem Entwickler erlaubt, Daten mit den HTML-Element durch einen einfachen Mausklick zu verbinden.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index=".alttitle" type="integer">254510048</label>
+			<label index=".description" type="integer">51411490</label>
+			<label index=".image_descr" type="integer">16580107</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index=".description">The TemplaVoilà extension contains a unique point'n'click template mapping engine, a new content element type &quot;Flexible Content&quot; (for fixed-template elements) and a new page module for building web-pages with nested content elements.</label>
+			<label index=".image_descr">One part of TemplaVoilà is the unique template mapping system which visually shows HTML tags from the template file and allows the user to map data to HTML elements by a single mouseclick.</label>
+			<label index=".alttitle">TemplaVoilà</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

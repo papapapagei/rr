@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="newcewizard.title">Neues Inhaltselement erstellen</label>
+			<label index="newcewizard.select_a_page">Bitte eine Seite aus dem Seitenbaum auswählen.</label>
+			<label index="newcewizard.no_page_access">Keine Berechtigung für diese Seite vorhanden.</label>
+			<label index="newcewizard.hint">Zum Erstellen eines neuen Inhaltselements unten den Typ auswählen. Das Element wird in der Seite hinzugefügt. Anschließend kann das Element bearbeitet werden.</label>
+			<label index="newcewizard.hint_disable">Diesen Hinweis nicht mehr anzeigen</label>
+			<label index="newcewizard.standard">Text &amp; Bilder</label>
+			<label index="newcewizard.text_with_image">Text mit Bild</label>
+			<label index="newcewizard.text_with_image_desc">Ein normales Textelement mit Überschrift, Inhaltstext und Bild</label>
+			<label index="newcewizard.menus">Menü &amp; Sitemap</label>
+			<label index="newcewizard.forms">Formulare</label>
+			<label index="newcewizard.fce">Flexible Inhalte</label>
+			<label index="newcewizard.recent">Kürzlich genutzt</label>
+			<label index="newcewizard.favorites">Favoriten</label>
+			<label index="newcewizard.plugins">Plug-Ins</label>
+			<label index="newcewizard.no_recent_yet">Elemente erscheinen hier automatisch, wenn sie unter anderen Reitern verwendet wurden.\nDerzeit gibt eines keine kürzlich verwendeten Elemente anzuzeigen. Bitte ein Inhaltselement auf einem anderen Reiter auswählen.</label>
+			<label index="newcewizard.no_favorites_yet">Elemente erscheinen hier, wenn sie unter anderen Reitern mit dem %s-Symbol neben dem Element hinzugefügt wurden.\nDerzeit gibt es keine Favoritenelemente anzuzeigen.</label>
+			<label index="newcewizard.add_favorite">Zu den Favoritenelementen hinzufügen</label>
+			<label index="newcewizard.clear_recent">Diese Liste leeren</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="newcewizard.title" type="integer">108632139</label>
+			<label index="newcewizard.select_a_page" type="integer">71483665</label>
+			<label index="newcewizard.no_page_access" type="integer">125353620</label>
+			<label index="newcewizard.hint" type="integer">253372717</label>
+			<label index="newcewizard.hint_disable" type="integer">216072226</label>
+			<label index="newcewizard.standard" type="integer">62582812</label>
+			<label index="newcewizard.text_with_image" type="integer">9972609</label>
+			<label index="newcewizard.text_with_image_desc" type="integer">16126094</label>
+			<label index="newcewizard.menus" type="integer">71636631</label>
+			<label index="newcewizard.forms" type="integer">105185858</label>
+			<label index="newcewizard.fce" type="integer">125197975</label>
+			<label index="newcewizard.recent" type="integer">229528248</label>
+			<label index="newcewizard.favorites" type="integer">226007145</label>
+			<label index="newcewizard.plugins" type="integer">196313238</label>
+			<label index="newcewizard.no_recent_yet" type="integer">176996686</label>
+			<label index="newcewizard.no_favorites_yet" type="integer">30177459</label>
+			<label index="newcewizard.add_favorite" type="integer">2750563</label>
+			<label index="newcewizard.clear_recent" type="integer">231306130</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="newcewizard.title">Create a new content element</label>
+			<label index="newcewizard.select_a_page">Please, select a page in the page tree.</label>
+			<label index="newcewizard.no_page_access">No access to this page.</label>
+			<label index="newcewizard.hint">To create a new content element, select its kind below. The element will be inserted to the page. You can customize the element after insertion.</label>
+			<label index="newcewizard.hint_disable">Do not show this hint again</label>
+			<label index="newcewizard.standard">Text &amp; images</label>
+			<label index="newcewizard.text_with_image">Text with image</label>
+			<label index="newcewizard.text_with_image_desc">A regular text element with header, body text and image</label>
+			<label index="newcewizard.menus">Menu &amp; sitemap</label>
+			<label index="newcewizard.forms">Forms</label>
+			<label index="newcewizard.fce">Flexible content</label>
+			<label index="newcewizard.recent">Recent</label>
+			<label index="newcewizard.favorites">Favorites</label>
+			<label index="newcewizard.plugins">Plugins</label>
+			<label index="newcewizard.no_recent_yet">Elements will appear automatically here after you use them on other tabs.\nCurrently there are no recent elements to show. Please, select a content element on another tab.</label>
+			<label index="newcewizard.no_favorites_yet">Elements will appear here after you add them here using the %s icon near the content element on other tabs.\nCurrently there are no favorite elements to show.</label>
+			<label index="newcewizard.add_favorite">Add to favorite elements</label>
+			<label index="newcewizard.clear_recent">Clear this list</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

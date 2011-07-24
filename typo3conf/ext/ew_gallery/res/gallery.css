@@ -1,0 +1,227 @@
+.ewgallery {
+	/* NOT SELECTABLE */
+	/* Gecko-based, Mozilla */
+	-moz-user-select:none;
+	/* Safari */
+	-khtml-user-select: none;
+}
+
+.ewBackgroundGallery{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 20;
+	background: #0A0A0A;
+}
+
+.ewFrontGallery {
+	position: relative;
+}
+
+.galleryImages {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+.galleryImage{
+	position: absolute;
+	text-align: center;
+	z-index: 10;
+	text-align: center;
+}
+
+.galleryCredits {
+	position: absolute;
+	bottom: 42px;
+	left: 50%;
+	width: 800px;
+	padding: 0 10px;
+	margin-left: -410px;
+	z-index: 20;
+	text-align: right;
+	font-size: 11px;
+}
+
+/*
+ * THE ARROWS
+ */
+
+.galleryArrow {
+	height: 100%;
+	overflow: hidden;
+	cursor: pointer;
+	position: absolute;
+	top: 0px;
+}
+
+.noArrow {
+	display: none;
+}
+
+.ewgallery .galleryArrow {
+	width: 30%;
+	background: url(trans_pix.gif);
+}
+
+.ewgallery .galleryArrowLeft {
+	left: 0px;
+}
+
+.ewgallery .galleryArrowRight {
+	right: 0px;
+}
+
+.ewFrontGallery .galleryArrow{
+	z-index: 20;
+}
+
+.ewFrontGallery .galleryArrowIcon {
+	position: absolute;
+	top: 50%;
+	margin-top: -18px;
+	width: 31px;
+	height: 36px;
+}
+
+.ewFrontGallery .galleryArrowLeft .galleryArrowIcon {
+	background: url(gallery_arrow_left.png) no-repeat 0px 0px;
+	left: 0px;
+}
+
+.ewFrontGallery .galleryArrowRight .galleryArrowIcon {
+	background: url(gallery_arrow_right.png) no-repeat 0px 0px;
+	right: 0px;
+}
+
+.ewFrontGallery .galleryEnlargeWrap {
+	position: absolute;
+	left: 50px;
+	right: 50px;
+	height: 100%;
+	background: url(trans_pix.gif);
+	z-index: 20;
+	/*for ie*/
+	width: 231px;
+}
+
+.ewFrontGallery .galleryEnlargeButton {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -65px;
+	margin-top: -13px;
+	width: 130px;
+	height: 26px;
+	background: url(icon_fullscreen_en.png);
+	display: none;
+}
+
+.ewFrontGallery .galleryEnlargeButton-LANG_0 {
+	background: url(icon_fullscreen_de.png);
+	width: 113px;
+	margin-left: -61px;
+}
+
+.ewBackgroundGallery .galleryArrow {
+/*	display: none;*/
+}
+
+.ewBackgroundGallery .galleryArrowIcon {
+	position: absolute;
+	top: 50%;
+	margin-top: -42px;
+	width: 73px;
+	height: 84px;
+	display: none;
+}
+
+.ewBackgroundGallery .galleryArrowLeft .galleryArrowIcon {
+	left: 0px;
+	background: url(gallery_arrow_big_left.png);
+}
+
+.ewBackgroundGallery .galleryArrowRight .galleryArrowIcon {
+	right: 0px;
+	background: url(gallery_arrow_big_right.png);
+}
+
+.ewBackgroundGallery .galleryArrowLeft .hoverArrow {
+	background: url(gallery_arrow_big_mouseover_left.png);
+	display: none;
+}
+
+.ewBackgroundGallery .galleryArrowRight .hoverArrow {
+	background: url(gallery_arrow_big_mouseover_right.png);
+	display: none;
+}
+
+.galleryVideoLink {
+	margin-top: 17px;
+	cursor: pointer;
+}
+
+/*
+ * Mask Overlay for all images
+ */
+ 
+.ewBackgroundGallery table.mask {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 20; /* mask in front */
+	display: none; /* WE DONT WANT THAT FOR NOW */
+}
+
+/* Put gallery in the back */
+.ewBackgroundGallery .galleryImages {
+	z-index: 10;
+}
+
+/* Put arrows in front anyway */
+.ewBackgroundGallery .galleryArrow {
+	z-index: 30;
+}
+
+.ewBackgroundGallery .maskLeft,
+.ewBackgroundGallery .maskRight {
+	width: 150px;
+}
+
+.ewBackgroundGallery .maskTop,
+.ewBackgroundGallery .maskBottom {
+	height: 150px;
+}
+.ewBackgroundGallery .maskTL {
+	background: url(gallery_tl.png) no-repeat top left;
+}
+
+.ewBackgroundGallery .maskTR {
+	background: url(gallery_tr.png) no-repeat top right;
+}
+
+.ewBackgroundGallery .maskBL {
+	background: url(gallery_bl.png) no-repeat bottom left;
+}
+
+.ewBackgroundGallery .maskBR {
+	background: url(gallery_br.png) no-repeat bottom right;
+}
+
+.ewBackgroundGallery .maskML {
+	background: url(gallery_left.png) repeat-y left;
+}
+
+.ewBackgroundGallery .maskMR {
+	background: url(gallery_right.png) repeat-y left;
+}
+
+.ewBackgroundGallery .maskTC {
+	background: url(gallery_top.png) repeat-x top;
+}
+
+.ewBackgroundGallery .maskBC {
+	background: url(gallery_bottom.png) repeat-x bottom;
+}
+

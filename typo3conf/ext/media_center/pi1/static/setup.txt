@@ -1,0 +1,71 @@
+plugin.tx_mediacenter_pi1 {
+	
+	renderingMode 	= {$plugin.tx_mediacenter_pi1.renderingMode}
+	file  = {$plugin.tx_mediacenter_pi1.file}
+	
+	wrap 	= {$plugin.tx_mediacenter_pi1.wrap}
+	noscriptInsideWrap	= {$plugin.tx_mediacenter_pi1.noscriptInsideWrap}
+	
+	height 					= {$plugin.tx_mediacenter_pi1.height}
+	width 					= {$plugin.tx_mediacenter_pi1.width}
+	
+	wmode 					= opaque
+
+	flashvars {
+		controlbar 		= {$plugin.tx_mediacenter_pi1.flashvars.controlbar}
+		logo 					= {$plugin.tx_mediacenter_pi1.flashvars.logo}
+		playlist 			= {$plugin.tx_mediacenter_pi1.flashvars.playlist}
+		playlistsize 	= {$plugin.tx_mediacenter_pi1.flashvars.playlistsize}
+		skin 					= {$plugin.tx_mediacenter_pi1.flashvars.skin}
+		autostart 		= {$plugin.tx_mediacenter_pi1.flashvars.autostart}
+		bufferlength 	= {$plugin.tx_mediacenter_pi1.flashvars.bufferlength}
+		caption 			= {$plugin.tx_mediacenter_pi1.flashvars.caption}
+		displayclick 	= {$plugin.tx_mediacenter_pi1.flashvars.displayclick}
+		icons				 	= {$plugin.tx_mediacenter_pi1.flashvars.icons}
+		usefullscreen = {$plugin.tx_mediacenter_pi1.flashvars.fullscreen}
+		item 					= {$plugin.tx_mediacenter_pi1.flashvars.item}
+		mute 					= {$plugin.tx_mediacenter_pi1.flashvars.mute}
+		quality 			= {$plugin.tx_mediacenter_pi1.flashvars.quality}
+		repeat 				= {$plugin.tx_mediacenter_pi1.flashvars.repeat}
+		shuffle 			= {$plugin.tx_mediacenter_pi1.flashvars.shuffle}
+		stretching 		= {$plugin.tx_mediacenter_pi1.flashvars.stretching}
+		volume 				= {$plugin.tx_mediacenter_pi1.flashvars.volume}
+		abouttext 		= {$plugin.tx_mediacenter_pi1.flashvars.abouttext}
+		aboutlink 		= {$plugin.tx_mediacenter_pi1.flashvars.aboutlink}
+		linktarget 		= {$plugin.tx_mediacenter_pi1.flashvars.linktarget}
+		streamer		 	= {$plugin.tx_mediacenter_pi1.flashvars.streamer}
+		tracecall 		=	{$plugin.tx_mediacenter_pi1.flashvars.tracecall}
+		plugins		 		=	{$plugin.tx_mediacenter_pi1.flashvars.plugins}
+		backcolor 		= {$plugin.tx_mediacenter_pi1.flashvars.backcolor}
+		frontcolor 		= {$plugin.tx_mediacenter_pi1.flashvars.frontcolor}
+		lightcolor 		= {$plugin.tx_mediacenter_pi1.flashvars.lightcolor}
+		screencolor 	= {$plugin.tx_mediacenter_pi1.flashvars.screencolor}
+	}
+	
+	export {
+		typeNum = {$plugin.tx_mediacenter_pi1.export.typeNum}
+		languageParameter = {$plugin.tx_mediacenter_pi1.export.languageParameter}
+	}
+}
+
+# include the export functionality
+includeLibs.tx_mediacenter_pi1 = EXT:media_center/pi1/class.tx_mediacenter_pi1.php
+
+# page object for the output of the playlist as xml (rss) file
+{$plugin.tx_mediacenter_pi1.export.pageObject} = PAGE
+{$plugin.tx_mediacenter_pi1.export.pageObject} {
+  typeNum = {$plugin.tx_mediacenter_pi1.export.typeNum}
+  config {
+  	disableAllHeaderCode = 1
+  	disableCharsetHeader = 1
+  	tx_realurl_enable = 0
+  }
+	
+  10 = USER_INT
+  10 {
+  	userFunc 					= tx_mediacenter_pi1->exportPlaylist
+  	format 						= {$plugin.tx_mediacenter_pi1.export.format}
+		channelTitle 			= {$plugin.tx_mediacenter_pi1.export.channelTitle}
+		channelLink 			=	{$plugin.tx_mediacenter_pi1.export.channelLink}
+  }
+}

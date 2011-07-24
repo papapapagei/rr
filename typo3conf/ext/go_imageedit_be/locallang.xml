@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Globale Labels</description>
+		<generator></generator>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="selectorField.label">Bild</label>
+			<label index="selectorField">Bild auswählen:</label>
+			
+			<label index="restorePresetFormat">voreingestelltes Format wiederherstellen</label>
+			
+		</languageKey>
+	</data>
+</T3locallang>

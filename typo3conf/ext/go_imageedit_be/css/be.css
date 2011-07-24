@@ -1,0 +1,84 @@
+/********
+  *	IMAGEEDIT BACKEND STYLE
+  *	Version 1.0
+  ********/
+  
+div.imageedit div.thumbnail
+{
+
+}
+
+div.imageedit div.selectorField
+{
+	float:left;
+}
+
+div.imageedit div.selectorField div.thumbnail
+{	
+	text-align:center;
+}
+
+div.imageedit div.selectorField button
+{
+	width:180px;
+	border:0px;
+	border-top:1px dotted #ffAAAA;
+	cursor:pointer;
+	margin-bottom:10px;
+	padding:10px 5px 5px 0;
+	background-color:#FFFFFF;
+}
+
+
+#imageContainer 
+{
+	left:0;
+	margin:15px;
+	margin-top:12px;
+	position:relative;
+	top:0;
+}
+
+div.imageedit div.selectorField button.active
+{
+	background-color:#EFE8CC;
+	cursor:auto;
+}
+
+div.imageedit div.selectorField button:hover
+{
+	background-color:#EFE8CC;
+}
+
+div.imageedit div.crop_content
+{
+	float:left;
+}
+
+
+div.imageedit div.debug
+{
+	clear:both;
+	border-top:1px dotted #ffAAAA;
+	margin-top:10px;
+	padding:10px 5px 5px 0;
+	background-color:#FFFFFF;
+}
+div.imageedit div.debug div.neben
+{
+	float:left;
+}
+
+div.imageedit div.debug div.neben pre
+{
+	/*float:left;*/
+}
+
+.clearfix:after
+{
+	content:".";
+	display:block;
+	clear:both;
+	height:0px;
+	visibility:hidden;
+}

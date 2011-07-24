@@ -1,0 +1,9 @@
+#
+# This TypoScript setup can and should be used for plugins as default configuration
+#
+
+plugin.tx_dam.defaults {
+  // The pid of the media folder. Needs to be set when multiple media folders exist
+  pid =
+
+}

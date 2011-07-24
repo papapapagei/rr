@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'ew_calendar'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_ewcalendar_dates">Dates</label>
+			<label index="tx_ewcalendar_dates.title">Title (if empty, data will be fetched from production)</label>
+			<label index="tx_ewcalendar_dates.production">Production</label>
+			<label index="tx_ewcalendar_dates.highlight">Highlight</label>
+			<label index="tx_ewcalendar_dates.info">Additional Information</label>
+			<label index="tx_ewcalendar_dates.info_size">Font size (additional Information)</label>
+			<label index="tx_ewcalendar_dates.info_size.normal">normal</label>
+			<label index="tx_ewcalendar_dates.info_size.small">small</label>
+			<label index="tx_ewcalendar_dates.info_size.smaller">smaller</label>
+			<label index="tx_ewcalendar_dates.date">Date</label>
+			<label index="tx_ewcalendar_dates.only_month">Show only month</label>
+			<label index="tx_ewcalendar_dates.dont_teaser">Do not teaser</label>
+			<label index="tx_ewcalendar_dates.facts">Facts (row-wise, split by the first colon in the row)</label>
+			<label index="tx_ewcalendar_dates.link_title">Link title (default text if empty)</label>
+			<label index="tx_ewcalendar_dates.link_text">Link Text</label>
+			<label index="tx_ewcalendar_dates.link">Link</label>
+			<label index="tx_ewcalendar_dates.image">Image (if empty, data will be fetched from production)</label>
+			<label index="tx_ewcalendar_productions">Productions</label>
+			<label index="tx_ewcalendar_productions.title">Title</label>
+			<label index="tx_ewcalendar_productions.link">Link</label>
+			<label index="tx_ewcalendar_productions.facts">Facts (row-wise, format "Label: Data") - Extended by Data from Production</label>
+			<label index="tx_ewcalendar_productions.image">Image</label>
+			<label index="tt_content.CType_pi1">Calendar</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tx_ewcalendar_dates">Daten</label>
+			<label index="tx_ewcalendar_dates.title">Titel (wenn leer, werden Angaben von Produktion übernommen)</label>
+			<label index="tx_ewcalendar_dates.production">Produktion</label>
+			<label index="tx_ewcalendar_dates.highlight">Highlight</label>
+			<label index="tx_ewcalendar_dates.info">Zusatzinformation</label>
+			<label index="tx_ewcalendar_dates.info_size">Schriftgröße (Zusatzinformation)</label>
+			<label index="tx_ewcalendar_dates.info_size.normal">normal</label>
+			<label index="tx_ewcalendar_dates.info_size.small">klein</label>
+			<label index="tx_ewcalendar_dates.info_size.smaller">kleiner</label>
+			<label index="tx_ewcalendar_dates.date">Datum</label>
+			<label index="tx_ewcalendar_dates.only_month">Nur Monat anzeigen</label>
+			<label index="tx_ewcalendar_dates.dont_teaser">Nicht anteasern</label>
+			<label index="tx_ewcalendar_dates.facts">Details (Zeilenweise im Format "Label: Angabe") - Wird ergänzt von Angaben aus Produktion</label>
+			<label index="tx_ewcalendar_dates.link_title">Link-Titel (Standardtext wenn leer)</label>
+			<label index="tx_ewcalendar_dates.link_text">Link-Text</label>
+			<label index="tx_ewcalendar_dates.link">Link</label>
+			<label index="tx_ewcalendar_dates.image">Bild (wenn leer, werden Angaben von Produktion übernommen)</label>
+			<label index="tx_ewcalendar_productions">Produktionen</label>
+			<label index="tx_ewcalendar_productions.title">Titel</label>
+			<label index="tx_ewcalendar_productions.link">Link</label>
+			<label index="tx_ewcalendar_productions.facts">Details (Zeilenweise, durch ersten Doppelpunkt der Zeile getrennt)</label>
+			<label index="tx_ewcalendar_productions.image">Bild</label>
+			<label index="tt_content.CType_pi1">Kalender</label>
+		</languageKey>
+	</data>
+</T3locallang>

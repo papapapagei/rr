@@ -1,0 +1,13 @@
+plugin.go_imagedit_be.default {
+	render {
+		# maximale Breite und Höhe jedes Bildes im Contentelement
+		maxWidth =
+		maxHeight =
+		
+		# Gilt nur für Extensioninterne Renderings
+		htmlProperties {
+			alt =
+			title =
+		}
+	}
+}

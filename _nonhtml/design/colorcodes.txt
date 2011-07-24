@@ -1,0 +1,11 @@
+Menübalken:		#363636
+Menüschrift:	#C9C9C9
+Overlay:		#0D0D0D
+Fliesstext:		#C9C9C9
+Header:			#FFFFFF
+Subheader:		#616161
+Fast schwarz:	#0A0A0A
+
+Ticker:
+1: Neutraface Book 13
+2: Georgia, regular 14

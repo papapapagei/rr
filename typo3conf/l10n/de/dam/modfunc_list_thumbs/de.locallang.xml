@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_list_thumbs.title">Vorschaubilder</label>
+			<label index="tx_dam_list_thumbs.bigThumb">Große Vorschaubilder</label>
+			<label index="tx_dam_list_thumbs.showTitle">Titel anzeigen</label>
+			<label index="tx_dam_list_thumbs.showInfo">Infos anzeigen</label>
+			<label index="tx_dam_list_thumbs.showIcons">Bearbeitungsoptionen anzeigen</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_list_thumbs.title" type="integer">181167841</label>
+			<label index="tx_dam_list_thumbs.bigThumb" type="integer">241535724</label>
+			<label index="tx_dam_list_thumbs.showTitle" type="integer">84391716</label>
+			<label index="tx_dam_list_thumbs.showInfo" type="integer">45342288</label>
+			<label index="tx_dam_list_thumbs.showIcons" type="integer">147409929</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_dam_list_thumbs.title">Thumbnails</label>
+			<label index="tx_dam_list_thumbs.bigThumb">Big thumbnails</label>
+			<label index="tx_dam_list_thumbs.showTitle">Show title</label>
+			<label index="tx_dam_list_thumbs.showInfo">Show Info</label>
+			<label index="tx_dam_list_thumbs.showIcons">Show edit options</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

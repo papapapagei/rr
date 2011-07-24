@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Werkzeuge</label>
+			<label index="mlang_labels_tablabel">Verwaltungswerkzeuge</label>
+			<label index="mlang_labels_tabdescr">Hier befinden sich Werkzeuge für die Verwaltung des DAM.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab" type="integer">140664349</label>
+			<label index="mlang_labels_tablabel" type="integer">262901848</label>
+			<label index="mlang_labels_tabdescr" type="integer">169637495</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Tools</label>
+			<label index="mlang_labels_tablabel">Administration Tools</label>
+			<label index="mlang_labels_tabdescr">Tools to administratate the DAM are placed here.</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

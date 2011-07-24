@@ -1,0 +1,645 @@
+<T3DataStructure>
+  <meta>
+    <langDisable>1</langDisable>
+  </meta>
+	<sheets>
+
+		<sDEFAULT>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.files.title</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<files>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.files.playlist</label>
+							<config>
+                <type>group</type>
+                <internal_type>db</internal_type>
+                <allowed>tx_mediacenter_item,pages</allowed>
+                <size>10</size>
+                <maxitems>250</maxitems>
+                <minitems>1</minitems>
+                <show_thumbs>1</show_thumbs>
+              </config>
+						</TCEforms>
+					</files>
+	    	</el>
+	  	</ROOT>
+    </sDEFAULT>
+
+		<layout>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.title</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<height>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.embed.height</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+								<eval>int</eval>
+							</config>
+						</TCEforms>
+					</height>
+					<width>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.embed.width</label>
+							<config>
+								<type>input</type>
+								<size>10</size>
+								<eval>int</eval>
+							</config>
+						</TCEforms>
+					</width>
+					<playlistsize>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.playlistsize</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>int</eval>
+							</config>
+						</TCEforms>
+					</playlistsize>
+					<playlist>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.playlist</label>
+							<config>
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.playlist.0</numIndex>
+										<numIndex index="1">none</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.playlist.1</numIndex>
+										<numIndex index="1">bottom</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.playlist.2</numIndex>
+										<numIndex index="1">over</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.playlist.3</numIndex>
+										<numIndex index="1">right</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</playlist>
+					<backcolor>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.backcolor</label>
+							<config>
+								<type>input</type>
+								<size>6</size>
+								<wizards>
+									<_PADDING>2</_PADDING>
+   								<color>
+								  	<type>colorbox</type>
+								 		<dim>12x12</dim>
+										<tableStyle>border:solid 1px black;</tableStyle>
+										<script>wizard_colorpicker.php</script>
+										<JSopenParams>height=300,width=250,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</color>
+								</wizards>
+						  </config>
+						</TCEforms>
+					</backcolor>
+					<frontcolor>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.frontcolor</label>
+							<config>
+								<type>input</type>
+								<size>6</size>
+								<wizards>
+									<_PADDING>2</_PADDING>
+   								<color>
+								  	<type>colorbox</type>
+								 		<dim>12x12</dim>
+										<tableStyle>border:solid 1px black;</tableStyle>
+										<script>wizard_colorpicker.php</script>
+										<JSopenParams>height=300,width=250,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</color>
+								</wizards>
+						  </config>
+						</TCEforms>
+					</frontcolor>
+					<lightcolor>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.lightcolor</label>
+							<config>
+								<type>input</type>
+								<size>6</size>
+								<wizards>
+									<_PADDING>2</_PADDING>
+   								<color>
+								  	<type>colorbox</type>
+								 		<dim>12x12</dim>
+										<tableStyle>border:solid 1px black;</tableStyle>
+										<script>wizard_colorpicker.php</script>
+										<JSopenParams>height=300,width=250,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</color>
+								</wizards>
+						  </config>
+						</TCEforms>
+					</lightcolor>
+					<screencolor>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.screencolor</label>
+							<config>
+								<type>input</type>
+								<size>6</size>
+								<wizards>
+									<_PADDING>2</_PADDING>
+   								<color>
+								  	<type>colorbox</type>
+								 		<dim>12x12</dim>
+										<tableStyle>border:solid 1px black;</tableStyle>
+										<script>wizard_colorpicker.php</script>
+										<JSopenParams>height=300,width=250,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</color>
+								</wizards>
+						  </config>
+						</TCEforms>
+					</screencolor>
+					<controlbar>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.controlbar</label>
+							<config>
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.controlbar.0</numIndex>
+										<numIndex index="1">bottom</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.controlbar.1</numIndex>
+										<numIndex index="1">over</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.controlbar.2</numIndex>
+										<numIndex index="1">none</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</controlbar>
+					<logo>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.logo</label>
+							<config>
+								<type>input</type>
+								<size>40</size>
+								<wizards type="array">
+									<link type="array">
+									<type>popup</type>
+									<icon>link_popup.gif</icon>
+									<script>browse_links.php?act=file&amp;mode=wizard</script>
+									<JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</link>
+								</wizards>
+							</config>
+						</TCEforms>
+					</logo>
+					<skin>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.layout.skin</label>
+							<config>
+								<type>input</type>
+								<size>40</size>
+								<wizards type="array">
+									<link type="array">
+									<type>popup</type>
+									<icon>link_popup.gif</icon>
+									<script>browse_links.php?act=file&amp;mode=wizard</script>
+									<JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</link>
+								</wizards>
+							</config>
+						</TCEforms>
+					</skin>
+
+	    	</el>
+	  	</ROOT>
+    </layout>
+
+		<behaviour>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.title</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<autostart>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.autostart</label>
+							<config>
+								<type>select</type>		
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.autostart.0</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.autostart.1</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</autostart>
+					<bufferlength>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.bufferlength</label>
+							<config>
+								<type>input</type>
+								<size>12</size>
+								<eval>int</eval>
+							</config>
+						</TCEforms>
+					</bufferlength>
+					<caption>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.caption</label>
+							<config>
+								<type>select</type>		
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.caption.0</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.caption.1</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</caption>
+					<displayclick>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.displayclick</label>
+							<config>
+								<type>select</type>		
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.displayclick.0</numIndex>
+										<numIndex index="1">play</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.displayclick.1</numIndex>
+										<numIndex index="1">link</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.displayclick.2</numIndex>
+										<numIndex index="1">fullscreen</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.displayclick.3</numIndex>
+										<numIndex index="1">mute</numIndex>
+									</numIndex>
+									<numIndex index="5" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.displayclick.4</numIndex>
+										<numIndex index="1">next</numIndex>
+									</numIndex>
+									<numIndex index="6" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.displayclick.5</numIndex>
+										<numIndex index="1">none</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</displayclick>
+					<icons>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.icons</label>
+							<config>
+								<type>select</type>		
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.icons.0</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.icons.1</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</icons>
+					<item>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.item</label>
+							<config>
+								<type>input</type>
+								<size>3</size>
+								<eval>int</eval>
+							</config>
+						</TCEforms>
+					</item>
+					<mute>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.mute</label>
+							<config>
+								<type>select</type>		
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.mute.0</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.mute.1</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</mute>
+					<quality>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.quality</label>
+							<config>
+								<type>select</type>		
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.quality.0</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.quality.1</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</quality>
+					<repeat>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.repeat</label>
+							<config>
+								<type>select</type>		
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.repeat.0</numIndex>
+										<numIndex index="1">none</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.repeat.1</numIndex>
+										<numIndex index="1">list</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.repeat.2</numIndex>
+										<numIndex index="1">always</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</repeat>
+					<shuffle>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.shuffle</label>
+							<config>
+								<type>select</type>		
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.shuffle.0</numIndex>
+										<numIndex index="1">false</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.shuffle.1</numIndex>
+										<numIndex index="1">true</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</shuffle>
+					<stretching>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.stretching</label>
+							<config>
+								<type>select</type>		
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.stretching.0</numIndex>
+										<numIndex index="1">uniform</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.stretching.1</numIndex>
+										<numIndex index="1">fill</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.stretching.2</numIndex>
+										<numIndex index="1">exactfit</numIndex>
+									</numIndex>
+									<numIndex index="4" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.stretching.3</numIndex>
+										<numIndex index="1">none</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</stretching>
+					<volume>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.behaviour.volume</label>
+							<config>
+								<type>input</type>
+								<size>3</size>
+								<eval>int</eval>
+								<range>
+									<upper>100</upper>
+									<lower>0</lower>
+								</range>
+							</config>
+						</TCEforms>
+					</volume>
+	    	</el>
+	  	</ROOT>
+    </behaviour>
+
+		<external>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.external.title</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<abouttext>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.external.abouttext</label>
+							<config>
+								<type>input</type>
+								<size>250</size>
+							</config>
+						</TCEforms>
+					</abouttext>
+					<aboutlink>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.external.aboutlink</label>
+							<config>
+								<type>input</type>
+								<size>250</size>
+								<wizards type="array">
+									<link type="array">
+									<type>popup</type>
+									<icon>link_popup.gif</icon>
+									<script>browse_links.php?act=file&amp;mode=wizard</script>
+									<JSopenParams>height=300,width=500,status=0,menubar=0,scrollbars=1</JSopenParams>
+									</link>
+								</wizards>
+							</config>
+						</TCEforms>
+					</aboutlink>
+					<linktarget>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.external.linktarget</label>
+							<config>
+								<type>select</type>		
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+									<numIndex index="1" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.external.linktarget.0</numIndex>
+										<numIndex index="1">_blank</numIndex>
+									</numIndex>
+									<numIndex index="2" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.external.linktarget.1</numIndex>
+										<numIndex index="1">_self</numIndex>
+									</numIndex>
+									<numIndex index="3" type="array">
+										<numIndex index="0">LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.external.linktarget.2</numIndex>
+										<numIndex index="1">none</numIndex>
+									</numIndex>
+                </items>
+							</config>
+						</TCEforms>
+					</linktarget>
+					<streamer>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.external.streamer</label>
+							<config>
+								<type>input</type>
+								<size>250</size>
+							</config>
+						</TCEforms>
+					</streamer>
+					<tracecall>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.external.tracecall</label>
+							<config>
+								<type>input</type>
+								<size>250</size>
+							</config>
+						</TCEforms>
+					</tracecall>
+					<plugins>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.external.plugins</label>
+							<config>
+								<type>input</type>
+								<size>250</size>
+							</config>
+						</TCEforms>
+					</plugins>
+	    	</el>
+	  	</ROOT>
+    </external>
+
+		<fallback>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.fallback.title</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<noflash>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.fallback.noflash</label>
+							<config>
+                <type>group</type>
+                <internal_type>db</internal_type>
+                <allowed>tt_content</allowed>
+                <size>2</size>
+                <maxitems>250</maxitems>
+                <minitems>0</minitems>
+                <show_thumbs>1</show_thumbs>
+              </config>
+						</TCEforms>
+					</noflash>
+					<noscript>
+						<TCEforms>
+							<label>LLL:EXT:media_center/pi1/locallang.xml:flexform.sheets.fallback.noscript</label>
+							<config>
+                <type>group</type>
+                <internal_type>db</internal_type>
+                <allowed>tt_content</allowed>
+                <size>2</size>
+                <maxitems>250</maxitems>
+                <minitems>0</minitems>
+                <show_thumbs>1</show_thumbs>
+              </config>
+						</TCEforms>
+					</noscript>
+	    	</el>
+	  	</ROOT>
+    </fallback>
+
+  </sheets>
+</T3DataStructure>

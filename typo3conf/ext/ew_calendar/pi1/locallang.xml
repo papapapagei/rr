@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'media_center'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="wizard.title">Calendar date</label>
+			<label index="wizard.description">Calendar date</label>
+			<label index="more">More info</label>
+			<label index="date">Date</label>
+			<label index="day.delimiter">.</label>
+			<label index="month.1">January</label>
+			<label index="month.2">February</label>
+			<label index="month.3">March</label>
+			<label index="month.4">April</label>
+			<label index="month.5">May</label>
+			<label index="month.6">June</label>
+			<label index="month.7">July</label>
+			<label index="month.8">August</label>
+			<label index="month.9">September</label>
+			<label index="month.10">October</label>
+			<label index="month.11">November</label>
+			<label index="month.12">December</label>
+			<label index="teaserTextBlink">Next Event:</label>
+			<label index="archive_title">Archive</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="wizard.title">Kalendereintrag</label>
+			<label index="wizard.description">Kalendereintrag</label>
+			<label index="more">Weitere Info</label>
+			<label index="date">Datum</label>
+			<label index="day.delimiter">.</label>
+			<label index="month.1">Januar</label>
+			<label index="month.2">Februar</label>
+			<label index="month.3">März</label>
+			<label index="month.4">April</label>
+			<label index="month.5">Mai</label>
+			<label index="month.6">Juni</label>
+			<label index="month.7">Juli</label>
+			<label index="month.8">August</label>
+			<label index="month.9">September</label>
+			<label index="month.10">Oktober</label>
+			<label index="month.11">November</label>
+			<label index="month.12">Dezember</label>
+			<label index="teaserTextBlink">Nächstes Event:</label>
+			<label index="archive_title">Archiv</label>
+		</languageKey>
+	</data>
+</T3locallang>

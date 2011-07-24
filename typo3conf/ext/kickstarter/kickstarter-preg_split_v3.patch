@@ -1,0 +1,66 @@
+Index: class.tx_kickstarter_sectionbase.php
+===================================================================
+--- class.tx_kickstarter_sectionbase.php	(revision 25352)
++++ class.tx_kickstarter_sectionbase.php	(working copy)
+@@ -30,7 +30,7 @@
+ /**
+  * TYPO3 Extension Kickstarter
+  *
+- * @author	Kasper Sk�rh�j <kasperYYYY@typo3.com>
++ * @author	Kasper Sk?rh?j <kasperYYYY@typo3.com>
+  * @author	Ingo Renner	<ingo@typo3.org>
+  */
+ class tx_kickstarter_sectionbase {
+@@ -475,7 +475,7 @@
+ 				if ($firstLineWithContent==-1) {
+ 					$firstLineWithContent=$k;
+ 				}
+-				list($preSpace) = split('[^[:space:]]',$v,2);
++				list($preSpace) = preg_split('/[^[:space:]]/',$v,2);
+ 				$min[]=count(explode(chr(9),$preSpace));
+ 				$lastLineWithContent=$k;
+ 			}
+Index: sections/class.tx_kickstarter_section_fields.php
+===================================================================
+--- sections/class.tx_kickstarter_section_fields.php	(revision 25352)
++++ sections/class.tx_kickstarter_section_fields.php	(working copy)
+@@ -263,7 +263,7 @@
+ 		foreach($GLOBALS['TCA'] as $tablename => $cols){
+ 			if ($tablename == $table) $passthrough = 1;
+ 		}
+-		$fieldName = ereg_replace('[^[:alnum:]_]','',strtolower($str));
++		$fieldName = preg_replace('/[^[:alnum:]_]/','',strtolower($str));
+ 		if ((!$fieldName || in_array($fieldName, $this->wizard->reservedWords) || in_array($fieldName, $this->usedNames)) && $passthrough==0)	{
+ 			$fieldName.=($fieldName?'_':'').t3lib_div::shortmd5(microtime());
+ 		}
+@@ -680,7 +680,7 @@
+ 			# Table structure for table \''.$tableName.'\'
+ 			#
+ 			CREATE TABLE '.$tableName.' (
+-		', ereg_replace(',[[:space:]]*$','',implode(chr(10),$DBfields)), '
++		', preg_replace('/,[[:space:]]*$/','',implode(chr(10),$DBfields)), '
+ 
+ 			);
+ 		');
+@@ -1899,7 +1899,7 @@
+ 	function getInlineTCAconfig($table,$fConf) {
+ 		$configL[] = '\'type\' => \'inline\',';
+ 			foreach($fConf as $k => $v) {
+-				if($v && $v !=1 && ereg('^foreign',$k)) {
++				if($v && $v !=1 && preg_match('/^foreign/',$k)) {
+ 					$configL[] = '\''.$k.'\' => \''.$fConf[''.$k.''].'\',';
+ 				}
+ 
+Index: sections/class.tx_kickstarter_section_pi.php
+===================================================================
+--- sections/class.tx_kickstarter_section_pi.php	(revision 25352)
++++ sections/class.tx_kickstarter_section_pi.php	(working copy)
+@@ -253,7 +253,7 @@
+ 				if ($config['plus_user_ex'])	$setType='includeLib';
+ 			break;
+ 			case 'typotags':
+-				$tagName = ereg_replace('[^a-z0-9_]','',strtolower($config['tag_name']));
++				$tagName = preg_replace('/[^a-z0-9_]/','',strtolower($config['tag_name']));
+ 				if ($tagName)	{
+ 					$this->wizard->ext_localconf[]=$this->sPS('
+ 						'.$this->WOPcomment('WOP:'.$WOP.'[addType] / '.$WOP.'[tag_name]')."

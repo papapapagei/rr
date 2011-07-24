@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_damindex_index.title">Indexieren</label>
+			<label index="tx_damindex_index.func_index">Indexieren</label>
+			<label index="tx_damindex_index.func_info">Dienst-Info</label>
+			<label index="tx_damindex_index.select_folder">Bitte zuerst links im Baum ein Verzeichnis als Startpunkt auswählen...</label>
+			<label index="tx_damindex_index.back">Zurück</label>
+			<label index="tx_damindex_index.next">Weiter</label>
+			<label index="tx_damindex_index.start">Start</label>
+			<label index="tx_damindex_index.finished">fertig</label>
+			<label index="tx_damindex_index.choose_start_folder">Wählen Sie das Verzeichnis, in dem die Indexierung beginnen soll.</label>
+			<label index="tx_damindex_index.choose_preset">Wähle Voreinstellung</label>
+			<label index="tx_damindex_index.store_preset">Als Voreinstellung speichern</label>
+			<label index="tx_damindex_index.index_begin">Neue Indexierung</label>
+			<label index="tx_damindex_index.index_fields_preset">Indexierungsfelder Voreinstellung</label>
+			<label index="tx_damindex_index.preset_desc">Standardwerte für Felder.&lt;br /&gt;Die Werte werden ggf. durch automatisch den Dateien entnommene Werte ersetzt.</label>
+			<label index="tx_damindex_index.fixed_desc">Wählen Sie die Felder aus, bei denen Ihre Eingaben &lt;b&gt;in jedem Fall&lt;/b&gt; übernommen werden sollen. Ansonsten werden Ihre Eingaben ggf. während der Indexierung ersetzt.</label>
+			<label index="tx_damindex_index.setup_summary">Einstellung für die Indexierung</label>
+			<label index="tx_damindex_index.indexed_files">Dateien indexieren:</label>
+			<label index="tx_damindex_index.indexed_message">%s Dateien indexiert in %s sek.</label>
+			<label index="tx_damindex_index.set_options">Ausgewählte Optionen:</label>
+			<label index="tx_damindex_index.meta_data_preset">Voreingestellte Metainformationen:</label>
+			<label index="tx_damindex_index.search_files">Suche nach Dateien zum Indexieren. Bitte etwas Geduld.</label>
+			<label index="tx_damindex_index.no_files">Es wurden keine Dateien zum Indexieren gefunden.</label>
+			<label index="tx_damindex_index.no_new_files">Es wurden keine &lt;b&gt;neuen&lt;/b&gt; Dateien zum Indexieren gefunden.</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_damindex_index.title" type="integer">86103277</label>
+			<label index="tx_damindex_index.func_index" type="integer">86103277</label>
+			<label index="tx_damindex_index.select_folder" type="integer">225182655</label>
+			<label index="tx_damindex_index.back" type="integer">5603241</label>
+			<label index="tx_damindex_index.next" type="integer">17482704</label>
+			<label index="tx_damindex_index.start" type="integer">174138022</label>
+			<label index="tx_damindex_index.finished" type="integer">173898987</label>
+			<label index="tx_damindex_index.choose_start_folder" type="integer">183528041</label>
+			<label index="tx_damindex_index.choose_preset" type="integer">266808075</label>
+			<label index="tx_damindex_index.store_preset" type="integer">29579849</label>
+			<label index="tx_damindex_index.index_begin" type="integer">214435343</label>
+			<label index="tx_damindex_index.index_fields_preset" type="integer">120019195</label>
+			<label index="tx_damindex_index.preset_desc" type="integer">91201034</label>
+			<label index="tx_damindex_index.fixed_desc" type="integer">165387506</label>
+			<label index="tx_damindex_index.setup_summary" type="integer">953815</label>
+			<label index="tx_damindex_index.indexed_files" type="integer">131367970</label>
+			<label index="tx_damindex_index.indexed_message" type="integer">89570556</label>
+			<label index="tx_damindex_index.set_options" type="integer">219446396</label>
+			<label index="tx_damindex_index.meta_data_preset" type="integer">266875206</label>
+			<label index="tx_damindex_index.search_files" type="integer">111004384</label>
+			<label index="tx_damindex_index.no_files" type="integer">149909252</label>
+			<label index="tx_damindex_index.no_new_files" type="integer">262993749</label>
+			<label index="tx_damindex_index.func_info" type="integer">166127357</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="tx_damindex_index.title">Indexing</label>
+			<label index="tx_damindex_index.func_index">Indexing</label>
+			<label index="tx_damindex_index.select_folder">Please select a folder in the browse tree on the left side...</label>
+			<label index="tx_damindex_index.back">Back</label>
+			<label index="tx_damindex_index.next">Next</label>
+			<label index="tx_damindex_index.start">Start</label>
+			<label index="tx_damindex_index.finished">finished</label>
+			<label index="tx_damindex_index.choose_start_folder">Choose a folder where the indexing should begin.</label>
+			<label index="tx_damindex_index.choose_preset">Select preset</label>
+			<label index="tx_damindex_index.store_preset">Store current setup</label>
+			<label index="tx_damindex_index.index_begin">New indexing</label>
+			<label index="tx_damindex_index.index_fields_preset">Indexing field predefinition</label>
+			<label index="tx_damindex_index.preset_desc">Preset meta descriptions for files.&lt;br /&gt;The content may be replaced by meta content from the files themselves.</label>
+			<label index="tx_damindex_index.fixed_desc">Check the fields you want to set &lt;b&gt;fixed&lt;/b&gt;.&lt;br /&gt;The input will then not be replaced.</label>
+			<label index="tx_damindex_index.setup_summary">Indexing setup summary</label>
+			<label index="tx_damindex_index.indexed_files">Indexed files:</label>
+			<label index="tx_damindex_index.indexed_message">%s files indexed in %s sec.</label>
+			<label index="tx_damindex_index.set_options">Set Options:</label>
+			<label index="tx_damindex_index.meta_data_preset">Meta Data Preset:</label>
+			<label index="tx_damindex_index.search_files">Search for files to be indexed. Be patient.</label>
+			<label index="tx_damindex_index.no_files">There are no files to index.</label>
+			<label index="tx_damindex_index.no_new_files">There are no &lt;b&gt;new&lt;/b&gt; files to index.</label>
+			<label index="tx_damindex_index.func_info">Services Info</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

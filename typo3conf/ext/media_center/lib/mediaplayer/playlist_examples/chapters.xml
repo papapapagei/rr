@@ -1,0 +1,71 @@
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/">
+	<channel>
+		<title>Example media RSS playlist for the JW Player</title>
+		<link>http://www.jeroenwijering.com</link>
+
+		<item>
+			<title>Opening credits</title>
+			<media:content url="http://content.bitsontherun.com/videos/QH7ojzkm.flv" type="video/x-m4v" start="00:00" />
+			<media:thumbnail url="http://www.jeroenwijering.com/upload/ed1.jpg" />
+			<description>In which we meet Proog and Emo, the two characters of this movie.</description>
+			<link>http://orange.blender.org/</link>
+		</item>
+
+		<item>
+			<title>Wire attack</title>
+			<media:content url="http://content.bitsontherun.com/videos/QH7ojzkm.flv" type="video/x-m4v" start="00:26" />
+			<media:thumbnail url="http://www.jeroenwijering.com/upload/ed2.jpg" />
+			<description>In which the computer world of our actors is being introduced.</description>
+			<link>http://orange.blender.org/</link>
+		</item>
+
+		<item>
+			<title>The bird cave</title>
+			<media:content url="http://content.bitsontherun.com/videos/QH7ojzkm.flv" type="video/x-m4v" start="01:10" />
+			<media:thumbnail url="http://www.jeroenwijering.com/upload/ed3.jpg" />
+			<description>In which Proog takes upon his role as a guide and savely sees Emo across.</description>
+			<link>http://orange.blender.org/</link>
+		</item>
+
+		<item>
+			<title>Answer the phone</title>
+			<media:content url="http://content.bitsontherun.com/videos/QH7ojzkm.flv" type="video/x-m4v" start="02:30" />
+			<media:thumbnail url="http://www.jeroenwijering.com/upload/ed4.jpg" />
+			<description>In which Proog takes upon his role as a guide and savely sees Emo across.</description>
+			<link>http://orange.blender.org/</link>
+		</item>
+
+		<item>
+			<title>Across the gap</title>
+			<media:content url="http://content.bitsontherun.com/videos/QH7ojzkm.flv" type="video/x-m4v" start="03:44" />
+			<media:thumbnail url="http://www.jeroenwijering.com/upload/ed5.jpg" />
+			<description>In which we learn that not everything here is what it looks like.</description>
+			<link>http://orange.blender.org/</link>
+		</item>
+
+		<item>
+			<title>Elevator Ride</title>
+			<media:content url="http://content.bitsontherun.com/videos/QH7ojzkm.flv" type="video/x-m4v" start="04:53" />
+			<media:thumbnail url="http://www.jeroenwijering.com/upload/ed6.jpg" />
+			<description>In which Proog and Emo jump into space, and fall back again.</description>
+			<link>http://orange.blender.org/</link>
+		</item>
+
+		<item>
+			<title>Final Conflict</title>
+			<media:content url="http://content.bitsontherun.com/videos/QH7ojzkm.flv" type="video/x-m4v" start="06:25" />
+			<media:thumbnail url="http://www.jeroenwijering.com/upload/ed7.jpg" />
+			<description>In which Emo does not tolerate Proogs guidance anymore, with fatal consequence.</description>
+			<link>http://orange.blender.org/</link>
+		</item>
+
+		<item>
+			<title>Ending Credits</title>
+			<media:content url="http://content.bitsontherun.com/videos/QH7ojzkm.flv" type="video/x-m4v" start="09:25" />
+			<media:thumbnail url="http://www.jeroenwijering.com/upload/ed8.jpg" />
+			<description>In which the huge list of contributers to this project passes by.</description>
+			<link>http://orange.blender.org/</link>
+		</item>
+
+	</channel>
+</rss>

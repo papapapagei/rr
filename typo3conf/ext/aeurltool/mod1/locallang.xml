@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for module &quot;tools_txaeurltoolM1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">UrlTool</label>
+			<label index="function404">404-Error-Handling</label>
+			<label index="functionRealurlConfig">RealUrl-Configuration</label>
+			<label index="functionRealurlCache">RealUrl-Cache / Realurl-Errorlog</label>
+			<label index="functionPathsegment">Speaking URL Pathsegment / Alias</label>
+			<label index="functionHelp">Help / Information</label>
+			<label index="description">Manage 404-Error-Handling / Realurl-Cache</label>
+			<label index="section404">404-Error-Handling</label>
+			<label index="sectionRealurlConfig">RealUrl-Configuration</label>
+			<label index="sectionRealurlCache">RealUrl-Cache</label>
+			<label index="sectionRealurlErrorlog">RealUrl-Errorlog</label>
+			<label index="sectionPathsegment">Pages with Speaking URL Pathsegment</label>
+			<label index="sectionAlias">Pages with Alias</label>
+			<label index="sectionHelp">Help / Information</label>
+			<label index="sectionHelp404">404-Error-Handling with TYPO3</label>
+			<label index="sectionHelpRealurl">RealUrl-Configuration</label>
+			<label index="labelRealurlApply">Use this Realurl-Configuration</label>
+			<label index="labelRealurlCode">Realurl-Configuration</label>
+			<label index="labelRealurlDefault">Load Default-Configuration&lt;br /&gt;(will overwrite input-field)</label>
+			<label index="label404Apply">Use 404-Errorpage</label>
+			<label index="label404Url">404-Errorpage</label>
+			<label index="label404Header">HTTP Status-Header</label>
+			<label index="labelClearRealurl">Clear Realurl-Cache</label>
+			<label index="labelClearRealurlError">Clear Realurl-Errorlog</label>
+			<label index="labelClearFeCache">Clear Frontend-Cache</label>
+			<label index="buttonSaveTitle">Save</label>
+			<label index="buttonClearTitle">Clear cache</label>
+			<label index="theaderUrl">URL</label>      
+			<label index="theaderErrormessage">Errormessage</label>      
+			<label index="theaderDate">Date</label>      
+			<label index="theaderPage">Page-ID</label>      
+			<label index="theaderTitle">Title</label>      
+			<label index="theaderSpeaking">Speaking URL Pathsegment</label>      
+			<label index="theaderAlias">Alias</label>      
+			<label index="msgRealurlNotInstalled">Extension realurl not installed!</label>
+			<label index="msg404confSaved">404-Error-Handling saved!</label>
+			<label index="msg404confActivated">404-Error-Handling activated in localconf.php!</label>
+			<label index="msg404confError">Error in configuration! Not saved! (URL and/or header invalid)</label>
+			<label index="msgRealurlconfSaved">RealUrl-Configuration saved!</label>
+			<label index="msgRealurlconfError">Syntax-Error in RealUrl-Configuration! File not saved!</label>
+			<label index="msgRealurlconfActivated">RealUrl-Configuration activated in localconf.php!</label>
+			<label index="msgLocalconfError">Error in temporary localconf.php! File Not saved!</label>
+			<label index="msgRealurlDefaultLoaded">Default RealUrl-Configuration loaded! (but not saved)</label>
+			<label index="msgWriteError">Error writing to file: </label>
+			<label index="msgCacheCleared">Caches cleared!</label>
+			<label index="msgNoPathsegment">No pages with PATHSEGMENT found!</label>
+			<label index="msgNoAlias">No pages with ALIAS found!</label>
+			<label index="help00">The variables for the 404 Error-Handling are saved into the file typo3conf/urltoolconf_404.php.&lt;br /&gt;&lt;i&gt;include(PATH_typo3conf.\'urltoolconf_404.php\');&lt;/i&gt; is added to typo3conf/localconf.php</label>			
+			<label index="help01">&lt;i&gt;[FE][pageNotFound_handling]&lt;/i&gt;&lt;br /&gt;Strings: redirect URL, eg. 'notfound.html' or 'http://www.domain.org/errors/notfound.html'. &lt;br /&gt;&lt;br /&gt;If prefixed with "READFILE:" then it will expect the remaining string to be a HTML file which will be read and outputted directly after having the marker "###CURRENT_URL###" substituted with REQUEST_URI and ###REASON### with reason text, &lt;br /&gt;for example: "READFILE:fileadmin/notfound.html". </label>			
+			<label index="help02">&lt;i&gt;[FE][pageNotFound_handling_statheader]&lt;/i&gt;&lt;br /&gt;If 'pageNotFound_handling' is enabled, this string will always be sent as header before the actual handling.</label>			
+			<label index="help03">More information ...&lt;br /&gt;- Install-Tool (All configuration)&lt;br /&gt;- http://www.typo3.net/backendkonfiguration/frontend_konfiguration/#pageNotFound_handling</label>			
+			<label index="help04">&lt;b&gt;Attention&lt;/b&gt;: This extension updates the file localconf.php of your TYPO3-Installation!</label>			
+			<label index="helpR00">Settings for the Realurl-Configuration are saved into the file typo3conf/urltoolconf_realurl.php.&lt;br /&gt;&lt;i&gt;include(PATH_typo3conf.\'urltoolconf_realurl.php\');&lt;/i&gt; is added to typo3conf/localconf.php&lt;br /&gt;&lt;br /&gt;more information ...</label>			
+			<label index="helpR01">&lt;a href="http://typo3.org/documentation/document-library/extension-manuals/realurl/1.1.0/view/" target="_blank"&gt;http://typo3.org/documentation/document-library/extension-manuals/realurl/1.1.0/view/&lt;/a&gt;</label>			
+			<label index="helpR02">&lt;a href="http://news.typo3.org/about/realurl-configuration/" target="_blank"&gt;http://news.typo3.org/about/realurl-configuration/&lt;/a&gt;</label>			
+			<label index="helpR03">&lt;a href="http://www.tugmuc.de/tugmuc-projekte/realurl-aktivieren-und-konfigurieren.html" target="_blank"&gt;http://www.tugmuc.de/tugmuc-projekte/realurl-aktivieren-und-konfigurieren.html&lt;/a&gt;</label>			
+			<label index="helpR04">&lt;b&gt;Attention&lt;/b&gt;: This extension updates the file localconf.php of your TYPO3-Installation!</label>			
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="title">UrlTool</label>
+			<label index="function404">404-Fehlerbehandlung</label>
+			<label index="functionRealurlConfig">RealUrl-Konfiguration</label>
+			<label index="functionRealurlCache">RealUrl-Cache / Realurl-Errorlog</label>
+			<label index="functionPathsegment">Speaking URL Pathsegment / Alias</label>
+			<label index="functionHelp">Hilfe / Information</label>
+			<label index="description">Verwalten der 404-Fehlerbehandlung / Realurl-Cache</label>
+			<label index="section404">404-Fehlerbehandlung</label>
+			<label index="sectionRealurlConfig">RealUrl-Konfiguration</label>
+			<label index="sectionRealurlCache">RealUrl-Cache</label>
+			<label index="sectionRealurlErrorlog">RealUrl-Errorlog</label>
+			<label index="sectionPathsegment">Seiten mit Speaking URL Pathsegment</label>
+			<label index="sectionAlias">Seiten mit Alias</label>
+			<label index="sectionHelp">Hilfe / Information</label>
+			<label index="sectionHelp404">404-Fehlerbehandlung mit TYPO3</label>
+			<label index="sectionHelpRealurl">RealUrl-Konfiguration</label>
+			<label index="labelRealurlApply">Diese Realurl-Konfiguration verwenden</label>
+			<label index="labelRealurlCode">Realurl-Konfiguration</label>
+			<label index="labelRealurlDefault">Lade Standard-Konfiguration&lt;br /&gt;(Eingabefeld wird ueberschrieben)</label>
+			<label index="label404Apply">404-Fehlerseite verwenden</label>
+			<label index="label404Url">404-Fehlerseite</label>
+			<label index="label404Header">HTTP Status-Header</label>
+			<label index="labelClearRealurl">Realurl-Cache leeren</label>
+			<label index="labelClearRealurlError">Realurl-Errorlog leeren</label>
+			<label index="labelClearFeCache">Frontend-Cache leeren</label>
+			<label index="buttonSaveTitle">Speichern</label>
+			<label index="buttonClearTitle">Cache leeren</label>
+			<label index="theaderUrl">URL</label>      
+			<label index="theaderErrormessage">Fehlermeldung</label>      
+			<label index="theaderDate">Datum</label>      
+			<label index="theaderPage">Seiten-ID</label>      
+			<label index="theaderTitle">Titel</label>      
+			<label index="theaderSpeaking">Speaking URL Pathsegment</label>      
+			<label index="theaderAlias">Alias</label>      
+			<label index="msgRealurlNotInstalled">Extension realurl ist nicht installiert!</label>
+			<label index="msg404confSaved">404-Fehlerbehandlung gespeichert!</label>
+			<label index="msg404confActivated">404-Fehlerbehandlung in localconf.php aktiviert!</label>
+			<label index="msg404confError">Fehler in der Konfiguration! Nicht gespeichert! (URL und/oder Header ungueltig)</label>
+			<label index="msgRealurlconfSaved">RealUrl-Konfiguration gespeichert!</label>
+			<label index="msgRealurlconfError">Syntax-Fehler in der RealUrl-Konfiguration! Datei nicht gespeichert!</label>
+			<label index="msgRealurlDefaultLoaded">Standard RealUrl-Konfiguration wurde geladen! (aber noch nicht gespeichert)</label>
+			<label index="msgRealurlconfActivated">RealUrl-Konfiguration in localconf.php aktiviert!</label>
+			<label index="msgLocalconfError">Fehler in der temporaeren localconf.php! Datei wurde nicht gespeichert!</label>
+			<label index="msgWriteError">Fehler beim schreiben der Datei: </label>
+			<label index="msgCacheCleared">Caches wurden geleert!</label>
+			<label index="msgNoPathsegment">Keine Seiten mit PATHSEGMENT vorhanden!</label>
+			<label index="msgNoAlias">Keine Seiten mit ALIAS vorhanden!</label>
+			<label index="help00">Die Variablen fuer die 404-Fehlerbehandlung werden in der Datei typo3conf/urltoolconf_404.php gespeichert.&lt;br /&gt;&lt;i&gt;include(PATH_typo3conf.\'urltoolconf_404.php\');&lt;/i&gt; wird in typo3conf/localconf.php eingefuegt</label>			
+			<label index="help01">&lt;i&gt;[FE][pageNotFound_handling]&lt;/i&gt;&lt;br /&gt;&lt;br /&gt; Strings : Umleitung auf eine andere Seite, z.B. 'notfound.html' oder 'http://www.domain.org/errors/notfound.html'. &lt;br /&gt;&lt;br /&gt;Wenn Sie dieses mit einem vorangestellten 'READFILE:' angeben, wird fuer den restlichen Teil der Zeichenkette auf eine HTML Datei verwiesen, welche direkt gelesen und ausgegeben wird, nachdem der Marker ###CURRENT_URL### mit REQUEST_URL und der Marker ###REASON### mit dem Begruendungstext gefuellt wurden. &lt;br /&gt;Beispiel: [FE][pageNotFound_handling] = READFILE:fileadmin/notfound.html </label>			
+			<label index="help02">&lt;i&gt;[FE][pageNotFound_handling_statheader]&lt;/i&gt;&lt;br /&gt;Wenn [pageNotFound_handling] aktiviert ist, wird diese hier angegeben Zeichenkette als Header vor der tatsaechlichen Abarbeitung gesendet.</label>			
+			<label index="help03">Mehr Informationen ...&lt;br /&gt;- Install-Tool (All configuration)&lt;br /&gt;- http://www.typo3.net/backendkonfiguration/frontend_konfiguration/#pageNotFound_handling</label>			
+			<label index="help04">&lt;b&gt;Achtung&lt;/b&gt;: Diese Extension veraendert die Datei localconf.php Ihrer TYPO3-Installation!</label>			
+			<label index="helpR00">Die Einstellungen fuer die Realurl-Konfiguration werden in der Datei typo3conf/urltoolconf_realurl.php gespeichert.&lt;br /&gt;&lt;i&gt;include(PATH_typo3conf.\'urltoolconf_realurl.php\');&lt;/i&gt; wird in typo3conf/localconf.php eingefuegt&lt;br /&gt;&lt;br /&gt;mehr Informationen ...</label>			
+			<label index="helpR01">&lt;a href="http://typo3.org/documentation/document-library/extension-manuals/realurl/1.1.0/view/" target="_blank"&gt;http://typo3.org/documentation/document-library/extension-manuals/realurl/1.1.0/view/&lt;/a&gt;</label>			
+			<label index="helpR02">&lt;a href="http://news.typo3.org/about/realurl-configuration/" target="_blank"&gt;http://news.typo3.org/about/realurl-configuration/&lt;/a&gt;</label>			
+			<label index="helpR03">&lt;a href="http://www.tugmuc.de/tugmuc-projekte/realurl-aktivieren-und-konfigurieren.html" target="_blank"&gt;http://www.tugmuc.de/tugmuc-projekte/realurl-aktivieren-und-konfigurieren.html&lt;/a&gt;</label>			
+			<label index="helpR04">&lt;b&gt;Achtung&lt;/b&gt;: Diese Extension veraendert die Datei localconf.php Ihrer TYPO3-Installation!</label>			
+		</languageKey>
+	</data>
+</T3locallang>
+

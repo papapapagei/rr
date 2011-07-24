@@ -1,0 +1,89 @@
+<!-- ###CALENDAR### begin -->
+<div class="calendar">
+	<div class="currentDates">
+		###CURRENT_DATES###
+	</div>
+	<div class="pastDates">
+		###ARCHIVE###
+	</div>
+</div>
+<!-- ###CALENDAR### end -->
+
+<!-- ###ITEM### begin -->
+<table class="calendar-event">
+	<tr>
+		<td rowspan="2" class="date">
+			<table class="calendar-date">
+				<tr>
+					<td class="day">
+						###DAY###
+					</td>
+					<td class="month">
+						###MONTH###<br/>
+						###YEAR###
+					</td>
+				</tr>
+			</table>
+		<td class="title-col">
+			###TITLE###
+		</td>
+		<td class="info-col ###INFO_FONT_SIZE###">
+			###INFO###
+		</td>
+	</tr>
+	###NO_DETAILS_START###
+	<tr>
+		<td class="details" colspan="2">
+			<div class="sectionContentWrap"><div class="sectionContent">
+				<div class="details-box">
+					<div class="details-image">###IMAGE###</div>
+					<table class="details-table">
+						###DETAILS###
+					</table>
+					<div class="clearLeft"></div>
+				</div>
+			</div></div>
+		</td>
+	</tr>
+	###NO_DETAILS_END###
+</table>
+<!-- ###ITEM### end -->
+
+<!-- ###DETAIL### begin -->
+	<tr class="detail detail-###NO###">
+		<td class="detail-label">###DETAIL_LABEL###:</td>
+		<td class="detail-value">###DETAIL_VALUE###</td>
+	</tr>
+<!-- ###DETAIL### end -->
+
+
+<!-- ###ARCHIVE_YEAR### begin -->
+<div class="calendar-archive-year">
+	<div class="date">
+		###ARCHIVE_TITLE###
+	</div>
+</div>
+<!-- ###ARCHIVE_YEAR### end -->
+
+<!-- ###ARCHIVE_ITEM### begin -->
+<table class="calendar-archive-event">
+	<tr>
+		<td class="date-col">
+			<div class="wrap">
+				###MONTH### ###YEAR###
+			</div>
+		</td>
+		<td class="title-col">
+			<div class="wrap">
+				###TITLE###
+			</div>
+		</td>
+		<td class="info-col ###INFO_FONT_SIZE###">
+			<div class="wrap">
+				###INFO###
+			</div>
+		</div>
+		</td>
+	</tr>
+</table>
+<!-- ###ARCHIVE_ITEM### end -->

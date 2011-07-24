@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>Main</description>
+		<type>module</type>
+		<csh_table></csh_table>
+		<fileId>EXT:templavoila/locallang.xml</fileId>
+		<labelContext type="array">
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="cm1_title">TemplaVoilà</label>
+			<label index="cm1_viewsubelements">View: Sub elements</label>
+			<label index="cm1_viewflexformxml">View: Flexform XML</label>
+			<label index="cm_viewdsto">View: DS/TO</label>
+			<label index="cm1_pagesusingthiselement">Pages using this element -&gt;</label>
+			<label index="wiz_refElements">Reference unused content elements (templavoila)</label>
+		</languageKey>
+	</data>
+</T3locallang>

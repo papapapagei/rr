@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>database</type>
+		<description>Language labels for database tables/fields belonging to extension 'google_earth'</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="list_type_pi1">Media Center</label>
+			<label index="tx_mediacenter_item">Media Center File</label>
+			<label index="tx_mediacenter_item.sheet_description">Description</label>
+			<label index="tx_mediacenter_item.title">Title</label>
+			<label index="tx_mediacenter_item.image">Image</label>
+			<label index="tx_mediacenter_item.description">Description</label>
+			<label index="tx_mediacenter_item.author">Author</label>
+			<label index="tx_mediacenter_item.sheet_file">File</label>
+			<label index="tx_mediacenter_item.file">file: local file (will be copied to uploads/tx_mediacenter)</label>
+			<label index="tx_mediacenter_item.file_url">file_url: url to external file (use as reference to a local file as well)</label>
+			<label index="tx_mediacenter_item.captions">Captions (path to xml file in W3C timed text format)</label>
+			<label index="tx_mediacenter_item.link">link: url to an external page the display, controlbar and playlist can link to.</label>
+			<label index="tx_mediacenter_item.duration">Duration of the file in seconds.</label>
+			<label index="tx_mediacenter_item.start">position in seconds where playback has to start.</label>
+			<label index="tx_mediacenter_item.sheet_misc">Language &amp; Access</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="list_type_pi1">Media Center</label>
+			<label index="tx_mediacenter_item">Media Center Datei</label>
+			<label index="tx_mediacenter_item.sheet_description">Beschreibung</label>
+			<label index="tx_mediacenter_item.title">Titel</label>
+			<label index="tx_mediacenter_item.image">Bild</label>
+			<label index="tx_mediacenter_item.description">Beschreibung</label>
+			<label index="tx_mediacenter_item.author">Autor</label>
+			<label index="tx_mediacenter_item.sheet_file">Datei</label>
+			<label index="tx_mediacenter_item.file">Datei: lokale Datei (wird nach uploads/tx_mediacenter kopiert)</label>
+			<label index="tx_mediacenter_item.file_url">Datei_url: url zu einer externen Datei (kann auch als Link zu lokaler Datei verwendet werden)</label>
+			<label index="tx_mediacenter_item.captions">Untertitel (Pfad einer xml Datei im W3C timed text Format)</label>
+			<label index="tx_mediacenter_item.link">Link: url zu einer externen Website auf welche die Anzeige, die Steuerungsleiste und die Playlist verlinken können.</label>
+			<label index="tx_mediacenter_item.duration">Dauer der Datei in Sekunden.</label>
+			<label index="tx_mediacenter_item.start">Startposition des Playback in Sekunden.</label>
+			<label index="tx_mediacenter_item.sheet_misc">Sprache &amp; Zugriff</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -1,0 +1,5 @@
+  # cat=basic/enable; type=boolean; label=Media>Indexing: Add module "Indexing".
+add_media_indexing = 0
+  # cat=basic/enable; type=boolean; label=Media>File>Indexing: Add submodule function "Indexing" to Media>File.
+add_media_file_indexing = 1
+

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallangExt>
+	<data type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Indexierung</label>
+			<label index="mlang_labels_tabdescr">Indexierung von ganzen Verzeichnisbäumen.</label>
+			<label index="mlang_labels_tablabel">Indexierung</label>
+		</languageKey>
+	</data>
+	<orig_hash type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab" type="integer">86103277</label>
+			<label index="mlang_labels_tabdescr" type="integer">205004604</label>
+			<label index="mlang_labels_tablabel" type="integer">86103277</label>
+		</languageKey>
+	</orig_hash>
+	<orig_text type="array">
+		<languageKey index="de" type="array">
+			<label index="mlang_tabs_tab">Indexing</label>
+			<label index="mlang_labels_tabdescr">Indexing of whole folder trees. Reads meta data.</label>
+			<label index="mlang_labels_tablabel">Indexing</label>
+		</languageKey>
+	</orig_text>
+</T3locallangExt>

@@ -1,0 +1,445 @@
+h1,h2,h3,h4,h5,h6 {
+	font-weight: normal;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	margin-top: 0.6em;
+	margin-bottom: 0.2em;
+}
+
+h1 {
+	font-size: 18px;
+	color: #FFFFFF;
+	margin-bottom: 0px;
+}
+
+h2 {
+	font-size: 17px;
+	color: #FFFFFF;
+	margin-bottom: 0px;
+}
+
+.teiler-2sp-kontakt .headerType3 {
+}
+
+.teiler-2sp-kontakt .headerType4 h4 {
+	margin-top: 3px;
+}
+
+h4 {
+	background: url(../images/header_1_dots_medium.png) no-repeat 0px 19px;
+	font-size: 16px;
+	height: 23px;
+	color: #ffffff;
+	padding-left: 7px;
+}
+
+p {
+	margin: 0 0 1em 0;
+	text-indent: 35px;
+	font-style: italic;
+	line-height: 1.6em;
+	font-size: 14px;
+}
+
+p.align-left {
+	text-indent: 0px;
+	padding-left: 35px;
+}
+
+p.align-center {
+	text-align: center;
+}
+
+p.align-right {
+	text-align: right;
+}
+
+p.noIndent {
+	text-indent: 0px;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+table td {
+	padding: 0;
+}
+
+a,
+a:link,
+a:hover,
+a:active,
+a:visited {
+	color: #C9C9C9;
+	text-decoration: underline;
+}
+
+.csc-default {
+	margin-bottom: 15px;
+}
+
+.section .csc-header {
+	padding-left: 14px;
+	padding-bottom: 8px;
+	margin-top: 12px;
+	background: url(../images/header_1_dots_open.png) 0px bottom no-repeat #0d0d0d;
+}
+
+.Header-CType-templavoila_pi1 .csc-header {
+	position: relative;
+	z-index: 100;
+	margin-bottom: -15px;
+}
+
+.TV-TO-2 .csc-header,
+.TV-TO-2 .csc-header h1 {
+	width: 319px;
+}
+
+.TV-TO-4 .csc-header,
+.TV-TO-4 .csc-header h1 {
+	width: 396px;
+}
+
+.sectionClosed .csc-header {
+	background: url(../images/header_1_dots_closed.png) 0px bottom no-repeat #0d0d0d;
+}
+.section .sectionContentWrap .csc-header {
+	position: static;
+	z-index: auto;
+	width: 100%;
+	overflow: visible;
+	height: auto;
+	padding: 0 0 12px;
+	margin: 0;
+	background: none;
+}
+
+.section .sectionContentWrap .subHeader {
+	background: url(../images/header_1_dots_long.png) 0px 7px no-repeat;
+	width: 110%;
+}
+
+.closed-header {
+	background: url(../images/header_1_dots_closed.png) 0px bottom no-repeat #0d0d0d;
+}
+
+.section .sectionContentWrap {
+	overflow: hidden;
+	position: relative;
+	z-index: 10;
+}
+
+#background .sectionContentWrap,
+#background .sectionContent {
+	overflow: auto;
+}
+
+.section .sectionContentWrap .sectionContent {
+	position: relative;
+	overflow: hidden;
+	top: 0px;
+}
+
+.teiler-2sp h1 {
+	font-size: 14px;
+	margin-top: 0.3em;
+	color: #C9C9C9;
+}
+
+.teiler-2sp-schmal-breit .teiler-left,
+.teiler-2sp-breit-schmal .teiler-left {
+/*	margin-top: -35px;*/
+	padding-top: 37px;
+}
+
+.teiler-2sp-schmal-breit .teiler-left {
+	width: 333px;
+	padding-right: 27px;
+}
+
+.teiler-2sp-schmal-breit .teiler-right {
+	width: 410px;
+	padding-right: 26px;
+}
+
+.teiler-2sp-breit-schmal .teiler-left {
+	width: 410px;
+	padding-right: 27px;
+}
+
+.teiler-2sp-breit-schmal .teiler-right {
+	width: 333px;
+	padding-right: 26px;
+}
+
+.teiler-2sp-startseite .teiler-left {
+	width: 319px;
+	padding-left: 51px;
+	padding-right: 54px;
+	text-align: center;
+}
+
+.teiler-2sp-startseite .teiler-right {
+	width: 347px;
+	padding-right: 26px;
+}
+
+.teiler-2sp-startseite p {
+	font-size: 13px;
+	margin-bottom: 0.8em;
+}
+
+.teiler-2sp-kontakt .teiler-left {
+	width: 319px;
+	padding-left: 30px;
+	padding-right: 55px;
+	padding-top: 20px;
+}
+
+.teiler-2sp-kontakt .teiler-right {
+	width: 343px;
+	padding-right: 26px;
+	padding-top: 20px;
+}
+
+
+/*
+ * FACTS ELEMENT
+ */
+
+.ewfacts {
+	border-collapse: collapse;
+}
+
+.ewfacts td {
+	font-size: 12px;
+	line-height: 1.8em;
+	padding: 0;
+}
+
+.ewfacts .fact-label {
+	text-transform: uppercase;
+	font-style: italic;
+	padding-right: 20px;
+}
+
+.ewfacts .fact-value {
+}
+
+/*
+ * PRESS ELEMENT
+ */
+
+.presseteaser-container .csc-default{
+	padding: 0;
+}
+
+.presseteaser-container {
+	position: relative;
+	margin-bottom: 15px;
+}
+
+.presseteaser-container .csc-default {
+	background: #0d0d0d;
+}
+
+.presseteaser-container .press-box {
+	padding-bottom: 8px;
+}
+
+.presseteaser-container .press-citation {
+	font-size: 16px;
+	font-style: italic;
+	margin-bottom: 8px;
+}
+
+.presseteaser-container .press-author {
+	font-size: 11px;
+	letter-spacing: 0.04em;
+	text-align: right;
+	text-transform: uppercase;
+	margin-bottom: 12px;
+}
+
+/*
+* THE CALENDAR
+*/
+
+.calendar {
+	padding-top: 30px;
+}
+
+.calendar table.calendar-event {
+	font-size: 17px;
+	background: url(../images/calendar_dots.png) no-repeat right 24px;
+	width: 705px;
+	margin-bottom: 18px;
+}
+
+.calendar-event .date {
+	vertical-align: top;
+	width: 137px;
+}
+
+.calendar table.calendar-date {
+	background: #0D0D0D;
+}
+
+.calendar-event table .day {
+	height: 41px;
+	vertical-align: bottom;
+	text-align: right;
+	padding: 0 2 0 30px;
+	width: 50px;
+	font-size: 36px;
+	color: #ffffff;
+}
+
+.calendar-event table .month {
+	vertical-align: bottom;
+	font-size: 12px;
+	padding: 0 0 7px 0;
+	line-height: 0.9em;
+	text-transform: lowercase;
+}
+
+.calendar-event .title-col {
+	font-style: italic;
+	vertical-align: top;
+	padding: 0 0 0 20px;
+	height: 27px;
+}
+
+.title-col a:link,
+.title-col a:hover,
+.title-col a:visited,
+.title-col a:active {
+	text-decoration: none;
+}
+
+.calendar-event .info-col {
+	font-style: italic;
+	text-transform: uppercase;
+	text-align: right;
+	vertical-align: top;
+	padding: 0 5px 0 5px;
+}
+
+.calendar-event .details {
+	padding: 0 0 0 0;
+}
+
+.calendar-event .details-box {
+	background: #171717;
+	padding: 10px 10px 14px 25px;
+	margin: 0 5px;
+	/* IE BACKGROUND FLICKER FIX */
+	zoom: 1;
+}
+
+.calendar-event .details-image {
+	float: left;
+	padding-right: 40px;
+	z-index: 100;
+}
+
+.calendar-event .details-table {
+	padding-top: 6px;
+	float: left;
+	width: 395px;
+	overflow: hidden;
+}
+
+.calendar-event .details-table td {
+	line-height: 1.5em;
+	font-size: 12px;
+	font-style: italic;
+}
+
+.calendar-event .details-table .detail-label {
+	width: 95px;
+	text-transform: uppercase;
+	vertical-align: top;
+}
+
+.calendar-event .details-table .detail-value {
+	padding-left: 45px;
+	vertical-align: top;
+}
+
+/*
+* ARCHIV
+*/
+
+.calendar-archive-year {
+	margin: 10px 0 15px 0;
+	width: 705px;
+	background: url('../images/calendar_dots.png') no-repeat right 9px;
+}
+.calendar-archive-year .date {
+	background: #0d0d0d;
+	display: inline;
+	padding: 0 5px 0 33px;
+}
+
+.calendar-archive-event {
+	margin: 0 0 10px 137px;
+	width: 568px;
+	font-size: 14px;
+}
+
+.calendar-archive-event td  {
+	height: 20px;
+	vertical-align: bottom;
+}
+
+.calendar-archive-event .date-col {
+	background: url(../images/calendar_archive_dots_quick.png) no-repeat right 16px;
+	text-transform: lowercase;
+	width: 135px;
+}
+
+.calendar-archive-event .title-col {
+	background: url(../images/calendar_archive_dots_left.png) no-repeat right 16px;
+	font-style: italic;
+}
+
+.calendar-archive-event .info-col{
+	background: url(../images/calendar_archive_dots_right.png) no-repeat left 16px;
+	text-align: right;
+	text-transform: uppercase;
+	font-style: italic;
+}
+
+.calendar-archive-event td .wrap {
+	background: #0d0d0d;
+	display: inline;
+	padding: 0 5px;
+}
+
+.clearLeft {
+	clear: left;
+}
+
+.clearRight {
+	clear: right;
+}
+
+#background .videoWrap {
+	visibility: hidden;
+}
+
+.tx-rbflashobject-pi1-swf_altcontent {
+	text-align: center;
+}
+
+.smallFont {
+	font-size: 0.85em;
+}
+
+.smallerFont {
+	font-size: 0.75em;
+}
