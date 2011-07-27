@@ -9,6 +9,9 @@
 /typo3conf/temp_CACHED*
 # ignore temp folder...
 /typo3temp/*
+# log files
+*.log
+/
 # ...except the llxml folder ?? warum?
 #!/typo3temp/llxml/
 

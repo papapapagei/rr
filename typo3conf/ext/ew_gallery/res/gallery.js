@@ -70,6 +70,13 @@ function clickNextBgImage() { // NEXT IMAGE
 	}
 }
 
+/*
+ * Retrieves the gallery that encapsulates the object and returns it's id
+ */
+function getId(obj) {
+	return jQuery(obj).parents('.ewgallery').attr('id')
+}
+
 jQuery(document).ready( function() {
 	// BUG in FIREFOX: Player muss zuerst geladen werden, da er sonst kein playerReady() aufruft. Daher warten wir bis dahin
 	
@@ -78,11 +85,13 @@ jQuery(document).ready( function() {
 		galleriesGetReady();
 	}
 	// event handlers
-	jQuery(".ewgallery .galleryArrowLeft").click( clickPrevBgImage ).dblclick( clickPrevBgImage );
-	jQuery(".ewgallery .galleryArrowRight").click( clickNextBgImage ).dblclick( clickNextBgImage );
-	jQuery(".ewFrontGallery .galleryImage, .ewFrontGallery .galleryEnlargeWrap, .ewFrontGallery .galleryImagesLink").click( function() { // ENLARGE IMAGE
-		enlargeImage(jQuery(this).parents('.ewgallery').attr('id'));
+	jQuery(".ewgallery .gallerySlider").click( clickNextBgImage ).dblclick( clickNextBgImage );
+	jQuery(".ewFrontGallery .galleryImagesLink").click( function() { // ENLARGE IMAGE
+		enlargeImage(getId(this));
 	} );
+	jQuery(".ewFrontGallery .gallerySlider").hover(
+		function(){magneticImage(getId(this),true,true)},
+		function(){magneticImage(getId(this),true,false)} );
 	jQuery(".ewFrontGallery .galleryEnlargeWrap").hover(
 		function() {
 			if ( jQuery.browser.msie ) {
@@ -133,30 +142,28 @@ jQuery(document).ready( function() {
 });
 
 function initGallery(gallery,callback) {
-	var id = jQuery(gallery).attr('id');
+	var jGal = jQuery(gallery);
+	var id = jGal.attr('id');
 	galleries[id] = new Array();
 	// index all the images
 	var height = parseInt(jQuery('#'+id+' .galleryImages').height());
 	var i = 0;
 	jQuery('#'+id+' .galleryImage').each( function() {
 		var image = jQuery(this);
-/*		// center images vertically OBSOLETE: DONE BY PHP
-		image.css('top',(height-parseInt(image.height()))/2); */
-		// change visibility to opacity setting
-		//image.fadeTo(0,(i==0)?1:0).css('visibility','visible').show(i==0);
-		
 		galleries[id][i] = new Array();
 		galleries[id][i]['id'] = image.attr('id');
 		i = i+1;
 	});
+	galleries[id]['width'] = jGal.find('.galleryImages').width(); // get image width
+	jGal.find('.gallerySlider').width(galleries[id]['width']*(i+1)).css('left',0); // calculate total width
 	if ( i <= 1 ) { // no arrows, if only one image
-		jQuery(gallery).find('.galleryArrow').removeClass('galleryArrow').addClass('noArrow');
+		jGal.find('.galleryArrow').removeClass('galleryArrow').addClass('noArrow');
 	}
 	galleries[id]['current'] = 0;
 	galleries[id]['length'] = i;
-	galleries[id]['fadeDuration'] = parseInt( jQuery(gallery).children('.fadeDuration').val());
-	galleries[id]['autostartVideo'] = parseInt( jQuery(gallery).children('.autostartVideo').val());
-	var backgroundGallery = jQuery(gallery).next();
+	galleries[id]['fadeDuration'] = parseInt( jGal.children('.fadeDuration').val());
+	galleries[id]['autostartVideo'] = parseInt( jGal.children('.autostartVideo').val());
+	var backgroundGallery = jGal.next();
 	initBackgroundGallery(backgroundGallery);
 	numGalleriesInitialized = numGalleriesInitialized+1;
 	if ( callback != null ) {
@@ -224,14 +231,39 @@ function nextImage(galId) {
 	if ( gal.hasClass('ewBackgroundGallery') ) {
 		resetAutoSlide(); // prevent double slide action
 	}
-	galId = gal.attr('id');
 	var next = (galleries[galId]['current'] + 1) % galleries[galId]['length'];
-	fadeToImage(galId,next,function(){resetAutoSlide();/* renew */});
+	if ( gal.hasClass('ewBackgroundGallery') ) {
+		fadeToImage(galId,next,function(){resetAutoSlide();/* renew */});
+	} else {
+		slideImage(galId,true,function(){resetAutoSlide();/* renew */});
+	}
 }
 
 function prevImage(galId) {
+	var gal = jQuery('#'+galId);
+	if ( gal.hasClass('ewBackgroundGallery') ) {
+		resetAutoSlide(); // prevent double slide action
+	}
 	var next = (galleries[galId]['current'] - 1 + galleries[galId]['length']) % galleries[galId]['length'];
-	fadeToImage(galId,next);
+	if ( gal.hasClass('ewBackgroundGallery') ) {
+		fadeToImage(galId,next);
+	} else {
+		slideImage(galId,false,function(){resetAutoSlide();/* renew */});
+	}
+}
+
+/**
+ * When hovering with the mouse, the Image slides a little bit towards the next image
+ *
+ */
+function magneticImage( galId,bDirection, bState) {
+	var jGal = jQuery('#'+galId);
+	var amount = bDirection ? 40 : -40;
+	if (bState) {
+		jGal.find(".gallerySlider:not(.toggleRight)").animate({left:'-='+amount+'px'},200).addClass('toggleRight');
+	} else {
+		jGal.find(".gallerySlider.toggleRight").animate({left:'+='+amount+'px'},200).removeClass('toggleRight');
+	}
 }
 
 var newImage; // this has to be global for callback
@@ -283,6 +315,20 @@ function fadeToImage(galId,next,callback,bEnlarge) {
 		currentBackGal = galId; // this is the new background gallery
 		galleriesHidden = false; // background galleries is not hidden anymore
 	}
+}
+
+function slideImage(galId,bForward,callback) {
+	var next = galleries[galId]['current'] + (bForward ? 1 : -1);
+	if ( next >= galleries[galId]['length'] ) {
+		next = 0;
+	}
+	if ( next < 0 ) {
+		next = galleries[galId]['length']-1;
+	}
+	var newX = next*galleries[galId]['width'];
+	jGal = jQuery('#'+galId);
+	jGal.find('.gallerySlider').animate({left:-newX},galleries[galId]['fadeDuration'],callback).removeClass('toggleRight');
+	galleries[galId]['current'] = next;
 }
 
 

@@ -116,7 +116,7 @@ class tx_ewgallery_pi1 extends tx_ewpibase {
 		foreach( $this->imageList as $file ) {
 			$i++;
 			$this->addMarker( 'NO', $i );
-			$this->addMarker( 'STYLE', 'display:none;' );
+			$this->addMarker( 'STYLE', '' );
 			$this->addMarker( 'IMAGE', $this->cObj->IMAGE(array('file'=>$file['path'],
 				'file.' => array('width' => $this->width.'c','height' => $this->height.'c'))) );
 			$imageList .= $this->renderSubpart( 'ITEM' );

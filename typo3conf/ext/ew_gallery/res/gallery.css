@@ -26,10 +26,29 @@
 }
 
 .galleryImage{
-	position: absolute;
+	/*position: absolute;
 	text-align: center;
 	z-index: 10;
-	text-align: center;
+	text-align: center;*/
+	float: left;
+	position: relative;
+}
+
+.galleryImageSeparator {
+	background: url(gallery_separator.png) 0px 5px repeat-y;
+	position: absolute;
+	top: 0px;
+	left: -12px;
+	width: 24px;
+	height: 221px;
+}
+
+.galleryImage_0 .galleryImageSeparator {
+	display: none;
+}
+
+.gallerySlider {
+	position: absolute;
 }
 
 .galleryCredits {
@@ -160,11 +179,15 @@
 .galleryVideoLink, .galleryImagesLink {
 	margin-left: 18px;
 	padding-left: 20px;
-	font-style: italic;
-	font-weight: bold;
-	font-size: 16px;
+	padding-top: 2px;
+	font-style: regular;
+	font-weight: regular;
+	font-family: arial;
+	font-size: 12px;
 	cursor: pointer;
 	float: right;
+	color: #ffffff;
+	text-transform: uppercase;
 }
 
 .galleryButtons {
@@ -179,7 +202,7 @@
 	background: url(gallery_button.png) 0px 2px no-repeat;
 }
 
-.galleryButtons .clearall {
+.ewGallery .clearall {
 	clear: both;
 }
 

@@ -46,9 +46,10 @@ body {
 
 #contentWrap {
 	min-height: 100%;
-	height: auto !important;
-	height: 100%;
+	width: 820px;
 	background: #0d0d0d;
+	overflow: hidden;
+	position: relative;
 }
 
 #content {

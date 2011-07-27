@@ -5,3 +5,7 @@ html .section .csc-header {
 h4 {
 	margin-bottom: 1em;
 }
+
+#content {
+	padding-top: 3px!important;
+}

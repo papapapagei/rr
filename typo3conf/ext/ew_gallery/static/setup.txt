@@ -9,7 +9,7 @@ plugin.tx_ewgallery_pi1 {
 	bgMaxH = 800
 	# background images: lower gamma
 	# bgParams = -gamma 0.5
-	fadeDuration = 0
+	fadeDuration = 500
 	bgFadeDuration = 500
 	# auto slideshow duration (seconds)
 	slideDuration = 22

@@ -3,6 +3,7 @@ var shift;
 var numSections;
 var overlayTop;
 var contentTop;
+var slideTo = 78;
 var menuHeight;
 var overlayTopInit = 0;
 var screenHeight;
@@ -75,7 +76,7 @@ function initDimensions() {
 	overlayTop = parseInt( jQuery('#overlay').css('top') );
 	menuHeight = parseInt(jQuery('#topMenu').offset().top) + jQuery('#topMenu').height() - overlayTop;
 	scrollStep = Math.min( Math.max( 30, Math.round( screenHeight / 15 ) ), 75 );
-	magnetBorder = parseInt(screenHeight/5);
+	magnetBorder = slideTo + parseInt(screenHeight/5);
 	
 	calculateHeightForIE(jQuery('#overlay'));
 	if ( jQuery('#background .videoWrap').length ) {
@@ -168,8 +169,10 @@ function scrollOverlay( event, delta ) {
 			if ( (i == numSections-1) && !skipRest ) {
 				var newTop = overlayTop + shift;
 				if ( shift > 0 && ( newTop >= screenHeight-menuHeight - magnetBorder ) ) { // if we scrolled near the bottom
-					jQuery('#overlay').animate({'top': screenHeight-menuHeight + 'px'},function(){calculateHeightForIE(jQuery('#overlay'));});
-					jQuery('#content').hide();
+					jQuery('#overlay').animate({'top': screenHeight-slideTo + 'px'},function(){
+						jQuery('#contentWrap').height(slideTo).hide().show();
+						calculateHeightForIE(jQuery('#overlay'));
+					});
 					jQuery('#minMax').addClass('minMaxClosed');
 					enableBackgroundGalleryNavigation(true);
 				} else if ( shift < 0 && ( overlayTop-overlayStop <= magnetBorder ) ) { // if we scrolled near the top
@@ -180,10 +183,10 @@ function scrollOverlay( event, delta ) {
 					}
 				} else if ((jQuery('body').scrollTop() > 0) && (shift > 0)) { // scrolling up and the scrollbar is not at zero
 					doNormalScrolling = true; // do normal scrolling
-				} else {
+				} else { // overlay is closed -> open it and scroll up
 					jQuery('#overlay').css({'top': newTop + 'px'});
 					calculateHeightForIE(jQuery('#overlay'));
-					jQuery('#content').show();
+					jQuery('#contentWrap').height('').hide().show();
 					jQuery('#minMax').removeClass('minMaxClosed');
 					enableBackgroundGalleryNavigation(false);
 				}
@@ -201,11 +204,13 @@ function minMaxOverlay(bAnimate,callback) {
 	var animationTime = bAnimate ? 500 : 1;
 	// if a number has been supplied, use it instead of the boolean value
 	animationTime = (typeof(bAnimate) == 'number' ) ? bAnimate : animationTime;
-	contentTop = jQuery('#topMenu').offset().top + jQuery('#topMenu').height() - jQuery('#overlay').offset().top;
+	//contentTop = jQuery('#topMenu').offset().top + jQuery('#topMenu').height() - jQuery('#overlay').offset().top;
+	//slideTo = Math.round(contentTop*2.1);
 	if ( isOverlayMinimized() ) { // only if on bottom, maximize
 		// callback function
 		var afterSlide = function(){
 			if ( callback ) callback();
+			jQuery('#contentWrap').hide().show();
 			calculateHeightForIE(jQuery('#overlay'));
 //			jQuery('#overlay').css('overflow','visible');// prevent scroll bars
 		};
@@ -217,21 +222,21 @@ function minMaxOverlay(bAnimate,callback) {
 		}
 //		jQuery('#overlay').css('overflow','hidden');// prevent scroll bars
 		jQuery('#overlay').css('bottom','0px');
-		jQuery('#content').show();
+		jQuery('#contentWrap').height('').hide().show();
 		jQuery('#minMax').removeClass('minMaxClosed')
 		enableBackgroundGalleryNavigation(false);
 	} else { // minimize if somewhere else
 		var afterSlide = function(){
 			if ( callback ) callback();
+			jQuery('#contentWrap').height(slideTo);
 			calculateHeightForIE(jQuery('#overlay'));
 		};
 		if ( bAnimate ) {
-			jQuery('#overlay').animate({'top': screenHeight-contentTop + 'px'},afterSlide);
+			jQuery('#overlay').animate({'top': screenHeight-slideTo + 'px'},afterSlide);
 		} else {
-			jQuery('#overlay').css('top', screenHeight-contentTop + 'px');
+			jQuery('#overlay').css('top', screenHeight-slideTo + 'px');
 			afterSlide();
 		}
-		jQuery('#content').hide();
 		jQuery('#minMax').addClass('minMaxClosed')
 		enableBackgroundGalleryNavigation(true);
 	}
@@ -239,7 +244,7 @@ function minMaxOverlay(bAnimate,callback) {
 
 function isOverlayMinimized() {
 	// checks if overlay is minimized
-	return (parseInt( jQuery('#overlay').css('top') ) == screenHeight-contentTop );
+	return (parseInt( jQuery('#overlay').css('top') ) == screenHeight-slideTo );
 }
 
 function minMaxSection(object) {

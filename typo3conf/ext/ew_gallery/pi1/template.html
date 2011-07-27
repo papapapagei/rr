@@ -4,17 +4,11 @@
 	<input type="hidden" class="autostartVideo" value="###VIDEO_AUTOSTART###" />
 	<input type="hidden" class="videoFile" value="###VIDEO_FILE###" />
 	<div class="galleryImages" style="width:###WIDTH###px; height:###HEIGHT###px">
-		<div class="galleryArrow galleryArrowLeft">
-			<div class="galleryArrowIcon"></div>
+		<div class="gallerySlider">
+			###FIRST_IMAGE###
+			###IMAGE_LIST###
+			<div class="clearall"></div>
 		</div>
-		<div class="galleryArrow galleryArrowRight">
-			<div class="galleryArrowIcon"></div>
-		</div>
-		<div class="galleryEnlargeWrap">
-			<div class="galleryEnlargeButton galleryEnlargeButton-LANG_###LANGID###"></div>
-		</div>
-		###FIRST_IMAGE###
-		###IMAGE_LIST###
 	</div>
 	<div class="galleryButtons">
 		<div class="galleryImagesLink">
@@ -29,8 +23,9 @@
 <!-- ###GALLERY### end -->
 
 <!-- ###ITEM### begin -->
-<div id="galImg_###UID###_###NO###" class="galleryImage" style="###STYLE###">
+<div id="galImg_###UID###_###NO###" class="galleryImage galleryImage_###NO###" style="###STYLE###">
 	###IMAGE###
+	<div class="galleryImageSeparator"></div>
 </div>
 <!-- ###ITEM### end -->
 
