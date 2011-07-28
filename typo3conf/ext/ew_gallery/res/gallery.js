@@ -85,6 +85,8 @@ jQuery(document).ready( function() {
 		galleriesGetReady();
 	}
 	// event handlers
+	jQuery(".ewgallery .galleryArrowLeft").click( clickPrevBgImage ).dblclick( clickPrevBgImage );
+	jQuery(".ewgallery .galleryArrowRight").click( clickNextBgImage ).dblclick( clickNextBgImage );
 	jQuery(".ewgallery .gallerySlider").click( clickNextBgImage ).dblclick( clickNextBgImage );
 	jQuery(".ewFrontGallery .galleryImagesLink").click( function() { // ENLARGE IMAGE
 		enlargeImage(getId(this));

@@ -26,8 +26,27 @@ jQuery(document).ready(function() {
 		jQuery.cookie('alreadyVisited', 'true');
 		jQuery("#overlay").css('visibility','hidden');
 	}
-		
+	
 	jQuery('body').mousewheel(scrollOverlay);
+	jQuery('#overlay').append('<div id="hoverArea" style="display:none;"></div>');
+	jQuery('#hoverArea').click(function(){minMaxOverlay(true)});
+	jQuery('#overlay,#hoverArea').hover( function() { // magnetic overlay when minimized
+		if ( isOverlayMinimized() ) {
+			var overlay = jQuery('#overlay').filter(':not(.toggleTop:animated)');
+			if ( overlay.length ) {
+				overlay.animate({top:'-='+80+'px'},200,function(){jQuery('#contentWrap').hide().show()}).addClass('toggleTop');
+				jQuery('#contentWrap').animate({height:'+=80px'},0);
+				jQuery('#hoverArea').height(jQuery('#hoverArea').height()+jQuery('#contentWrap').height())
+			}
+		}
+	}, function() {
+		var overlay = jQuery('#overlay').filter('.toggleTop:not(*:animated)');
+		if ( overlay.length) {
+			overlay.animate({top:'+='+80+'px'},200).removeClass('toggleTop');
+			jQuery('#contentWrap').animate({height:'-=80px'},0);
+			jQuery('#hoverArea').css('height','');
+		}
+	});
 	jQuery('#minMax').click(function(event) {
 		minMaxOverlay(true);
 	});
@@ -174,6 +193,7 @@ function scrollOverlay( event, delta ) {
 						calculateHeightForIE(jQuery('#overlay'));
 					});
 					jQuery('#minMax').addClass('minMaxClosed');
+					jQuery('#hoverArea').show();
 					enableBackgroundGalleryNavigation(true);
 				} else if ( shift < 0 && ( overlayTop-overlayStop <= magnetBorder ) ) { // if we scrolled near the top
 					if ( ( overlayTop-overlayStop == 0 ) && (leftToScroll > 0) ) { // we are already at the top and need further scrolling
@@ -188,6 +208,7 @@ function scrollOverlay( event, delta ) {
 					calculateHeightForIE(jQuery('#overlay'));
 					jQuery('#contentWrap').height('').hide().show();
 					jQuery('#minMax').removeClass('minMaxClosed');
+					jQuery('#hoverArea').hide();
 					enableBackgroundGalleryNavigation(false);
 				}
 			}
@@ -221,9 +242,10 @@ function minMaxOverlay(bAnimate,callback) {
 			afterSlide();
 		}
 //		jQuery('#overlay').css('overflow','hidden');// prevent scroll bars
-		jQuery('#overlay').css('bottom','0px');
+		jQuery('#overlay').css('bottom','0px').removeClass('toggleTop');
 		jQuery('#contentWrap').height('').hide().show();
-		jQuery('#minMax').removeClass('minMaxClosed')
+		jQuery('#minMax').removeClass('minMaxClosed');
+		jQuery('#hoverArea').hide();
 		enableBackgroundGalleryNavigation(false);
 	} else { // minimize if somewhere else
 		var afterSlide = function(){
@@ -238,13 +260,14 @@ function minMaxOverlay(bAnimate,callback) {
 			afterSlide();
 		}
 		jQuery('#minMax').addClass('minMaxClosed')
+		jQuery('#hoverArea').show();
 		enableBackgroundGalleryNavigation(true);
 	}
 }
 
 function isOverlayMinimized() {
 	// checks if overlay is minimized
-	return (parseInt( jQuery('#overlay').css('top') ) == screenHeight-slideTo );
+	return (parseInt( jQuery('#overlay').css('top') ) == screenHeight-slideTo) || jQuery('#overlay').hasClass('toggleTop');
 }
 
 function minMaxSection(object) {
