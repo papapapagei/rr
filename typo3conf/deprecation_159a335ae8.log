@@ -18,3 +18,7 @@ instead.
 The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
 t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
 instead.
+28-07-11 22:06: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
