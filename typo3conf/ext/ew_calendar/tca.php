@@ -152,6 +152,7 @@ $TCA['tx_ewcalendar_dates'] = array (
 			'l10n_mode'   => 'exclude',
 			'config' => array (
 				'type' => 'check',
+				'default' => 1,
 			)
 		),
 		'image' => txdam_getMediaTCA('image_field', 'image'),

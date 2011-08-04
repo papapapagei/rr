@@ -220,6 +220,9 @@ function scrollOverlay( event, delta ) {
 }
 
 function minMaxOverlay(bAnimate,callback) {
+	if ( jQuery('#overlay.stopInteraction').length ) {
+		return;
+	}
 	var animationTime = bAnimate ? 500 : 1;
 	// if a number has been supplied, use it instead of the boolean value
 	animationTime = (typeof(bAnimate) == 'number' ) ? bAnimate : animationTime;

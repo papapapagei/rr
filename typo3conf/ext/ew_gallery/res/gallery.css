@@ -158,6 +158,12 @@
 	width: 42px;
 }
 
+.galleryArrowIconActive {
+	background: url(gallery_panel_arrow_active.png);
+	height: 42px;
+	width: 42px;
+}
+
 .ewgallery.ewBackgroundGallery .galleryArrowIcon.close {
 	background: url(gallery_panel_close.png);
 }

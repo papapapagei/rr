@@ -62,6 +62,7 @@ function clickPrevBgImage() { // PREV IMAGE
 }
 function clickNextBgImage() { // NEXT IMAGE
 	if ( !jQuery(this).hasClass('disabled') ) {
+		jQuery(this).find('.galleryArrowIconActive').fadeTo(0,0.2).fadeOut('slow');
 		nextImage(jQuery(this).parents('.ewgallery').attr('id'));
 	} else {
 		minMaxOverlay(true,function(){jQuery(".ewBackgroundGallery .galleryArrowRight").trigger('mouseenter')});
@@ -141,7 +142,7 @@ function initGallery(gallery,callback) {
 		i = i+1;
 	});
 	galleries[id]['width'] = jGal.find('.galleryImages').width(); // get image width
-	jGal.find('.gallerySlider').width(galleries[id]['width']*(i+1)).css('left',0); // calculate total width
+	jGal.find('.gallerySlider').width(galleries[id]['width']*(i+1)); // calculate total width
 	if ( i <= 1 ) { // no arrows, if only one image
 		jGal.find('.galleryArrow').removeClass('galleryArrow').addClass('noArrow');
 	}
@@ -221,7 +222,8 @@ function nextImage(galId) {
 	if ( gal.hasClass('ewBackgroundGallery') ) {
 		fadeToImage(galId,next,function(){resetAutoSlide();/* renew */});
 		if ( (next == galleries[galId]['startedWithImage']) && isOverlayMinimized() ) { // if we did one round, close bg-gallery
-			minMaxOverlay(true);
+			setTimeout ( 'minMaxOverlay(true); jQuery("#overlay").addClass("stopInteraction");', 1000 );
+			setTimeout ( 'jQuery("#overlay").removeClass("stopInteraction");', 2500 );
 		}
 	} else {
 		slideImage(galId,true,function(){resetAutoSlide();/* renew */});
@@ -349,6 +351,7 @@ function killTimer() {
 }
 
 function resetAutoSlide(firstInterval) {
+	stopInteraction = false;
 	if (typeof(firstInterval) == "undefined") {
 		firstInterval = autoSlideInterval;
 	}

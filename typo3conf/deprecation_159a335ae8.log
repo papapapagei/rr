@@ -4166,3 +4166,647 @@ instead.
 The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
 t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
 instead.
+04-08-11 21:02: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:03: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:04: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:05: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:06: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:07: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:08: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:09: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:09: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:10: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:11: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:12: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:13: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:14: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:15: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:16: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:17: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:18: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:19: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:20: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:21: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:23: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:24: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:25: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:26: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:27: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:28: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:29: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:30: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:31: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:32: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:33: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:34: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:35: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:36: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:37: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:38: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:39: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:40: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:41: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:42: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:43: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:44: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:46: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:47: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:48: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:49: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:50: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:51: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:52: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:53: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:54: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:55: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:56: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:57: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:58: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 21:59: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:00: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:01: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:02: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:03: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:04: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:05: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:06: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:07: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:08: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:09: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:10: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:11: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:12: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:13: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:14: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:15: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:16: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:17: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:18: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:19: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:20: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:21: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:23: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:24: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:25: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:26: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:27: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:28: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:29: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:30: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:31: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:32: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:33: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:34: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:35: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:36: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:37: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:38: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:39: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:40: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:41: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:42: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:43: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:44: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:45: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:46: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:47: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:48: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:49: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:50: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:51: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:52: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:53: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:54: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:55: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:56: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:57: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:58: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 22:59: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:00: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:01: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:02: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:03: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:04: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:05: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:06: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:07: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:08: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:09: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:10: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:11: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:12: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:13: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:14: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:15: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:16: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:17: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:18: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:19: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:20: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:21: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:22: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:23: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:23: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:23: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:23: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:23: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:23: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
+04-08-11 23:23: Usage of $ICON_TYPES is deprecated since 4.4.
+The extTables.php entry $ICON_TYPES['dam'] = '../typo3conf/ext/dam/modules_dam.gif'; should be replaced with
+t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', '../typo3conf/ext/dam/modules_dam.gif');
+instead.
