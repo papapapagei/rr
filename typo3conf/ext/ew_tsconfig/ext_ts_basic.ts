@@ -17,6 +17,9 @@ config.baseURL = http://www.r-revue.de/
 [globalString = ENV:HTTP_HOST = elio-laptop]
 	config.baseURL = http://elio-laptop/r-revue/
 [global]
+[globalString = ENV:HTTP_HOST = 85.183.86.106]
+	config.baseURL = http://85.183.86.106/r-revue/
+[global]
 [globalString = ENV:HTTP_HOST = realitaten-revue.de]
 	config.baseURL = http://www.realitaten-revue.de/
 [global]
@@ -147,4 +150,5 @@ plugin.tx_mediacenter_pi1.wmode = transparent
 plugin.tx_mediacenter_pi1.flashvars.usefullscreen >
 plugin.tx_mediacenter_pi1.flashvars.fullscreen = false
 plugin.tx_mediacenter_pi1.flashvars.controlbar_DOT_idlehide = true
+plugin.tx_mediacenter_pi1.flashvars.controlbar_DOT_margin=40
 plugin.tx_mediacenter_pi1.flashvars.screencolor = #000000

@@ -57,8 +57,6 @@ function clickPrevBgImage() { // PREV IMAGE
 	if ( !jQuery(this).hasClass('disabled') ) {
 		prevImage(jQuery(this).parents('.ewgallery').attr('id'));
 	} else {
-		jQuery(".ewBackgroundGallery .galleryArrowIcon").show();
-		jQuery(".ewBackgroundGallery .hoverArrow").hide();
 		minMaxOverlay(true,function(){jQuery(".ewBackgroundGallery .galleryArrowLeft").trigger('mouseenter')});
 	}
 }
@@ -94,39 +92,25 @@ jQuery(document).ready( function() {
 	jQuery(".ewFrontGallery .gallerySlider").hover(
 		function(){magneticImage(getId(this),true,true)},
 		function(){magneticImage(getId(this),true,false)} );
-	jQuery(".ewFrontGallery .galleryEnlargeWrap").hover(
-		function() {
-			if ( jQuery.browser.msie ) {
-				jQuery(this).parent().find('.galleryEnlargeButton').show();
-			} else {
-				jQuery(this).parent().find('.galleryEnlargeButton').fadeTo(400,1);
-			} }, 
-		function() {
-			if ( jQuery.browser.msie ) {
-				jQuery(this).parent().find('.galleryEnlargeButton').hide();
-			} else {
-				jQuery(this).parent().find('.galleryEnlargeButton').fadeTo(200,0);
-			}
-		});
 	jQuery(".ewBackgroundGallery .galleryArrow").hover(
 		function() {
-			jQuery(this).addClass('hover');
 			if ( !jQuery(this).hasClass('disabled') ) {
-				jQuery(this).children('.galleryArrowIcon').hide();
-				jQuery(this).children('.hoverArrow').show();
-			} else {
-				jQuery('.ewBackgroundGallery .galleryArrowIcon').not('.hoverArrow').show();
+				jQuery(this).addClass('hover');
 			}
 		}, 
 		function() {
+			if ( !jQuery(this).hasClass('disabled') ) {
 				jQuery(this).removeClass('hover');
-				if ( !jQuery(this).hasClass('disabled') ) {
-					jQuery(this).children('.galleryArrowIcon').show();
-					jQuery(this).children('.hoverArrow').hide();
-				} else {
-					jQuery('.ewBackgroundGallery .galleryArrowIcon').not('.hoverArrow').hide();
-				}
-		});
+			}
+	});
+	jQuery(".ewBackgroundGallery").hover(function(){
+		jQuery(this).addClass('hover');
+		jQuery(this).find('.galleryArrow.disabled').fadeIn(200);
+	},function(){
+		jQuery(this).removeClass('hover');
+		jQuery(this).find('.galleryArrow.disabled').fadeOut(200);
+	});
+	
 	jQuery(".ewBackgroundGallery .galleryImage, .ewBackgroundGallery .mask").click( function() { minMaxOverlay(true); } );
 	jQuery(".galleryVideoLink").click( playVideo );
 	jQuery(window).resize( function() {
@@ -236,6 +220,9 @@ function nextImage(galId) {
 	var next = (galleries[galId]['current'] + 1) % galleries[galId]['length'];
 	if ( gal.hasClass('ewBackgroundGallery') ) {
 		fadeToImage(galId,next,function(){resetAutoSlide();/* renew */});
+		if ( (next == galleries[galId]['startedWithImage']) && isOverlayMinimized() ) { // if we did one round, close bg-gallery
+			minMaxOverlay(true);
+		}
 	} else {
 		slideImage(galId,true,function(){resetAutoSlide();/* renew */});
 	}
@@ -343,6 +330,7 @@ function enlargeImage(galId) {
 	backId = frontId.replace( 'galleryImages', 'bgGalleryImages');
 	minMaxOverlay( true, function() {
 		fadeToImage( backId, galleries[frontId]['current'], function() {
+			galleries[backId]['startedWithImage'] = galleries[backId]['current'];
 			// stop video player
 			if (jQuery('.videoWrap').length ) {
 				videoPlayer.sendEvent('PLAY',false);
@@ -377,7 +365,8 @@ function autoSlideGallery() {
 		return;
 	}
 	if ( isOverlayMinimized() ) {
-		var backGal = currentBackGal;
+		//var backGal = currentBackGal;
+		return; // do not autoslide in BG-gallery mode
 	} else {
 		// only update the back gallery id, when overlay is visible
 		getActiveGallery();

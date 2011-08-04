@@ -309,7 +309,7 @@ a:visited {
 .calendar-event .title-col {
 	font-style: italic;
 	vertical-align: top;
-	padding: 0 0 0 20px;
+	padding: 0 0 0 12px;
 	height: 27px;
 }
 
@@ -333,8 +333,8 @@ a:visited {
 }
 
 .calendar-event .details-box {
-	background: #171717;
-	padding: 10px 10px 14px 25px;
+/*	background: #171717;*/
+	padding: 15px 10px 14px 0px;
 	margin: 0 5px;
 	/* IE BACKGROUND FLICKER FIX */
 	zoom: 1;

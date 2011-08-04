@@ -40,9 +40,9 @@ jQuery(document).ready(function() {
 			}
 		}
 	}, function() {
-		var overlay = jQuery('#overlay').filter('.toggleTop:not(*:animated)');
+		var overlay = jQuery('#overlay').filter('.toggleTop');
 		if ( overlay.length) {
-			overlay.animate({top:'+='+80+'px'},200).removeClass('toggleTop');
+			overlay.stop(false,true).animate({top:'+='+80+'px'},200).removeClass('toggleTop');
 			jQuery('#contentWrap').animate({height:'-=80px'},0);
 			jQuery('#hoverArea').css('height','');
 		}
@@ -213,9 +213,7 @@ function scrollOverlay( event, delta ) {
 				}
 			}
 		});
-	}/* else if ( contentHeight ){
-		rubberOverlay();
-	}*/
+	}
 	
 	// prevent event bubbling
 	return doNormalScrolling;
@@ -234,6 +232,7 @@ function minMaxOverlay(bAnimate,callback) {
 			jQuery('#contentWrap').hide().show();
 			calculateHeightForIE(jQuery('#overlay'));
 //			jQuery('#overlay').css('overflow','visible');// prevent scroll bars
+			enableBackgroundGalleryNavigation(false);
 		};
 		if ( bAnimate ) {
 			jQuery('#overlay').animate({'top': overlayTopInit+'px'},animationTime,afterSlide);
@@ -246,12 +245,12 @@ function minMaxOverlay(bAnimate,callback) {
 		jQuery('#contentWrap').height('').hide().show();
 		jQuery('#minMax').removeClass('minMaxClosed');
 		jQuery('#hoverArea').hide();
-		enableBackgroundGalleryNavigation(false);
 	} else { // minimize if somewhere else
 		var afterSlide = function(){
 			if ( callback ) callback();
 			jQuery('#contentWrap').height(slideTo);
 			calculateHeightForIE(jQuery('#overlay'));
+			enableBackgroundGalleryNavigation(true);
 		};
 		if ( bAnimate ) {
 			jQuery('#overlay').animate({'top': screenHeight-slideTo + 'px'},afterSlide);
@@ -261,7 +260,6 @@ function minMaxOverlay(bAnimate,callback) {
 		}
 		jQuery('#minMax').addClass('minMaxClosed')
 		jQuery('#hoverArea').show();
-		enableBackgroundGalleryNavigation(true);
 	}
 }
 
@@ -309,13 +307,6 @@ function minMaxSection(object) {
 	}
 }
 
-function rubberOverlay() {
-	if ( jQuery('#overlay:animated').length == 0 ) {
-		jQuery('#overlay').animate({top:-30},100,'swing');
-		jQuery('#overlay').animate({top:0},200,'swing');
-	}
-}
-
 function calculateHeightForIE(object) {
 	if ( !jQuery.browser.msie )
 		return 0;
@@ -334,13 +325,14 @@ function calculateHeightForIE(object) {
 }
 
 function enableBackgroundGalleryNavigation( bEnable ) {
+	var jGal = jQuery("#"+currentBackGal);
 	if ( bEnable ) {
-		jQuery('.ewBackgroundGallery .galleryArrow').removeClass('disabled'); // enable background gallery's navigation
-		jQuery('.ewBackgroundGallery .galleryArrowIcon').not('.hoverArrow').show();
+		jGal.find('.galleryArrow').removeClass('disabled').fadeIn(200); // enable background gallery's navigation
+		jGal.filter('.hover').trigger('mouseenter');
+		galleries[currentBackGal]['startedWithImage'] = galleries[currentBackGal]['current'];
 	} else {
-		jQuery('.ewBackgroundGallery .galleryArrow').addClass('disabled'); // disable background gallery's navigation
-		jQuery('.ewBackgroundGallery .galleryArrowIcon').hide();
-		jQuery(".ewBackgroundGallery .galleryArrow").filter('.hover').trigger('mouseenter');
+		jGal.find('.galleryArrow').addClass('disabled'); // disable background gallery's navigation
+		jGal.filter(':not(.hover)').trigger('mouseleave').find('.galleryArrow').fadeOut(200);
 	}
 }
 
