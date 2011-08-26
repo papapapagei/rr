@@ -19,8 +19,18 @@ var magnetBorder;
 var doNormalScrolling = false;
 
 
+function checkCookies() {
+	jQuery.cookie('testCookie','testValue');
+	if ( jQuery.cookie('testCookie') == 'testValue' ) {
+		jQuery.cookie('testCookie',null); // delete cookie
+		return true;
+	} else {
+		return false;
+	}
+}
+
 jQuery(document).ready(function() {
-	var firstVisit = jQuery.cookie('alreadyVisited') ? false : true;
+	var firstVisit = checkCookies() && ( jQuery.cookie('alreadyVisited') ? false : true );
 	//var firstVisit = true;
 	if ( firstVisit ) {
 		jQuery.cookie('alreadyVisited', 'true');
@@ -226,8 +236,6 @@ function minMaxOverlay(bAnimate,callback) {
 	var animationTime = bAnimate ? 500 : 1;
 	// if a number has been supplied, use it instead of the boolean value
 	animationTime = (typeof(bAnimate) == 'number' ) ? bAnimate : animationTime;
-	//contentTop = jQuery('#topMenu').offset().top + jQuery('#topMenu').height() - jQuery('#overlay').offset().top;
-	//slideTo = Math.round(contentTop*2.1);
 	if ( isOverlayMinimized() ) { // only if on bottom, maximize
 		// callback function
 		var afterSlide = function(){
@@ -329,11 +337,11 @@ function calculateHeightForIE(object) {
 
 function enableBackgroundGalleryNavigation( bEnable ) {
 	var jGal = jQuery("#"+currentBackGal);
-	if ( bEnable ) {
+	if ( bEnable && jGal.length ) {
 		jGal.find('.galleryArrow').removeClass('disabled').fadeIn(200); // enable background gallery's navigation
 		jGal.filter('.hover').trigger('mouseenter');
 		galleries[currentBackGal]['startedWithImage'] = galleries[currentBackGal]['current'];
-	} else {
+	} else if (jGal.length) {
 		jGal.find('.galleryArrow').addClass('disabled'); // disable background gallery's navigation
 		jGal.filter(':not(.hover)').trigger('mouseleave').find('.galleryArrow').fadeOut(200);
 	}

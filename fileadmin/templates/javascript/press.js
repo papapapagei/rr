@@ -70,6 +70,9 @@ function exchangePressItem(containerId) {
 	var box2 = container.find('.press-box2');
 	// check if boxes fit
 	var element = hidden.children().first();
+	if ( element.length == 0 ) {
+		return;
+	}
 	var oldItem;
 	var fitsFirstBox = element.get(0).savedOuterHeight <= box1.height();
 	var fitsSecondBox = element.get(0).savedOuterHeight <= box2.height();

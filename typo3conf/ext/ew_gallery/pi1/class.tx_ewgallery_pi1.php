@@ -95,7 +95,8 @@ class tx_ewgallery_pi1 extends tx_ewpibase {
 		$this->firstImage = current($this->get_dam_images( $this->cObj->data['uid'], 'tx_ewgallery_smallimage'));
 		$this->firstBackgroundImage = current($this->get_dam_images( $this->cObj->data['uid'], 'tx_ewgallery_bigimage'));
 		$this->imageList = $this->get_dam_images( $this->cObj->data['uid'], 'tx_dam_images');
-		$this->video = current($this->get_dam_images( $this->cObj->data['uid'], 'tx_ewgallery_video'));
+		$this->videos = $this->get_dam_images( $this->cObj->data['uid'], 'tx_ewgallery_video');
+
 		$this->video_button = current($this->get_dam_images( $this->cObj->data['uid'], 'tx_ewgallery_video_button'));
 	}
 	
@@ -121,6 +122,12 @@ class tx_ewgallery_pi1 extends tx_ewpibase {
 				'file.' => array('width' => $this->width.'c','height' => $this->height.'c'))) );
 			$imageList .= $this->renderSubpart( 'ITEM' );
 		}
+		// render video file list
+		$videoFiles = '';
+		foreach( $this->videos as $video ) {
+			$type = $this->getMimeType(PATH_site.$video['path']);
+			$videoFiles .= '<source src="'.$video['path'].'" type="'.$type.'" />';
+		}
 		$this->addMarker('FIRST_IMAGE',$firstImage);
 		$this->addMarker('IMAGE_LIST',$imageList);
 		$this->addMarker('WIDTH',$this->width);
@@ -132,8 +139,8 @@ class tx_ewgallery_pi1 extends tx_ewpibase {
 		$this->addMarker('GALLERY_TEXT',$galleryText);
 		$teaserText = $this->pi_getLL('watchTrailer');
 		$this->addMarker('VIDEO_TEXT',$teaserText);
-		$this->addMarker('VIDEO_FILE',empty($this->video) ? '' : $this->video['path']);
-		$this->addMarker('VIDEO_LINK_HIDDEN',empty($this->video) ? 'display:none;' : '');
+		$this->addMarker('VIDEO_FILES',$videoFiles);
+		$this->addMarker('VIDEO_LINK_HIDDEN',empty($this->videos) ? 'display:none;' : '');
 		$content = $this->renderSubpart( 'GALLERY' );
 		return $content;
 	}

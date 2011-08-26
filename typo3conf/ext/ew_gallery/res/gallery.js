@@ -10,6 +10,9 @@ var numGalleriesInitialized = 0;
 var currentFrontGal;
 var currentBackGal;
 var galleriesHidden = false;
+var noVideo = false;
+var baseUrl = '';
+
 // this will be called by the jwplayer
 function playerReady(thePlayer) {
 	videoPlayer = window.document[thePlayer.id];
@@ -77,12 +80,30 @@ function getId(obj) {
 }
 
 jQuery(document).ready( function() {
-	// BUG in FIREFOX: Player muss zuerst geladen werden, da er sonst kein playerReady() aufruft. Daher warten wir bis dahin
+	baseUrl = $('base').attr('href');
+	var videoParameters = {
+//		_width: "100%",
+//		_height: "100%",
+		playerFlashMP4: "fileadmin/templates/projekktor/jarisplayer.swf"
+	};
+	jQuery('video').attr('height',jQuery('video').parent().height());
+	jQuery('video').attr('width',jQuery('video').parent().width());
+	videoPlayer = projekktor('video', videoParameters, function(player) {});
+	videoPlayer.addListener('state', function(state) {
+		if ( ( state == 'COMPLETED' ) || ( state == 'PAUSED' ) ) {
+			if (isOverlayMinimized()) {
+				minMaxOverlay(true);
+			}
+			// when coming back from video, delay only some seconds before switching to gallery
+			resetAutoSlide(3000);
+		}
+		if ( state == 'PLAYING' ) {
+			killTimer();
+		}
+	});
 	
-	// wenn kein Videoplayer
-	if (jQuery('.videoWrap').length == 0 ) {
-		galleriesGetReady();
-	}
+	galleriesGetReady();
+	
 	// event handlers
 	jQuery(".ewgallery .galleryArrowLeft").click( clickPrevBgImage ).dblclick( clickPrevBgImage );
 	jQuery(".ewgallery .galleryArrowRight").click( clickNextBgImage ).dblclick( clickNextBgImage );
@@ -419,18 +440,39 @@ function updateGalleryToScroll() {
  */
 
 function playVideo(videoFile,bPlayInBackground) {
-	killTimer();
-	if ( jQuery(this).parents('.ewgallery,.ewgalleryVideoButton').children('.videoFile').length ) { // play button clicked
-		videoFile = jQuery(this).parents('.ewgallery,.ewgalleryVideoButton').children('.videoFile').val();
+	if ( noVideo ) {
+		alert('Your browser does not support Videos on this website.');
+		return;
 	}
-	videoPlayer.sendEvent('LOAD','../../../../../'+videoFile);
-	
+	killTimer();
+	var videoFiles = jQuery(this).parents('.ewgallery,.ewgalleryVideoButton').find('.videoFiles *');
+	if ( videoFiles.length ) { // play button clicked
+		// the playlist object must be created via "eval"
+		videoString = 'video = {';
+		var i = 0;
+		videoFiles.each( function() {
+			var v = i+":{ src: '"+$(this).attr('src')+"', type: '"+$(this).attr('type')+"' }";
+			if ( i ) {
+				v = ',' + v;
+			}
+			videoString = videoString + v;
+			i=i+1;
+		});
+		videoString += '}';
+		eval(videoString);
+//		videoFile = jQuery(this).parents('.ewgallery,.ewgalleryVideoButton').children('.videoFiles').val();
+//		var video = { 0:{src: videoFile, type: 'video/mp4'} }
+		videoPlayer.setItem( video, 1, true );
+		videoPlayer.setActiveItem('next');
+		videoPlayer.setPlay();
+	}
+
 	if ( bPlayInBackground == true) {
 		jQuery('#'+currentBackGal).fadeOut(500,function(){videoPlayer.sendEvent('PLAY',true);galleriesHidden=true;});
 	} else {
 		minMaxOverlay( true, function() {
 			// hide current Background Gallery
-			jQuery('#'+currentBackGal).fadeOut(500,function(){videoPlayer.sendEvent('PLAY',true);galleriesHidden=true;});
+			jQuery('#'+currentBackGal).fadeOut(500,function(){/*videoPlayer.setPlay();*/galleriesHidden=true;});
 		});
 	}
 }

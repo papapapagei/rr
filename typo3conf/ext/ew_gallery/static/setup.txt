@@ -16,11 +16,13 @@ plugin.tx_ewgallery_pi1 {
 }
 
 page.includeJS {
-	ewgallery = typo3conf/ext/ew_gallery/res/gallery.js
+	file10projekktor = fileadmin/templates/projekktor/projekktor.min.js
+	file20ewgallery = typo3conf/ext/ew_gallery/res/gallery.js
 }
 
 page.includeCSS {
 	ewgallery = typo3conf/ext/ew_gallery/res/gallery.css
+	projekktor = fileadmin/templates/projekktor/theme/style.css
 }
 
 page.77 = USER

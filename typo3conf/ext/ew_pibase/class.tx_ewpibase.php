@@ -50,6 +50,13 @@ class tx_ewpibase extends tslib_pibase {
 	var $templateFile;
 	var $templateCode;
 	var $markerArray = array();
+	var $mimeTypes = array(
+		'ogv'	=>	'video/ogg',
+		'ogg'	=>	'video/ogg',
+		'webm'	=>	'video/webm',
+		'mp4'	=>	'video/mp4',
+		'f4v'	=>	'video/x-f4v',
+	);
 	
 	
 	// Template Parsing Functions
@@ -80,6 +87,20 @@ class tx_ewpibase extends tslib_pibase {
 			$better_list[$uid]['path'] = $image['file_path'].$image['file_name'];
 		}
 		return $better_list;
+	}
+	
+	/*
+	 * returns the Mime Type for a given file
+	 */
+	function getMimeType($file) {
+		$path_parts = pathinfo($file);
+		$ext = strtolower($path_parts['extension']);
+		
+		if ( isset( $this->mimeTypes[$ext] ) ) {
+			return $this->mimeTypes[$ext];
+		} else { // this means anything
+			return 'application/octet-stream';
+		}
 	}
 }
 

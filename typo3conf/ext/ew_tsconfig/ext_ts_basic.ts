@@ -8,6 +8,7 @@ config {
 	sys_language_overlay = 1
 	simulateStaticDocuments = 0
 	tx_realurl_enable = 1
+	doctype = html_5
 }
 
 config.baseURL = http://www.r-revue.de/
@@ -22,6 +23,9 @@ config.baseURL = http://www.r-revue.de/
 [global]
 [globalString = ENV:HTTP_HOST = realitaten-revue.de]
 	config.baseURL = http://www.realitaten-revue.de/
+[global]
+[globalString = ENV:HTTP_HOST = s142297232.online.de]
+	config.baseURL = http://s142297232.online.de/rr2011/
 [global]
 
 [globalVar = GP:L = 1]

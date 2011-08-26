@@ -6,6 +6,7 @@
 /fileadmin/user_upload
 /uploads
 # ignore cached merged configuration files
+/typo3conf/*.log
 /typo3conf/temp_CACHED*
 # ignore temp folder...
 /typo3temp/*

@@ -64,7 +64,8 @@ body {
 #content {
 	overflow: hidden;
 	z-index: 10;
-	padding: 15px 0px 30px 25px;
+	/* 42 = 10+27+15   Padding+Menu+Padding*/
+	padding: 42px 0px 30px 25px;
 }
 
 .csc-header {
@@ -74,10 +75,12 @@ body {
 
 #topMenuWrap {
 	padding-top: 10px;
+	position: absolute;
+	z-index: 20;
 }
 
 #topMenu {
-	width: 100%;
+	width: 820px;
 	padding: 0 2px 0 2px;
 	position: relative;
 	left: -2px;
@@ -233,4 +236,8 @@ body {
 .teiler-2sp td {
 	vertical-align: top;
 	padding: 0;
+}
+
+img {
+	border: 0;
 }
