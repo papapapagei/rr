@@ -13,18 +13,11 @@ var galleriesHidden = false;
 var noVideo = false;
 var baseUrl = '';
 
-// this will be called by the jwplayer
-function playerReady(thePlayer) {
-	videoPlayer = window.document[thePlayer.id];
-	addListeners();
-	galleriesGetReady();
-}
-
 function galleriesGetReady() {
 	var allGalleries = jQuery(".ewFrontGallery");
 	// if we need no video player: delete it
 	if ( ( allGalleries.length == 0) && (jQuery('#ewGalleryPageVideos').children().length == 0) && (jQuery('.galleryVideoLink').length == 0) ) {
-		jQuery(videoPlayer).detach();
+		//jQuery(videoPlayer).detach();
 	}
 	numGalleries = allGalleries.length;
 	allGalleries.each( function() {
@@ -82,16 +75,16 @@ function getId(obj) {
 jQuery(document).ready( function() {
 	baseUrl = $('base').attr('href');
 	var videoParameters = {
-//		_width: "100%",
-//		_height: "100%",
+		_width: "100%",
+		_height: "100%",
 		playerFlashMP4: "fileadmin/templates/projekktor/jarisplayer.swf"
 	};
-	jQuery('video').attr('height',jQuery('video').parent().height());
-	jQuery('video').attr('width',jQuery('video').parent().width());
+	//jQuery('video').attr('height',jQuery('video').parent().height());
+	//jQuery('video').attr('width',jQuery('video').parent().width());
 	videoPlayer = projekktor('video', videoParameters, function(player) {});
 	videoPlayer.addListener('state', function(state) {
 		if ( ( state == 'COMPLETED' ) || ( state == 'PAUSED' ) ) {
-			if (isOverlayMinimized()) {
+			if (isOverlayMinimized() && galleriesHidden) {
 				minMaxOverlay(true);
 			}
 			// when coming back from video, delay only some seconds before switching to gallery
@@ -356,7 +349,7 @@ function enlargeImage(galId) {
 			galleries[backId]['startedWithImage'] = galleries[backId]['current'];
 			// stop video player
 			if (jQuery('.videoWrap').length ) {
-				videoPlayer.sendEvent('PLAY',false);
+				videoPlayer.setPause();
 			}
 			// start sliding
 			resetAutoSlide();
@@ -468,38 +461,11 @@ function playVideo(videoFile,bPlayInBackground) {
 	}
 
 	if ( bPlayInBackground == true) {
-		jQuery('#'+currentBackGal).fadeOut(500,function(){videoPlayer.sendEvent('PLAY',true);galleriesHidden=true;});
+		jQuery('#'+currentBackGal).fadeOut(500,function(){videoPlayer.setPlay();galleriesHidden=true;});
 	} else {
 		minMaxOverlay( true, function() {
 			// hide current Background Gallery
 			jQuery('#'+currentBackGal).fadeOut(500,function(){/*videoPlayer.setPlay();*/galleriesHidden=true;});
 		});
-	}
-}
-
-function addListeners() {
-	if (videoPlayer) { 
-		videoPlayer.addModelListener("STATE", "stateListener");
-	} else {
-		setTimeout("addListeners()",100);
-	}
-}
-
-function stateListener(obj) { //IDLE, BUFFERING, PLAYING, PAUSED, COMPLETED
-	currentState = obj.newstate; 
-	previousState = obj.oldstate; 
-	if ( (previousState == "PLAYING" && currentState == "PAUSED") ||
-	   (previousState == "PLAYING" && currentState == "IDLE") ) {
-		if (isOverlayMinimized()) {
-			minMaxOverlay(true);
-		}
-		// when coming back from video, delay only some seconds before switching to gallery
-		resetAutoSlide(3000);
-	}
-	/*if (previousState == "PLAYING" && currentState == "PAUSED") { // continue auto sliding of gallery
-		resetAutoSlide(autoSlideInterval);
-	}*/
-	if (previousState == "PAUSED" && currentState == "PLAYING") { // stop auto slide
-		killTimer();
 	}
 }

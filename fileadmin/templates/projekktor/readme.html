@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Projekktor - simply mighty video</title>
+    <style type="text/css">
+	body { background-color: #fdfdfd; padding: 0 20px; color:#000; font: 13px/18px monospace; width: 800px;}
+	a { color: #360; }
+	h3 { padding-top: 20px; }
+    </style>
+
+    <!-- Load player theme -->
+    <link rel="stylesheet" href="theme/style.css" type="text/css" media="screen" />
+
+    <!-- Load jquery -->
+    <script type="text/javascript" src="jquery.min.js"></script>
+
+    <!-- load projekktor -->
+    <script type="text/javascript" src="projekktor.min.js"></script>
+
+</head>
+<body>
+
+    <h1>Thanks for downloading Projekktor <span id="projekktorver"></span></h1>
+    <p>
+	This file is intended to be a quick introduction on how to install and use Projekktor Zwei.
+	Please take a look onto the source in order to check out what&acute;s going on here.
+	More detailed information and a documentation can be found online:
+    </p>
+
+    <ul>
+	<li><a href="http://www.projekktor.com">Homepage</a></li>
+	<li><a href="http://www.projekktor.com/docs.php">Docs</a></li>
+	<li><a href="http://www.projekktor.com/support.php">Support</a></li>
+	<li><a href="http://www.projekktor.com/downloads.php">More Downloads</a></li>
+	<li><a href="http://www.projekktor.com/license.php">GPL License</a></li>
+	<li><a href="http://www.projekktor.com/license.php#donate"><b>Support this projekkt: Consider a donation</b></a></li>
+    </ul>
+    <p>
+	brought to you by <a href="http://www.spinningairwhale.com">spinning airwhale media</a> - Free the Princess of Agentia!
+    </p>
+
+    <h2>Example - One Video, OGG+MP4+WEBM, Theme: Maccaco by <a href="http://www.porkhead.org">porkhead</a></h2>
+
+    <video id="player_a" class="projekktor" poster="intro.png" title="this is Projekktor" width="640" height="385" controls>
+	<source src="intro.ogv" type="video/ogg" />
+	<source src="intro.mp4" type="video/mp4" />
+	<source src="intro.webm" type="video/mp4" />
+    </video>
+
+
+    <script type="text/javascript">
+	$(document).ready(function() {
+	    projekktor('#player_a'); // instantiation
+	});
+    </script>
+
+
+    <h1 style="color: red;">UPGRADE INFORMATION:</h1>
+    
+    <h3>read the <a href="http://downloads.projekktor.com/changelog.txt">changelog</a> and take care if you are upgrading ...</h3>
+    
+    <h2>from V0.8.21 and below </h2>
+    
+    <h3>CSS Themes:</h3>
+    <p>
+	The start-button, the buffering indcator and the logo overlay now also use the new inactive/active CSS class system as described below.
+	Please update your theme CSS accordingly. The <a href="http://www.projekktor.com/downloads.php">offical themes</a> have already been overhauled.
+	You may want to use them as references.
+    </p>
+    <h3>YOUTUBE again:</h3>
+    <p>
+	The old Youtube flash API has been re-implemented and is now provided parallel to the iframed one. You can use the "useYTIframeAPI"
+	config option to enable the iframe solution which is FALSE by default. Have fun!
+    </p>
+    
+    <h2>from V0.8.17 and below </h2>
+    
+    <h3>CSS Themes:</h3>
+    <p>
+	Projekktor removed all hardcoded "display"-CSS-directives from its JS code. With V0.8.18 the CSS-classes "active"
+	or "inactive" are applied to the DOM elements to be toggled instead. As such you have to update your theme-CSS-files in order to work properly
+	with this new principle. The <a href="http://www.projekktor.com/downloads.php">offical themes</a> have already been overhauled. You may want 
+	to use them as references.
+    </p>
+    
+    <h3>YOUTUBE API:</h3>
+    <p>
+	Projekktor now supports the new, experimental and Flash-beating Youtube IFRAME API. Therefore Youtube
+	videos will not work properly on IE6, IE7 and some other browsers not supporting "postMessage" and "JSON".
+	Furthermore there are some known bugs in IE9 and Opera caused by Youtube´s javascripts.
+    </p>
+    <p>
+	Projekktor believes the benefit for the future is more valuable than the temporary loss.
+	Anyhow, <b>if your current project heavily depends on Youtube content we do not recommend to update right now</b>.
+    </p>
+    <p>
+	Please keep in mind: Youtube support has been built into Projekktor for experimental reasons only. Projekktor believes that you should
+	host your content for your own or use open hosters like <a href="http://www.blip.tv">BLIP.TV</a> at least. Youtube is not the answer.
+    </p>
+    
+
+</body>
+</html>
