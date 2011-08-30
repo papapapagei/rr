@@ -298,7 +298,6 @@ function fadeToImage(galId,next,callback,bEnlarge) {
 	
 	if ( galVisible ) { // if gallery is already visible
 		lastImage.fadeOut( galleries[galId]['fadeDuration'], function() {
-			newImage.show();
 			newImage.fadeIn( galleries[galId]['fadeDuration'], fadeImageCallback );
 		} );
 		galleries[galId]['current'] = next;

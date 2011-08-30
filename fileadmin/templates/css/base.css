@@ -64,8 +64,8 @@ body {
 #content {
 	overflow: hidden;
 	z-index: 10;
-	/* 42 = 10+27+15   Padding+Menu+Padding*/
-	padding: 42px 0px 30px 25px;
+	/* 52 = 10+27+25   Padding+Menu+Padding*/
+	padding: 52px 0px 30px 25px;
 }
 
 .csc-header {

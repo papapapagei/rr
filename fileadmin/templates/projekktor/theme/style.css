@@ -32,7 +32,7 @@ position: relative !important;
 
 .ppcontrols {
 position: absolute;
-bottom: 60px;
+top: 20px;
 right:0;
 display: block;
 overflow: hidden;
@@ -445,6 +445,7 @@ text-decoration: none;
 .ppnext,
 .ppfsenter,
 .ppfsexit,
+.ppstart,
 .pptitle {
 	display: none! important;
 }
