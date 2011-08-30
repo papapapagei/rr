@@ -1,0 +1,6 @@
+# Mehrsprachigkeit
+# Typoscript wird 'on the fly' in tx_ewlanguage->writeLanguageTSConfig erstellt
+
+# language menu for testing
+#page.15 = USER
+#page.15.userFunc = tx_ewlanguage_piMenu->getMenu

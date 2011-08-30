@@ -139,5 +139,9 @@ RewriteRule .* index.php [L]
 
 ### End: Miscellaneous ###
 
-# Add your own rules here
-# ...
+# ELIO
+####
+
+# Mime Types
+AddType video/webm		.webm
+AddType video/ogg		.ogv
