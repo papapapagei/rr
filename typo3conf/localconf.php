@@ -37,8 +37,8 @@ $TYPO3_CONF_VARS['SYS']['sitename'] = 'RR';	//  Modified or inserted by TYPO3 In
 $TYPO3_CONF_VARS['SYS']['encryptionKey'] = '4bfe2ed11d18ab32c3414ce9c0ca2627a94c1847016ffa126041f2a3e974887758c482c0085fdeaba6ac843fa355fc80';	//  Modified or inserted by TYPO3 Install Tool.
 $TYPO3_CONF_VARS['SYS']['compat_version'] = '4.5';	// Modified or inserted by TYPO3 Install Tool. 
 // Updated by TYPO3 Install Tool 06-09-10 22:31:47
-$TYPO3_CONF_VARS['EXT']['extList'] = 'css_styled_content,version,tsconfig_help,context_help,extra_page_cm_options,impexp,sys_note,tstemplate,tstemplate_ceditor,tstemplate_info,tstemplate_objbrowser,tstemplate_analyzer,func_wizards,wizard_crpages,wizard_sortpages,lowlevel,install,belog,beuser,aboutmodules,setup,taskcenter,info_pagetsconfig,viewpage,rtehtmlarea,t3skin,t3editor,reports,templavoila,media_center,kickstarter,ew_tsconfig,dam,ew_gallery,dam_index,ew_pibase,static_info_tables,ew_facts,ew_press,recycler,formhandler,ew_calendar,rb_flashobject,realurl,realurlmanagement,aeurltool,ew_content,info,perm,func,filelist,about,cshmanual';	// Modified or inserted by TYPO3 Extension Manager. Modified or inserted by TYPO3 Core Update Manager. 
-$TYPO3_CONF_VARS['EXT']['extList_FE'] = 'css_styled_content,version,install,rtehtmlarea,t3skin,templavoila,media_center,kickstarter,ew_tsconfig,dam,ew_gallery,dam_index,ew_pibase,static_info_tables,ew_facts,ew_press,formhandler,ew_calendar,rb_flashobject,realurl,realurlmanagement,aeurltool,ew_content';	// Modified or inserted by TYPO3 Extension Manager. 
+$TYPO3_CONF_VARS['EXT']['extList'] = 'css_styled_content,version,tsconfig_help,context_help,extra_page_cm_options,impexp,sys_note,tstemplate,tstemplate_ceditor,tstemplate_info,tstemplate_objbrowser,tstemplate_analyzer,func_wizards,wizard_crpages,wizard_sortpages,lowlevel,install,belog,beuser,aboutmodules,setup,taskcenter,info_pagetsconfig,viewpage,rtehtmlarea,t3skin,t3editor,reports,templavoila,media_center,kickstarter,ew_tsconfig,dam,ew_gallery,dam_index,ew_pibase,static_info_tables,ew_facts,ew_press,recycler,formhandler,ew_calendar,rb_flashobject,realurl,realurlmanagement,aeurltool,ew_content,info,perm,func,filelist,about,cshmanual,go_language';	// Modified or inserted by TYPO3 Extension Manager. Modified or inserted by TYPO3 Core Update Manager. 
+$TYPO3_CONF_VARS['EXT']['extList_FE'] = 'css_styled_content,version,install,rtehtmlarea,t3skin,templavoila,media_center,kickstarter,ew_tsconfig,dam,ew_gallery,dam_index,ew_pibase,static_info_tables,ew_facts,ew_press,formhandler,ew_calendar,rb_flashobject,realurl,realurlmanagement,aeurltool,ew_content,go_language';	// Modified or inserted by TYPO3 Extension Manager. 
 $TYPO3_CONF_VARS['BE']['forceCharset'] = 'utf-8';
 // Updated by TYPO3 Install Tool 19-09-10 14:15:39
 $TYPO3_CONF_VARS['EXT']['extConf']['dam_index'] = 'a:2:{s:18:"add_media_indexing";s:1:"0";s:23:"add_media_file_indexing";s:1:"1";}';	//  Modified or inserted by TYPO3 Extension Manager.
@@ -51,5 +51,5 @@ $TYPO3_CONF_VARS['EXT']['extConf']['rtehtmlarea'] = 'a:13:{s:21:"noSpellCheckLan
 @include(PATH_typo3conf.'urltoolconf_realurl.php'); // RealUrl-Configuration inserted by extension aeurltool
 // Updated by TYPO3 Extension Manager 14-11-10 21:19:09
 // Updated by TYPO3 Install Tool 05-08-11 22:32:02
-// Updated by TYPO3 Extension Manager 05-08-11 22:38:15
+// Updated by TYPO3 Extension Manager 30-08-11 22:27:36
 ?>

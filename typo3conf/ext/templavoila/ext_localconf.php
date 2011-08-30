@@ -1,5 +1,5 @@
 <?php
-# TYPO3 CVS ID: $Id$
+# TYPO3 CVS ID: $Id: ext_localconf.php 44010 2011-02-22 12:27:18Z tolleiv $
 if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
 // unserializing the configuration so we can use it here:
@@ -7,9 +7,21 @@ $_EXTCONF = unserialize($_EXTCONF);
 
 	// Adding the two plugins TypoScript:
 t3lib_extMgm::addPItoST43($_EXTKEY,'pi1/class.tx_templavoila_pi1.php','_pi1','CType',1);
+$tvSetup = array('plugin.tx_templavoila_pi1.disableExplosivePreview = 1');
 if (!$_EXTCONF['enable.']['renderFCEHeader']) {
-	t3lib_extMgm::addTypoScript($_EXTKEY,'setup','tt_content.templavoila_pi1.10 >',43);
+	$tvSetup[] = 'tt_content.templavoila_pi1.10 >';
 }
+
+if(t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
+		//sectionIndex replacement
+	$tvSetup[] = 'tt_content.menu.20.3 = USER
+	tt_content.menu.20.3.userFunc = tx_templavoila_pi1->tvSectionIndex
+	tt_content.menu.20.3.select.where >
+	tt_content.menu.20.3.indexField.data = register:tx_templavoila_pi1.current_field
+	';
+}
+
+t3lib_extMgm::addTypoScript($_EXTKEY,'setup',implode(PHP_EOL, $tvSetup), 43);
 
 	// Use templavoila's wizard instead the default create new page wizard
 t3lib_extMgm::addPageTSConfig('
@@ -17,6 +29,8 @@ t3lib_extMgm::addPageTSConfig('
 	mod.web_list.newContentWiz.overrideWithExtension = templavoila
 	mod.web_txtemplavoilaM2.templatePath = templates
 	mod.web_txtemplavoilaM1.enableDeleteIconForLocalElements = 0
+	mod.web_txtemplavoilaM1.enableContentAccessWarning = 1
+	mod.web_txtemplavoilaM1.enableLocalizationLinkForFCEs = 0
 ');
 
  	// Use templavoila instead of the default page module
@@ -234,14 +248,24 @@ templavoila.wizards.newContentElement.wizardItems.special.show = uploads,media,m
 ');
 }
 
+$TYPO3_CONF_VARS['BE']['AJAX']['tx_templavoila_mod1_ajax::moveRecord'] =
+	'EXT:templavoila/mod1/class.tx_templavoila_mod1_ajax.php:tx_templavoila_mod1_ajax->moveRecord';
+
+$TYPO3_CONF_VARS['BE']['AJAX']['tx_templavoila_cm1_ajax::getDisplayFileContent'] =
+	'EXT:templavoila/cm1/class.tx_templavoila_cm1_ajax.php:tx_templavoila_cm1_ajax->getDisplayFileContent';
+
 if(t3lib_div::int_from_ver(TYPO3_version) < 4003000) {
 	$list = include(t3lib_extMgm::extPath('templavoila') . '/ext_autoload.php');
+	require_once $list['tx_templavoila_api'];
 	require_once $list['tx_templavoila_div'];
+	require_once $list['tx_templavoila_icons'];
 	require_once $list['tx_templavoila_datastructure'];
 	require_once $list['tx_templavoila_datastructure_dbbase'];
 	require_once $list['tx_templavoila_datastructure_staticbase'];
 	require_once $list['tx_templavoila_datastructurerepository'];
 	require_once $list['tx_templavoila_template'];
 	require_once $list['tx_templavoila_templaterepository'];
+	require_once $list['tx_templavoila_staticdstools'];
 }
+
 ?>

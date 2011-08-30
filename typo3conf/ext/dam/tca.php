@@ -212,7 +212,7 @@ $TCA['tx_dam'] = array(
 		 */
 
 		'file_name' => array(
-			'exclude' => '1',
+			'exclude' => 0,
 			'l10n_mode' => 'exclude',
 			'l10n_display' => 'defaultAsReadonly',
 			'label' => 'LLL:EXT:dam/locallang_db.xml:tx_dam_item.file_name',
@@ -222,10 +222,11 @@ $TCA['tx_dam'] = array(
 				'size' => '15',
 				'max' => '255',
 				'eval' => 'required',
+				'softref' => 'dam_file',
 			)
 		),
 		'file_path' => array(
-			'exclude' => '1',
+			'exclude' => 0,
 			'l10n_mode' => 'exclude',
 			'l10n_display' => 'defaultAsReadonly',
 			'label' => 'LLL:EXT:dam/locallang_db.xml:tx_dam_item.file_path',
@@ -248,7 +249,7 @@ $TCA['tx_dam'] = array(
 			)
 		),
 		'file_type' => array(
-			'exclude' => '1',
+			'exclude' => 0,
 			'l10n_mode' => 'exclude',
 			'l10n_display' => 'defaultAsReadonly',
 			'label' => 'LLL:EXT:dam/locallang_db.xml:tx_dam_item.file_type',
@@ -1288,6 +1289,79 @@ $TCA['tx_dam_selection'] = array(
 	)
 );
 
+
+$TCA['tx_dam_media_types'] = array(
+	'ctrl' => $TCA['tx_dam_media_types']['ctrl'],
+	'interface' => array(
+		'showRecordFieldList' => 'ext, mime, type, icon'
+	),
+	'feInterface' => $TCA['tx_dam_media_types']['feInterface'],
+	'columns' => array(
+		'ext' => array(
+			'exclude' => '1',
+			'label' => 'LLL:EXT:dam/locallang_db.xml:tx_dam_media_types.ext',
+			'config' => array(
+				'type' => 'input',
+				'size' => '5',
+				'eval' => 'unique,required',
+			)
+		),
+		'mime' => array(
+			'exclude' => '1',
+			'label' => 'LLL:EXT:dam/locallang_db.xml:tx_dam_media_types.mime',
+			'config' => array(
+				'type' => 'input',
+				'size' => '30',
+				'eval' => 'required',
+			)
+		),		
+		'type' => array(
+			'exclude' => '1',
+			'label' => 'LLL:EXT:dam/locallang_db.xml:tx_dam_item.media_type',
+			'config' => array(
+				'type' => 'select',
+				'items' => array(
+					array('LLL:EXT:dam/locallang_db.xml:media_type.text', '1'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.image', '2'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.audio', '3'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.video', '4'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.dataset', '9'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.interactive', '5'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.software', '11'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.model', '8'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.font', '7'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.collection', '10'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.service', '6'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.application', '12'),
+					array('LLL:EXT:dam/locallang_db.xml:media_type.undefined', '0'),
+				),
+				'userFunc' => 'EXT:dam/lib/class.tx_dam_tcefunc.php:&tx_dam_tceFunc->tx_dam_mediaType',
+				'noTableWrapping' => TRUE,
+			)
+		),
+		'icon' => array(
+			'exclude' => '1',
+			'label' => 'LLL:EXT:dam/locallang_db.xml:tx_dam_media_types.icon',
+			'config' => array(
+				'form_type'		=> 'user',
+				'userFunc'		=> 'EXT:dam/lib/class.tx_dam_tcefunc.php:&tx_dam_tceFunc->getSingleField_typeMedia',
+				'type'			=> 'group',
+				'internal_type'	=> 'db',
+				'allowed'		=> 'tx_dam',
+				'allowed_types'	=> 'gif,jpg,jpeg,png',
+				'max_size'		=> '1',
+				'show_thumbs'	=> '1',
+				'size'			=> '1',
+				'maxitems'		=> '1',
+				'minitems'		=> '0',
+				'autoSizeMax'	=> '1',
+			)
+		),						
+	),
+	'types' => array(
+		'0' => array('showitem' => 'ext, mime, type, icon')
+	)
+);
 
 
 

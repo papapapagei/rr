@@ -1,12 +1,12 @@
 <?php
 
 abstract class Tx_Formhandler_AbstractComponent {
-	
+
 	/**
-	 * The GimmeFive component manager
+	 * The Formhandler component manager
 	 *
 	 * @access protected
-	 * @var Tx_GimmeFive_Component_Manager
+	 * @var Tx_Formhandler_Component_Manager
 	 */
 	protected $componentManager;
 
@@ -33,7 +33,7 @@ abstract class Tx_Formhandler_AbstractComponent {
 	 * @var tslib_cObj
 	 */
 	protected $cObj;
-	
+
 	/**
 	 * Settings
 	 * 
@@ -45,16 +45,24 @@ abstract class Tx_Formhandler_AbstractComponent {
 	/**
 	 * The constructor for an interceptor setting the component manager and the configuration.
 	 *
-	 * @param Tx_GimmeFive_Component_Manager $componentManager
+	 * @param Tx_Formhandler_Component_Manager $componentManager
 	 * @param Tx_Formhandler_Configuration $configuration
 	 * @return void
 	 */
-	public function __construct(Tx_GimmeFive_Component_Manager $componentManager, Tx_Formhandler_Configuration $configuration) {
+	public function __construct(Tx_Formhandler_Component_Manager $componentManager, Tx_Formhandler_Configuration $configuration) {
 		$this->componentManager = $componentManager;
 		$this->configuration = $configuration;
 		$this->cObj = Tx_Formhandler_Globals::$cObj;
 	}
-	
+
+	/**	
+	 * Initialize the class variables
+	 *
+	 * @param array $gp GET and POST variable array
+	 * @param array $settings Typoscript configuration for the component (component.1.config.*)
+	 *
+	 * @return void
+	 */
 	public function init($gp, $settings) {
 		$this->gp = $gp;
 		$this->settings = $settings;
@@ -68,7 +76,11 @@ abstract class Tx_Formhandler_AbstractComponent {
 	 * @return array The probably modified GET/POST parameters
 	 */
 	abstract public function process();
-	
+
+	public function validateConfig() {
+
+	}
+
 }
 
 ?>

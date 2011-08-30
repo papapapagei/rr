@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_ErrorCheck_ContainsOne.php 30986 2010-03-10 18:34:49Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_ErrorCheck_ContainsOne.php 40269 2010-11-16 15:23:54Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -34,20 +34,20 @@ class Tx_Formhandler_ErrorCheck_ContainsOne extends Tx_Formhandler_AbstractError
 	public function check(&$check, $name, &$gp) {
 		$checkFailed = '';
 		$formValue = trim($gp[$name]);
-		
-		if(strlen($formValue) > 0) {
+
+		if (strlen($formValue) > 0) {
 			$checkValue = Tx_Formhandler_StaticFuncs::getSingle($check['params'], 'words');
-			if(!is_array($checkValue)) {
+			if (!is_array($checkValue)) {
 				$checkValue = t3lib_div::trimExplode(',', $checkValue);
 			}
 			$found = FALSE;
-			foreach($checkValue as $word) {
-				if(stristr($formValue, $word) && !$found) {
+			foreach ($checkValue as $idx => $word) {
+				if (stristr($formValue, $word) && !$found) {
 					$found = TRUE;
 				}
 			}
-			if(!$found) {
-					
+			if (!$found) {
+
 				//remove userfunc settings and only store comma seperated words
 				$check['params']['words'] = implode(',', $checkValue);
 				unset($check['params']['words.']);
@@ -56,7 +56,6 @@ class Tx_Formhandler_ErrorCheck_ContainsOne extends Tx_Formhandler_AbstractError
 		}
 		return $checkFailed;
 	}
-
 
 }
 ?>

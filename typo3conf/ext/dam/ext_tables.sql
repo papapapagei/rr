@@ -107,7 +107,7 @@ CREATE TABLE tx_dam (
   file_type_version varchar(9) DEFAULT '' NOT NULL,
 
   file_name varchar(255) DEFAULT '' NOT NULL,
-  file_path text,
+  file_path varchar(4000) DEFAULT '',
   file_size int(11) unsigned DEFAULT '0' NOT NULL,
   file_mtime int(11) unsigned DEFAULT '0' NOT NULL,
   file_inode int(11) DEFAULT '0' NOT NULL,
@@ -360,7 +360,7 @@ CREATE TABLE tx_dam_file_tracking (
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 
   file_name varchar(255) DEFAULT '' NOT NULL,
-  file_path text,
+  file_path varchar(4000) DEFAULT '',
   file_size int(11) unsigned DEFAULT '0' NOT NULL,
 
   # date of file creation
@@ -399,6 +399,21 @@ CREATE TABLE tx_dam_selection (
 	title tinytext,
 	definition text,
 
+	PRIMARY KEY (uid),
+	KEY parent (pid)
+);
+
+#
+# Table structure for table 'tx_dam_media_types'
+#
+CREATE TABLE tx_dam_media_types (
+	uid int(11) NOT NULL auto_increment,
+	pid int(11) DEFAULT '0' NOT NULL,
+	ext varchar(5) DEFAULT '' NOT NULL,
+	mime varchar(64) DEFAULT '' NOT NULL,
+	type int(11) DEFAULT '0' NOT NULL,
+	icon varchar(64) DEFAULT '' NOT NULL,
+	
 	PRIMARY KEY (uid),
 	KEY parent (pid)
 );

@@ -99,6 +99,7 @@ class tx_dam_list_batch extends t3lib_extobjbase {
 		global $BE_USER,$LANG,$BACK_PATH,$TCA,$TYPO3_CONF_VARS;
 
 		$content = '';
+		$content .= tx_dam_SCbase::getFormTag();
 
 		//
 		// Use the current selection to create a query and count selected records
@@ -146,6 +147,7 @@ class tx_dam_list_batch extends t3lib_extobjbase {
 				// no search result: showing selection box
 			$content.= $this->pObj->doc->section('',$this->pObj->getCurrentSelectionBox(),0,1);
 		}
+		$content .= '</form>';
 
 		return $content;
 	}

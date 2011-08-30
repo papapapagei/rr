@@ -24,7 +24,7 @@
 /**
  * Submodule 'sidebar' for the templavoila page module
  *
- * $Id$
+ * $Id: class.tx_templavoila_mod1_sidebar.php 43313 2011-02-09 07:26:41Z tolleiv $
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
@@ -167,6 +167,20 @@ class tx_templavoila_mod1_sidebar {
 		if (is_array ($this->sideBarItems) && count ($this->sideBarItems)) {
 			uasort ($this->sideBarItems, array ($this, 'sortItemsCompare'));
 
+				// sort and order the visible tabs
+			$tablist = $this->pObj->modTSconfig['properties']['tabList'];
+			if ($tablist) {
+				$tabs = t3lib_div::trimExplode(',', $tablist);
+				$finalSideBarItems = array();
+				foreach ($tabs as $itemKey) {
+					if (isset($this->sideBarItems[$itemKey])) {
+						$finalSideBarItems[$itemKey] = $this->sideBarItems[$itemKey];
+					}
+				}
+				$this->sideBarItems = $finalSideBarItems;
+			}
+
+
 				// Render content of each sidebar item:
 			$index = 0;
 			$numSortedSideBarItems = array();
@@ -182,15 +196,17 @@ class tx_templavoila_mod1_sidebar {
 				// Create the whole sidebar:
 			switch ($this->position) {
 				case 'left':
+					$minusIcon = tx_templavoila_icons::getIcon('actions-view-table-collapse');
+					$plusIcon = tx_templavoila_icons::getIcon('actions-view-table-expand');
 					$sideBar = '
 						<!-- TemplaVoila Sidebar (left) begin -->
 
 						<div id="tx_templavoila_mod1_sidebar-bar" style="height: 100%; width: '.$this->sideBarWidth.'px; margin: 0 4px 0 0; display:none;" class="bgColor-10">
-							<div style="text-align:right;"><a href="#" onClick="tx_templavoila_mod1_sidebar_toggle();"><img '.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/minusbullet_list.gif','').' title="" alt="" /></a></div>
+							<div style="text-align:right;"><a href="#" onClick="tx_templavoila_mod1_sidebar_toggle();">' . $minusIcon . '</a></div>
 							'.$this->doc->getDynTabMenu($numSortedSideBarItems, 'TEMPLAVOILA:pagemodule:sidebar', 1, true).'
 						</div>
 						<div id="tx_templavoila_mod1_sidebar-showbutton" style="height: 100%; width: 18px; margin: 0 4px 0 0; display:block; " class="bgColor-10">
-							<a href="#" onClick="tx_templavoila_mod1_sidebar_toggle();"><img '.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/plusbullet_list.gif','').' title="" alt="" /></a>
+							<a href="#" onClick="tx_templavoila_mod1_sidebar_toggle();">' . $plusIcon . '</a>
 						</div>
 
 						<script type="text/javascript">
@@ -221,7 +237,7 @@ class tx_templavoila_mod1_sidebar {
 					$sideBar = '
 						<!-- TemplaVoila Sidebar (top) begin -->
 
-						<div id="tx_templavoila_mod1_sidebar-bar" style="width:100%; border-bottom: 1px solid black; margin-bottom: 10px;" class="bgColor-10">
+						<div id="tx_templavoila_mod1_sidebar-bar" style="width:100%;" class="bgColor-10">
 							'.$this->doc->getDynTabMenu($numSortedSideBarItems, 'TEMPLAVOILA:pagemodule:sidebar', 1, FALSE, 100, 0, TRUE).'
 						</div>
 
@@ -335,16 +351,28 @@ class tx_templavoila_mod1_sidebar {
 					<th colspan="3">&nbsp;</th>
 				</tr>
 			');
-			$tableRows[] = '
-			<tr class="bgColor4">
-				<td width="20">
-					&nbsp;
-				</td><td width="200" style="vertical-align:middle;">
-					' . $GLOBALS['LANG']->getLL('sidebar_versionSelector', 1) . ':
-				</td>
-				<td>' . $versionSelector . '</td>
-			</tr>
-			';
+
+			if (t3lib_div::int_from_ver(TYPO3_version) >= 4004000) {
+				$tableRows[] = '
+				<tr class="bgColor4">
+					<td width="20">
+						&nbsp;
+					</td>
+					<td colspan="9">' . $versionSelector . '</td>
+				</tr>
+				';
+			} else {
+				$tableRows[] = '
+				<tr class="bgColor4">
+					<td width="20">
+						&nbsp;
+					</td><td width="200" style="vertical-align:middle;">
+						' . $GLOBALS['LANG']->getLL('sidebar_versionSelector', 1) . ':
+					</td>
+					<td>' . $versionSelector . '</td>
+				</tr>
+				';
+			}
 
 			return '<table border="0" cellpadding="0" cellspacing="1" class="lrPadding" width="100%">' . implode ('', $tableRows) . '</table>';
 		}
@@ -374,12 +402,12 @@ class tx_templavoila_mod1_sidebar {
 				</td><td width="200">
 					' . $LANG->getLL('sidebar_advancedfunctions_labelshowhidden', 1) . ':
 				</td>
-				<td>'.t3lib_BEfunc::getFuncCheck($pObj->id,'SET[tt_content_showHidden]',$pObj->MOD_SETTINGS['tt_content_showHidden'],'','').'</td>
+				<td>' . t3lib_BEfunc::getFuncCheck($pObj->id, 'SET[tt_content_showHidden]', $pObj->MOD_SETTINGS['tt_content_showHidden'] !== '0', '', '') . '</td>
 			</tr>
 		';
 
 			// Render checkbox for showing outline:
-		if ($GLOBALS['BE_USER']->isAdmin())	{
+		if ($GLOBALS['BE_USER']->isAdmin() || $this->pObj->modTSconfig['properties']['enableOutlineForNonAdmin'])	{
 			$tableRows[] = '
 				<tr class="bgColor4">
 					<td width="20">

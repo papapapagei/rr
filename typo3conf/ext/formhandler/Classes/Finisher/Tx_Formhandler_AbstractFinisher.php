@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_AbstractFinisher.php 37974 2010-09-11 19:58:17Z fabriziobranca $
+ * $Id: Tx_Formhandler_AbstractFinisher.php 46490 2011-04-13 14:05:28Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -23,15 +23,6 @@
  * @abstract
  */
 abstract class Tx_Formhandler_AbstractFinisher extends Tx_Formhandler_AbstractComponent {
-
-	/**
-	 * Method to define whether the config is valid or not. If no, display a warning on the frontend.
-	 * The default value is TRUE. This up to the finisher to overload this method
-	 *
-	 */
-	public function validateConfig() {
-
-	}
 
 }
 ?>

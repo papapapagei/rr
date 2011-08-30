@@ -24,7 +24,7 @@
 /**
  * Submodule 'localization' for the templavoila page module
  *
- * $Id$
+ * $Id: class.tx_templavoila_mod1_localization.php 43363 2011-02-09 23:59:29Z tolleiv $
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
@@ -81,7 +81,7 @@ class tx_templavoila_mod1_localization {
 			'sidebar_renderItem',
 			$LANG->getLL('localization', 1),
 			60,
-			true
+			false
 		);
 	}
 
@@ -132,14 +132,16 @@ class tx_templavoila_mod1_localization {
 			if ($languageArr['uid']<=0 || $BE_USER->checkLanguageAccess($languageArr['uid']))	{
 				$grayedOut = $languageArr['PLO_hidden'] ? ' style="Filter: alpha(opacity=25); -moz-opacity: 0.25; opacity: 0.25"' : '';
 
-				$flag = ($languageArr['flagIcon'] != '' ? $languageArr['flagIcon'] : $BACK_PATH . 'gfx/flags/unknown.gif');
+				$flag = tx_templavoila_icons::getFlagIconFileForLanguage($languageArr['flagIcon']);
 				$style = isset ($languageArr['flagIcon']) ? 'background-image: url(' . $flag . '); background-repeat: no-repeat; padding-left: 22px;' : '';
 				$optionsArr [] = '<option style="'.$style.'" value="'.$languageArr['uid'].'"'.($this->pObj->MOD_SETTINGS['language'] == $languageArr['uid'] ? ' selected="selected"' : '').'>'.htmlspecialchars($languageArr['title']).'</option>';
 
 					// Link to editing of language header:
 				$availableTranslationsFlags .= '<a href="index.php?' .
-					htmlspecialchars($this->pObj->link_getParameters() . '&editPageLanguageOverlay=' . $languageArr['uid']) . '">
-					<img src="' . $flag . '" title="Edit ' . htmlspecialchars($languageArr['title']) . '" alt=""' . $grayedOut . ' /></a> ';
+					htmlspecialchars($this->pObj->link_getParameters() . '&editPageLanguageOverlay=' . $languageArr['uid']) . '">' .
+					'<span ' . $grayedOut . '>' .
+		 			tx_templavoila_icons::getFlagIconForLanguage($languageArr['flagIcon'], array('title' => $languageArr['title'], 'alt' => $languageArr['title'])) .
+					'</span></a>';
 			}
 		}
 
@@ -247,13 +249,15 @@ class tx_templavoila_mod1_localization {
 		$optionsArr = array ('<option value=""></option>');
 		foreach ($newLanguagesArr as $language) {
 			if ($BE_USER->checkLanguageAccess($language['uid']) && !isset($translatedLanguagesArr[$language['uid']])) {
-				$style = isset ($language['flagIcon']) ? 'background-image: url('.$language['flagIcon'].'); background-repeat: no-repeat; padding-top: 0px; padding-left: 22px;' : '';
+				$flag = tx_templavoila_icons::getFlagIconFileForLanguage($language['flagIcon']);
+				$style = isset ($language['flagIcon']) ? 'background-image: url(' . $flag . '); background-repeat: no-repeat; padding-top: 0px; padding-left: 22px;' : '';
 				$optionsArr [] = '<option style="'.$style.'" name="createNewPageTranslation" value="'.$language['uid'].'">'.htmlspecialchars($language['title']).'</option>';
 			}
 		}
 
 		if (count($optionsArr) > 1) {
-			$link = 'index.php?'.$this->pObj->link_getParameters().'&createNewPageTranslation=\'+this.options[this.selectedIndex].value+\'&pid='.$this->pObj->id;
+			$linkParam = $this->pObj->rootElementTable == 'pages' ? '&doktype=' . $this->pObj->rootElementRecord['doktype'] : '';
+			$link = 'index.php?'.$this->pObj->link_getParameters().'&createNewPageTranslation=\'+this.options[this.selectedIndex].value+\'&pid='.$this->pObj->id . $linkParam;
 			$output = '
 				<tr class="bgColor4">
 					<td width="20">

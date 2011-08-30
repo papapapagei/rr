@@ -28,7 +28,7 @@
 /**
  * Class for creating and parsing Speaking Urls
  *
- * $Id: class.tx_realurl.php 38193 2010-09-15 10:21:21Z dmitry $
+ * $Id: class.tx_realurl.php 48650 2011-06-13 09:14:34Z dmitry $
  *
  * @author	Kasper Skaarhoj <kasper@typo3.com>
  * @author	Dmitry Dulepov <dmitry@typo3.org>
@@ -83,7 +83,7 @@
  * 1699:     function getPostVarSetConfig($page_id, $mainCat = 'postVarSets')
  * 1721:     function pageAliasToID($alias)
  * 1744:     function rawurlencodeParam($str)
- * 1759:     function checkCondition($setup, $prevVal)
+ * 1759:     function checkCondition($setup, $prevVal, $value)
  * 1777:     function isBEUserLoggedIn()
  *
  *              SECTION: External Hooks
@@ -148,6 +148,17 @@ class tx_realurl {
 	var $urlPrepend = array();
 
 	var $useMySQLExtendedSyntax = false;
+
+	/**
+	 * Holds a uid of the detected language during decoding to limit search of
+	 * titles only to this language. Valid values are:
+	 * -1 - no language detected
+	 * 0 - default language (only if really detected!)
+	 * >0 - a language uid taken from preVars or _DOMAINS (corresponds to uid in sys_languages table)
+	 *
+	 * @var int
+	 */
+	protected $detectedLanguage = -1;
 
 	/**
 	 * Inidicates wwether devLog is enabled
@@ -216,7 +227,7 @@ class tx_realurl {
 	 * @return	void
 	 */
 	public function __construct() {
-		if (!t3lib_extMgm::isLoaded('dbal') && get_resource_type($GLOBALS['TYPO3_DB']->link) == 'mysql link') {
+		if (!t3lib_extMgm::isLoaded('dbal') && strpos(get_resource_type($GLOBALS['TYPO3_DB']->link), 'mysql link') !== false) {
 			$res = $GLOBALS['TYPO3_DB']->sql_query('SELECT @@VERSION');
 			$rec = $GLOBALS['TYPO3_DB']->sql_fetch_row($res);
 			$GLOBALS['TYPO3_DB']->sql_free_result($res);
@@ -403,18 +414,12 @@ class tx_realurl {
 
 		// Extract all GET parameters into an ARRAY:
 		$paramKeyValues = array();
-		$additionalVariables = array();
 		$GETparams = explode('&', $inputQuery);
 		foreach ($GETparams as $paramAndValue) {
 			list($p, $v) = explode('=', $paramAndValue, 2);
 			$p = rawurldecode($p);
 			if ($p != '') {
-				if ($p != $this->ignoreGETvar) {
-					$paramKeyValues[$p] = rawurldecode($v);
-				}
-				else {
-					$additionalVariables[$p] = rawurldecode($v);
-				}
+				$paramKeyValues[$p] = rawurldecode($v);
 			}
 		}
 		$this->orig_paramKeyValues = $paramKeyValues;
@@ -428,13 +433,7 @@ class tx_realurl {
 		// Create path from ID value:
 		$page_id = $this->encodePageId = $paramKeyValues['id'];
 		$this->encodeError = FALSE;
-		if ($this->ignoreGETvar) {
-			$paramKeyValues = array_merge($paramKeyValues, $additionalVariables);
-		}
 		$this->encodeSpURL_pathFromId($paramKeyValues, $pathParts);
-		if ($this->ignoreGETvar) {
-			$paramKeyValues = array_diff($paramKeyValues, $additionalVariables);
-		}
 		if ($this->encodeError) {
 			return $origUrl;
 		}
@@ -457,6 +456,11 @@ class tx_realurl {
 
 		// Fix empty URLs
 		$newUrl = $this->fixEmptyUrl($newUrl);
+
+		// Clear ignored var
+		if (isset($paramKeyValues[$this->ignoreGETvar])) {
+			unset($paramKeyValues[$this->ignoreGETvar]);
+		}
 
 		// Store cHash cache:
 		if ($cHashCache) {
@@ -647,9 +651,12 @@ class tx_realurl {
 
 							// Looking if the GET var is found in parameter index
 							$GETvar = $setup['GETvar'];
+							if ($GETvar == $this->ignoreGETvar) {
+								// Do not do anything with this var!
+								continue;
+							}
 							$parameterSet = isset($paramKeyValues[$GETvar]);
 							$GETvarVal = $parameterSet ? $paramKeyValues[$GETvar] : '';
-							$this->rebuildCHash |= !$parameterSet;
 
 							// Set reverse map:
 							$revMap = is_array($setup['valueMap']) ? array_flip($setup['valueMap']) : array();
@@ -661,12 +668,13 @@ class tx_realurl {
 							} elseif ($setup['noMatch'] == 'bypass') {
 								// If no match in reverse value map and "bypass" is set, remove the parameter from the URL
 								// Must rebuild cHash because we remove a parameter!
-								$this->rebuildCHash = true;
+								$this->rebuildCHash |= $parameterSet;
 							} elseif ($setup['noMatch'] == 'null') {
 								// If no match and "null" is set, then set "dummy" value
 								// Set "dummy" value (?)
 								$prevVal = '';
 								$pathParts[] = '';
+								$this->rebuildCHash |= $parameterSet;
 							} elseif ($setup['userFunc']) {
 								$params = array(
 									'pObj' => &$this,
@@ -687,10 +695,12 @@ class tx_realurl {
 								$prevVal = $setup['valueDefault'];
 								$pathParts[] = rawurlencode($setup['valueDefault']);
 								$this->cHashParameters[$GETvar] = $setup['valueDefault'];
+								$this->rebuildCHash |= !$parameterSet;
 							} else {
 								$prevVal = $GETvarVal;
 								$pathParts[] = rawurlencode($GETvarVal);
 								$this->cHashParameters[$GETvar] = $prevVal;
+								$this->rebuildCHash |= !$parameterSet;
 							}
 
 							// Finally, unset GET var so it doesn't get processed once more:
@@ -932,6 +942,9 @@ class tx_realurl {
 			// Append missing slash if configured for:
 			if ($this->extConf['init']['appendMissingSlash']) {
 				$regexp = '~^([^\?]*[^/])(\?.*)?$~';
+				if (substr($speakingURIpath, -1, 1) == '?') {
+					$speakingURIpath = substr($speakingURIpath, 0, -1);
+				}
 				if (preg_match($regexp, $speakingURIpath)) { // Only process if a slash is missing:
 					$options = t3lib_div::trimExplode(',', $this->extConf['init']['appendMissingSlash'], true);
 					if (in_array('ifNotFile', $options)) {
@@ -1061,10 +1074,12 @@ class tx_realurl {
 		// DB defined redirects:
 		$hash = t3lib_div::md5int($speakingURIpath);
 		$url = $GLOBALS['TYPO3_DB']->fullQuoteStr($speakingURIpath, 'tx_realurl_redirects');
-		list($redirect_row) = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+		$domainId = $this->getCurrentDomainId();
+		list($redirectRow) = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
 			'destination,has_moved', 'tx_realurl_redirects',
-			'url_hash=' . $hash . ' AND url=' . $url);
-		if (is_array($redirect_row)) {
+			'url_hash=' . $hash . ' AND url=' . $url . ' AND domain_limit IN (0,' . $domainId . ')',
+			'', 'domain_limit DESC');
+		if (is_array($redirectRow)) {
 			// Update statistics
 			$fields_values = array(
 				'counter' => 'counter+1',
@@ -1072,17 +1087,33 @@ class tx_realurl {
 				'last_referer' => t3lib_div::getIndpEnv('HTTP_REFERER')
 			);
 			$GLOBALS['TYPO3_DB']->exec_UPDATEquery('tx_realurl_redirects',
-				'url_hash=' . $hash . ' AND url=' . $url,
+				'url_hash=' . $hash . ' AND url=' . $url . ' AND domain_limit=' . $domainId,
 				$fields_values, array('counter'));
 
 			// Redirect
-			if ($redirect_row['has_moved']) {
+			if ($redirectRow['has_moved']) {
 				header('HTTP/1.1 301 Moved Permanently');
 			}
 
-			header('Location: ' . t3lib_div::locationHeaderUrl($redirect_row['destination']));
+			header('Location: ' . t3lib_div::locationHeaderUrl($redirectRow['destination']));
 			exit();
 		}
+	}
+
+	/**
+	 * Obtains current domain id from sys_domain.
+	 *
+	 * @return void
+	 */
+	protected function getCurrentDomainId() {
+		list($row) = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('uid',
+			'sys_domain',
+			'domainName=' . $GLOBALS['TYPO3_DB']->fullQuoteStr(t3lib_div::getIndpEnv('HTTP_HOST'), 'sys_domain') .
+				' AND redirectTo=\'\''
+		);
+		$result = (is_array($row) ? intval($row['uid']) : 0);
+
+		return $result;
 	}
 
 	/**
@@ -1110,6 +1141,17 @@ class tx_realurl {
 
 		// Setting "preVars":
 		$pre_GET_VARS = $this->decodeSpURL_settingPreVars($pathParts, $this->extConf['preVars']);
+		if (isset($this->extConf['pagePath']['languageGetVar'])) {
+			$languageGetVar = $this->extConf['pagePath']['languageGetVar'];
+			if (isset($pre_GET_VARS[$languageGetVar]) && t3lib_div::testInt($pre_GET_VARS[$languageGetVar])) {
+				// Language from URL
+				$this->detectedLanguage = $pre_GET_VARS[$languageGetVar];
+			}
+			elseif (isset($_GET[$languageGetVar]) && t3lib_div::testInt($_GET[$languageGetVar])) {
+				// This is for _DOMAINS feature
+				$this->detectedLanguage = $_GET[$languageGetVar];
+			}
+		}
 
 		// Setting page id:
 		list($cachedInfo['id'], $id_GET_VARS, $cachedInfo['rootpage_id']) = $this->decodeSpURL_idFromPath($pathParts);
@@ -1120,7 +1162,7 @@ class tx_realurl {
 
 		// Setting "postVarSets":
 		$postVarSetCfg = $this->getPostVarSetConfig($cachedInfo['id']);
-		$post_GET_VARS = $this->decodeSpURL_settingPostVarSets($pathParts, $postVarSetCfg);
+		$post_GET_VARS = $this->decodeSpURL_settingPostVarSets($pathParts, $postVarSetCfg, $cachedInfo['id']);
 
 		// Looking for remaining parts:
 		if (count($pathParts)) {
@@ -1268,7 +1310,7 @@ class tx_realurl {
 	 * @return	array		GET-vars resulting from the analysis
 	 * @see decodeSpURL_doDecode(), encodeSpURL_gettingPostVarSets()
 	 */
-	protected function decodeSpURL_settingPostVarSets(&$pathParts, $postVarSetCfg) {
+	protected function decodeSpURL_settingPostVarSets(&$pathParts, $postVarSetCfg, $pid) {
 		if (is_array($postVarSetCfg)) {
 			$GET_string = '';
 
@@ -1312,7 +1354,7 @@ class tx_realurl {
 					array_unshift($pathParts, $key);
 					break;
 				} else {
-					$this->decodeSpURL_throw404('Segment "' . $key . '" was not a keyword for a postVarSet as expected!');
+					$this->decodeSpURL_throw404('Segment "' . $key . '" was not a keyword for a postVarSet as expected on page with id=' . $pid . '.');
 				}
 			}
 
@@ -1385,17 +1427,26 @@ class tx_realurl {
 	 */
 	protected function decodeSpURL_decodeFileName_checkHtmlSuffix($fileName, $segment, $extension, array &$pathParts) {
 		$handled = false;
-		if (isset($this->extConf['fileName']['defaultToHTMLsuffixOnPrev'])) {
+		if (isset($this->extConf['fileName']['defaultToHTMLsuffixOnPrev']) && $this->extConf['fileName']['defaultToHTMLsuffixOnPrev']) {
 			$suffix = $this->extConf['fileName']['defaultToHTMLsuffixOnPrev'];
 			$suffix = (!$this->isString($suffix, 'defaultToHTMLsuffixOnPrev') ? '.html' : $suffix);
 			if ($suffix == '.' . $extension) {
 				$pathParts[] = rawurlencode($segment);
 				$this->filePart = '.' . $extension;
+				$handled = true;
 			}
-			else {
-				$this->decodeSpURL_throw404('File "' . $fileName . '" was not found (2)!');
+		}
+		if (!$handled && isset($this->extConf['fileName']['acceptHTMLsuffix']) && $this->extConf['fileName']['acceptHTMLsuffix']) {
+			$suffix = $this->extConf['fileName']['acceptHTMLsuffix'];
+			$suffix = (!$this->isString($suffix, 'acceptHTMLsuffix') ? '.html' : $suffix);
+			if (substr($fileName, -strlen($suffix)) == $suffix) {
+				$pathParts[] = rawurlencode($segment);
+				$this->filePart = $suffix;
+				$handled = true;
 			}
-			$handled = true;
+		}
+		if (!$handled) {
+			$this->decodeSpURL_throw404('File "' . $fileName . '" was not found (2)!');
 		}
 		return $handled;
 	}
@@ -1415,7 +1466,8 @@ class tx_realurl {
 		$keyValues = '';
 		if (is_array($this->extConf['fileName']['index'])) {
 			foreach ($this->extConf['fileName']['index'] as $key => $config) {
-				if ($key == $fileName) {
+				// Note: strict comparison because the following is true in PHP: 0 == 'whatever'
+				if ($key === $fileName) {
 					$keyValues = $config['keyValues'];
 					$this->filePart = $fileName;
 					if (isset($config['mimetype'])) {
@@ -1424,7 +1476,7 @@ class tx_realurl {
 					$handled = true;
 					break;
 				}
-				elseif ($key == '.' . $extension) {
+				elseif ($key === '.' . $extension) {
 					$keyValues = $config['keyValues'];
 					$pathPartsCopy[] = urlencode($segment);
 					$this->filePart = '.' . $extension;
@@ -1457,7 +1509,17 @@ class tx_realurl {
 		$prevVal = '';
 		foreach ($setupArr as $setup) {
 			if (count($pathParts) == 0) {
-				break;
+				// If we are here, it means we are at the end of the URL.
+				// Since some items still remain in the $setupArr, it means
+				// we stripped empty segments at the end of the URL on encoding.
+				// Reconstruct them or cHash check will fail in TSFE.
+				// Related to bug #15906.
+				if (!$setup['optional']) {
+					if (!isset($_GET[$setup['GETvar']]) && (!is_array($setup['cond']) || $this->checkCondition($setup['cond'], $prevVal))) {
+						$GET_string .= '&' . rawurlencode($setup['GETvar']) . '=';
+						$prevVal = '';
+					}
+				}
 			}
 			else {
 				// Get value and remove from path parts:
@@ -1534,6 +1596,9 @@ class tx_realurl {
 
 							// Add to GET string:
 							if ($setup['GETvar'] && strlen($value)) { // Checking length of value; normally a *blank* parameter is not found in the URL! And if we don't do this we may disturb "cHash" calculations!
+								if (isset($this->extConf['init']['emptySegmentValue']) && $this->extConf['init']['emptySegmentValue'] === $value) {
+									$value = '';
+								}
 								$GET_string .= '&' . rawurlencode($setup['GETvar']) . '=' . rawurlencode($value);
 							}
 						} else {
@@ -1741,7 +1806,6 @@ class tx_realurl {
 		$langEnabled = FALSE;
 		$fieldList = array();
 		if ($cfg['languageGetVar'] && $cfg['transOrigPointerField'] && $cfg['languageField']) {
-
 			$fieldList[] = 'uid';
 			$fieldList[] = $cfg['transOrigPointerField'];
 			$fieldList[] = $cfg['languageField'];
@@ -1754,9 +1818,8 @@ class tx_realurl {
 			// First, test if there is an entry in cache for the alias:
 			if ($cfg['useUniqueCache'] && $returnId = $this->lookUp_uniqAliasToId($cfg, $value)) {
 				return $returnId;
-			} else { // If no cached entry, look it up directly in the table:
-
-
+			}
+			else { // If no cached entry, look it up directly in the table:
 				$fieldList[] = $cfg['id_field'];
 				$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(implode(',', $fieldList), $cfg['table'],
 									$cfg['alias_field'] . '=' . $GLOBALS['TYPO3_DB']->fullQuoteStr($value, $cfg['table']) .
@@ -2169,13 +2232,12 @@ class tx_realurl {
 	 * @see encodeSpURL_setSequence(), decodeSpURL_getSequence()
 	 */
 	protected function checkCondition($setup, $prevVal) {
+		$return = true;
 
-		$return = TRUE;
-
-		//	 Check previous value:
+		// Check previous value:
 		if (isset($setup['prevValueInList'])) {
 			if (!t3lib_div::inList($setup['prevValueInList'], $prevVal))
-				$return = FALSE;
+			$return = false;
 		}
 
 		return $return;
@@ -2281,7 +2343,9 @@ class tx_realurl {
 			if (is_array($hostConfiguration)) {
 				if (isset($hostConfiguration['GETvars']) && is_array($hostConfiguration['GETvars'])) {
 					foreach ($hostConfiguration['GETvars'] as $key => $value) {
-						$_GET[$key] = $value;
+						if (empty($_GET[$key])) {
+							$_GET[$key] = $value;
+						}
 					}
 					if (isset($hostConfiguration['useConfiguration'])) {
 						$this->setConfigurationByReference($hostConfiguration['useConfiguration']);
@@ -2334,7 +2398,7 @@ class tx_realurl {
 			$pageIdList = implode(',', $GLOBALS['TYPO3_DB']->cleanIntArray($pageIdArray));
 			$GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_realurl_urlencodecache', 'page_id IN (' . $pageIdList . ')');
 			$GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_realurl_urldecodecache', 'page_id IN (' . $pageIdList . ')');
-			$GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_realurl_pathcache', 'page_id IN (' . $pageIdList . ') AND expire<=' . time());
+			$GLOBALS['TYPO3_DB']->exec_DELETEquery('tx_realurl_pathcache', 'page_id IN (' . $pageIdList . ') AND expire>0 AND expire<=' . time());
 		}
 	}
 
@@ -2456,9 +2520,17 @@ class tx_realurl {
 	 * @return array
 	 */
 	protected function cleanUpPathParts(array $pathParts) {
-		for ($index = count($pathParts) - 1; $index >= 0; $index--) {
-			if ($pathParts[$index] == '') {
-				unset($pathParts[$index]);
+		// Remove trailing empty segments
+		for ($index = count($pathParts) - 1; $index >= 0 && $pathParts[$index] == ''; $index--) {
+			unset($pathParts[$index]);
+		}
+		if (isset($this->extConf['init']['emptySegmentValue'])) {
+			$emptyValue = rawurlencode($this->extConf['init']['emptySegmentValue']);
+			// Set empty value
+			for ($index = count($pathParts) - 1; $index >= 0; $index--) {
+				if ($pathParts[$index] == '') {
+					$pathParts[$index] = $emptyValue;
+				}
 			}
 		}
 		return $pathParts;
@@ -2599,6 +2671,16 @@ class tx_realurl {
 		list($pageRecord) = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows('tx_realurl_nocache',
 			'pages', 'uid=' . intval($pageId));
 		return is_array($pageRecord) ? !$pageRecord['tx_realurl_nocache'] : false;
+	}
+
+	/**
+	 * Returns the detected language (decoding only). Language is detected
+	 * from preVars or _DOMAINS feature.
+	 *
+	 * @return int
+	 */
+	public function getDetectedLanguage() {
+		return intval($this->detectedLanguage);
 	}
 }
 

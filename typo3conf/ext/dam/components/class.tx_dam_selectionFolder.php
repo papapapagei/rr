@@ -426,7 +426,7 @@ class tx_dam_selectionFolder extends t3lib_folderTree  {
 			$HTML='';
 			$a=0;
 			$c=count($dirs);
-			sort($dirs);
+			natcasesort($dirs);
 
 			foreach($dirs as $key => $val)	{
 				$a++;

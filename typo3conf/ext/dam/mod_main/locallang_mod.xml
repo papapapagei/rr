@@ -18,15 +18,4 @@
             <label index="mlang_labels_tabdescr">Digital Asset Management</label>
         </languageKey>
     </data>
-    <orig_hash type="array">
-        <languageKey index="default" type="array">
-            <label index="mlang_tabs_tab" type="integer">62219090</label>
-            <label index="mlang_labels_tablabel" type="integer">62219090</label>
-            <label index="mlang_labels_tabdescr" type="integer">267914768</label>
-        </languageKey>
-    </orig_hash>
-    <orig_text type="array">
-        <languageKey index="default" type="array">
-        </languageKey>
-    </orig_text>
 </T3locallang>

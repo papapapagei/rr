@@ -179,9 +179,9 @@ class tx_templavoila_cm1_dsEdit {
 					$form .= '
 					<dl id="dsel-ts" class="DS-config">
 						<dt><label>' . $GLOBALS['LANG']->getLL('mapTSconstants') . ':</label></dt>
-						<dd><textarea class="xml" cols="80" rows="10" name="'.$formFieldName.'[tx_templavoila][TypoScript_constants]">'.htmlspecialchars($this->pObj->flattenarray($insertDataArray['tx_templavoila']['TypoScript_constants'])).'</textarea></dd>
+						<dd><textarea class="xml enable-tab" cols="80" rows="10" wrap="off" name="'.$formFieldName.'[tx_templavoila][TypoScript_constants]">'.htmlspecialchars($this->pObj->flattenarray($insertDataArray['tx_templavoila']['TypoScript_constants'])).'</textarea></dd>
 						<dt><label>' . $GLOBALS['LANG']->getLL('mapTScode') . ':</label></dt>
-						<dd><textarea class="code" cols="80" rows="10" name="'.$formFieldName.'[tx_templavoila][TypoScript]">'.htmlspecialchars($insertDataArray['tx_templavoila']['TypoScript']).'</textarea></dd>
+						<dd><textarea class="code enable-tab" cols="80" rows="10" wrap="off" name="'.$formFieldName.'[tx_templavoila][TypoScript]">'.htmlspecialchars($insertDataArray['tx_templavoila']['TypoScript']).'</textarea></dd>
 					</dl>';
 
 					/* The Typoscript-related XML-structure of an tx_templavoila-entry is:
@@ -193,13 +193,16 @@ class tx_templavoila_cm1_dsEdit {
 
 					if (isset($insertDataArray['tx_templavoila']['TypoScriptObjPath'])){
 						$curValue = array('objPath' => $insertDataArray['tx_templavoila']['TypoScriptObjPath']);
+					} elseif (isset($insertDataArray['tx_templavoila']['eType_EXTRA'])) {
+						$curValue = $insertDataArray['tx_templavoila']['eType_EXTRA'];
 					} else {
 						$curValue = '';
 					}
 					$extra = $this->drawDataStructureMap_editItem_editTypeExtra(
 						$insertDataArray['tx_templavoila']['eType'],
 						$formFieldName,
-						$curValue
+						$curValue,
+						$key
 					);
 
 					if ($extra) {
@@ -282,6 +285,15 @@ class tx_templavoila_cm1_dsEdit {
 						<dt><label>' . $GLOBALS['LANG']->getLL('mapTCEextras') . ':</label></dt>
 						<dd><input type="text" size="80" name="'.$formFieldName.'[TCEforms][defaultExtras]" value="'.htmlspecialchars($insertDataArray['TCEforms']['defaultExtras']).'" /></dd>
 					</dl>';
+				} else {
+					$form .= '
+						<dl id="dsel-proc" class="DS-config">
+							<dt><label>' . $GLOBALS['LANG']->getLL('mapEnablePreview') . ':</label></dt>
+							<dd>
+								<input type="radio" class="radio" id="tv_preview_enable" value="" name="'.$formFieldName.'[tx_templavoila][preview]" ' . ($insertDataArray['tx_templavoila']['preview'] != 'disable' ? 'checked="checked"' : '') .'> <label for="tv_preview_enable">' . $GLOBALS['LANG']->getLL('mapEnablePreview.enable') . '</label><br/>
+								<input type="radio" class="radio" id="tv_preview_disable" value="disable" name="'.$formFieldName.'[tx_templavoila][preview]" ' . ($insertDataArray['tx_templavoila']['preview'] == 'disable' ? 'checked="checked"' : '') .'> <label for="tv_preview_disable">' . $GLOBALS['LANG']->getLL('mapEnablePreview.disable') . '</label>
+							</dd>
+						</dl>';
 				}
 
 				$formSubmit = '
@@ -426,11 +438,12 @@ class tx_templavoila_cm1_dsEdit {
 	 * @param	string		Editing Type string
 	 * @param	string		Form field name prefix
 	 * @param	array		Current values for the form field name prefix.
+	 * @param	string		Templavoila field name.
 	 * @return	string		HTML with extra form fields
 	 * @access	private
 	 * @see drawDataStructureMap_editItem()
 	 */
-	function drawDataStructureMap_editItem_editTypeExtra($type, $formFieldName, $curValue)	{
+	function drawDataStructureMap_editItem_editTypeExtra($type, $formFieldName, $curValue, $key = '')	{
 			// If a user function was registered, use that instead of our own handlers:
 		if (isset ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['templavoila']['cm1']['eTypesExtraFormFields'][$type])) {
 			$_params = array (
@@ -442,7 +455,7 @@ class tx_templavoila_cm1_dsEdit {
 		} else {
 			switch($type)	{
 				case 'TypoScriptObject':
-					$value = $curValue['objPath'] ? $curValue['objPath'] : 'lib.myObject';
+					$value = $curValue['objPath'] ? $curValue['objPath'] : 'lib.' . $key;
 					$output = '
 						<table border="0" cellpadding="2" cellspacing="0">
 							<tr>

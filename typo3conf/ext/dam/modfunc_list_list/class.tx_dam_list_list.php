@@ -128,11 +128,6 @@ class tx_dam_list_list extends t3lib_extobjbase {
 		$content = '';
 
 		$table = 'tx_dam';
-		
-		// Get rid of wrapper form tag.
-		$this->pObj->doc->form = null;
-
-
 
 		//
 		// get records by query depending on option 'Show deselected only'
@@ -415,13 +410,14 @@ class tx_dam_list_list extends t3lib_extobjbase {
 			else {
 				$this->pObj->markers['LANGUAGE_SELECT'] = '';
 			}
-			$content.= $dblist->getListTable();
-			#$content.= '<input type="hidden" name="cmd_table"><input type="hidden" name="cmd"></form>';
 
+			// wraps the list table with the form
+			$content .= tx_dam_SCbase::getFormTag();
+			$content .= $dblist->getListTable();
+			$content .= '</form>';
 
 			$fieldSelectBoxContent = $this->fieldSelectBox($table, $allFields, $selectedFields);
 			$content.= $this->pObj->buttonToggleDisplay('fieldselector', $LANG->getLL('field_selector'), $fieldSelectBoxContent);
-
 
 		} else {
 				// no search result: showing selection box
@@ -494,9 +490,9 @@ class tx_dam_list_list extends t3lib_extobjbase {
 						<table border="0" cellpadding="0" cellspacing="0" class="bgColor4" id="typo3-dblist-fieldSelect">
 							<tr>
 								<td>'.$lMenu.'</td>
-								<td><input type="Submit" name="search" value="&gt;&gt;"></td>
+								<td><input type="submit" name="search" value="&gt;&gt;"></td>
 							</tr>
-							</table>
+						</table>
 					'.$formElements[1].'
 				';
 		return $content;

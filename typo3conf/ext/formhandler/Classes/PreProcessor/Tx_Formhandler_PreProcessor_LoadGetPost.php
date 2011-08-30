@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_PreProcessor_Default.php 22614 2009-07-21 20:43:47Z fabien_u $
+ * $Id: Tx_Formhandler_PreProcessor_LoadGetPost.php 22614 2009-07-21 20:43:47Z fabien_u $
  *                                                                        */
 
 /**
@@ -29,25 +29,18 @@ class Tx_Formhandler_PreProcessor_LoadGetPost extends Tx_Formhandler_AbstractPre
 	 * @return array The probably modified GET/POST parameters
 	 */
 	public function process() {
-
-		
 		$this->formValuesPrefix = Tx_Formhandler_Globals::$formValuesPrefix;
-		
 		$loadedGP = $this->loadGP();
 		$this->gp = array_merge($loadedGP, $this->gp);
-		
-		
 		return $this->gp;
 	}
-	
+
 	protected function loadGP() {
 		$gp = array_merge(t3lib_div::_GET(), t3lib_div::_POST());
-
-		if($this->formValuesPrefix) {
+		if ($this->formValuesPrefix) {
 			$gp = $gp[$this->formValuesPrefix];
 		}
-		
-		if(!is_array($gp)) {
+		if (!is_array($gp)) {
 			$gp = array();
 		}
 		return $gp;

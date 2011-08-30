@@ -1,3 +1,23 @@
+2011-01-27  Lorenz Ulrich <lorenz.ulrich@visol.ch>
+
+	* 16*16px moduleicon for TYPO3 4.5
+
+2010-06-24  Dmitry Dulepov  <dmitry.dulepov@gmail.com>
+
+	* Fixed bug #14304: PHP Warnings while indexing files
+
+2009-08-26  Michiel Roos <michiel@netcreators.com>
+
+	* Fixed bug #10862: typo in german info-message (Thanks to Georg Ringer)
+
+2009-05-20  Michiel Roos <michiel@netcreators.com>
+
+	* Fixed bug #10574: Speedup indexing when max_execution_time = 0 (Thanks to Steffen Gerbert)
+
+2009-05-19  Dan Osipov <dosipov@phillyburbs.com>
+
+	* Fixed #10627: Marker ###FOLDER### is not replaced
+
 2008-12-26  Michiel Roos <michiel@netcreators.com>
 
 	* Setting version to 1.1.0

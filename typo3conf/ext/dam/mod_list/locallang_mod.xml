@@ -1,42 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <T3locallang>
-    <meta type="array">
-        <description></description>
-        <type>module</type>
-        <csh_table></csh_table>
-        <fileId>EXT:dam/mod_list/locallang_mod.xml</fileId>
-        <labelContext type="array">
-            <label index="mlang_tabs_tab"></label>
-            <label index="mlang_labels_tablabel"></label>
-            <label index="mlang_labels_tabdescr"></label>
-        </labelContext>
-    </meta>
-    <data type="array">
-        <languageKey index="default" type="array">
-            <label index="mlang_tabs_tab">List</label>
-            <label index="mlang_labels_tablabel">Listing of media files</label>
-            <label index="mlang_labels_tabdescr">This is the media file management system in Typo3. It allows you to access the files, select them by rules, search for files and edit it's meta data.</label>
-        </languageKey>
-        <languageKey index="de" type="array">
-            <label index="mlang_tabs_tab">Liste</label>
-            <label index="mlang_labels_tablabel">Auflisten und bearbeiten von Medien</label>
-            <label index="mlang_labels_tabdescr">Dies ist das Modul zur Verwaltung von Medien bzw. Dateien. Es erlaubt auf Dateien per Auswahlregeln zuzugreifen, diese zu durchsuchen und zu berabeiten.</label>
-        </languageKey>
-    </data>
-    <orig_hash type="array">
-        <languageKey index="default" type="array">
-            <label index="mlang_tabs_tab" type="integer">82717130</label>
-            <label index="mlang_labels_tablabel" type="integer">189737319</label>
-            <label index="mlang_labels_tabdescr" type="integer">154300469</label>
-        </languageKey>
-        <languageKey index="de" type="array">
-            <label index="mlang_tabs_tab" type="integer">82717130</label>
-        </languageKey>
-    </orig_hash>
-    <orig_text type="array">
-        <languageKey index="default" type="array">
-        </languageKey>
-        <languageKey index="de" type="array">
-        </languageKey>
-    </orig_text>
+	<meta type="array">
+		<description></description>
+		<type>module</type>
+		<csh_table></csh_table>
+		<fileId>EXT:dam/mod_list/locallang_mod.xml</fileId>
+		<labelContext type="array">
+			<label index="mlang_tabs_tab"></label>
+			<label index="mlang_labels_tablabel"></label>
+			<label index="mlang_labels_tabdescr"></label>
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="mlang_tabs_tab">List</label>
+			<label index="mlang_labels_tablabel">Listing of media files</label>
+			<label index="mlang_labels_tabdescr">This is the media file management system in Typo3. It allows you to access the files, select them by rules, search for files and edit it's meta data.</label>
+		</languageKey>
+	</data>
 </T3locallang>

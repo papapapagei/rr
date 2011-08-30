@@ -150,8 +150,6 @@ class tx_dam_mod_list extends tx_dam_SCbase {
 
 			$this->extObjHeader();
 
-			$this->doc->form = $this->getFormTag();
-
 			//
 			// Output tabmenu if not a single function was forced
 			//

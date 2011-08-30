@@ -24,7 +24,7 @@
 /**
  * Contains HTML markup class
  *
- * $Id$
+ * $Id: class.tx_templavoila_htmlmarkup.php 42498 2011-01-23 08:53:40Z tolleiv $
  *
  * @author	Kasper Skaarhoj <kasper@typo3.com>
  */
@@ -34,36 +34,36 @@
  *
  *
  *   86: class tx_templavoila_htmlmarkup
- *  215:     function markupHTMLcontent($content,$backPath,$relPathFix,$showTags,$mode='')
- *  254:     function passthroughHTMLcontent($content,$relPathFix,$mode='',$altStyle='')
- *  275:     function getContentBasedOnPath($content,$pathStrArr)
- *  318:     function splitByPath($content,$pathString)
- *  345:     function splitContentToMappingInfo($fileContent,$currentMappingInfo)
- *  408:     function mappingInfoToSearchPath($currentMappingInfo)
- *  449:     function mergeSearchpartsIntoContent($content,$searchParts,$token='')
- *  480:     function mergeSampleDataIntoTemplateStructure($dataStruct,$currentMappingInfo,$firstLevelImplodeToken='',$sampleOrder='')
- *  523:     function mergeFormDataIntoTemplateStructure($editStruct,$currentMappingInfo,$firstLevelImplodeToken='',$valueKey='vDEF')
- *  568:     function splitPath($pathStr)
- *  624:     function getTemplateArrayForTO($uid)
- *  647:     function mergeDataArrayToTemplateArray($TA,$data)
- *  668:     function getTemplateRecord($uid,$renderType,$langUid)
- *  726:     function getTemplateMappingArray($uid,$renderType,$langUid,$sheet)
- *  741:     function getTemplateRecord_query($uid, $where)
- *  761:     function setHeaderBodyParts($MappingInfo_head,$MappingData_head_cached,$BodyTag_cached='')
+ *  214:     function markupHTMLcontent($content,$backPath,$relPathFix,$showTags,$mode='')
+ *  255:     function passthroughHTMLcontent($content,$relPathFix,$mode='',$altStyle='')
+ *  276:     function getContentBasedOnPath($content,$pathStrArr)
+ *  319:     function splitByPath($content,$pathString)
+ *  346:     function splitContentToMappingInfo($fileContent,$currentMappingInfo)
+ *  409:     function mappingInfoToSearchPath($currentMappingInfo)
+ *  450:     function mergeSearchpartsIntoContent($content,$searchParts,$token='')
+ *  481:     function mergeSampleDataIntoTemplateStructure($dataStruct,$currentMappingInfo,$firstLevelImplodeToken='',$sampleOrder='')
+ *  524:     function mergeFormDataIntoTemplateStructure($editStruct,$currentMappingInfo,$firstLevelImplodeToken='',$valueKey='vDEF')
+ *  571:     function splitPath($pathStr)
+ *  627:     function getTemplateArrayForTO($uid)
+ *  650:     function mergeDataArrayToTemplateArray($TA,$data)
+ *  671:     function getTemplateRecord($uid,$renderType,$langUid)
+ *  729:     function getTemplateMappingArray($uid,$renderType,$langUid,$sheet)
+ *  744:     function getTemplateRecord_query($uid, $where)
+ *  764:     function setHeaderBodyParts($MappingInfo_head,$MappingData_head_cached,$BodyTag_cached='')
  *
  *              SECTION: Various sub processing
- *  813:     function init()
- *  835:     function setTagsFromXML($content)
- *  862:     function splitTagTypes($showTags)
+ *  798:     function init()
+ *  819:     function setTagsFromXML($content)
+ *  846:     function splitTagTypes($showTags)
  *
  *              SECTION: SPLITTING functions
- *  912:     function recursiveBlockSplitting($content,$tagsBlock,$tagsSolo,$mode,$path='',$recursion=0)
- * 1054:     function getMarkupCode($mode,$v,$params,$firstTagName,$firstTag,$endTag,$subPath,$recursion)
- * 1139:     function getSearchCode($mode,$v,$params,$firstTagName,$firstTag,$endTag,$subPath,$path,$recursion)
- * 1221:     function sourceDisplay($str,$recursion,$gnyf='',$valueStr=0)
- * 1243:     function checkboxDisplay($str,$recursion,$path,$gnyf='',$valueStr=0)
- * 1270:     function makePath($path,$firstTagName,$attr)
- * 1300:     function getGnyf($firstTagName,$path,$title)
+ *  896:     function recursiveBlockSplitting($content,$tagsBlock,$tagsSolo,$mode,$path='',$recursion=0)
+ *  981:     function getMarkupCode($mode,$v,$params,$firstTagName,$firstTag,$endTag,$subPath,$recursion)
+ * 1066:     function getSearchCode($mode,$v,$params,$firstTagName,$firstTag,$endTag,$subPath,$path,$recursion)
+ * 1149:     function sourceDisplay($str,$recursion,$gnyf='',$valueStr=0)
+ * 1171:     function checkboxDisplay($str,$recursion,$path,$gnyf='',$valueStr=0)
+ * 1196:     function makePath($path,$firstTagName,$attr)
+ * 1226:     function getGnyf($firstTagName,$path,$title)
  *
  * TOTAL FUNCTIONS: 26
  * (This index is automatically created/updated by the extension "extdeveval")
@@ -126,60 +126,116 @@ class tx_templavoila_htmlmarkup {
 	 *   'anchor_outside' => TRUE			:	(Block elements only) This means that the tag-image for this element will be placed outside of the block. Default is to place the image inside.
 	 *   'wrap' => array('before','after')	:	(Block elements only) This means that the tag-image for this element will be wrapped in those HTML codes before being placed. Notice how this is cleverly used to represent '<tr>...</tr>' blocks.
 	 */
-	var $tags = array(
-			// Block elements:
-		'a' => array('anchor_outside'=>1),
-		'b' => array(),
-		'blockquote' => array(),
-		'body' => array(),
-		'div' => array(),
-		'dl' => array('anchor_outside'=>1),
-		'dt' => array(),
-		'dd' => array(),
-		'em' => array(),
-		'fieldset' => array('anchor_outside'=>1),
-		'font' => array(),
-		'form' => array('anchor_outside'=>1),
-		'h1' => array(),
-		'h2' => array(),
-		'h3' => array(),
-		'h4' => array(),
-		'h5' => array(),
-		'h6' => array(),
-		'i' => array(),
-		'label' => array(),
-		'legend' => array(),
-		'li' => array(),
-		'map' => array('anchor_outside'=>1),
-		'ol' => array('anchor_outside'=>1),
-		'option' => array('anchor_outside'=>1,'wrap'=>array('</select>','<select>')),
-		'object' => array('anchor_outside'=>1),
-		'p' => array(),
-		'param' => array('single'=>1),
-		'pre' => array(),
-		'select' => array('anchor_outside'=>1),
-		'span' => array(),
-		'strong' => array(),
-		'table' => array('anchor_outside'=>1),
-		'tbody' => array('anchor_outside'=>1),
-		'thead' => array('anchor_outside'=>1),
-		'td' => array(),
-		'th' => array(),
-		'textarea' => array('anchor_outside'=>1),
-		'tr' => array('wrap'=>array('<td>','</td>')),
-		'u' => array(),
-		'ul' => array('anchor_outside'=>1),
-		'iframe' => array('anchor_outside'=>1),
 
-			// Single elements:
-		'br' => array('single'=>1),
-		'hr' => array('single'=>1),
-		'img' => array('single'=>1),
-		'input' => array('single'=>1),
-		'area' => array('single'=>1),
-#		'embed' => array('anchor_outside'=>1),
+	public static $tagConf = array(
+		'a' => array('anchor_outside'=>1, 'blocktype'=> 'text'),
+		'abbr' => array('blocktype'=> 'text'),
+		'address' => array('blocktype'=> 'sections'),
+		'area' => array('blocktype'=> 'embedding', 'single'=>1),
+		'article' => array('blocktype'=> 'sections'),
+		'aside' => array('blocktype'=> 'sections'),
+		'audio' => array('blocktype'=> 'embedding'),
+		'b' => array('blocktype'=> 'text'),
+		'base' => array('blocktype'=> 'document', 'single' => 1),
+		'bdo' => array('blocktype'=> 'text'),
+		'blockquote' => array('blocktype'=> 'grouping'),
+		'body' => array('blocktype'=> 'sections'),
+		'br' => array('blocktype'=> 'grouping', 'single'=>1),
+		'button' => array('blocktype'=> 'form'),
+		'canvas' => array('blocktype'=> 'embedding'),
+		'caption' => array('blocktype'=> 'table'),
+		'cite' => array('blocktype'=> 'text'),
+		'code' => array('blocktype'=> 'text'),
+		'col' => array('blocktype'=> 'table', 'single'=>1),
+		'colgroup' => array('blocktype'=> 'table'),
+		'command' => array('blocktype'=> 'interactive', 'single' => 1),
+		'datalist' => array('blocktype'=> 'form'),
+		'dd' => array('blocktype'=> 'grouping'),
+		'del' => array('blocktype'=> 'text'),
+		'details' => array('blocktype'=> 'interactive'),
+		'device' => array('blocktype'=> 'embedding'),
+		'dfn' => array('blocktype'=> 'text'),
+		'div' => array('blocktype'=> 'grouping'),
+		'dl' => array('anchor_outside'=>1, 'blocktype'=> 'grouping'),
+		'dt' => array('blocktype'=> 'grouping'),
+		'em' => array('blocktype'=> 'text'),
+		'embed' => array('blocktype'=> 'embedding', 'single'=>1),
+		'fieldset' => array('anchor_outside'=>1, 'blocktype'=> 'form'),
+		'figcaption' => array('blocktype'=> 'grouping'),
+		'figure' => array('blocktype'=> 'grouping'),
+		'footer' => array('blocktype'=> 'sections'),
+		'form' => array('anchor_outside'=>1, 'blocktype'=> 'form'),
+		'h1' => array('blocktype'=> 'sections'),
+		'h2' => array('blocktype'=> 'sections'),
+		'h3' => array('blocktype'=> 'sections'),
+		'h4' => array('blocktype'=> 'sections'),
+		'h5' => array('blocktype'=> 'sections'),
+		'h6' => array('blocktype'=> 'sections'),
+		'head' => array('blocktype'=> 'document'),
+		'header' => array('blocktype'=> 'sections'),
+		'hgroup' => array('blocktype'=> 'sections'),
+		'hr' => array('blocktype'=> 'grouping','single'=>1),
+//		'html' => array('blocktype'=> 'root'),			-- can't be included since this might break mappings during the upgrade
+		'i' => array('blocktype'=> 'text'),
+		'iframe' => array('anchor_outside'=>1, 'blocktype'=> 'embedding'),
+		'img' => array('blocktype'=> 'embedding', 'single'=>1),
+		'input' => array('blocktype'=> 'form', 'single'=>1),
+		'ins' => array('blocktype'=> 'text'),
+		'kbd' => array('blocktype'=> 'text'),
+		'keygen' => array('blocktype'=> 'form'),
+		'label' => array('blocktype'=> 'form'),
+		'legend' => array('blocktype'=> 'form'),
+		'li' => array('blocktype'=> 'grouping'),
+		'link' => array('blocktype'=> 'document', 'single'=>1),
+		'map' => array('anchor_outside'=>1, 'blocktype'=> 'embedding'),
+		'mark' => array('blocktype'=> 'text'),
+		'menu' => array('blocktype'=> 'interactive'),
+		'meta' => array('blocktype'=> 'document', 'single'=>1),
+		'meter' => array('blocktype'=> 'form'),
+		'nav' => array('blocktype'=> 'sections'),
+		'noscript' => array('blocktype'=> 'document'),
+		'object' => array('anchor_outside'=>1, 'blocktype'=> 'embedding'),
+		'ol' => array('anchor_outside'=>1, 'blocktype'=> 'grouping'),
+		'optgroup' => array('blocktype'=> 'form'),
+		'option' => array('anchor_outside'=>1,'wrap'=>array('</select>','<select>'), 'blocktype'=> 'form'),
+		'output' => array('blocktype'=> 'form'),
+		'p' => array('blocktype'=> 'grouping'),
+		'param' => array('blocktype'=> 'embedding', 'single'=>1),
+		'pre' => array('blocktype'=> 'grouping'),
+		'progress' => array('blocktype'=> 'form'),
+		'q' => array('blocktype'=> 'text'),
+		'rp' => array('blocktype'=> 'text'),
+		'rt' => array('blocktype'=> 'text'),
+		'ruby' => array('blocktype'=> 'text'),
+		'samp' => array('blocktype'=> 'text'),
+		'script' => array('blocktype'=> 'document'),
+		'section' => array('blocktype'=> 'sections'),
+		'select' => array('anchor_outside'=>1, 'blocktype'=> 'form'),
+		'small' => array('blocktype'=> 'text'),
+		'source' => array('blocktype'=> 'embedding', 'single'=>1),
+		'span' => array('blocktype'=> 'text'),
+		'strong' => array('blocktype'=> 'text'),
+		'style' => array('blocktype'=> 'document'),
+		'sub' => array('blocktype'=> 'text'),
+		'summary' => array('blocktype'=> 'interactive'),
+		'sup' => array('blocktype'=> 'text'),
+		'table' => array('anchor_outside'=>1, 'blocktype'=> 'table'),
+		'tbody' => array('anchor_outside'=>1, 'blocktype'=> 'table'),
+		'td' => array('blocktype'=> 'table'),
+		'textarea' => array('anchor_outside'=>1, 'blocktype'=> 'form'),
+		'tfoot' => array('anchor_outside'=>1,'blocktype'=> 'table'),
+		'th' => array('blocktype'=> 'table'),
+		'thead' => array('anchor_outside'=>1, 'blocktype'=> 'table'),
+		'time' => array('blocktype'=> 'text'),
+		'title' => array('blocktype'=> 'document'),
+		'tr' => array('blocktype'=> 'table', 'wrap'=>array('<td>','</td>')),
+		'track' => array('blocktype'=> 'embedding'),
+		'ul' => array('anchor_outside'=>1, 'blocktype'=> 'grouping'),
+		'var' => array('blocktype'=> 'text'),
+		'video' => array('blocktype'=> 'embedding'),
+		'wbr' => array('blocktype'=> 'text'),
 	);
-
+	var $tags;
 
 		// INTERNAL dynamic
 	var $htmlParse = '';		// Will contain the HTML-parser object. (See init())
@@ -195,7 +251,10 @@ class tx_templavoila_htmlmarkup {
 
 
 
-
+	function __construct() {
+			// kept for compatibility reasons since references to this->tags are still present
+		$this->tags = self::$tagConf;
+	}
 
 
 
@@ -753,23 +812,66 @@ class tx_templavoila_htmlmarkup {
 	/**
 	 * Will set header content and BodyTag for template.
 	 *
-	 * @param	[type]		$MappingInfo_head: ...
-	 * @param	[type]		$MappingData_head_cached: ...
-	 * @param	[type]		$BodyTag_cached: ...
-	 * @return	[type]		...
+	 * @param	array		$MappingInfo_head: ...
+	 * @param	array		$MappingData_head_cached: ...
+	 * @param	string		$BodyTag_cached: ...
+	 * @param	boolean		$pageRenderer: try to use the pageRenderer for script and style inclusion
+	 * @return	void
 	 */
-	function setHeaderBodyParts($MappingInfo_head,$MappingData_head_cached,$BodyTag_cached='')	{
+	function setHeaderBodyParts($MappingInfo_head,$MappingData_head_cached,$BodyTag_cached='', $pageRenderer=FALSE)	{
 
 		$htmlParse = ($this->htmlParse ? $this->htmlParse : t3lib_div::makeInstance('t3lib_parsehtml'));
 		/* @var $htmlParse t3lib_parsehtml */
 
+		$types = array(
+			'LINK' => 'text/css',
+			'STYLE' => 'text/css',
+			'SCRIPT' => 'text/javascript'
+		);
 			// Traversing mapped header parts:
 		if (is_array($MappingInfo_head['headElementPaths'])) {
 			$extraHeaderData = array();
 			foreach(array_keys($MappingInfo_head['headElementPaths']) as $kk) {
 				if (isset($MappingData_head_cached['cArray']['el_'.$kk])) {
-					$uKey = md5(trim($MappingData_head_cached['cArray']['el_'.$kk]));
-					$extraHeaderData['TV_'.$uKey] = chr(10) . chr(9) . trim($htmlParse->XHTML_clean($MappingData_head_cached['cArray']['el_'.$kk]));
+					$tag = strtoupper($htmlParse->getFirstTagName($MappingData_head_cached['cArray']['el_'.$kk]));
+					$attr = $htmlParse->get_tag_attributes($MappingData_head_cached['cArray']['el_'.$kk]);
+					if (isset($GLOBALS['TSFE']) &&
+						$pageRenderer &&
+						isset($attr[0]['type']) &&
+						isset($types[$tag]) &&
+						$types[$tag] == $attr[0]['type']
+					) {
+						$name = 'templavoila#' . md5($MappingData_head_cached['cArray']['el_'.$kk]);
+						$pageRenderer = $GLOBALS['TSFE']->getPageRenderer();
+						switch ($tag) {
+							case 'LINK':
+								$rel = isset($attr[0]['rel']) ?  $attr[0]['rel'] : 'stylesheet';
+								$media = isset($attr[0]['media']) ?  $attr[0]['media'] : 'all';
+								$pageRenderer->addCssFile($attr[0]['href'], $rel, $media);
+								break;
+							case 'STYLE':
+								$cont = $htmlParse->removeFirstAndLastTag($MappingData_head_cached['cArray']['el_'.$kk]);
+								if ($GLOBALS['TSFE']->config['config']['inlineStyle2TempFile']) {
+									$pageRenderer->addCssFile(TSpagegen::inline2TempFile($cont, 'css'));
+								} else {
+									$pageRenderer->addCssInlineBlock($name, $cont);
+								}
+								break;
+							case 'SCRIPT':
+								if ( isset($attr[0]['src'])) {
+									$pageRenderer->addJsFile($attr[0]['src']);
+								} else {
+									$cont = $htmlParse->removeFirstAndLastTag($MappingData_head_cached['cArray']['el_'.$kk]);
+									$pageRenderer->addJsInlineCode($name, $cont);
+								}
+								break;
+							default:
+								// can't happen due to condition
+						}
+					} else {
+						$uKey = md5(trim($MappingData_head_cached['cArray']['el_'.$kk]));
+						$extraHeaderData['TV_'.$uKey] = chr(10) . chr(9) . trim($htmlParse->XHTML_clean($MappingData_head_cached['cArray']['el_'.$kk]));
+					}
 				}
 			}
 			// Set 'page.headerData', use the lowest possible free index!
@@ -921,15 +1023,16 @@ class tx_templavoila_htmlmarkup {
         //pre-processing of blocks
        	if ((t3lib_div::inList($tagsBlock, 'script') && t3lib_div::inList($tagsBlock, 'style'))  && count($blocks) > 1) {
        		// correct the blocks (start of CC could be in prior block, end of CC in net block)
+
 			if(count($blocks) > 1) {
 				foreach($blocks as $key=>$block) {
 					// possible that CC for style start end of block
-					$matchCount1 = preg_match_all('/<!([-]+)?\[if(.+)\]([-]+)?>/', $block, $matches1);
-					$matchCount2 = preg_match_all('/<!([-]+)?\[endif\]([-]+)?>/', $block, $matches2);
+					$matchCount1 = preg_match_all('/<!([-]+)?\[if(.+)\]([-]+)?>(<!-->)?/', $block, $matches1);
+					$matchCount2 = preg_match_all('/(<!-->)?<!([-]+)?\[endif\]([-]+)?>/', $block, $matches2);
 					if ($matchCount2 < $matchCount1) {
 						$startCCTag = $matches1[0][$matchCount1 - 1];
 						//endtag is start of block3
-						$matchCount2 = preg_match_all('/<!([-]+)?\[endif\]([-]+)?>/', $blocks[2], $matches2);
+						$matchCount2 = preg_match_all('/(<!-->)?<!([-]+)?\[endif\]([-]+)?>/', $blocks[2], $matches2);
 						$endCCTag = $matches2[0][0];
 						//manipulate blocks
 						$blocks[$key] = substr(rtrim($block), 0, -1 * strlen($startCCTag));
@@ -970,14 +1073,14 @@ class tx_templavoila_htmlmarkup {
 
 						// Split content by the solo tags
 					$soloParts = $this->htmlParse->splitTags($tagsSolo,$v);
-#debug($soloParts);
-                    //search for conditional comments
+
+						//search for conditional comments
 					$startTag = '';
 					if(count($soloParts) > 1 && $recursion == 0) {
 						foreach($soloParts as $key => $value) {
 							//check for downlevel-hidden and downlevel-revealed syntax, see http://msdn.microsoft.com/de-de/library/ms537512(en-us,VS.85).aspx
-							$matchCount1 = preg_match_all('/<!([-]+)?\[if(.+)\]([-]+)?>/', $value, $matches1);
-							$matchCount2 = preg_match_all('/<!([-]+)?\[endif\]([-]+)?>/', $value, $matches2);
+							$matchCount1 = preg_match_all('/<!([-]+)?\[if(.+)\]([-]+)?>(<!-->)?/', $value, $matches1);
+							$matchCount2 = preg_match_all('/(<!--)?<!([-]+)?\[endif\]([-]+)?>/', $value, $matches2);
 
 							// startTag was in last element
 							if ($startTag) {
@@ -1300,11 +1403,10 @@ class tx_templavoila_htmlmarkup {
 	function getGnyf($firstTagName,$path,$title)	{
 		if (!$this->onlyElements || t3lib_div::inList($this->onlyElements,$firstTagName))	{
 			$onclick = str_replace('###PATH###', $this->pathPrefix . $path, $this->gnyfImgAdd);
-			$icon = $this->tags[$firstTagName]['icon'];
 
 			$gnyf  = $this->textGnyf
 				? '<span ' . $onclick . ' style="cursor:pointer; border: 1px solid blank; background-color: yellow;">[' . $firstTagName . ']</span>'
-				: '<img' . $icon . $onclick . ' title="' . htmlspecialchars(t3lib_div::fixed_lgd_cs($title, -200)) . '"' . $this->gnyfStyle . ' alt="" />';
+				: self::getGnyfMarkup($firstTagName, $title, $onclick);
 			$gnyf .= $this->mode == 'explode'
 				? '<br />'
 				: '';
@@ -1312,6 +1414,15 @@ class tx_templavoila_htmlmarkup {
 			return $gnyf;
 		}
 		return '';
+	}
+
+	public static function getGnyfMarkup($tagName, $title='', $onclick='') {
+		$tag = strtolower($tagName);
+		if (!isset(self::$tagConf[$tag])) {
+			return '';
+		} else {
+			return '<span ' . $onclick . ' class="gnyfElement gnyf' . ucfirst(self::$tagConf[$tag]['blocktype']) . '" title="' . htmlspecialchars(t3lib_div::fixed_lgd_cs($title, -200)) .'">' . htmlspecialchars($tag) . '</span>';
+		}
 	}
 }
 

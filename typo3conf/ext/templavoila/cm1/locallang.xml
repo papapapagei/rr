@@ -15,7 +15,7 @@
 			<label index="templateObject">Template Object</label>
 			<label index="titleXmlConfiguration">XML configuration</label>
 			<label index="titleLoadDSXml">Load DS XML</label>
-			<label index="mappingTitle">Template Mapping</label>
+			<label index="mappingTitle">TemplaVoilà Template Mapping</label>
 			<label index="mappingNEW">[NEW]</label>
 			
 			<label index="mappingHeadParts">Adding parts from HTML header</label>
@@ -218,7 +218,9 @@
 			<label index="errorNoDSfound">No Data Structure Record could be found with UID "%s"!</label>
 			<label index="errorFileNotFound">The file "%s" could not be found!</label>
 			<label index="errorNoTOfound">No Template Object Record with the UID "%s"!</label>
+			<label index="errorNoToTitleDefined">No "title" defined, unable to create DS/TO.</label>
 			
+			<label index="validateTpl">Validate template file (on validator.w3c.org)</label>
 		</languageKey>
 	</data>
 	<orig_hash type="array">

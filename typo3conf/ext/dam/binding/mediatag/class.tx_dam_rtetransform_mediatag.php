@@ -67,6 +67,7 @@ class tx_dam_rtetransform_mediatag {
 				$tagCode = t3lib_div::unQuoteFilenames(trim(substr($pObj->getFirstTag($v),0,-1)),true);
 				$link_param = $tagCode[1];
 				$href = '';
+				$useDAMColumn = FALSE;
 
 
 				// Checking if the id-parameter is int and get meta data
@@ -79,7 +80,12 @@ class tx_dam_rtetransform_mediatag {
 					
 					if (!$tagCode[4]) {
 						require_once(PATH_txdam.'lib/class.tx_dam_guifunc.php');
-						$tagCode[4] = tx_dam_guiFunc::meta_compileHoverText($meta, '', ', ');
+						$displayItems = '';
+						if (t3lib_div::inList($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['rtehtmlarea']['plugins']['TYPO3Link']['additionalAttributes'], 'usedamcolumn') && $pObj->thisConfig['buttons.']['link.']['media.']['properties.']['title.']['useDAMColumn']) {
+							$displayItems = $pObj->thisConfig['buttons.']['link.']['media.']['properties.']['title.']['useDAMColumn.']['displayItems'] ? $pObj->thisConfig['buttons.']['link.']['media.']['properties.']['title.']['useDAMColumn.']['displayItems'] : '';
+							$useDAMColumn = TRUE;
+						}
+						$tagCode[4] = tx_dam_guiFunc::meta_compileHoverText($meta, $displayItems, ', ');
 					}
 				} else {
 					$href = $link_param;
@@ -91,6 +97,7 @@ class tx_dam_rtetransform_mediatag {
 							($tagCode[2]&&$tagCode[2]!='-' ? ' target="'.htmlspecialchars($tagCode[2]).'"' : '').
 							($tagCode[3]&&$tagCode[3]!='-' ? ' class="'.htmlspecialchars($tagCode[3]).'"' : '').
 							($tagCode[4] ? ' title="'.htmlspecialchars($tagCode[4]).'"' : '').
+							($useDAMColumn ? ' usedamcolumn="true"' : '').
 							($error ? ' rteerror="'.htmlspecialchars($error).'" style="background-color: yellow; border:2px red solid; color: black;"' : '').	// Should be OK to add the style; the transformation back to databsae will remove it...
 							'>';
 				$eTag = '</a>';

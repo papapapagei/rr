@@ -43,6 +43,8 @@ if (TYPO3_MODE == 'BE')   {
 	
 	t3lib_div::loadTCA('tt_content');
 	
+	$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_pi1'] = 'layout,select_key,pages';
+	
 	// Add flexform field to plugin options
 	$TCA['tt_content']['types']['list']['subtypes_addlist'][$_EXTKEY . '_pi1'] = 'pi_flexform';
 	
@@ -57,7 +59,6 @@ if (TYPO3_MODE == 'BE')   {
 
 t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/Settings/', 'Example Configuration');
 t3lib_extMgm::addPlugin(array('Formhandler', $_EXTKEY . '_pi1'), 'list_type');
-t3lib_extMgm::addPlugin(array('Formhandler Listing', $_EXTKEY . '_pi2'), 'list_type');
 
 $TCA['tx_formhandler_log'] = array (
     'ctrl' => array (

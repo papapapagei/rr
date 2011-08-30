@@ -53,8 +53,5 @@ All these information can be used to handle, find and categorize the media files
 			<label index="file_orig_loc_desc.description"></label>
 			<label index="file_orig_loc_desc.details">This is a description of the location the original file can be found.</label>
 		</languageKey>
-        <languageKey index="de" type="array">
-           <label index="title.description">Dokumententitel</label>
-        </languageKey>
 	</data>
 </T3locallang>

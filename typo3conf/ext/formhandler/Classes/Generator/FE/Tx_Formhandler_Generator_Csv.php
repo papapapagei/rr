@@ -1,7 +1,8 @@
 <?php
 
+require_once(t3lib_extMgm::extPath('formhandler') . 'Resources/PHP/parsecsv.lib.php');
 class Tx_Formhandler_Generator_Csv extends Tx_Formhandler_AbstractGenerator {
-	
+
 	/**
 	 * Renders the CSV.
 	 *
@@ -9,14 +10,17 @@ class Tx_Formhandler_Generator_Csv extends Tx_Formhandler_AbstractGenerator {
 	 */
 	public function process() {
 		$params = $this->gp;
-		require_once(t3lib_extMgm::extPath('formhandler') . 'Resources/PHP/parsecsv.lib.php');
+		$exportParams = Tx_Formhandler_StaticFuncs::getSingle($this->settings, 'exportParams');
+		if (!is_array($exportParams)) {
+			$exportParams = t3lib_div::trimExplode(',', $exportParams);
+		}
 
 		//build data
-		foreach($params as $key => &$value) {
-			if(is_array($value)) {
+		foreach ($params as $key => &$value) {
+			if (is_array($value)) {
 				$value = implode(',', $value);
 			}
-			if(count($exportParams) > 0 && !in_array($key, $exportParams)) {
+			if (count($exportParams) > 0 && !in_array($key, $exportParams)) {
 				unset($params[$key]);
 			}
 			$value = str_replace('"', '""', $value);
@@ -24,26 +28,24 @@ class Tx_Formhandler_Generator_Csv extends Tx_Formhandler_AbstractGenerator {
 
 		// create new parseCSV object.
 		$csv = new parseCSV();
-		$csv->output('formhandler.csv', $data, $exportParams);
+		$csv->output('formhandler.csv', $data, $params);
 		die();
 	}
-	
-	public function getLink($linkGP) {
-		$linkGP = array();
+
+	protected function getComponentLinkParams($linkGP) {
 		$prefix = Tx_Formhandler_Globals::$formValuesPrefix;
-		if($prefix) {
-			$linkGP[$prefix]['action'] = 'csv';
-			$linkGP[$prefix]['submitted'] = '1';
-			$linkGP[$prefix]['submitted_ok'] = '1';
+		$tempParams = array(
+			'action' => 'csv'
+		);
+		$params = array();
+		if ($prefix) {
+			$params[$prefix] = $tempParams;
 		} else {
-			$linkGP['action'] = 'csv';
-			$linkGP['submitted'] = '1';
-			$linkGP['submitted_ok'] = '1';
+			$params = $tempParams;
 		}
-		$linkGP['no_cache'] = 1;
-		$linkGP['dontReset'] = 1;
-		return $this->cObj->getTypolink('CSV', $GLOBALS['TSFE']->id, $linkGP);
+		return $params;
 	}
+
 }
 
 ?>

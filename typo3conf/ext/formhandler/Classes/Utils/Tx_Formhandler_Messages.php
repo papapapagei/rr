@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_Messages.php 27708 2009-12-15 09:22:07Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_Messages.php 43837 2011-02-18 15:46:46Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -22,7 +22,6 @@
  * @subpackage	Utils
  */
 class Tx_Formhandler_Messages {
-
 
 	/**
 	 * Returns a debug message according to given key
@@ -42,27 +41,6 @@ class Tx_Formhandler_Messages {
 	 */
 	public static function getExceptionMessage($key) {
 		return trim($GLOBALS['TSFE']->sL('LLL:EXT:formhandler/Resources/Language/locallang_exceptions.xml:' . $key));
-	}
-	
-	/**
-	 * Returns a formatted debug message
-	 *
-	 * @param string The unformatted message
-	 * @return string The formatted message
-	 */
-	public static function formatDebugMessage($message) {
-		$message = str_replace("\n", '<br />', $message);
-		return '<div style="font-weight:bold;color:#333;">' . $message . '</div>' . "\n";	
-	}
-	
-/**
-	 * Returns a formatted debug section header
-	 *
-	 * @param string The unformatted message
-	 * @return string The formatted message
-	 */
-	public static function formatDebugHeader($message) {
-		return '<h2 style="background:#333; color:#cdcdcd;height:23px;padding:10px 7px 7px 7px;margin:0;">' . $message . '</h2>' . "\n";	
 	}
 
 }

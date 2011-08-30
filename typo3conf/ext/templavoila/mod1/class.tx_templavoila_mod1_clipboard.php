@@ -24,7 +24,7 @@
 /**
  * Submodule 'clipboard' for the templavoila page module
  *
- * $Id$
+ * $Id: class.tx_templavoila_mod1_clipboard.php 47561 2011-05-11 08:55:13Z tolleiv $
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
@@ -151,9 +151,9 @@ class tx_templavoila_mod1_clipboard {
 
 		}
 
-		$copyIcon = '<img'.t3lib_iconWorks::skinImg($this->pObj->doc->backPath,'gfx/clip_copy'.($clipActive_copy ? '_h':'').'.gif','').' title="'.$LANG->getLL ('copyrecord').'" border="0" alt="" />';
-		$cutIcon = '<img'.t3lib_iconWorks::skinImg($this->pObj->doc->backPath,'gfx/clip_cut'.($clipActive_cut ? '_h':'').'.gif','').' title="'.$LANG->getLL ('cutrecord').'" border="0" alt="" />';
-		$refIcon = '<img'.t3lib_iconWorks::skinImg($this->pObj->doc->backPath,t3lib_extMgm::extRelPath('templavoila').'mod1/clip_ref'.($clipActive_ref ? '_h':'').'.gif','').' title="'.$LANG->getLL ('createreference').'" vspace="2" hspace="2" alt="" />';
+		$copyIcon = tx_templavoila_icons::getIcon('actions-edit-copy'. ($clipActive_copy ? '-release':''), array('title' => $LANG->getLL ('copyrecord')));
+		$cutIcon = tx_templavoila_icons::getIcon('actions-edit-cut'. ($clipActive_cut ? '-release':''), array('title' => $LANG->getLL ('cutrecord')));
+		$refIcon = tx_templavoila_icons::getIcon('extensions-templavoila-clip_ref'. ($clipActive_ref ? '-release':''), array('title' => $LANG->getLL ('createreference')));
 
 		$removeElement = '&amp;CB[removeAll]=normal';
 		$setElement = '&amp;CB[el]['.rawurlencode('tt_content|'.$elementRecord['uid']).']='.rawurlencode($this->pObj->apiObj->flexform_getStringFromPointer($elementPointer));
@@ -223,19 +223,20 @@ class tx_templavoila_mod1_clipboard {
 
 			// Prepare the ingredients for the different buttons:
 		$pasteMode = isset ($this->t3libClipboardObj->clipData['normal']['flexMode']) ? $this->t3libClipboardObj->clipData['normal']['flexMode'] : ($this->t3libClipboardObj->clipData['normal']['mode'] == 'copy' ? 'copy' : 'cut');
-		$pasteAfterIcon = '<img'.t3lib_iconWorks::skinImg($this->pObj->doc->backPath,'gfx/clip_pasteafter.gif','').' title="'.$LANG->getLL ('pasterecord').'" alt="" />';
-		$pasteSubRefIcon = '<img'.t3lib_iconWorks::skinImg('clip_pastesubref.gif','').' title="'.$LANG->getLL ('pastefce_andreferencesubs').'" alt="" />';
+		$pasteAfterIcon = tx_templavoila_icons::getIcon('extensions-templavoila-paste', array('title' => $LANG->getLL ('pasterecord')));
+		$pasteSubRefIcon = tx_templavoila_icons::getIcon('extensions-templavoila-pasteSubRef', array('title' => $LANG->getLL ('pastefce_andreferencesubs')));
 
 		$sourcePointerString = $this->pObj->apiObj->flexform_getStringFromPointer ($clipboardElementPointer);
 		$destinationPointerString = $this->pObj->apiObj->flexform_getStringFromPointer ($destinationPointer);
 
 		$output = '';
+		$clearCB = $this->pObj->modTSconfig['properties']['keepElementsInClipboard'] ? '' : '&amp;CB[removeAll]=normal';
 		if(!in_array('pasteAfter', $this->pObj->blindIcons)) {
-			$output .= '<a class="tpm-pasteAfter" href="index.php?'.$this->pObj->link_getParameters().'&amp;CB[removeAll]=normal&amp;pasteRecord='.$pasteMode.'&amp;source='.rawurlencode($sourcePointerString).'&amp;destination='.rawurlencode($destinationPointerString).'">'.$pasteAfterIcon.'</a>';			
+			$output .= '<a class="tpm-pasteAfter" href="index.php?' . $this->pObj->link_getParameters() . $clearCB . '&amp;pasteRecord=' . $pasteMode . '&amp;source=' . rawurlencode($sourcePointerString) . '&amp;destination=' . rawurlencode($destinationPointerString) . '">' . $pasteAfterIcon . '</a>';
 		}
 			// FCEs with sub elements have two different paste icons, normal elements only one:
 		if ($pasteMode == 'copy' && $clipboardElementHasSubElements && !in_array('pasteSubRef', $this->pObj->blindIcons)) {
-			$output .= '<a class="tpm-pasteSubRef" href="index.php?'.$this->pObj->link_getParameters().'&amp;CB[removeAll]=normal&amp;pasteRecord=copyref&amp;source='.rawurlencode($sourcePointerString).'&amp;destination='.rawurlencode($destinationPointerString).'">'.$pasteSubRefIcon.'</a>';
+			$output .= '<a class="tpm-pasteSubRef" href="index.php?' . $this->pObj->link_getParameters() . $clearCB . '&amp;pasteRecord=copyref&amp;source=' . rawurlencode($sourcePointerString) . '&amp;destination=' . rawurlencode($destinationPointerString) . '">' . $pasteSubRefIcon . '</a>';
 		}
 
 		return $output;
@@ -262,7 +263,7 @@ class tx_templavoila_mod1_clipboard {
 			'tt_content',
 			'pid='.intval($pid).' '.
 				'AND uid NOT IN ('.implode(',',$usedUids).') '.
-				'AND t3ver_state!=1'.
+				'AND ( t3ver_state NOT IN (1,3) OR (t3ver_wsid > 0 AND t3ver_wsid = ' . intval($GLOBALS['BE_USER']->workspace) . ') )' .
 				t3lib_BEfunc::deleteClause('tt_content').
 				t3lib_BEfunc::versioningPlaceholderClause('tt_content'),
 			'',
@@ -274,43 +275,53 @@ class tx_templavoila_mod1_clipboard {
 			$elementPointerString = 'tt_content:'.$row['uid'];
 
 				// Prepare the language icon:
-			$languageLabel = htmlspecialchars ($this->pObj->allAvailableLanguages[$row['sys_language_uid']]['title']);
-			$languageIcon = $this->pObj->allAvailableLanguages[$row['sys_language_uid']]['flagIcon'] ? '<img src="'.$this->pObj->allAvailableLanguages[$row['sys_language_uid']]['flagIcon'].'" title="'.$languageLabel.'" alt="'.$languageLabel.'"  />' : ($languageLabel && $row['sys_language_uid'] ? '['.$languageLabel.']' : '');
+			$languageLabel = htmlspecialchars($this->pObj->allAvailableLanguages[$row['sys_language_uid']]['title']);
+			if ($this->pObj->allAvailableLanguages[$row['sys_language_uid']]['flagIcon']) {
+				$languageIcon = tx_templavoila_icons::getFlagIconForLanguage($this->pObj->allAvailableLanguages[$row['sys_language_uid']]['flagIcon'], array('title' => $languageLabel, 'alt' => $languageLabel));
+			} else {
+				$languageIcon = ($languageLabel && $row['sys_language_uid'] ? '[' . $languageLabel . ']' : '');
+			}
 
 				// Prepare buttons:
 			$cutButton = $this->element_getSelectButtons($elementPointerString, 'ref');
-			$recordIcon = '<img'.t3lib_iconWorks::skinImg($this->doc->backPath, t3lib_iconWorks::getIcon('tt_content', $row),'').' border="0" title="[tt_content:'.$row['uid'].'" alt="" />';
+			$recordIcon = tx_templavoila_icons::getIconForRecord('tt_content', $row);
 			$recordButton = $this->pObj->doc->wrapClickMenuOnIcon($recordIcon, 'tt_content', $row['uid'], 1, '&callingScriptId='.rawurlencode($this->pObj->doc->scriptID), 'new,copy,cut,pasteinto,pasteafter,delete');
 
-
-
-			$elementRows[] = '
-				<tr id="' . $elementPointerString . '" class="tpm-nonused-element">
-					<td class="tpm-nonused-controls">' .
-						$cutButton . $languageIcon .
-					'</td>
-					<td class="tpm-nonused-ref">' .
-						$this->renderReferenceCount($row['uid']) .
-					'</td>
-					<td class="tpm-nonused-preview">' .
-						$recordButton . htmlspecialchars(t3lib_BEfunc::getRecordTitle('tt_content', $row)) .
-					'</td>
-				</tr>
-			';
+			if ($GLOBALS['BE_USER']->workspace) {
+				$wsRow = t3lib_BEfunc::getRecordWSOL('tt_content', $row['uid']);
+				$isDeletedInWorkspace = $wsRow['t3ver_state'] == 2;
+			} else {
+				$isDeletedInWorkspace = FALSE;
+			}
+			if(!$isDeletedInWorkspace) {
+				$elementRows[] = '
+					<tr id="' . $elementPointerString . '" class="tpm-nonused-element">
+						<td class="tpm-nonused-controls">' .
+							$cutButton . $languageIcon .
+						'</td>
+						<td class="tpm-nonused-ref">' .
+							$this->renderReferenceCount($row['uid']) .
+						'</td>
+						<td class="tpm-nonused-preview">' .
+							$recordButton . htmlspecialchars(t3lib_BEfunc::getRecordTitle('tt_content', $row)) .
+						'</td>
+					</tr>
+				';
+			}
 		}
 
 		if (count ($elementRows)) {
 
 				// Control for deleting all deleteable records:
 			$deleteAll = '';
-			if (count($this->deleteUids) && 0===$BE_USER->workspace)	{
+			if (count($this->deleteUids))	{
 				$params = '';
 				foreach($this->deleteUids as $deleteUid)	{
 					$params.= '&cmd[tt_content]['.$deleteUid.'][delete]=1';
 				}
 				$label = $LANG->getLL('rendernonusedelements_deleteall');
 				$deleteAll = '<a href="#" onclick="'.htmlspecialchars('jumpToUrl(\''.$this->doc->issueCommand($params,-1).'\');').'">'.
-						'<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/garbage.gif','width="11" height="12"').' title="'.htmlspecialchars($label).'" alt="" />'.
+						tx_templavoila_icons::getIcon('actions-edit-delete', array('title' => htmlspecialchars($label))).
 						htmlspecialchars($label).
 						'</a>';
 			}
@@ -355,20 +366,24 @@ class tx_templavoila_mod1_clipboard {
 		$infoData = array();
 		if (is_array($rows))	{
 			foreach($rows as $row)	{
-				$infoData[] = $row['tablename'].':'.$row['recuid'].':'.$row['field'];
+
+				if ($GLOBALS['BE_USER']->workspace && $row['tablename']=='pages' && $this->pObj->id == $row['recuid']) {
+					// We would have found you but we didn't - you're most likely deleted
+				} elseif ($GLOBALS['BE_USER']->workspace && $row['tablename']=='tt_content' && $this->pObj->global_tt_content_elementRegister[$row['recuid']] > 0) {
+					// We would have found you but we didn't - you're most likely deleted
+				} else {
+					$infoData[] = $row['tablename'].':'.$row['recuid'].':'.$row['field'];
+				}
 			}
 		}
-
 		if (count($infoData))	{
 			return '<a class="tpm-countRef" href="#" onclick="'.htmlspecialchars('top.launchView(\'tt_content\', \''.$uid.'\'); return false;').'" title="'.htmlspecialchars(t3lib_div::fixed_lgd_cs(implode(' / ',$infoData),100)).'">Ref: '.count($infoData).'</a>';
-		} elseif (0===$BE_USER->workspace) {
+		} else {
 			$this->deleteUids[] = $uid;
 			$params = '&cmd[tt_content]['.$uid.'][delete]=1';
 			return '<a class="tpm-countRef" href="#" onclick="'.htmlspecialchars('jumpToUrl(\''.$this->doc->issueCommand($params,-1).'\');').'">'.
-					'<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/garbage.gif','width="11" height="12"').' title="'.$LANG->getLL('renderreferencecount_delete',1).'" alt="" />'.
+					tx_templavoila_icons::getIcon('actions-edit-delete', array('title' => $LANG->getLL('renderreferencecount_delete',1))).
 					'</a>';
-		} else {
-			return '';
 		}
 	}
 }

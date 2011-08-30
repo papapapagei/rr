@@ -1,36 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <T3locallang>
-    <meta type="array">
-        <description></description>
-        <type>module</type>
-        <csh_table></csh_table>
-        <fileId>EXT:dam/modfunc_list_list/locallang.xml</fileId>
-        <labelContext type="array">
-            <label index="tx_dam_list_list.title"></label>
-        </labelContext>
-    </meta>
-    <data type="array">
-        <languageKey index="default" type="array">
-            <label index="tx_dam_list_list.title">List</label>
-            <label index="tx_dam_list_list.onlyDeselected">Show deselected only</label>
-        </languageKey>
-        <languageKey index="de" type="array">
-            <label index="tx_dam_list_list.title">Liste</label>
-            <label index="tx_dam_list_list.onlyDeselected">Nur abgewählte anzeigen</label>
-        </languageKey>
-    </data>
-    <orig_hash type="array">
-        <languageKey index="default" type="array">
-            <label index="tx_dam_list_list.title" type="integer">82717130</label>
-        </languageKey>
-        <languageKey index="de" type="array">
-            <label index="tx_dam_list_list.title" type="integer">82717130</label>
-        </languageKey>
-    </orig_hash>
-    <orig_text type="array">
-        <languageKey index="default" type="array">
-        </languageKey>
-        <languageKey index="de" type="array">
-        </languageKey>
-    </orig_text>
+	<meta type="array">
+		<description></description>
+		<type>module</type>
+		<csh_table></csh_table>
+		<fileId>EXT:dam/modfunc_list_list/locallang.xml</fileId>
+		<labelContext type="array">
+			<label index="tx_dam_list_list.title"></label>
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_dam_list_list.title">List</label>
+			<label index="tx_dam_list_list.onlyDeselected">Show deselected only</label>
+		</languageKey>
+	</data>
 </T3locallang>

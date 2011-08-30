@@ -242,8 +242,8 @@ class tx_dam_tools_indexupdate extends t3lib_extobjbase {
 
 				$code.= '<p>';
 				$code.= '<input type="hidden" name="SET[tx_dam_tools_indexupdate.deleteMissing]" value="0">';
-				$code.= '<input type="checkbox" '.($this->pObj->MOD_SETTINGS['tx_dam_tools_indexupdate.deleteMissing']?'checked="checked"':'').' name="SET[tx_dam_tools_indexupdate.deleteMissing]" value="1"> '.
-						$LANG->getLL('tx_dam_tools_indexupdate.deleteMissing',1);
+				$code.= '<input type="checkbox" '.($this->pObj->MOD_SETTINGS['tx_dam_tools_indexupdate.deleteMissing']?'checked="checked"':'').' name="SET[tx_dam_tools_indexupdate.deleteMissing]" id="SET.tx_dam_tools_indexupdate.deleteMissing" value="1"> '.
+						'<label for="SET.tx_dam_tools_indexupdate.deleteMissing">' . $LANG->getLL('tx_dam_tools_indexupdate.deleteMissing',1) . '</label>';
 				$code.= '<br /><span class="typo3-dimmed">'.$LANG->getLL('tx_dam_tools_indexupdate.deleteMissing_descr').'</span></p>';
 				$code.= '</p>';
 				$code.= '<p><br /></p>';

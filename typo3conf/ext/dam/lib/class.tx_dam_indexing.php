@@ -993,7 +993,7 @@ class tx_dam_indexing {
 
 				if (($setup['enabled'] OR $setup['forceEnabled']) AND is_object($obj = &t3lib_div::getUserObj($TYPO3_CONF_VARS['EXTCONF']['dam']['indexRuleClasses'][$ruleId],'user_',TRUE)))      {
 
-					$this->rules[$ruleId]['obj'] = &$obj;
+					$this->rules[$ruleId]['obj'] = $obj;
 					if (is_array($this->ruleConf[$ruleId])) {
 						$this->rules[$ruleId]['obj']->setup = array_merge($this->rules[$ruleId]['obj']->setup, $this->ruleConf[$ruleId]);
 					}
@@ -1286,7 +1286,7 @@ class tx_dam_indexing {
 		$mimeType['file_type'] = '';
 
 		$path_parts = t3lib_div::split_fileref($pathname);
-			
+	
 		$mimeType['file_type'] = strtolower($path_parts['realFileext']);
 			// cleanup bakup files extension
 		$mimeType['file_type'] = preg_replace('#\~$#', '', $mimeType['file_type']);
@@ -1295,13 +1295,14 @@ class tx_dam_indexing {
 		$this->setup['useMimeContentType'] = tx_dam::config_checkValueEnabled('setup.indexing.useMimeContentType', true);
 		$this->setup['useFileCommand'] = tx_dam::config_checkValueEnabled('setup.indexing.useFileCommand', true);
 
-
+			// Get the mimetype info from the DB
+		$file_type = tx_dam_db::getMediaExtension($mimeType['file_type']);
 
 			// try first to get the mime type by extension with own array
 			// I made the experience that it is a bit safer than with 'file'
-		if ($this->setup['useInternalMimeList'] AND $mimeType['file_type'] AND isset($TX_DAM['file2mime'][$mimeType['file_type']])) {
+		if ($this->setup['useInternalMimeList'] AND $mimeType['file_type'] AND isset($file_type['mime'])) {
 
-			$mt = $TX_DAM['file2mime'][$mimeType['file_type']];
+			$mt = $file_type['mime'];
 			if ($this->writeDevLog) 	t3lib_div::devLog('getFileMimeType(): used builtin conversion table', 'tx_dam_indexing');
 
 			// next try
@@ -1342,7 +1343,8 @@ class tx_dam_indexing {
 		}
 
 		if ($mimeType['file_type'] == '') {
-			$mimeType['file_type'] = array_search($mimeType['fulltype'], $TX_DAM['file2mime'], true);
+			$file_type = tx_dam_db::getMediaExtension('', $mimeType['fulltype']);  
+			$mimeType['file_type'] = $file_type['mime'];
 		}
 
 		if ($this->writeDevLog) 	t3lib_div::devLog('getFileMimeType()', 'tx_dam_indexing', 0, $mimeType);
@@ -1548,13 +1550,19 @@ class tx_dam_indexing {
 	 * @return	string		Title string
 	 */
 	function makeTitleFromFilename ($title) {
-		$orgTitle = $title;
-		$extpos = strrpos($title,'.');
-		$title = $extpos ? substr($title, 0, $extpos) : $title; // remove extension
-		$title = str_replace('_',' ',$title);	// Substituting "_" for " " because many filenames may have this instead of a space char.
-		$title = str_replace('%20',' ',$title);
-			// studly caps: add spaces
-		$title = preg_replace('#([a-z])([A-Z])#', '\\1 \\2', $title);
+
+		if( tx_dam::config_checkValueEnabled('mod.txdamM1_SHARED.useOriginalFilenameAsTitle') && $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dam']['temporaryFilenamesStorage'][$title] ) {			
+				// The title will be an original filename. This info is stored in $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dam'] while file uploading process.
+			$title = $GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dam']['temporaryFilenamesStorage'][$title];
+		} else {
+			$orgTitle = $title;
+			$extpos = strrpos($title,'.');
+			$title = $extpos ? substr($title, 0, $extpos) : $title; // remove extension
+			$title = str_replace('_',' ',$title);	// Substituting "_" for " " because many filenames may have this instead of a space char.
+			$title = str_replace('%20',' ',$title);
+				// studly caps: add spaces
+			$title = preg_replace('#([a-z])([A-Z])#', '\\1 \\2', $title);
+		}
 
 		if ($this->writeDevLog) 	t3lib_div::devLog('makeTitleFromFilename(): '.$orgTitle.' > '.$title, 'tx_dam_indexing');
 

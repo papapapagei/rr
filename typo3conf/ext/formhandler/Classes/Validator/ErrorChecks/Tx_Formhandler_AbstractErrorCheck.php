@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_AbstractErrorCheck.php 30981 2010-03-10 18:06:41Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_AbstractErrorCheck.php 40269 2010-11-16 15:23:54Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -37,7 +37,6 @@ abstract class Tx_Formhandler_AbstractErrorCheck extends Tx_Formhandler_Abstract
 	 */
 	abstract public function check(&$check, $name, &$gp);
 
-	
 	/**
 	 * Sets the suitable string for the checkFailed message parsed in view.
 	 *
@@ -46,9 +45,9 @@ abstract class Tx_Formhandler_AbstractErrorCheck extends Tx_Formhandler_Abstract
 	 */
 	protected function getCheckFailed($check) {
 		$checkFailed = $check['check'];
-		if(is_array($check['params'])) {
+		if (is_array($check['params'])) {
 			$checkFailed .= ';';
-			foreach($check['params'] as $key => $value) {
+			foreach ($check['params'] as $key => $value) {
 				$checkFailed .= $key . '::' . $value . ';';
 			}
 			$checkFailed = substr($checkFailed, 0, (strlen($checkFailed) - 1));

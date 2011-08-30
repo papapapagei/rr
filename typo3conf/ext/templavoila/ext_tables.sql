@@ -1,4 +1,4 @@
-# TYPO3 CVS ID: $Id$
+# TYPO3 CVS ID: $Id: ext_tables.sql 31953 2010-04-06 21:16:16Z michael.klapper $
 
 #
 # Table structure for table 'tx_templavoila_tmplobj'

@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_Finisher_DifferentDB.php 34736 2010-06-22 12:33:15Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_Finisher_DifferentDB.php 43837 2011-02-18 15:46:46Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -96,45 +96,42 @@ class Tx_Formhandler_Finisher_DifferentDB extends Tx_Formhandler_Finisher_DB {
 	protected function save(&$queryFields) {
 
 		//if adodb is installed
-		if(t3lib_extMgm::isLoaded('adodb')) {
+		if (t3lib_extMgm::isLoaded('adodb')) {
 			require_once(t3lib_extMgm::extPath('adodb') . 'adodb/adodb.inc.php');
-				
-			//build sql
-				
+
 			//insert query
-			if(!$this->doUpdate) {
-					
+			if (!$this->doUpdate) {
 				$query = $GLOBALS['TYPO3_DB']->INSERTquery($this->table, $queryFields);
-				Tx_Formhandler_StaticFuncs::debugMessage('sql_request', $query);
+				Tx_Formhandler_StaticFuncs::debugMessage('sql_request', array($query));
 
 				//update query
 			} else {
 
 				//check if uid of record to update is in GP
 				$uid = $this->gp[$this->key];
-				if($uid) {
+				if ($uid) {
 					$query = $GLOBALS['TYPO3_DB']->UPDATEquery($this->table, $this->key . '=' . $uid, $queryFields);
-					Tx_Formhandler_StaticFuncs::debugMessage('sql_request', $query);
+					Tx_Formhandler_StaticFuncs::debugMessage('sql_request', array($query));
 				} else {
-					Tx_Formhandler_StaticFuncs::debugMessage('no_update_possible');
+					Tx_Formhandler_StaticFuncs::debugMessage('no_update_possible', array(), 2);
 				}
 			}
-				
+
 			//open connection
 			$conn = &NewADOConnection($this->driver);
 			$host = $this->host;
-			if($this->port) {
+			if ($this->port) {
 				$host .= ':' . $this->port;
 			}
-			if($this->db) {
+			if ($this->db) {
 				$conn->Connect($host, $this->user, $this->password, $this->db);
 			} else {
 				$conn->Connect($host, $this->user, $this->password);
 			}
-				
+
 			//insert data
 			$conn->Execute($query);
-				
+
 			//close connection
 			$conn->Close();
 		} else {
@@ -150,14 +147,14 @@ class Tx_Formhandler_Finisher_DifferentDB extends Tx_Formhandler_Finisher_DB {
 	 */
 	public function init($gp, $settings) {
 		parent::init($gp, $settings);
-		
+
 		$this->driver = $this->settings['driver'];
 		$this->db = $this->settings['db'];
 		$this->host = $this->settings['host'];
 		$this->port = $this->settings['port'];
 		$this->user = $this->settings['username'];
 		$this->password = $this->settings['password'];
-		if(!$this->driver) {
+		if (!$this->driver) {
 			throw new Exception('No driver given!');
 		}
 	}

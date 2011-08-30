@@ -1,31 +1,31 @@
 <?php
 /***************************************************************
-*  Copyright notice
-*
-*  (c) 2004-2006 Robert Lemke (robert@typo3.org)
-*  All rights reserved
-*
-*  This script is part of the Typo3 project. The Typo3 project is
-*  free software; you can redistribute it and/or modify
-*  it under the terms of the GNU General Public License as published by
-*  the Free Software Foundation; either version 2 of the License, or
-*  (at your option) any later version.
-*
-*  The GNU General Public License can be found at
-*  http://www.gnu.org/copyleft/gpl.html.
-*
-*  This script is distributed in the hope that it will be useful,
-*  but WITHOUT ANY WARRANTY; without even the implied warranty of
-*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-*  GNU General Public License for more details.
-*
-*  This copyright notice MUST APPEAR in all copies of the script!
-***************************************************************/
+ *  Copyright notice
+ *
+ *  (c) 2004-2006 Robert Lemke (robert@typo3.org)
+ *  All rights reserved
+ *
+ *  This script is part of the Typo3 project. The Typo3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
 
 /**
  * Class 'tx_templavoila_tcemain' for the templavoila extension.
  *
- * $Id$
+ * $Id: class.tx_templavoila_tcemain.php 47628 2011-05-12 13:11:59Z tolleiv $
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
@@ -34,22 +34,19 @@
  *
  *
  *
- *   67: class tx_templavoila_tcemain
- *   83:     public function __construct()
+ *   64: class tx_templavoila_tcemain
  *
  *              SECTION: Public API (called by hook handler)
- *  105:     function processDatamap_preProcessFieldArray(array &$incomingFieldArray, $table, $id, t3lib_TCEmain &$reference)
- *  140:     function processDatamap_postProcessFieldArray ($status, $table, $id, &$fieldArray, &$reference)
- *  227:     function processDatamap_afterDatabaseOperations ($status, $table, $id, $fieldArray, &$reference)
- *  306:     function processCmdmap_preProcess (&$command, $table, $id, $value, &$reference)
- *  362:     function processCmdmap_postProcess($command, $table, $id, $value, &$reference)
- *  388:     function moveRecord_firstElementPostProcess ($table, $uid, $destPid, $sourceRecordBeforeMove, $updateFields, &$reference)
- *  429:     function moveRecord_afterAnotherElementPostProcess ($table, $uid, $destPid, $origDestPid, $sourceRecordBeforeMove, $updateFields, &$reference)
- *  460:     function correctSortingAndColposFieldsForPage($flexformXML, $pid)
- *  532:     protected function updateDataSourceFromTemplateObject($table, array &$incomingFieldArray, t3lib_beUserAuth &$beUser)
- *  552:     protected function updateDataSourceFieldFromTemplateObjectField(array &$incomingFieldArray, $dsField, $toField, t3lib_beUserAuth &$beUser)
+ *   86:     function processDatamap_preProcessFieldArray (&$incomingFieldArray, $table, $id, &$reference)
+ *  111:     function processDatamap_postProcessFieldArray ($status, $table, $id, &$fieldArray, &$reference)
+ *  166:     function processDatamap_afterDatabaseOperations ($status, $table, $id, $fieldArray, &$reference)
+ *  225:     function processCmdmap_preProcess ($command, $table, $id, $value, &$reference)
+ *  261:     function processCmdmap_postProcess($command, $table, $id, $value, &$reference)
+ *  283:     function moveRecord_firstElementPostProcess ($table, $uid, $destPid, $sourceRecordBeforeMove, $updateFields, &$reference)
+ *  324:     function moveRecord_afterAnotherElementPostProcess ($table, $uid, $destPid, $origDestPid, $sourceRecordBeforeMove, $updateFields, &$reference)
+ *  354:     function correctSortingAndColposFieldsForPage($flexformXML)
  *
- * TOTAL FUNCTIONS: 11
+ * TOTAL FUNCTIONS: 8
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -113,7 +110,7 @@ class tx_templavoila_tcemain {
 			return;
 		}
 
-		if (!$this->extConf['enable.']['selectDataSource']) {
+		if (!$this->extConf['enable.']['selectDataStructure']) {
 			// Update DS if TO was changed
 			$this->updateDataSourceFromTemplateObject($table, $incomingFieldArray, $reference->BE_USER);
 		}
@@ -181,7 +178,7 @@ class tx_templavoila_tcemain {
 			}
 		}
 
-		// Access check for FCE
+			// Access check for FCE
 		if ($table == 'tt_content') {
 			if ($status != 'new') {
 				$row = t3lib_beFunc::getRecord($table, $id);
@@ -285,9 +282,23 @@ page.10.disableExplosivePreview = 1
 						$templaVoilaAPI->insertElement_setElementReferences ($destinationFlexformPointer, $reference->substNEWwithIDs[$id]);
 					}
 				}
-			break;
-
+				break;
 		}
+
+			// clearing the cache of all related pages - see #1332
+		if (method_exists($reference, 'clear_cacheCmd')) {
+			$element = array(
+				'table' => $table,
+				'uid' => $id
+			);
+			$references = tx_templavoila_div::getElementForeignReferences($element, $fieldArray['pid']);
+			if (is_array($references) && is_array($references['pages'])) {
+				foreach($references['pages'] as $pageUid=>$__) {
+					$reference->clear_cacheCmd($pageUid);
+				}
+			}
+		}
+
 		unset ($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tx_templavoila_tcemain']['preProcessFieldArrays']);
 	}
 
@@ -321,7 +332,7 @@ page.10.disableExplosivePreview = 1
 		switch ($command) {
 			case 'delete' :
 				$record = t3lib_beFunc::getRecord('tt_content', $id);
-				// Check for FCE access
+					// Check for FCE access
 				$params = array(
 					'table' => $table,
 					'row' => $record,
@@ -332,20 +343,27 @@ page.10.disableExplosivePreview = 1
 					$command = '';	// Do not delete! A hack but there is no other way to prevent deletion...
 				}
 				else {
-					// Access ok
-					if (intval($record['t3ver_oid']) > 0) {
-						$record = t3lib_BEfunc::getRecord('tt_content', intval($record['t3ver_oid']));
+					if (intval($record['t3ver_oid']) > 0 && $record['pid'] == -1) {
+							// we unlink a offline version in a workspace
+						if (abs($record['t3ver_wsid']) !== 0) {
+							$record = t3lib_BEfunc::getRecord('tt_content', intval($record['t3ver_oid']));
+						}
 					}
-
-					$sourceFlexformPointersArr = $templaVoilaAPI->flexform_getPointersByRecord($record['uid'], $record['pid']);
-					$sourceFlexformPointer = $sourceFlexformPointersArr[0];
-
-					$templaVoilaAPI->unlinkElement($sourceFlexformPointer);
+						// avoid that deleting offline version in the live workspace unlinks the online version - see #11359 
+					if ($record['uid'] && $record['pid']) {
+						$sourceFlexformPointersArr = $templaVoilaAPI->flexform_getPointersByRecord($record['uid'], $record['pid']);
+						$sourceFlexformPointer = $sourceFlexformPointersArr[0];
+						$templaVoilaAPI->unlinkElement($sourceFlexformPointer);
+					}
 				}
 				break;
+			case 'copy':
+				unset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tx_templavoila_tcemain']['doNotInsertElementRefsToPage']);
+				break;
 		}
-
-		$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tx_templavoila_tcemain']['doNotInsertElementRefsToPage']--;
+		if (isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tx_templavoila_tcemain']['doNotInsertElementRefsToPage'])) {
+			$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tx_templavoila_tcemain']['doNotInsertElementRefsToPage']--;
+		}
 	}
 
 	/**
@@ -539,7 +557,7 @@ page.10.disableExplosivePreview = 1
 	 */
 	protected function updateDataSourceFromTemplateObject($table, array &$incomingFieldArray, t3lib_beUserAuth &$beUser) {
 		if (($table == 'pages' || $table == 'tt_content') &&
-			isset($incomingFieldArray['tx_templavoila_to'])) {
+		isset($incomingFieldArray['tx_templavoila_to'])) {
 			$this->updateDataSourceFieldFromTemplateObjectField($incomingFieldArray, 'tx_templavoila_ds', 'tx_templavoila_to', $beUser);
 		}
 		if ($table == 'pages' && isset($incomingFieldArray['tx_templavoila_next_to'])) {
@@ -577,6 +595,79 @@ page.10.disableExplosivePreview = 1
 			}
 		}
 	}
+
+	/**
+	 * Using the checkRecordUpdateAccess hook to grant access to flexfields if the user
+	 * make the attempt to update a reference list within a flex field
+	 *
+	 * @see http://bugs.typo3.org/view.php?id=485
+	 *
+	 * @param string $table
+	 * @param integer $id
+	 * @param array $data
+	 * @param boolean $res
+	 * @param object $pObj
+	 * @return mixed - "1" if we grant access and "false" if we can't decide whether to give access or not
+	 */
+	function checkRecordUpdateAccess($table, $id, $data, $res, &$pObj)	{
+
+		global $TCA;
+			// Only perform additional checks if not admin and just for pages table.
+		if (($table=='pages') && is_array($data) && !$pObj->admin)	{
+			$res = 1;
+			foreach ($data as $field => $value)	{
+				if (in_array($table.'-'.$field, $pObj->exclude_array) || $pObj->data_disableFields[$table][$id][$field])	{
+					continue;
+				}
+					// we're not inserting useful data - can't make a decission
+				if(!is_array($data[$field]['data'])) {
+					$res = false;
+					break;
+				}
+					// we're not inserting operating on an flex field - can't make a decission
+				if (!is_array($TCA[$table]['columns'][$field]['config']) ||
+					$TCA[$table]['columns'][$field]['config']['type'] != 'flex') {
+					$res = false;
+					break;
+				}
+					// get the field-information and check if only "ce" fields are updated
+				$conf = $TCA[$table]['columns'][$field]['config'];
+				$currentRecord = t3lib_BEfunc::getRecord($table, $id);
+				$dataStructArray = t3lib_BEfunc::getFlexFormDS($conf, $currentRecord, $table, $field, true);
+				foreach ($data[$field]['data'] as $sheet => $sheetData)	{
+					if (!is_array($sheetData) || !is_array($dataStructArray['ROOT']['el']))	{
+						$res = false;
+						break;
+					}
+					foreach ($sheetData as $lDef => $lData)	{
+						if (!is_array($lData))	{
+							$res = false;
+							break;
+						}
+						foreach ($lData as $fieldName => $fieldData)	{
+
+							if (!isset($dataStructArray['ROOT']['el'][$fieldName])) {
+								$res = false;
+								break;
+							}
+
+							$fieldConf = $dataStructArray['ROOT']['el'][$fieldName];
+							if ($fieldConf['tx_templavoila']['eType'] != 'ce')	{
+								$res = false;
+								break;
+							}
+						}
+					}
+				}
+			}
+			if (($res==1) && !$pObj->doesRecordExist($table, $id, 'editcontent'))	{
+				$res = false;
+			}
+		}
+
+		return $res;
+	}
+
 }
 
 

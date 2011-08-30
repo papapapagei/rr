@@ -54,16 +54,9 @@ require_once(PATH_txdam.'tca_media_field.php');
 	// register XCLASS of t3lib_extfilefunc to pipe all TCE stuff through DAM version
 $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['t3lib/class.t3lib_extfilefunc.php'] = PATH_txdam.'lib/class.tx_dam_tce_file.php';
 
-
+	// setup interface to htmlArea RTE
 if ($TYPO3_CONF_VARS['EXTCONF']['dam']['setup']['htmlAreaBrowser']) {
-	if (t3lib_div::int_from_ver( TYPO3_version ) < 4003000) {
-		$TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/rtehtmlarea/mod4/class.tx_rtehtmlarea_select_image.php'] = PATH_txdam.'compat/class.ux_tx_rtehtmlarea_select_image.php';
-		$TYPO3_CONF_VARS['SC_OPTIONS']['typo3/browse_links.php']['browserRendering'][] = PATH_txdam.'compat/class.tx_dam_rtehtmlarea_select_image.php:&tx_dam_rtehtmlarea_select_image';
-		$TYPO3_CONF_VARS['SC_OPTIONS']['ext/rtehtmlarea/mod3/class.tx_rtehtmlarea_browse_links.php']['browseLinksHook'][] =  PATH_txdam.'compat/class.tx_dam_rtehtmlarea_browse_links.php:&tx_dam_rtehtmlarea_browse_links';
-	} else {
-		$TYPO3_CONF_VARS['SC_OPTIONS']['ext/rtehtmlarea/mod4/class.tx_rtehtmlarea_select_image.php']['browseLinksHook'][] =  PATH_txdam.'compat/class.tx_dam_rtehtmlarea_browse_media.php:&tx_dam_rtehtmlarea_browse_media';
-		$TYPO3_CONF_VARS['SC_OPTIONS']['ext/rtehtmlarea/mod3/class.tx_rtehtmlarea_browse_links.php']['browseLinksHook'][] =  PATH_txdam.'compat/class.tx_dam_rtehtmlarea_browse_links.php:&tx_dam_rtehtmlarea_browse_links';
-	}
+	require_once(PATH_txdam.'compat/ext_localconf.php');
 }
 
 
@@ -73,7 +66,8 @@ $TYPO3_CONF_VARS['SC_OPTIONS']['typo3/show_item.php']['typeRendering'][] = 'EXT:
 $TYPO3_CONF_VARS['SC_OPTIONS']['typo3/browse_links.php']['browserRendering'][] = 'EXT:dam/class.tx_dam_browse_media.php:&tx_dam_browse_media';
 $TYPO3_CONF_VARS['SC_OPTIONS']['typo3/browse_links.php']['browserRendering'][] = 'EXT:dam/class.tx_dam_browse_category.php:&tx_dam_browse_category';
 $TYPO3_CONF_VARS['SC_OPTIONS']['typo3/browse_links.php']['browserRendering'][] = 'EXT:dam/class.tx_dam_browse_folder.php:&tx_dam_browse_folder';
-
+	// register secure downloads processor
+$TYPO3_CONF_VARS['SC_OPTIONS']['tslib/class.tslib_fe.php']['checkDataSubmission'][] = 'EXT:dam/lib/class.tx_dam_tsfe.php:&tx_dam_tsfe';
 
 tx_dam::register_indexingRule ('tx_damindex_rule_recursive', 'EXT:dam/components/class.tx_dam_index_rules.php:&tx_dam_index_rule_recursive');
 tx_dam::register_indexingRule ('tx_damindex_rule_folderAsCat', 'EXT:dam/components/class.tx_dam_index_rules.php:&tx_dam_index_rule_folderAsCat');
@@ -113,6 +107,11 @@ require_once(PATH_txdam.'binding/softref/ext_localconf.php');
 
 	// txdam attribute on img tag for FE
 require_once(PATH_txdam.'binding/imgtag/ext_localconf.php');
+
+	// txdam linkvalidator support
+if (t3lib_extMgm::isLoaded('linkvalidator')) {
+	require_once(PATH_txdam.'binding/linkvalidator/ext_localconf.php');
+}
 
 	// FE stuff
 

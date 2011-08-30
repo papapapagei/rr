@@ -82,37 +82,52 @@ class tx_dam_tsfe {
 	 * @return	string		comma list of files with path
 	 * @see dam_ttcontent extension
 	 */
-	function fetchFileList ($content, $conf) {
+	function fetchFileList($content, $conf) {
 		$files = array();
 
-		$filePath = $this->cObj->stdWrap($conf['additional.']['filePath'],$conf['additional.']['filePath.']);
-		$fileList = trim($this->cObj->stdWrap($conf['additional.']['fileList'],$conf['additional.']['fileList.']));
-		$refField = trim($this->cObj->stdWrap($conf['refField'],$conf['refField.']));
-		$fileList = t3lib_div::trimExplode(',',$fileList);
+		$filePath = $this->cObj->stdWrap($conf['additional.']['filePath'], $conf['additional.']['filePath.']);
+		$fileList = trim($this->cObj->stdWrap($conf['additional.']['fileList'], $conf['additional.']['fileList.']));
+		$refField = trim($this->cObj->stdWrap($conf['refField'], $conf['refField.']));
+		$fileList = t3lib_div::trimExplode(',', $fileList);
 		foreach ($fileList as $file) {
 			if($file) {
-				$files[] = $filePath.$file;
+				$files[] = $filePath . $file;
 			}
 		}
 
-
-		$uid      = $this->cObj->data['_LOCALIZED_UID'] ? $this->cObj->data['_LOCALIZED_UID'] : $this->cObj->data['uid'];
-		$refTable = ($conf['refTable'] && is_array($GLOBALS['TCA'][$conf['refTable']])) ? $conf['refTable'] : 'tt_content';
+			// Get the uid of the current object
+		$refUid = $this->cObj->data['_LOCALIZED_UID'] ? $this->cObj->data['_LOCALIZED_UID'] : $this->cObj->data['uid'];
+			// Override uid, if defined
+		if (isset($conf['refUid']) || isset($conf['refUid.'])) {
+			$uid = trim($this->cObj->stdWrap($conf['refUid'], $conf['refUid.']));
+			if (!empty($uid)) {
+				$refUid = $uid;
+			}
+		}
+			// Get the reference table
+			// Default is tt_content
+		$refTable = 'tt_content';
+		if (isset($conf['refTable']) || isset($conf['refTable.'])) {
+			$table = trim($this->cObj->stdWrap($conf['refTable'], $conf['refTable.']));
+			if (!empty($table) && is_array($GLOBALS['TCA'][$table])) {
+				$refTable = $table;
+			}
+		}
 
 		if (isset($GLOBALS['BE_USER']->workspace) && $GLOBALS['BE_USER']->workspace !== 0) {
 			$workspaceRecord = $GLOBALS['TSFE']->sys_page->getWorkspaceVersionOfRecord(
 				$GLOBALS['BE_USER']->workspace,
-				'tt_content',
-				$uid,
+				$refTable,
+				$refUid,
 				'uid'
 			);
 
 			if (is_array($workspaceRecord)) {
-				$uid = $workspaceRecord['uid'];
+				$refUid = $workspaceRecord['uid'];
 			}
 		}
 
-		$damFiles = tx_dam_db::getReferencedFiles($refTable, $uid, $refField);
+		$damFiles = tx_dam_db::getReferencedFiles($refTable, $refUid, $refField);
 
 		$files = array_merge($files, $damFiles['files']);
 
@@ -181,6 +196,60 @@ class tx_dam_tsfe {
 		return $label;
 	}
 
+	/**
+	 * This method hooks into the data submission process to try and assemble a jumpurl
+	 * based on a reference to a DAM record passed with the locationData query variable
+	 *
+	 * @param tslib_fe $parentObject Back-reference to the calling tslib_fe object
+	 * @return void
+	 */
+	public function checkDataSubmission(tslib_fe $parentObject) {
+		$locationData = (string)t3lib_div::_GP('locationData');
+		if (!empty($locationData)) {
+			$locationDataParts = explode(':', $locationData);
+				// Three parts are expected: a page id, a table name and a record id
+			if (count($locationDataParts) == 3) {
+					// Consider only references to the DAM
+				if ($locationDataParts[1] == 'tx_dam') {
+					$recordId = intval($locationDataParts[2]);
+					if (!empty($recordId)) {
+							/** @var $media txdam_media */
+						$media = tx_dam::media_getByUid($recordId);
+							// If the file is indeed available, set its path as the Jump URL
+						if ($media->isAvailable) {
+							$metaData = $media->getMetaArray();
+							$parentObject->jumpurl = $metaData['file_path'] . $metaData['file_name'];
+
+							// If the file is not available, issue error message
+						} else {
+								// If a hook is declared, call the hook for error handling
+							if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dam']['secureDownloadErrorHandler'])) {
+								foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dam']['secureDownloadErrorHandler'] as $classReference) {
+									$errorHandler = t3lib_div::getUserObj($classReference);
+									$errorHandler->handleDownloadError($locationDataParts, $parentObject);
+								}
+
+								// In the absence of hooks, just print a standard error message and exit the process
+							} else {
+									// Instantiate local language object
+									/** @var $languageObject language */
+								$languageObject = t3lib_div::makeInstance('language');
+									// Get language code, if defined
+								if (!empty($GLOBALS['TSFE']->config['config']['language'])) {
+									$languageObject->lang = $GLOBALS['TSFE']->config['config']['language'];
+									if (!empty($GLOBALS['TSFE']->config['config']['language_alt'])) {
+										$languageObject->lang = $GLOBALS['TSFE']->config['config']['language_alt'];
+									}
+								}
+								$parentObject->printError($languageObject->sL('LLL:EXT:dam/lib/locallang.xml:downloadFailed'), $languageObject->sL('LLL:EXT:dam/lib/locallang.xml:downloadError'));
+								exit;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/dam/lib/class.tx_dam_tsfe.php'])	{

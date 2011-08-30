@@ -11,12 +11,11 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_Dispatcher.php 37891 2010-09-09 18:56:04Z fabriziobranca $
+ * $Id: Tx_Formhandler_Dispatcher.php 46555 2011-04-15 08:17:27Z reinhardfuehricht $
  *                                                                        */
 
-require_once (t3lib_extMgm::extPath('formhandler') . 'Classes/Component/Tx_GimmeFive_Component_Manager.php');
-
-
+require_once(t3lib_extMgm::extPath('formhandler') . 'Classes/Component/Tx_Formhandler_Component_Manager.php');
+require_once(t3lib_extMgm::extPath('formhandler') . 'Classes/Utils/Tx_Formhandler_Globals.php');
 require_once(PATH_tslib.'class.tslib_pibase.php');
 
 /**
@@ -27,55 +26,14 @@ require_once(PATH_tslib.'class.tslib_pibase.php');
  * @subpackage	Controller
  */
 class Tx_Formhandler_Dispatcher extends tslib_pibase {
-	
+
 	/**
 	 * Compontent Manager
 	 * 
 	 * @access protected
-	 * @var Tx_GimmeFive_Component_Manager
+	 * @var Tx_Formhandler_Component_Manager
 	 */
 	protected $componentManager;
-	
-	/**
-	 * xajax
-	 * 
-	 * @access protected
-	 * @var tx_xajax
-	 */
-	protected $xajax;
-
-	/**
-	 * Adds JavaScript for xajax and registers callable methods.
-	 * Passes AJAX requests to requested methods.
-	 *
-	 * @return void
-	 */
-	protected function handleAjax() {
-		if(t3lib_extMgm::isLoaded('xajax', 0) && !class_exists('tx_xajax') && !$this->xajax) {
-			require_once(t3lib_extMgm::extPath('xajax') . 'class.tx_xajax.php');
-		}
-		if (!$this->xajax && class_exists('tx_xajax')) {
-			$view = $this->componentManager->getComponent('Tx_Formhandler_View_Form');
-
-			$this->xajax = t3lib_div::makeInstance('tx_xajax');
-			$this->xajax->decodeUTF8InputOn();
-			$this->prefixId = 'Tx_Formhandler';
-			$this->xajax->setCharEncoding('utf-8');
-			#$this->xajax->setWrapperPrefix($this->prefixId);
-				
-			$this->xajax->setRequestURI(t3lib_div::getIndpEnv('TYPO3_REQUEST_URL'));
-			$this->xajax->registerFunction(array($this->prefixId . '_removeUploadedFile', &$view, 'removeUploadedFile'));
-			
-			// Do you wnat messages in the status bar?
-			$this->xajax->statusMessagesOn();
-			
-			// Turn only on during testing
-			$this->xajax->debugOff();
-			
-			$GLOBALS['TSFE']->additionalHeaderData[$this->prefixId] = $this->xajax->getJavascript(t3lib_extMgm::siteRelPath('xajax'));
-			$this->xajax->processRequests();
-		}
-	}
 
 	/**
 	 * Main method of the dispatcher. This method is called as a user function.
@@ -85,13 +43,12 @@ class Tx_Formhandler_Dispatcher extends tslib_pibase {
 	 * @param array $setup The TypoScript config
 	 */
 	public function main($content, $setup) {
-
 		$this->pi_USER_INT_obj = 1;
 		try {
 
 			//init flexform
 			$this->pi_initPIflexForm();
-			
+
 			/*
 			 * Parse values from flexform:
 			 * - Template file
@@ -104,49 +61,49 @@ class Tx_Formhandler_Dispatcher extends tslib_pibase {
 			$templateFile = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'template_file', 'sDEF');
 			$langFile = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'lang_file', 'sDEF');
 			$predef = $this->pi_getFFvalue($this->cObj->data['pi_flexform'], 'predefined', 'sDEF');
-			
-			require_once(t3lib_extMgm::extPath('formhandler') . 'Classes/Utils/Tx_Formhandler_Globals.php');
+
 			Tx_Formhandler_Globals::$predef = $predef;
 			Tx_Formhandler_Globals::$cObj = $this->cObj;
 			Tx_Formhandler_Globals::$overrideSettings = $setup;
-			$this->componentManager = Tx_GimmeFive_Component_Manager::getInstance();
-			
-			//handle AJAX stuff
-			$this->handleAjax();
-	
+			$this->componentManager = Tx_Formhandler_Component_Manager::getInstance();
+
 			/*
 			 * set controller:
 			 * 1. Default controller
 			 * 2. TypoScript
 			 */
 			$controller = 'Tx_Formhandler_Controller_Form';
-			if($setup['controller']) {
+			if ($setup['controller']) {
 				$controller = $setup['controller'];
 			}
-			
-			//Tx_Formhandler_StaticFuncs::debugMessage('using_controller', $controller);
+
 			$controller = Tx_Formhandler_StaticFuncs::prepareClassName($controller);
 			$controller = $this->componentManager->getComponent($controller);
-	
+
 			if (isset($content)) {
 				$controller->setContent($this->componentManager->getComponent('Tx_Formhandler_Content', $content));
 			}
-			if(strlen($templateFile) > 0) {
+			if (strlen($templateFile) > 0) {
 				$controller->setTemplateFile($templateFile);
 			}
-			if(strlen($langFile) > 0) {
+			if (strlen($langFile) > 0) {
 				$controller->setLangFiles(array($langFile));
 			}
-			if(strlen($predef) > 0) {
+			if (strlen($predef) > 0) {
 				$controller->setPredefined($predef);
 			}
-		
+
 			$result = $controller->process();
+			
 		} catch(Exception $e) {
 			$result = '<div style="color:red; font-weight: bold">Caught exception: ' . $e->getMessage() . '</div>';
 			$result .= '<div style="color:red; font-weight: bold">File: ' . $e->getFile() . '(' . $e->getLine() . ')</div>';
 			
-			#$result .= '<div style="color:#000; font-weight: bold">Trace: ' . $e->getTraceAsString(). '</div>';
+		}
+		if (Tx_Formhandler_Globals::$session && Tx_Formhandler_Globals::$session->get('debug')) {
+			foreach(Tx_Formhandler_Globals::$debuggers as $idx => $debugger) {
+				$debugger->outputDebugLog();
+			}
 		}
 		return $result;
 	}

@@ -108,8 +108,8 @@ if (TYPO3_MODE === 'BE')	{
 			}
 		}
 
-			// remove Web>File module
-		if(!$TYPO3_CONF_VARS['EXTCONF']['dam']['setup']['web_file']) {
+			// remove File>Filelist module
+		if(!$TYPO3_CONF_VARS['EXTCONF']['dam']['setup']['file_filelist']) {
 			unset($temp_TBE_MODULES['file']);
 		}
 		$TBE_MODULES = $temp_TBE_MODULES;
@@ -208,16 +208,16 @@ if (TYPO3_MODE === 'BE')	{
 
 	t3lib_extMgm::insertModuleFunction(
 		'txdamM1_tools',
-		'tx_dam_tools_categories',
-		PATH_txdam.'modfunc_tools_categories/class.tx_dam_tools_categories.php',
-		'LLL:EXT:dam/lib/locallang.xml:categories'
+		'tx_dam_tools_serviceinfo',
+		PATH_txdam.'modfunc_tools_serviceinfo/class.tx_dam_tools_serviceinfo.php',
+		'LLL:EXT:dam/lib/locallang.xml:serviceinfo'
 	);
 
 	t3lib_extMgm::insertModuleFunction(
 		'txdamM1_tools',
-		'tx_dam_tools_serviceinfo',
-		PATH_txdam.'modfunc_tools_serviceinfo/class.tx_dam_tools_serviceinfo.php',
-		'LLL:EXT:dam/lib/locallang.xml:serviceinfo'
+		'tx_dam_tools_mimetypes',
+		PATH_txdam.'modfunc_tools_mimetypes/class.tx_dam_tools_mimetypes.php',
+		'LLL:EXT:dam/lib/locallang.xml:mimetypes'
 	);
 
 
@@ -302,8 +302,14 @@ if (TYPO3_MODE === 'BE')	{
 
 
 		// media folder type and icon
-	$ICON_TYPES['dam'] = array('icon' => PATH_txdam_rel.'modules_dam.gif');
+	if(t3lib_div::int_from_ver(TYPO3_version) < 4004000) {
+		$ICON_TYPES['dam'] = array('icon' => PATH_txdam_rel.'modules_dam.gif');
+	} else {
+		t3lib_SpriteManager::addTcaTypeIcon('pages', 'contains-dam', PATH_txdam_rel.'modules_dam.gif');
+	}
 	$TCA['pages']['columns']['module']['config']['items'][] = array('Media', 'dam', PATH_txdam_rel.'modules_dam.gif');
+
+
 
 
 		// language hotlist
@@ -318,8 +324,10 @@ if (TYPO3_MODE === 'BE')	{
 	tx_dam::register_action ('tx_dam_action_newTextfile',     'EXT:dam/components/class.tx_dam_actionsFile.php:&tx_dam_action_newTextfile');
 	tx_dam::register_action ('tx_dam_action_editFileRecord',  'EXT:dam/components/class.tx_dam_actionsFile.php:&tx_dam_action_editFileRecord');
 	tx_dam::register_action ('tx_dam_action_viewFile',        'EXT:dam/components/class.tx_dam_actionsFile.php:&tx_dam_action_viewFile');
+	tx_dam::register_action ('tx_dam_action_copyFile',      'EXT:dam/components/class.tx_dam_actionsFile.php:&tx_dam_action_copyFile');
 	tx_dam::register_action ('tx_dam_action_editFile',        'EXT:dam/components/class.tx_dam_actionsFile.php:&tx_dam_action_editFile');
 	tx_dam::register_action ('tx_dam_action_infoFile',        'EXT:dam/components/class.tx_dam_actionsFile.php:&tx_dam_action_infoFile');
+	tx_dam::register_action ('tx_dam_action_moveFile',      'EXT:dam/components/class.tx_dam_actionsFile.php:&tx_dam_action_moveFile');
 	tx_dam::register_action ('tx_dam_action_renameFile',      'EXT:dam/components/class.tx_dam_actionsFile.php:&tx_dam_action_renameFile');
 	tx_dam::register_action ('tx_dam_action_replaceFile',     'EXT:dam/components/class.tx_dam_actionsFile.php:&tx_dam_action_replaceFile');
 	tx_dam::register_action ('tx_dam_action_deleteFile',      'EXT:dam/components/class.tx_dam_actionsFile.php:&tx_dam_action_deleteFile');
@@ -508,6 +516,20 @@ $TCA['tx_dam_selection'] = array(
 	),
 	'feInterface' => array(
 		'fe_admin_fieldList' => 'hidden, starttime, endtime, fe_group, type, title, definition',
+	)
+);
+
+$TCA['tx_dam_media_types'] = array(
+	'ctrl' => array(
+		'title' => 'LLL:EXT:dam/locallang_db.xml:tx_dam_media_types',
+		'label' => 'ext',
+		'versioning' => '0',
+		'rootLevel'	=> '1',
+		'dynamicConfigFile' => PATH_txdam.'tca.php',
+		'iconfile' => PATH_txdam_rel.'i/mimetype.gif',
+	),
+	'feInterface' => array(
+		'fe_admin_fieldList' => 'ext, mime, type, icon',
 	)
 );
 

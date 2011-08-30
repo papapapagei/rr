@@ -1,328 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <T3locallang>
-    <meta type="array">
-        <description></description>
-        <type>module</type>
-        <csh_table></csh_table>
-        <fileId>EXT:dam/modfunc_tools_indexupdate/locallang.xml</fileId>
-        <labelContext type="array">
-            <label index="tx_dam_tools_indexupdate.title"></label>
-            <label index="tx_dam_tools_indexupdate.index_description"></label>
-            <label index="tx_dam_tools_indexupdate.check_age"></label>
-            <label index="tx_dam_tools_indexupdate.age_all"></label>
-            <label index="tx_dam_tools_indexupdate.age_day"></label>
-            <label index="tx_dam_tools_indexupdate.age_week"></label>
-            <label index="tx_dam_tools_indexupdate.age_month"></label>
-            <label index="tx_dam_tools_indexupdate.updatedFiles"></label>
-            <label index="tx_dam_tools_indexupdate.updatedMessage"></label>
-            <label index="tx_dam_tools_indexupdate.finished"></label>
-            <label index="tx_dam_tools_indexupdate.no_files"></label>
-        </labelContext>
-    </meta>
-    <data type="array">
-        <languageKey index="default" type="array">
-            <label index="tx_dam_tools_indexupdate.title">Check index</label>
-            <label index="tx_dam_tools_indexupdate.index_check">Check index</label>
-            <label index="tx_dam_tools_indexupdate.index_description">This checks the index for changed or missing files and updates the index accordingly.</label>
-            <label index="tx_dam_tools_indexupdate.uploads_check">Check uploads</label>
-            <label index="tx_dam_tools_indexupdate.uploads_description">This updates the index for files in uploads/ which is needed to identify the used files in content elements.</label>
-            <label index="tx_dam_tools_indexupdate.statistics">Statistics</label>
-            <label index="tx_dam_tools_indexupdate.statistics_description">This shows a statistics about indexed media items.</label>
-            <label index="tx_dam_tools_indexupdate.cleanup_meta">Tidy meta data</label>
-            <label index="tx_dam_tools_indexupdate.cleanup_meta_description">This cleans the meta data from invalid content and repairs things if possible.</label>
-            <label index="tx_dam_tools_indexupdate.lost_records_check">Check lost records</label>
-            <label index="tx_dam_tools_indexupdate.lost_records_description">This function collect lost records which are not stored inside the Media folder for some reason. Lost record can be moved to the Media folder then.</label>
-            <label index="tx_dam_tools_indexupdate.lost_records_all_fine">All fine. No lost records found.</label>
-            <label index="tx_dam_tools_indexupdate.lost_records_collect">Collect lost records</label>
-            <label index="tx_dam_tools_indexupdate.lost_records_check_again">Check again</label>
-            <label index="tx_dam_tools_indexupdate.age">Age</label>
-            <label index="tx_dam_tools_indexupdate.age_descr">Checks index entries last change was before selected age.</label>
-            <label index="tx_dam_tools_indexupdate.deleteMissing">Mark entries with missing files as deleted</label>
-            <label index="tx_dam_tools_indexupdate.deleteMissing_descr">This will mark an index entry as deleted if the corresponding file is missing. The entry will not be deleted physically and can be reused later if the file will be found.</label>
-            <label index="tx_dam_tools_indexupdate.age_all">now</label>
-            <label index="tx_dam_tools_indexupdate.age_day">a day</label>
-            <label index="tx_dam_tools_indexupdate.age_week">a week</label>
-            <label index="tx_dam_tools_indexupdate.age_month">a month</label>
-            <label index="tx_dam_tools_indexupdate.updatedFiles">Checked files:</label>
-            <label index="tx_dam_tools_indexupdate.updatedMessage">Index checked for %s files of %s total</label>
-            <label index="tx_dam_tools_indexupdate.finished">finished</label>
-            <label index="tx_dam_tools_indexupdate.no_files">No matching index entries found.</label>
-            <label index="tx_dam_tools_indexupdate.count_elements">%s elements currently in index.</label>
-            <label index="tx_dam_tools_indexupdate.update">Update</label>
-        </languageKey>
-        <languageKey index="dk" type="array">
-        </languageKey>
-        <languageKey index="de" type="array">
-            <label index="tx_dam_tools_indexupdate.title">Index überprüfen</label>
-            <label index="tx_dam_tools_indexupdate.index_check">Index überprüfen</label>
-            <label index="tx_dam_tools_indexupdate.index_description">Diese Funktion überprüft den Index auf geänderte oder gelöschte Dateien und aktualisiert den Status entsprechend.</label>
-            <label index="tx_dam_tools_indexupdate.uploads_check">Uploads-Index überprüfen</label>
-            <label index="tx_dam_tools_indexupdate.uploads_description">Diese Funktion überprüft den Index für Dateien in uploads/. Das ist notwendig um die Verwendung von Dateien in Inhaltselementen zu erkennen. (Dies sollte nur zur Initialisierung notwendig sein. Ist das DAM System installiert werden Dateien in uploads/ automatisch indexiert.)</label>
-            <label index="tx_dam_tools_indexupdate.statistics">Statistik</label>
-            <label index="tx_dam_tools_indexupdate.statistics_description">Diese Funktion zeigt eine Statistik der indexierten Media Elemente an.</label>
-            <label index="tx_dam_tools_indexupdate.cleanup_meta">Metadaten aufräumen</label>
-            <label index="tx_dam_tools_indexupdate.cleanup_meta_description">Diese Funktion sucht nach fehlerhaften Metadaten und versucht diese zu reparieren.</label>
-            <label index="tx_dam_tools_indexupdate.lost_records_check">Überprüfe auf verlorene Datensätze</label>
-            <label index="tx_dam_tools_indexupdate.lost_records_description">Diese Funktion sucht Datensätze die nicht im Media SysFolder gespeichert sind. Diese können dann korrigiert werden.</label>
-            <label index="tx_dam_tools_indexupdate.lost_records_all_fine">Alles in Ordnung. Es wurden keine verlorenen Datensätze gefunden.</label>
-            <label index="tx_dam_tools_indexupdate.lost_records_collect">Korrigieren Datensätze</label>
-            <label index="tx_dam_tools_indexupdate.lost_records_check_again">Wiederholen</label>
-            <label index="tx_dam_tools_indexupdate.age">Alter</label>
-            <label index="tx_dam_tools_indexupdate.age_descr">Überprüft Index-Einträge mit Änderungen älter als gewähltes Alter.</label>
-            <label index="tx_dam_tools_indexupdate.deleteMissing">Einträge mit verlorenen Dateien als gelöscht markieren</label>
-            <label index="tx_dam_tools_indexupdate.deleteMissing_descr">Diese Funktion markiert einen Index Eintrag als gelöscht wenn die dazugehörige Datei fehlt. Später kann dieser Index Eintrag wieder reaktiviert werden, falls die Datei wiedergefunden wird.</label>
-            <label index="tx_dam_tools_indexupdate.age_all">egal</label>
-            <label index="tx_dam_tools_indexupdate.age_day">ein Tag</label>
-            <label index="tx_dam_tools_indexupdate.age_week">eine Woche</label>
-            <label index="tx_dam_tools_indexupdate.age_month">ein Monat</label>
-            <label index="tx_dam_tools_indexupdate.updatedFiles">Überprüfte Dateien:</label>
-            <label index="tx_dam_tools_indexupdate.updatedMessage">Index überprüft für %s Dateien von %s insgesamt</label>
-            <label index="tx_dam_tools_indexupdate.finished">fertig</label>
-            <label index="tx_dam_tools_indexupdate.no_files">Keine passenden Index-Einträge gefunden.</label>
-            <label index="tx_dam_tools_indexupdate.count_elements">Zur Zeit sind %s Elemente im Index.</label>
-            <label index="tx_dam_tools_indexupdate.update">Wiederholen</label>
-        </languageKey>
-        <languageKey index="no" type="array">
-        </languageKey>
-        <languageKey index="it" type="array">
-        </languageKey>
-        <languageKey index="fr" type="array">
-        </languageKey>
-        <languageKey index="es" type="array">
-        </languageKey>
-        <languageKey index="nl" type="array">
-        </languageKey>
-        <languageKey index="cz" type="array">
-        </languageKey>
-        <languageKey index="pl" type="array">
-        </languageKey>
-        <languageKey index="si" type="array">
-        </languageKey>
-        <languageKey index="fi" type="array">
-        </languageKey>
-        <languageKey index="tr" type="array">
-        </languageKey>
-        <languageKey index="se" type="array">
-        </languageKey>
-        <languageKey index="pt" type="array">
-        </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
-        <languageKey index="ro" type="array">
-        </languageKey>
-        <languageKey index="ch" type="array">
-        </languageKey>
-        <languageKey index="sk" type="array">
-        </languageKey>
-        <languageKey index="lt" type="array">
-        </languageKey>
-        <languageKey index="is" type="array">
-        </languageKey>
-        <languageKey index="hr" type="array">
-        </languageKey>
-        <languageKey index="hu" type="array">
-        </languageKey>
-        <languageKey index="gl" type="array">
-        </languageKey>
-        <languageKey index="th" type="array">
-        </languageKey>
-        <languageKey index="gr" type="array">
-        </languageKey>
-        <languageKey index="hk" type="array">
-        </languageKey>
-        <languageKey index="eu" type="array">
-        </languageKey>
-        <languageKey index="bg" type="array">
-        </languageKey>
-        <languageKey index="br" type="array">
-        </languageKey>
-        <languageKey index="et" type="array">
-        </languageKey>
-        <languageKey index="ar" type="array">
-        </languageKey>
-        <languageKey index="he" type="array">
-        </languageKey>
-        <languageKey index="ua" type="array">
-        </languageKey>
-        <languageKey index="lv" type="array">
-        </languageKey>
-        <languageKey index="jp" type="array">
-        </languageKey>
-        <languageKey index="vn" type="array">
-        </languageKey>
-    </data>
-    <orig_hash type="array">
-        <languageKey index="default" type="array">
-            <label index="tx_dam_tools_indexupdate.title" type="integer">257120721</label>
-            <label index="tx_dam_tools_indexupdate.description" type="integer">254483633</label>
-            <label index="tx_dam_tools_indexupdate.check_age" type="integer">97939232</label>
-            <label index="tx_dam_tools_indexupdate.age_all" type="integer">159106450</label>
-            <label index="tx_dam_tools_indexupdate.age_day" type="integer">139020550</label>
-            <label index="tx_dam_tools_indexupdate.age_week" type="integer">255268078</label>
-            <label index="tx_dam_tools_indexupdate.age_month" type="integer">69665892</label>
-            <label index="tx_dam_tools_indexupdate.updatedFiles" type="integer">73111347</label>
-            <label index="tx_dam_tools_indexupdate.updatedMessage" type="integer">160461412</label>
-            <label index="tx_dam_tools_indexupdate.finished" type="integer">173898987</label>
-            <label index="tx_dam_tools_indexupdate.no_files" type="integer">128136628</label>
-        </languageKey>
-        <languageKey index="dk" type="array">
-        </languageKey>
-        <languageKey index="de" type="array">
-            <label index="tx_dam_tools_indexupdate.title" type="integer">257120721</label>
-            <label index="tx_dam_tools_indexupdate.description" type="integer">254483633</label>
-            <label index="tx_dam_tools_indexupdate.check_age" type="integer">97939232</label>
-            <label index="tx_dam_tools_indexupdate.age_all" type="integer">159106450</label>
-            <label index="tx_dam_tools_indexupdate.age_day" type="integer">139020550</label>
-            <label index="tx_dam_tools_indexupdate.age_week" type="integer">255268078</label>
-            <label index="tx_dam_tools_indexupdate.age_month" type="integer">69665892</label>
-            <label index="tx_dam_tools_indexupdate.updatedFiles" type="integer">73111347</label>
-            <label index="tx_dam_tools_indexupdate.updatedMessage" type="integer">160461412</label>
-            <label index="tx_dam_tools_indexupdate.finished" type="integer">173898987</label>
-            <label index="tx_dam_tools_indexupdate.no_files" type="integer">128136628</label>
-        </languageKey>
-        <languageKey index="no" type="array">
-        </languageKey>
-        <languageKey index="it" type="array">
-        </languageKey>
-        <languageKey index="fr" type="array">
-        </languageKey>
-        <languageKey index="es" type="array">
-        </languageKey>
-        <languageKey index="nl" type="array">
-        </languageKey>
-        <languageKey index="cz" type="array">
-        </languageKey>
-        <languageKey index="pl" type="array">
-        </languageKey>
-        <languageKey index="si" type="array">
-        </languageKey>
-        <languageKey index="fi" type="array">
-        </languageKey>
-        <languageKey index="tr" type="array">
-        </languageKey>
-        <languageKey index="se" type="array">
-        </languageKey>
-        <languageKey index="pt" type="array">
-        </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
-        <languageKey index="ro" type="array">
-        </languageKey>
-        <languageKey index="ch" type="array">
-        </languageKey>
-        <languageKey index="sk" type="array">
-        </languageKey>
-        <languageKey index="lt" type="array">
-        </languageKey>
-        <languageKey index="is" type="array">
-        </languageKey>
-        <languageKey index="hr" type="array">
-        </languageKey>
-        <languageKey index="hu" type="array">
-        </languageKey>
-        <languageKey index="gl" type="array">
-        </languageKey>
-        <languageKey index="th" type="array">
-        </languageKey>
-        <languageKey index="gr" type="array">
-        </languageKey>
-        <languageKey index="hk" type="array">
-        </languageKey>
-        <languageKey index="eu" type="array">
-        </languageKey>
-        <languageKey index="bg" type="array">
-        </languageKey>
-        <languageKey index="br" type="array">
-        </languageKey>
-        <languageKey index="et" type="array">
-        </languageKey>
-        <languageKey index="ar" type="array">
-        </languageKey>
-        <languageKey index="he" type="array">
-        </languageKey>
-        <languageKey index="ua" type="array">
-        </languageKey>
-        <languageKey index="lv" type="array">
-        </languageKey>
-        <languageKey index="jp" type="array">
-        </languageKey>
-        <languageKey index="vn" type="array">
-        </languageKey>
-    </orig_hash>
-    <orig_text type="array">
-        <languageKey index="default" type="array">
-        </languageKey>
-        <languageKey index="dk" type="array">
-        </languageKey>
-        <languageKey index="de" type="array">
-        </languageKey>
-        <languageKey index="no" type="array">
-        </languageKey>
-        <languageKey index="it" type="array">
-        </languageKey>
-        <languageKey index="fr" type="array">
-        </languageKey>
-        <languageKey index="es" type="array">
-        </languageKey>
-        <languageKey index="nl" type="array">
-        </languageKey>
-        <languageKey index="cz" type="array">
-        </languageKey>
-        <languageKey index="pl" type="array">
-        </languageKey>
-        <languageKey index="si" type="array">
-        </languageKey>
-        <languageKey index="fi" type="array">
-        </languageKey>
-        <languageKey index="tr" type="array">
-        </languageKey>
-        <languageKey index="se" type="array">
-        </languageKey>
-        <languageKey index="pt" type="array">
-        </languageKey>
-        <languageKey index="ru" type="array">
-        </languageKey>
-        <languageKey index="ro" type="array">
-        </languageKey>
-        <languageKey index="ch" type="array">
-        </languageKey>
-        <languageKey index="sk" type="array">
-        </languageKey>
-        <languageKey index="lt" type="array">
-        </languageKey>
-        <languageKey index="is" type="array">
-        </languageKey>
-        <languageKey index="hr" type="array">
-        </languageKey>
-        <languageKey index="hu" type="array">
-        </languageKey>
-        <languageKey index="gl" type="array">
-        </languageKey>
-        <languageKey index="th" type="array">
-        </languageKey>
-        <languageKey index="gr" type="array">
-        </languageKey>
-        <languageKey index="hk" type="array">
-        </languageKey>
-        <languageKey index="eu" type="array">
-        </languageKey>
-        <languageKey index="bg" type="array">
-        </languageKey>
-        <languageKey index="br" type="array">
-        </languageKey>
-        <languageKey index="et" type="array">
-        </languageKey>
-        <languageKey index="ar" type="array">
-        </languageKey>
-        <languageKey index="he" type="array">
-        </languageKey>
-        <languageKey index="ua" type="array">
-        </languageKey>
-        <languageKey index="lv" type="array">
-        </languageKey>
-        <languageKey index="jp" type="array">
-        </languageKey>
-        <languageKey index="vn" type="array">
-        </languageKey>
-    </orig_text>
+	<meta type="array">
+		<description></description>
+		<type>module</type>
+		<csh_table></csh_table>
+		<fileId>EXT:dam/modfunc_tools_indexupdate/locallang.xml</fileId>
+		<labelContext type="array">
+			<label index="tx_dam_tools_indexupdate.title"></label>
+			<label index="tx_dam_tools_indexupdate.index_description"></label>
+			<label index="tx_dam_tools_indexupdate.check_age"></label>
+			<label index="tx_dam_tools_indexupdate.age_all"></label>
+			<label index="tx_dam_tools_indexupdate.age_day"></label>
+			<label index="tx_dam_tools_indexupdate.age_week"></label>
+			<label index="tx_dam_tools_indexupdate.age_month"></label>
+			<label index="tx_dam_tools_indexupdate.updatedFiles"></label>
+			<label index="tx_dam_tools_indexupdate.updatedMessage"></label>
+			<label index="tx_dam_tools_indexupdate.finished"></label>
+			<label index="tx_dam_tools_indexupdate.no_files"></label>
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tx_dam_tools_indexupdate.title">Check index</label>
+			<label index="tx_dam_tools_indexupdate.index_check">Check index</label>
+			<label index="tx_dam_tools_indexupdate.index_description">This checks the index for changed or missing files and updates the index accordingly.</label>
+			<label index="tx_dam_tools_indexupdate.uploads_check">Check uploads</label>
+			<label index="tx_dam_tools_indexupdate.uploads_description">This updates the index for files in uploads/ which is needed to identify the used files in content elements.</label>
+			<label index="tx_dam_tools_indexupdate.statistics">Statistics</label>
+			<label index="tx_dam_tools_indexupdate.statistics_description">This shows a statistics about indexed media items.</label>
+			<label index="tx_dam_tools_indexupdate.cleanup_meta">Tidy meta data</label>
+			<label index="tx_dam_tools_indexupdate.cleanup_meta_description">This cleans the meta data from invalid content and repairs things if possible.</label>
+			<label index="tx_dam_tools_indexupdate.lost_records_check">Check lost records</label>
+			<label index="tx_dam_tools_indexupdate.lost_records_description">This function collect lost records which are not stored inside the Media folder for some reason. Lost record can be moved to the Media folder then.</label>
+			<label index="tx_dam_tools_indexupdate.lost_records_all_fine">All fine. No lost records found.</label>
+			<label index="tx_dam_tools_indexupdate.lost_records_collect">Collect lost records</label>
+			<label index="tx_dam_tools_indexupdate.lost_records_check_again">Check again</label>
+			<label index="tx_dam_tools_indexupdate.age">Age</label>
+			<label index="tx_dam_tools_indexupdate.age_descr">Checks index entries last change was before selected age.</label>
+			<label index="tx_dam_tools_indexupdate.deleteMissing">Mark entries with missing files as deleted</label>
+			<label index="tx_dam_tools_indexupdate.deleteMissing_descr">This will mark an index entry as deleted if the corresponding file is missing. The entry will not be deleted physically and can be reused later if the file will be found.</label>
+			<label index="tx_dam_tools_indexupdate.age_all">now</label>
+			<label index="tx_dam_tools_indexupdate.age_day">a day</label>
+			<label index="tx_dam_tools_indexupdate.age_week">a week</label>
+			<label index="tx_dam_tools_indexupdate.age_month">a month</label>
+			<label index="tx_dam_tools_indexupdate.updatedFiles">Checked files:</label>
+			<label index="tx_dam_tools_indexupdate.updatedMessage">Index checked for %s files of %s total</label>
+			<label index="tx_dam_tools_indexupdate.finished">finished</label>
+			<label index="tx_dam_tools_indexupdate.no_files">No matching index entries found.</label>
+			<label index="tx_dam_tools_indexupdate.count_elements">%s elements currently in index.</label>
+			<label index="tx_dam_tools_indexupdate.update">Update</label>
+		</languageKey>
+	</data>
 </T3locallang>

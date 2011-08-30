@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for module &quot;web_txgolanguageM1&quot;</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="title">WebsiteLanguage</label>
+			<label index="function1">Language settings</label>
+			<label index="lang">Language</label>
+			<label index="disabled">disabled?</label>
+			<label index="ok">Ok</label>
+			<label index="success">Settings saved.</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="title">Webseitensprache</label>
+			<label index="function1">Spracheinstellungen</label>
+			<label index="lang">Sprache</label>
+			<label index="disabled">Inaktiv?</label>
+			<label index="ok">Übernehmen</label>
+			<label index="success">Einstellungen wurden übernommen.</label>
+		</languageKey>
+	</data>
+</T3locallang>

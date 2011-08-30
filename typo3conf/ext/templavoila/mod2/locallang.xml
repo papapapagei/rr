@@ -38,6 +38,7 @@
 			<label index="updated">Updated</label>
 			<label index="noicon">[No icon]</label>
 			<label index="filenotfound">[File not found!]</label>
+			<label index="createnewto">Create new Template Object</label>
 			<label index="overview">XML file</label>
 			<label index="containerwithseparatelocalization">Container element with separate localization!</label>
 			<label index="mixofcontentandref">Mix of content and references, OK, but be careful!</label>
@@ -96,7 +97,7 @@
 			<label index="newsitewizard_sitecreated">&lt;b&gt;Congratulations!&lt;/b&gt; You have completed the initial creation of a new website in TYPO3 based on the TemplaVoila engine. After you click the "Finish" button you can go to the Web>Page module to edit your pages!</label>
 			<label index="newsitewizard_finish">Finish Wizard!</label>
 			<label index="newsitewizard_done">Step 6: Done</label>
-			<label index="newsitewizard_basicsshouldwork">The basics of your website should be working now. However the %s still needs to be configured so that TYPO3 automatically generates a menu reflecting the pages in the page tree. This process involves configuration of the TypoScript object path, "lib.%s". This is a technical job which requires that you know about TypoScript if you want it 100% customized.&lt;br/&gt;To assist you getting started with the %s this wizard will try to analyse the menu found inside the template file. If the menu was created of a series of repetitive block tags containing A-tags then there is a good chance this will succeed. You can see the result below.</label>
+			<label index="newsitewizard_basicsshouldwork">The basics of your website should be working now. However the %s still needs to be configured so that TYPO3 automatically generates a menu reflecting the pages in the page tree. This process involves configuration of the TypoScript object path, "lib.%s". This is a technical job which requires that you know about TypoScript if you want it 100%% customized.&lt;br/&gt;To assist you getting started with the %s this wizard will try to analyse the menu found inside the template file. If the menu was created of a series of repetitive block tags containing A-tags then there is a good chance this will succeed. You can see the result below.</label>
 			<label index="newsitewizard_headerinclude">Finally you also have to select which parts of the HTML header you want to include. For instance it is important that you select all sections with CSS styles in order to preserve the correct visual appearance of your website.&lt;br/&gt;You can also select the body-tag of the template if you want to use the original body-tag.&lt;br/&gt;This animations shows an example of this process:</label>
 			<label index="newsitewizard_headerselect">Select HTML header parts</label>
 			<label index="newsitewizard_step4">Step 4: Select HTML header parts</label>
@@ -109,7 +110,7 @@
 			<label index="newsitewizard_firststep">The first step is to select the HTML file you want to base the new website design on. Below you see a list of HTML files found in the folder "%s". Click the "Preview"-link to see what the file looks like and when the right template is found, just click the "Choose as template"-link in order to proceed.&lt;br/&gt;If the list of files is empty you must now copy the HTML file you want to use as a template into the template folder. When you have done that, press the refresh button to refresh the list.</label>
 			<label index="newsitewizard_selecttemplate">Step 1: Select the template HTML file</label>
 			<label index="newsitewizard_error">TemplaVoila wizard error</label>
-			<label index="newsitewizard_errornodir">%s is not a directory! Please, create it before starting this wizard.</label>
+			<label index="newsitewizard_errornodir">The template directory is empty or could not be found. Please, create it before starting this wizard.</label>
 			<label index="newsitewizard_templateselected">The template file "%s" is now selected:</label>
 			<label index="newsitewizard_step2next">Next, you should enter default values for the new website. With this basic set of information we are ready to create the initial website structure!</label>
 			<label index="newsitewizard_step2_name">Name of the site</label>
@@ -138,9 +139,10 @@
 			<label index="dsdetails_tsconstants">%d TS-constants defined for use in the &lt;TypoScript&gt;-entry</label>
 			<label index="warnings">Warnings</label>
 			<label index="fatalerrors">Fatal errors</label>
+			<label index="invaliddatastructure_xmlbroken">The the element "%1$s" within the datastructure seems to contain invalid XML, therefore the required data can't be displayed.</label>
 			<label index="wiz_title">New site wizard</label>
 			<label index="wiz_step">Step %s</label>
-			<label index="description">The following pages in the root line contain data structures and template objects</label>
+			<label index="description_pagesWithCertainDsTo">The following pages in the root line contain data structures and template objects</label>
 			<label index="newsitewizard_intro">If you want to start a new website based on the TemplaVoila template engine you can start this wizard which will set up all the boring initial stuff for you.
 You will be taken through these steps:
 - Creation of a new website root, storage folder, sample pages.
@@ -155,6 +157,7 @@ Tip about stylesheets: The content elements from TYPO3 will be outputted in regu
 			<label index="newsitewizard_problem">&lt;em&gt;There are some technical problems you have to solve before you can start the wizard! Please see below for details. Solve these problems first and come back.&lt;/em&gt;</label>
 			<label index="newsitewizard_missingext">Missing extension!</label>
 			<label index="newsitewizard_missingconf">Missing configuration!</label>
+			<label index="newsitewizard_missingconf_description">The TemplaVoila extension configuration is missing. Please clear the cache and recheck the configuration within the extension manager.</label>
 			<label index="newsitewizard_missingdir">Missing directory!</label>
 			<label index="newsitewizard_missingext_description">Before the wizard can run some extensions are required to be installed. Below you will see the which extensions are required and which are not available at this moment. Please go to the Extension Manager and install these first.</label>
 			<label index="newsitewizard_missingext_extkey">Extension Key:</label>

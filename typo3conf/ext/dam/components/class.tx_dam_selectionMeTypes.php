@@ -145,9 +145,9 @@ class tx_dam_selectionMeTypes extends tx_dam_selBrowseTree {
 	 */
 	function getIcon($row) {
 		if($row['parent_id']){
-			$icon = '<img'.t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'],$this->iconPath.$this->iconName,'width="18" height="16"').' class="typo3-icon" alt="" />';
+			$icon = '<img' . t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], $this->iconPath . $this->iconName, 'width="18" height="16"') . ' class="typo3-icon" alt="" />';
 		} else {
-			$icon = '<img'.t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'],$this->iconPath.'18/mtype_'.tx_dam::convert_mediaType($row['type']).'.gif','width="18" height="16"').' title="'.htmlspecialchars($this->getTitleStr($row)).'" class="typo3-icon" alt="" />';
+			$icon = '<img' . t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], $this->iconPath . '18/mtype_' . tx_dam::convert_mediaType($row['type']) . '.gif', 'width="18" height="16"') . ' class="typo3-icon" alt="" />';
 		}
 
 		return $this->wrapIcon($icon,$row);

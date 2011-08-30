@@ -367,6 +367,8 @@ class tx_dam_iterator_references extends tx_dam_iterator_base {
 				// Look for references in file tracking table
 			$where = array($softRefWhere);
 			$where[] = $tracking_table . '.file_hash=' . $local_table . '.file_hash';
+				// use index to preselect records
+			$where[] = $softRef_table . '.ref_string = CONCAT(' . $tracking_table . '.file_path,' . $tracking_table . '.file_name)';
 			$where[] = $softRef_table . '.ref_string LIKE CONCAT(' . $tracking_table . '.file_path,' . $tracking_table . '.file_name)';
 			$whereClause = implode(' AND ', $where);
 			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
@@ -412,6 +414,8 @@ class tx_dam_iterator_references extends tx_dam_iterator_base {
 			$fields = $local_table . '.uid';
 			$where = array($softRefWhere);
 			$where[] = $tracking_table . '.file_hash=' . $local_table . '.file_hash';
+				// use index to preselect records
+			$where[] = $softRef_table . '.ref_string = CONCAT(' . $tracking_table . '.file_path,' . $tracking_table . '.file_name)';
 			$where[] = $softRef_table . '.ref_string LIKE CONCAT(' . $tracking_table . '.file_path,' . $tracking_table . '.file_name)';
 			$whereClause = implode(' AND ', $where);
 			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(

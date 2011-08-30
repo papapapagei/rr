@@ -138,6 +138,12 @@ class tx_dam_softrefproc extends t3lib_softrefproc {
 			case 'typolink_tag':
 				$retVal = $this->findRef_typolink_tag($content, $spParams);
 			break;
+			case 'dam_mm_ref':
+				$retVal = $this->findRef_dam_mm_ref($table, $field, $uid, $content, $spParams);
+			break;
+			case 'dam_file':
+				$retVal = $this->findRef_dam_file($uid, $content, $spParams);
+			break;
 			default:
 				$retVal = FALSE;
 			break;
@@ -246,6 +252,96 @@ class tx_dam_softrefproc extends t3lib_softrefproc {
 		}
 	}
 
+	/**
+	 * Finding relations in table tx_dam_mm_ref.
+	 *
+	 * @param	string	The name of the related table
+	 * @param	string	The name of the field refering to tx_dam
+	 * @param	string	The uid of the record from $table
+	 * @param	string	The (expected) number of relations
+	 * @param	array	Parameters set for the softref parser key in TCA/columns (currently unused)
+	 * @return	array	Result array on positive matches, see description above. Otherwise false
+	 */
+	function findRef_dam_mm_ref($table, $field, $uid, $count, $spParams) {
+
+		$elements = array();
+		$tokenList = array();
+
+		$whereClauses=array('deleted'=>'');
+		$fileList = tx_dam_db::getReferencedFiles($table, $uid, $field, '', '', $whereClauses);
+		$uids = array_keys($fileList['rows']);
+
+		foreach ($uids as $key => $uid) {
+				// Initialize the element entry with info text here:
+			$tokenID = $this->makeTokenID($key);
+			$elements[$key] = array();
+			$elements[$key]['matchString'] = $uid;
+
+				// Token and substitute value:
+			$tokenList[$key] = "{softref:$tokenID}";
+			$elements[$key]['subst'] = array(
+				'type' => 'db',
+				'recordRef' => 'tx_dam:' . $uid,
+				'tokenID' => $tokenID,
+				'tokenValue' => $uid,
+			);
+		}
+		if(count($elements) > 0) {
+			$resultArray = array(
+				'content' => implode(',', $tokenList),
+				'elements' => $elements
+			);
+			return $resultArray;
+		} else {
+			return FALSE;
+		}
+	}
+
+	/**
+	 * "Finding" the files belonging to tx_dam records.
+	 *
+	 * @param	string	The uid of the record from $table
+	 * @param	string	The filename (usually found in field "file_name")
+	 * @param	array	Parameters set for the softref parser key in TCA/columns (currently unused)
+	 * @return	array	Result array on positive matches, containing one or null results
+	 */
+	function findRef_dam_file($uid, $fileName, $spParams) {
+
+		$resultArray = array();
+		$fileInfo = tx_dam::meta_getDataByUid(
+			$uid,
+				// enhance default field list by "description"
+			tx_dam_db::getMetaInfoFieldList() . ', description'
+		);
+
+		if ($fileInfo) {
+			$file = $fileInfo['file_path'].$fileInfo['file_name'];
+			$tokenID = $this->makeTokenID(0);
+			$resultArray = array(
+				'content' => '{softref:'.$tokenID.'}',
+				'elements' => array(
+					0 => array(
+						'matchString' => $fileName,
+						'subst' => array(
+							'type' => 'file',
+							'tokenID' => $tokenID,
+							'tokenValue' => $fileName,
+							'relFileName' => $file,
+							'title' => $fileInfo['title'],
+							'description' => $fileInfo['description']
+						)
+					)
+				)
+			);
+			if (!@is_file(tx_dam::file_absolutePath($fileInfo))) {	// Finally, notice if the file does not exist.
+				$resultArray['elements'][0]['error'] = 'File does not exist!';
+			}
+		}
+
+		return $resultArray;
+	}
+
+
 	/*************************
 	 *
 	 * Helper functions
@@ -322,6 +418,25 @@ class tx_dam_softrefproc extends t3lib_softrefproc {
 			// Return rebuilt typolink value:
 		return $content;
 	}
+
+	/**
+	 * Hook in ImpExp before updating softrefs in tcemain
+	 *
+	 * @param array $params array('tce' => instance of tcemain, 'data' => data for insert/update
+	 * @param tx_impexp $parent  instance of tx_impexp
+	 * @return void
+	 */
+	function impexpHookBeforeSoftrefUpdate($params, $parent) {
+		if (is_array($params['data']['tx_dam'])) {
+			foreach ($params['data']['tx_dam'] as $key => $damRecord) {
+				$file = $damRecord['file_name'];
+				$params['data']['tx_dam'][$key]['file_name'] = basename($file);
+				$params['data']['tx_dam'][$key]['file_path'] = dirname($file) . '/';
+			}
+		}
+	}
+
+
 }
 
 if (defined('TYPO3_MODE') && $TYPO3_CONF_VARS[TYPO3_MODE]['XCLASS']['ext/dam/binding/softref/class.tx_dam_softrefproc.php'])	{

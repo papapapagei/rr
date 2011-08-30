@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_AbstractView.php 32490 2010-04-22 15:13:08Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_AbstractView.php 40269 2010-11-16 15:23:54Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -56,10 +56,10 @@ abstract class Tx_Formhandler_AbstractView extends tslib_pibase {
 	public $piVars;
 
 	/**
-	 * The GimmeFive component manager
+	 * The Formhandler component manager
 	 *
 	 * @access protected
-	 * @var Tx_GimmeFive_Component_Manager
+	 * @var Tx_Formhandler_Component_Manager
 	 */
 	protected $componentManager;
 
@@ -111,29 +111,20 @@ abstract class Tx_Formhandler_AbstractView extends tslib_pibase {
 	 */
 	protected $gp;
 
-	/**
-	 * Currently not needed
-	 *
-	 * @access protected
-	 * @var tx_xajax
-	 */
-	protected $xajax;
-	
 	protected $componentSettings;
 
 	/**
 	 * The constructor for a view setting the component manager and the configuration.
 	 *
-	 * @param Tx_GimmeFive_Component_Manager $componentManager
+	 * @param Tx_Formhandler_Component_Manager $componentManager
 	 * @param Tx_Formhandler_Configuration $configuration
 	 * @return void
 	 */
-	public function __construct(Tx_GimmeFive_Component_Manager $componentManager, Tx_Formhandler_Configuration $configuration) {
+	public function __construct(Tx_Formhandler_Component_Manager $componentManager, Tx_Formhandler_Configuration $configuration) {
 		parent::__construct();
 		$this->componentManager = $componentManager;
 		$this->configuration = $configuration;
 		$this->cObj = Tx_Formhandler_Globals::$cObj;
-
 		$this->pi_loadLL();
 		$this->initializeView();
 	}
@@ -157,13 +148,13 @@ abstract class Tx_Formhandler_AbstractView extends tslib_pibase {
 	public function setSettings($settings) {
 		$this->settings = $settings;
 	}
-	
+
 	public function setComponentSettings($settings) {
 		$this->componentSettings = $settings;
 	}
-	
+
 	public function getComponentSettings() {
-		if(!is_array($this->componentSettings)) {
+		if (!is_array($this->componentSettings)) {
 			$this->componentSettings = array();
 		}
 		return $this->componentSettings;
@@ -210,7 +201,7 @@ abstract class Tx_Formhandler_AbstractView extends tslib_pibase {
 		$this->subparts['template'] = $this->cObj->getSubpart($templateCode,'###TEMPLATE_' . $templateName . '###');
 		$this->subparts['item'] = $this->cObj->getSubpart($this->subparts['template'], '###ITEM###');
 	}
-	
+
 	/**
 	 * Returns FALSE if the view doesn't have template code.
 	 *
@@ -237,26 +228,6 @@ abstract class Tx_Formhandler_AbstractView extends tslib_pibase {
 	 * @author Jochen Rau
 	 */
 	protected function initializeView() {
-	}
-
-	/**
-	 * Fills markers in template
-	 *
-	 * @return void
-	 * @author Jochen Rau
-	 */
-	protected function fillMarker($term, &$markerArray, &$wrappedSubpartArray) {
-		$labelWrap['noTrimWrap'] = $this->configuration->offsetGet('labelWrap') ? $this->configuration->offsetGet('labelWrap') : NULL;
-		foreach ($term as $property => $value) {
-			// TODO Improve pre-processing of property-values
-			if (is_array($value)) {
-				$value = implode(',' , $value);
-			}
-			$propertyMarker = '###' . $this->getUpperCase($property) . '###';
-			$markerArray[$propertyMarker] = $term[$property] ? $value : $this->pi_getLL('na');
-			$labelMarker = '###' . $this->getUpperCase($property) . '_LABEL###';
-			$markerArray[$labelMarker] = $this->cObj->stdWrap($this->pi_getLL($property), $labelWrap);
-		}
 	}
 
 	/**

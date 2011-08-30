@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_ErrorCheck_MathGuard.php 27708 2009-12-15 09:22:07Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_ErrorCheck_MathGuard.php 40269 2010-11-16 15:23:54Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -35,16 +35,15 @@ class Tx_Formhandler_ErrorCheck_MathGuard extends Tx_Formhandler_AbstractErrorCh
 		$checkFailed = '';
 		if (t3lib_extMgm::isLoaded('mathguard')) {
 			require_once(t3lib_extMgm::extPath('mathguard') . 'class.tx_mathguard.php');
-	
+
 			$captcha = t3lib_div::makeInstance('tx_mathguard');
 			$valid = $captcha->validateCaptcha();
-			if(!$valid) {
+			if (!$valid) {
 				$checkFailed = $this->getCheckFailed($check);
 			}
 		}
 		return $checkFailed;
 	}
-
 
 }
 ?>

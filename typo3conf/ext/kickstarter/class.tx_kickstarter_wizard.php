@@ -31,7 +31,7 @@ require_once($pathKickstarter.'class.tx_kickstarter_reservedwords.php');
 /**
  * TYPO3 Extension Kickstarter
  *
- * @author	Kasper Skårhøj <kasperYYYY@typo3.com>
+ * @author	Kasper SkÃ¥rhÃ¸j <kasperYYYY@typo3.com>
  * @author	Ingo Renner <ingo@typo3.org>
  */
 class tx_kickstarter_wizard extends tx_kickstarter_compilefiles {
@@ -71,6 +71,7 @@ class tx_kickstarter_wizard extends tx_kickstarter_compilefiles {
 	function tx_kickstarter_wizard() {
 		$this->modData = t3lib_div::_POST($this->varPrefix);
 
+		
 		// getting the available languages
 		$theLanguages = t3lib_div::trimExplode('|', TYPO3_languages);
 		$llFile = t3lib_extMgm::extPath('setup').'/mod/locallang.xml';
@@ -98,6 +99,11 @@ class tx_kickstarter_wizard extends tx_kickstarter_compilefiles {
 		$this->wizArray = is_array($inArray) ? $inArray : array();
 		if (is_array($this->modData['wizArray_upd']))	{
 			$this->wizArray = t3lib_div::array_merge_recursive_overrule($this->wizArray,$this->modData['wizArray_upd']);
+
+				// Use "overwrite_files" from uploaded data always. This prevents recreation of removed files.
+			if (isset($this->modData['wizArray_upd']['save']['overwrite_files']))	{
+				$this->wizArray['save']['overwrite_files'] = $this->modData['wizArray_upd']['save']['overwrite_files'];
+			}
 		}
 
 		$lA = is_array($this->wizArray['languages']) ? current($this->wizArray['languages']) : '';
@@ -134,6 +140,7 @@ class tx_kickstarter_wizard extends tx_kickstarter_compilefiles {
 			$this->options[$k] = array($v['title'],$v['description']);
 		}
 
+		$this->wizArray['save']['extension_key'] = str_replace('-','_',$this->wizArray['save']['extension_key']);
 		$saveKey = $this->saveKey = $this->wizArray['save']['extension_key']
 			= substr(
 				strtolower(trim($this->wizArray['save']['extension_key'])),
@@ -307,7 +314,7 @@ class tx_kickstarter_wizard extends tx_kickstarter_compilefiles {
 
 		$lines[]='<tr><td width="150">
 		'.$this->fw('Enter extension key:').'<br />
-		<input type="text" name="'.$this->piFieldName('wizArray_upd').'[save][extension_key]" value="'.$this->wizArray['save']['extension_key'].'" maxlength="30" />
+		<input type="text" name="'.$this->piFieldName('wizArray_upd').'[save][extension_key]" value="' . htmlspecialchars($this->wizArray['save']['extension_key']) . '" maxlength="30" />
 		'.($this->wizArray['save']['extension_key']?'':'<br /><a href="http://typo3.org/1382.0.html" target="_blank"><font color="red">Make sure to enter the right extension key from the beginning here!</font> You can register one here.</a>').'
 		</td><td></td></tr>';
 
@@ -390,7 +397,7 @@ class tx_kickstarter_wizard extends tx_kickstarter_compilefiles {
 				<td><a name="' . md5($fileName) . '"></a><strong>' . $this->fw($fileName) . '</strong></td>
 				</tr>
 				<tr>
-					<td>' . $this->preWrap($data['content']) . '</td>
+					<td>' . $this->preWrap($data['content'], $fI['extension']) . '</td>
 				</tr>';
 			} else $linkToFile=$this->fw('&nbsp;');
 

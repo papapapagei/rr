@@ -137,9 +137,6 @@ class tx_dam_list_thumbs extends t3lib_extobjbase {
 		$table = 'tx_dam';
 		t3lib_div::loadTCA($table);
 
-		// Get rid of wrapper form tag.
-		$this->pObj->doc->form = null;
-
 		//
 		// set language query
 		//

@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_Logger_DB.php 33412 2010-05-24 12:09:53Z erep $
+ * $Id: Tx_Formhandler_Logger_DB.php 46259 2011-04-06 07:52:14Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -34,38 +34,41 @@ class Tx_Formhandler_Logger_DB extends Tx_Formhandler_AbstractLogger {
 		$table = "tx_formhandler_log";
 
 		$fields['ip'] = t3lib_div::getIndpEnv('REMOTE_ADDR');
-		if(isset($this->settings['disableIPlog']) && intval($this->settings['disableIPlog']) == 1) {
+		if (isset($this->settings['disableIPlog']) && intval($this->settings['disableIPlog']) == 1) {
 			$fields['ip'] = NULL;
 		}
 		$fields['tstamp'] = time();
 		$fields['crdate'] = time();
-		$fields['pid'] = $GLOBALS['TSFE']->id;
+		$fields['pid'] = Tx_Formhandler_StaticFuncs::getSingle($this->settings, 'pid');
+		if (!$fields['pid']) {
+			$fields['pid'] = $GLOBALS['TSFE']->id;
+		}
 		ksort($this->gp);
 		$keys = array_keys($this->gp);
 		$serialized = serialize($this->gp);
 		$hash = md5(serialize($keys));
 		$fields['params'] = $serialized;
 		$fields['key_hash'] = $hash;
-		
-		if(intval($this->settings['markAsSpam']) == 1) {
+
+		if (intval($this->settings['markAsSpam']) == 1) {
 			$fields['is_spam'] = 1;
 		}
-
-		#$fields = $GLOBALS['TYPO3_DB']->fullQuoteArray($fields,$table);
 
 		//query the database
 		$res = $GLOBALS['TYPO3_DB']->exec_INSERTquery($table, $fields);
 		$insertedUID = $GLOBALS['TYPO3_DB']->sql_insert_id();
-		$lastId = Tx_Formhandler_Session::set('inserted_uid', $insertedUID);
-
-		if(!$this->settings['nodebug']) {
-			Tx_Formhandler_StaticFuncs::debugMessage('logging', $table, implode(',', $fields));
-			if(strlen($GLOBALS['TYPO3_DB']->sql_error()) > 0) {
-				Tx_Formhandler_StaticFuncs::debugMessage('error', $GLOBALS['TYPO3_DB']->sql_error());
+		$sessionValues = array (
+			'inserted_uid' => $insertedUID,
+			'inserted_tstamp' => $fields['tstamp'],
+			'key_hash' => $hash
+		);
+		Tx_Formhandler_Globals::$session->setMultiple($sessionValues);
+		if (!$this->settings['nodebug']) {
+			Tx_Formhandler_StaticFuncs::debugMessage('logging', array($table, implode(',', $fields)));
+			if (strlen($GLOBALS['TYPO3_DB']->sql_error()) > 0) {
+				Tx_Formhandler_StaticFuncs::debugMessage('error', array($GLOBALS['TYPO3_DB']->sql_error()), 3);
 			}
-				
 		}
-
 	}
 
 }

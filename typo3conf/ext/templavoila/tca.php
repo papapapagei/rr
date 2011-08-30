@@ -1,5 +1,5 @@
 <?php
-# TYPO3 CVS ID: $Id$
+# TYPO3 CVS ID: $Id: tca.php 31953 2010-04-06 21:16:16Z michael.klapper $
 if (!defined ('TYPO3_MODE')) 	die ('Access denied.');
 
 $TCA['tx_templavoila_tmplobj'] = Array (

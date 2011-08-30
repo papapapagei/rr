@@ -24,7 +24,7 @@
 *  This copyright notice MUST APPEAR in all copies of the script!
 ***************************************************************/
 /**
- * @author	Kasper Skårhøj <kasperYYYY@typo3.com>
+ * @author	Kasper SkÃ¥rhÃ¸j <kasperYYYY@typo3.com>
  * @author	Ingo Renner <ingo@typo3.org>
  */
 
@@ -294,7 +294,7 @@ class tx_kickstarter_section_module extends tx_kickstarter_sectionbase {
 				' . ($config['docheader'] ? '
 						// initialize doc
 					$this->doc = t3lib_div::makeInstance(\'template\');
-					$this->doc->setModuleTemplate(t3lib_extMgm::extPath(\'' . $extKey . '\') . \'' . $pathSuffix . '/mod_template.html\');
+					$this->doc->setModuleTemplate(t3lib_extMgm::extPath(\'' . $extKey . '\') . \'' . $pathSuffix . 'mod_template.html\');
 					$this->doc->backPath = $BACK_PATH;
 					$docHeaderButtons = $this->getButtons();
 
@@ -359,7 +359,8 @@ class tx_kickstarter_section_module extends tx_kickstarter_sectionbase {
 							</script>
 						\';
 
-						$headerSection = $this->doc->getHeader(\'pages\',$this->pageinfo,$this->pageinfo[\'_thePath\']).\'<br />\'.$LANG->sL(\'LLL:EXT:lang/locallang_core.xml:labels.path\').\': \'.t3lib_div::fixed_lgd_pre($this->pageinfo[\'_thePath\'],50);
+						$headerSection = $this->doc->getHeader(\'pages\', $this->pageinfo, $this->pageinfo[\'_thePath\']) . \'<br />\'
+							. $LANG->sL(\'LLL:EXT:lang/locallang_core.xml:labels.path\') . \': \' . t3lib_div::fixed_lgd_cs($this->pageinfo[\'_thePath\'], -50);
 
 						$this->content.=$this->doc->startPage($LANG->getLL(\'title\'));
 						$this->content.=$this->doc->header($LANG->getLL(\'title\'));

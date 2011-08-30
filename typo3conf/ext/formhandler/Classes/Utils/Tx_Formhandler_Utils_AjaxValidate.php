@@ -1,34 +1,33 @@
 <?php
 
 require_once(t3lib_extMgm::extPath('formhandler') . 'Classes/Utils/Tx_Formhandler_Globals.php');
-require_once(t3lib_extMgm::extPath('formhandler') . 'Classes/Utils/Tx_Formhandler_Session.php');
-require_once(t3lib_extMgm::extPath('formhandler') . 'Classes/Component/Tx_GimmeFive_Component_Manager.php');
+require_once(t3lib_extMgm::extPath('formhandler') . 'Classes/Component/Tx_Formhandler_Component_Manager.php');
+
 class Tx_Formhandler_Utils_AjaxValidate {
-	
+
 	public function main() {
 		$this->init();
-
-		if($this->fieldname) {
+		if ($this->fieldname) {
 			$randomID = t3lib_div::_GP('randomID');
 			Tx_Formhandler_Globals::$randomID = $randomID;
-			
-			$this->componentManager = Tx_GimmeFive_Component_Manager::getInstance();
-		
+			$this->componentManager = Tx_Formhandler_Component_Manager::getInstance();
 			$validator = $this->componentManager->getComponent('Tx_Formhandler_Validator_Ajax');
-			
 			print $validator->validateAjax($this->fieldname, $this->value);
 		}
 	}
-	
+
 	protected function init() {
 		$this->fieldname = $_GET['field'];
 		$this->value = $_GET['value'];
-		$this->id = intval($_GET['id']);
-		
+		if (isset($_GET['pid'])) {
+			$this->id = intval($_GET['pid']);
+		} else {
+			$this->id = intval($_GET['id']);
+		}
 		tslib_eidtools::connectDB();
 		$this->initializeTSFE($this->id);
 	}
-	
+
 	protected function initializeTSFE($pid, $feUserObj = '') {
 		global $TSFE, $TYPO3_CONF_VARS;
 
@@ -58,9 +57,6 @@ class Tx_Formhandler_Utils_AjaxValidate {
 		$TSFE->initFEuser();
 		$TSFE->fe_user->fetchGroupData();
 
-			// initialize the backend user
-		//$this->initializeBackendUser();
-
 			// Include the TCA
 		$TSFE->includeTCA();
 
@@ -86,11 +82,10 @@ class Tx_Formhandler_Utils_AjaxValidate {
 			// Save the setup
 		$this->setup = $template->setup;
 	}
-	
+
 	protected function initializeBackendUser() {
 		global $BE_USER, $TYPO3_DB, $TSFE, $LANG;
 
-			// @todo	What's the point here? To prevent looping?
 		if ($this->initBE) {
 			return;
 		}
@@ -105,9 +100,6 @@ class Tx_Formhandler_Utils_AjaxValidate {
 			require_once (PATH_t3lib . 'class.t3lib_beuserauth.php');
 			require_once (PATH_t3lib . 'class.t3lib_tsfebeuserauth.php');
 
-			// the value this->formfield_status is set to empty in order to disable login-attempts to the backend account through this script
-			// @todo 	Comment says its set to empty, but where does that happen?
-				
 			$GLOBALS['BE_USER'] = t3lib_div::makeInstance('t3lib_tsfeBeUserAuth');
 			$GLOBALS['BE_USER']->OS = TYPO3_OS;
 			$GLOBALS['BE_USER']->lockIP = $GLOBALS['TYPO3_CONF_VARS']['BE']['lockIP'];
@@ -130,7 +122,7 @@ class Tx_Formhandler_Utils_AjaxValidate {
 		$GLOBALS['LANG'] = t3lib_div::makeInstance('language');
 		$GLOBALS['LANG']->init($GLOBALS['BE_USER']->uc['lang']);
 	}
-	
+
 }
 
 $output = t3lib_div::makeInstance('Tx_Formhandler_Utils_AjaxValidate');

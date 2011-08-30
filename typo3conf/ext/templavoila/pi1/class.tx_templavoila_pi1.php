@@ -24,7 +24,7 @@
 /**
  * Plugin 'Flexible Content' for the 'templavoila' extension.
  *
- * $Id$
+ * $Id: class.tx_templavoila_pi1.php 47514 2011-05-10 12:39:48Z tolleiv $
  *
  * @author    Kasper Skaarhoj <kasper@typo3.com>
  * @coauthor  Robert Lemke <robert@typo3.org>
@@ -34,18 +34,17 @@
  *
  *
  *
- *   73: class tx_templavoila_pi1 extends tslib_pibase
- *   94:     function main($content,$conf)
- *  139:     function main_record($content, $conf)
- *  194:     function main_page($content,$conf)
- *  233:     function initVars($conf)
- *  246:     function renderElement($row,$table)
- *  429:     function processDataValues(&$dataValues,$DSelements,$TOelements,$valueKey='vDEF')
- *  663:     function inheritValue($dV,$valueKey,$overlayMode='')
- *  703:     function formatError($string)
- *  736:     function visualID($content,$srcPointer,$DSrec,$TOrec,$row,$table)
+ *   71: class tx_templavoila_pi1 extends tslib_pibase
+ *   88:     function main($content,$conf)
+ *  101:     function main_page($content,$conf)
+ *  131:     function initVars($conf)
+ *  144:     function renderElement($row,$table)
+ *  282:     function processDataValues(&$dataValues,$DSelements,$TOelements,$valueKey='vDEF')
+ *  446:     function inheritValue($dV,$valueKey,$overlayMode='')
+ *  486:     function formatError($string)
+ *  519:     function visualID($content,$srcPointer,$DSrec,$TOrec,$row,$table)
  *
- * TOTAL FUNCTIONS: 9
+ * TOTAL FUNCTIONS: 8
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -76,6 +75,8 @@ class tx_templavoila_pi1 extends tslib_pibase {
 	var $extKey = 'templavoila';    // The extension key.
 
 	var $inheritValueFromDefault=1;		// If set, children-translations will take the value from the default if "false" (zero or blank)
+
+	static $enablePageRenderer = FALSE;
 
 	/**
 	 * Markup object
@@ -146,20 +147,19 @@ class tx_templavoila_pi1 extends tslib_pibase {
 		$data['tx_templavoila_ds'] = $conf['ds'];
 		$data['tx_templavoila_to'] = $conf['to'];
 
+		$dsRepo = t3lib_div::makeInstance('tx_templavoila_datastructureRepository');
+
 		// prepare fake flexform
 		$values = array();
 		foreach ($data as $k => $v) {
 			// Make correct language identifiers here!
 			if ($GLOBALS['TSFE']->sys_language_isocode) {
-				$srcPointer = $data['tx_templavoila_ds'];
-				if (t3lib_div::testInt($srcPointer))	{	// If integer, then its a record we will look up:
-					$DSrec = $GLOBALS['TSFE']->sys_page->checkRecord('tx_templavoila_datastructure', $srcPointer);
-					$DS = t3lib_div::xml2array($DSrec['dataprot']);
-				} else {	// Otherwise expect it to be a file:
-					$file = t3lib_div::getFileAbsFileName($srcPointer);
-					if ($file && @is_file($file))	{
-						$DS = t3lib_div::xml2array(t3lib_div::getUrl($file));
-					}
+
+				try {
+					$dsObj = $dsRepo->getDatastructureByUidOrFilename($data['tx_templavoila_ds']);
+					$DS = $dsObj->getDataprotArray();
+				} catch (InvalidArgumentException $e) {
+					$DS = null;
 				}
 				if (is_array($DS)) {
 					$langChildren = $DS['meta']['langChildren'] ? 1 : 0;
@@ -232,6 +232,10 @@ class tx_templavoila_pi1 extends tslib_pibase {
 	 */
 	function initVars($conf)	{
 		$this->inheritValueFromDefault = $conf['dontInheritValueFromDefault'] ? 0 : 1;
+		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
+				// naming choosen to fit the regular TYPO3 integrators needs ;)
+			self::$enablePageRenderer = isset($conf['advancedHeaderInclusion']) ? $conf['advancedHeaderInclusion'] : self::$enablePageRenderer;
+		}
 		$this->conf=$conf;
 	}
 
@@ -261,16 +265,12 @@ class tx_templavoila_pi1 extends tslib_pibase {
 			}
 		}
 
-			// Get data structure:
-		$srcPointer = $row['tx_templavoila_ds'];
-		if (t3lib_div::testInt($srcPointer))	{	// If integer, then its a record we will look up:
-			$DSrec = $GLOBALS['TSFE']->sys_page->checkRecord('tx_templavoila_datastructure', $srcPointer);
-			$DS = t3lib_div::xml2array($DSrec['dataprot']);
-		} else {	// Otherwise expect it to be a file:
-			$file = t3lib_div::getFileAbsFileName($srcPointer);
-			if ($file && @is_file($file))	{
-				$DS = t3lib_div::xml2array(t3lib_div::getUrl($file));
-			}
+		$dsRepo = t3lib_div::makeInstance('tx_templavoila_datastructureRepository');
+		try {
+			$dsObj = $dsRepo->getDatastructureByUidOrFilename($row['tx_templavoila_ds']);
+			$DS = $dsObj->getDataprotArray();
+		} catch (InvalidArgumentException $e) {
+			$DS = null;
 		}
 
 			// If a Data Structure was found:
@@ -358,7 +358,7 @@ class tx_templavoila_pi1 extends tslib_pibase {
 							$TOlocalProc = $singleSheet ? $TOproc['ROOT']['el'] : $TOproc['sheets'][$sheet]['ROOT']['el'];
 								// Store the original data values before the get processed.
 							$originalDataValues = $dataValues;
-							$this->processDataValues($dataValues,$dataStruct['ROOT']['el'],$TOlocalProc,$vKey);
+							$this->processDataValues($dataValues,$dataStruct['ROOT']['el'],$TOlocalProc,$vKey, ($this->conf['renderUnmapped'] !== 'false' ? TRUE : $TO['MappingInfo']['ROOT']['el']));
 
 								// Hook: renderElement_postProcessDataValues
 							foreach ($hookObjectsArr as $hookObj) {
@@ -381,7 +381,9 @@ class tx_templavoila_pi1 extends tslib_pibase {
 								// Getting the cached mapping data out (if sheets, then default to "sDEF" if no mapping exists for the specified sheet!)
 							$mappingDataBody = $singleSheet ? $TO['MappingData_cached'] : (is_array($TO['MappingData_cached']['sub'][$sheet]) ? $TO['MappingData_cached']['sub'][$sheet] : $TO['MappingData_cached']['sub']['sDEF']);
 							$content = $this->markupObj->mergeFormDataIntoTemplateStructure($dataValues,$mappingDataBody,'',$vKey);
-							$this->markupObj->setHeaderBodyParts($TO['MappingInfo_head'],$TO['MappingData_head_cached'],$TO['BodyTag_cached']);
+
+							$this->markupObj->setHeaderBodyParts($TO['MappingInfo_head'],$TO['MappingData_head_cached'],$TO['BodyTag_cached'], self::$enablePageRenderer);
+
 						if ($GLOBALS['TT']->LR) $GLOBALS['TT']->pull();
 
 							// Edit icon (frontend editing):
@@ -427,23 +429,26 @@ class tx_templavoila_pi1 extends tslib_pibase {
 	 * @param	array		The data structure definition which the data in the dataValues array reflects.
 	 * @param	array		The local XML processing information found in associated Template Objects (TO)
 	 * @param	string		Value key
+	 * @param	mixed		Mapping information
 	 * @return	void
 	 */
-	function processDataValues(&$dataValues,$DSelements,$TOelements,$valueKey='vDEF')	{
+	function processDataValues(&$dataValues,$DSelements,$TOelements,$valueKey='vDEF', $mappingInfo=TRUE)	{
 		if (is_array($DSelements) && is_array($dataValues))	{
 
 				// Create local processing information array:
 			$LP = array();
 			foreach($DSelements as $key => $dsConf)	{
-				if ($DSelements[$key]['type']!='array')	{	// For all non-arrays:
-						// Set base configuration:
-					$LP[$key] = $DSelements[$key]['tx_templavoila'];
-						// Overlaying local processing:
-					if (is_array($TOelements[$key]['tx_templavoila']))	{
-						if (is_array($LP[$key]))	{
-							$LP[$key] = t3lib_div::array_merge_recursive_overrule($LP[$key],$TOelements[$key]['tx_templavoila']);
-						} else {
-							$LP[$key] = $TOelements[$key]['tx_templavoila'];
+				if ($mappingInfo === TRUE || array_key_exists($key, $mappingInfo)) {
+					if ($DSelements[$key]['type']!='array')	{	// For all non-arrays:
+							// Set base configuration:
+						$LP[$key] = $DSelements[$key]['tx_templavoila'];
+							// Overlaying local processing:
+						if (is_array($TOelements[$key]['tx_templavoila']))	{
+							if (is_array($LP[$key]))	{
+								$LP[$key] = t3lib_div::array_merge_recursive_overrule($LP[$key],$TOelements[$key]['tx_templavoila']);
+							} else {
+								$LP[$key] = $TOelements[$key]['tx_templavoila'];
+							}
 						}
 					}
 				}
@@ -498,16 +503,20 @@ class tx_templavoila_pi1 extends tslib_pibase {
                 }
             }
 
+			if (isset($GLOBALS['TSFE']->register['tx_templavoila_pi1.nested_fields'])) {
+				$nested_fields = $GLOBALS['TSFE']->register['tx_templavoila_pi1.nested_fields'];
+			} else {
+				$nested_fields = '';
+			}
+
 				// For each DS element:
 			foreach($DSelements as $key => $dsConf)	{
 					// Store key of DS element and the parents being handled in global register
-				$nestedFields = '';
-				if (isset($GLOBALS['TSFE']->register['tx_templavoila_pi1.current_field'])) { 
-					 $nestedFields = implode(',', array($GLOBALS['TSFE']->register['tx_templavoila_pi1.current_field'], $key));
+				if ($nested_fields) {
+					$GLOBALS['TSFE']->register['tx_templavoila_pi1.nested_fields'] = $nested_fields . ',' . $key;
 				} else {
-					$nestedFields = $key;
+					$GLOBALS['TSFE']->register['tx_templavoila_pi1.nested_fields'] = $key;
 				}
-				$GLOBALS['TSFE']->register['tx_templavoila_pi1.nested_fields'] = $nestedFields;
 				$GLOBALS['TSFE']->register['tx_templavoila_pi1.current_field'] = $key;
 
 						// Array/Section:
@@ -659,6 +668,8 @@ class tx_templavoila_pi1 extends tslib_pibase {
             foreach ($savedParentInfo as $dkey => $dvalue) {
                 $GLOBALS['TSFE']->register[$dkey] = $dvalue;
             }
+
+			$GLOBALS['TSFE']->register['tx_templavoila_pi1.nested_fields'] = $nested_fields;
         }
     }
 
@@ -835,6 +846,50 @@ class tx_templavoila_pi1 extends tslib_pibase {
 					'</div>';
 
 		return $content	;
+	}
+
+	/**
+	 * Render section index for TV
+	 *
+	 * @param  $content
+	 * @param  $conf config of tt_content.menu.20.3
+	 * @return string rendered section index
+	 */
+	public function tvSectionIndex($content, $conf) {
+
+		$ceField = $this->cObj->stdWrap($conf['indexField'], $conf['indexField.']);
+		$pids = isset($conf['select.']['pidInList.'])
+			? trim($this->cObj->stdWrap($conf['select.']['pidInList'], $conf['select.']['pidInList.']))
+			: trim($conf['select.']['pidInList']);
+		$contentIds = array();
+		if ($pids) {
+			$pageIds = t3lib_div::trimExplode(',', $pids);
+			foreach($pageIds as $pageId) {
+				$page = $GLOBALS['TSFE']->sys_page->checkRecord('pages', $pageId);
+				if (isset($page) && isset($page['tx_templavoila_flex'])) {
+					$flex = array();
+					$this->cObj->readFlexformIntoConf($page['tx_templavoila_flex'], $flex);
+					$contentIds = array_merge($contentIds, t3lib_div::trimExplode(',', $flex[$ceField]));
+
+				}
+			}
+		} else {
+			$flex = array();
+			$this->cObj->readFlexformIntoConf($GLOBALS['TSFE']->page['tx_templavoila_flex'], $flex);
+			$contentIds = array_merge($contentIds, t3lib_div::trimExplode(',', $flex[$ceField]));
+		}
+
+		if (count($contentIds) > 0) {
+			if ($conf['select.']['where']) {
+				$conf['select.']['where'] .= ' AND UID IN(' . implode(',', $contentIds)  . ')';
+			} else {
+				$conf['select.']['where'] = 'UID IN(' . implode(',', $contentIds) . ')';
+			}
+		}
+
+			// tiny trink to include the section index element itself too
+		$GLOBALS['TSFE']->recordRegister[$GLOBALS['TSFE']->currentRecord] = -1;
+		return $this->cObj->cObjGetSingle('CONTENT', $conf);
 	}
 }
 

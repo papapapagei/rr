@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_ErrorCheck_FileMaxSize.php 36522 2010-08-09 08:58:58Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_ErrorCheck_FileMaxSize.php 40269 2010-11-16 15:23:54Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -34,18 +34,17 @@ class Tx_Formhandler_ErrorCheck_FileMaxSize extends Tx_Formhandler_AbstractError
 	public function check(&$check, $name, &$gp) {
 		$checkFailed = '';
 		$maxSize = Tx_Formhandler_StaticFuncs::getSingle($check['params'], 'maxSize');
-		foreach($_FILES as $sthg => &$files) {
-			if(strlen($files['name'][$name]) > 0 &&
-			$maxSize &&
-			$files['size'][$name] > $maxSize) {
-			
+		foreach ($_FILES as $sthg => &$files) {
+			if (strlen($files['name'][$name]) > 0 &&
+				$maxSize &&
+				$files['size'][$name] > $maxSize) {
+
 				unset($files);
 				$checkFailed = $this->getCheckFailed($check);
 			}
 		}
 		return $checkFailed;
 	}
-
 
 }
 ?>

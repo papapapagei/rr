@@ -61,15 +61,22 @@ class tx_dam_rtetransform_ahref {
 				}
 
 					// found an id, so convert the a tag to a media tag
-				if ($uid)	{
-					unset($attribArray['title']);
+				if ($uid) {
+					if ($attribArray['usedamcolumn'] == 'true') {
+						unset($attribArray['title']);
+					}
+					unset($attribArray['usedamcolumn']);
+					if (is_array($pObj->procOptions['HTMLparser_db.']['tags.']['media.'])) {
+						$tags = array();
+						$tags['a'] = $pObj->procOptions['HTMLparser_db.']['tags.']['media.'];
+						$blockSplit[$k] = $pObj->HTMLcleaner($blockSplit[$k], $tags, true);
+					}
 					$bTag='<media '.$uid.($attribArray['target']?' '.$attribArray['target']:(($attribArray['class'] || $attribArray['title'])?' -':'')).($attribArray['class']?' '.$attribArray['class']:($attribArray['title']?' -':'')).($attribArray['title']?' "'.$attribArray['title'].'"':'').'>';
 					$eTag='</media>';
 					$blockSplit[$k] = $bTag.$this->transform_db($pObj->removeFirstAndLastTag($blockSplit[$k]),$pObj).$eTag;
-					
-					
 				} else {
 						// just rebuild the tag so it can be processed by t3lib_parsehtml_proc::TS_links_db
+					unset($attribArray['usedamcolumn']);
 					$bTag='<a '.t3lib_div::implodeAttributes($attribArray,1).'>';
 					$eTag='</a>';
 					$blockSplit[$k] = $bTag.$this->transform_db($pObj->removeFirstAndLastTag($blockSplit[$k]),$pObj).$eTag;
@@ -78,9 +85,9 @@ class tx_dam_rtetransform_ahref {
 		}
 
 		$value = implode('',$blockSplit);
-				
+
 		$value = $pObj->TS_links_db($value);
-		
+
 		return $value;
 	}
 	

@@ -34,6 +34,7 @@ $GLOBALS['T3_VAR']['ext']['dam']['TCA']['media_config'] = array (
 	'maxitems' => 200,
 	'minitems' => 0,
 	'autoSizeMax' => 30,
+	'softref' => 'dam_mm_ref',
 );
 
 
@@ -59,6 +60,7 @@ $GLOBALS['T3_VAR']['ext']['dam']['TCA']['image_config'] = array (
 	'maxitems' => 200,
 	'minitems' => 0,
 	'autoSizeMax' => 30,
+	'softref' => 'dam_mm_ref',
 );
 
 

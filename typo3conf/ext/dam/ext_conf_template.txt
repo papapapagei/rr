@@ -1,7 +1,7 @@
   # cat=basic/enable; type=options[ Default setup=default,  Minimal (most disabled)=minimal, Example (many options switched on or off)=example, None (nothing set)=none  ]; label=Setup: TSconfig setup defining modules functions and indexing behaviour.
 tsconfig = default
-  # cat=basic/enable; type=boolean; label= Enable Web>File: This enables the old Web>File module which shouldn't be needed anymore when using the DAM. Keep in mind that the Web>File module manage files without notifying the DAM about changes which generates inconsistencies.
-web_file = 0
+  # cat=basic/enable; type=boolean; label= Enable File>Filelist: This enables the old File>Filelist module which shouldn't be needed anymore when using the DAM. Keep in mind that the File>Filelist module manages files without notifying the DAM about changes which generates inconsistencies.
+file_filelist = 0
   # cat=basic/enable; type=boolean; label= Hide Media sysfolder: This adds global user TSConfig which hides the Media sysfolder for all users (options.hideRecords.pages = xx).
 hideMediaFolder = 0
   # cat=basic/enable; type=boolean; label= media tag: This adds the tag <media> to RTE content processing and frontend rendering. This is needed to create files links using DAM references. Additional page TSconfig may be needed to enable the media tag. See the manual for more information.

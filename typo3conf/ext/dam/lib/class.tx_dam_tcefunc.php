@@ -152,7 +152,7 @@ $config['maxitems'] = ($config['maxitems']==2) ? 1 : $config['maxitems'];
 			$treeViewObj->isTCEFormsSelectClass = true;
 			$treeViewObj->parentField = $TCA[$config['foreign_table']]['ctrl']['treeParentField'];
 			$treeViewObj->fieldArray = array('uid', $TCA[$config['foreign_table']]['ctrl']['label'], $treeViewObj->parentField);
-			
+
 				// default_sortby might be not set
 			$defaultSortby = ($TCA[$config['foreign_table']]['ctrl']['default_sortby']) ? $GLOBALS['TYPO3_DB']->stripOrderBy($TCA[$config['foreign_table']]['ctrl']['default_sortby']) : '';
 				// sortby might be not set or unset
@@ -198,7 +198,7 @@ $config['maxitems'] = ($config['maxitems']==2) ? 1 : $config['maxitems'];
 				// be set in dam/mod_treebrowser/index.php as internal configuration logic
 
 				// Uschi: respect $TCA[table]['columns'][field]['config']['itemListStyle']
-				// This will enable us to have a higher category selection tree. 
+				// This will enable us to have a higher category selection tree.
 				if(isset($config['itemListStyle'])) {
 					$tempIframeStyle = t3lib_div::trimExplode(';', $config['itemListStyle']);
 					$iframestyle = array();
@@ -212,7 +212,7 @@ $config['maxitems'] = ($config['maxitems']==2) ? 1 : $config['maxitems'];
 				$iframeHeight = ($iframestyle['height']) ? $iframestyle['height'] : NULL;
 
 				$thumbnails = $renderBrowseTrees->renderIFrame($iframeWidth, $iframeHeight);
-				
+
 
 			} else {
 					// tree frame <div>
@@ -256,7 +256,7 @@ $config['maxitems'] = ($config['maxitems']==2) ? 1 : $config['maxitems'];
 		$maxitems = t3lib_div::intInRange($config['maxitems'], 0);
 		if (!$maxitems)	$maxitems = 100000;
 		$selectedListStyle = ($config['selectedListStyle']) ? ' style="' .$config['selectedListStyle'] .'"' : ' style="width:200px"';
-		
+
 		$this->tceforms->requiredElements[$PA['itemFormElName']] = array($minitems, $maxitems, 'imgName' => $table.'_'.$row['uid'].'_'.$field);
 
 
@@ -623,8 +623,7 @@ $config['maxitems'] = ($config['maxitems']==2) ? 1 : $config['maxitems'];
 					$iconTag = $this->tceforms->getClickMenu($iconTag, 'tx_dam', $row['uid']);
 				}
 
-				$title = t3lib_div::fixed_lgd_cs($this->tceforms->noTitle($row['title']), $this->tceforms->titleLen);
-
+				$title = $row['title'] ? t3lib_div::fixed_lgd_cs($row['title'], $this->tceforms->titleLen) : t3lib_BEfunc::getNoRecordTitle();
 
 					// Create link to showing details about the file in a window:
 				if ($fileExists) {
@@ -823,8 +822,8 @@ $config['maxitems'] = ($config['maxitems']==2) ? 1 : $config['maxitems'];
 					'<strong>'.htmlspecialchars($row['file_name']).'</strong></div>';
 
 		$itemMediaInfo .= '<div class="tableRow">'.$this->tceforms->sL('LLL:EXT:dam/locallang_db.xml:tx_dam_item.file_path', true).'<br />'.
-					'<strong>'.htmlspecialchars($row['file_path']).'</strong></div>'; 
-									
+					'<strong>'.htmlspecialchars($row['file_path']).'</strong></div>';
+
 		if ($row['media_type'] == TXDAM_mtype_image) {
 			$out = '';
 			$out .= $row['hpixels'] ? $row['hpixels'].'x'.$row['vpixels'].' px, ' : '';
@@ -1146,8 +1145,8 @@ $config['maxitems'] = ($config['maxitems']==2) ? 1 : $config['maxitems'];
 							$pTitle = is_array($pRec) ? $pRec[$GLOBALS['TCA'][$pp['table']]['ctrl']['label']] : NULL;
 						}
 						if ($pTitle)	{
-							$pTitle = t3lib_div::fixed_lgd_cs($this->tceforms->noTitle($pTitle), $this->tceforms->titleLen);
-							$pUid = $pp['table'].'_'.$pp['id'];
+							$pTitle = $pTitle ? t3lib_div::fixed_lgd_cs($pTitle, $this->tceforms->titleLen) : t3lib_BEfunc::getNoRecordTitle();
+							$pUid = $pp['table'] . '_' . $pp['id'];
 							$uidList[] = $pUid;
 							$opt[] = '<option value="'.htmlspecialchars($pUid).'">'.htmlspecialchars($pTitle).'</option>';
 						}

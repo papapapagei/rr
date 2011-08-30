@@ -24,7 +24,7 @@
 /**
  * Public API for TemplaVoila
  *
- * $Id$
+ * $Id: class.tx_templavoila_api.php 40835 2010-12-05 18:43:54Z tolleiv $
  *
  * @author     Robert Lemke <robert@typo3.org>
  */
@@ -33,69 +33,67 @@
  *
  *
  *
- *  113: class tx_templavoila_api
- *  127:     function __construct ($rootTable = 'pages')
- *  137:     function tx_templavoila_api ($alternativeRootTable = 'pages')
+ *  111: class tx_templavoila_api
+ *  124:     function __construct ($rootTable = 'pages')
+ *  134:     function tx_templavoila_api ($alternativeRootTable = 'pages')
  *
  *              SECTION: Element manipulation functions (public)
- *  160:     function insertElement ($destinationPointer, $elementRow)
- *  191:     function insertElement_createRecord ($destinationPointer, $row)
- *  258:     function insertElement_setElementReferences ($destinationPointer, $uid)
- *  280:     function moveElement ($sourcePointer, $destinationPointer)
- *  295:     function moveElement_setElementReferences ($sourcePointer, $destinationPointer)
- *  311:     function copyElement ($sourcePointer, $destinationPointer, $copySubElements = TRUE)
- *  329:     function localizeElement ($sourcePointer, $languageKey)
- *  365:     function referenceElement ($sourcePointer, $destinationPointer)
- *  382:     function referenceElementByUid ($uid, $destinationPointer)
- *  398:     function unlinkElement ($sourcePointer)
- *  411:     function deleteElement ($sourcePointer)
+ *  157:     function insertElement ($destinationPointer, $elementRow)
+ *  179:     function insertElement_createRecord ($destinationPointer, $row)
+ *  239:     function insertElement_setElementReferences ($destinationPointer, $uid)
+ *  261:     function moveElement ($sourcePointer, $destinationPointer)
+ *  276:     function moveElement_setElementReferences ($sourcePointer, $destinationPointer)
+ *  292:     function copyElement ($sourcePointer, $destinationPointer, $copySubElements = TRUE)
+ *  310:     function localizeElement ($sourcePointer, $languageKey)
+ *  346:     function referenceElement ($sourcePointer, $destinationPointer)
+ *  363:     function referenceElementByUid ($uid, $destinationPointer)
+ *  379:     function unlinkElement ($sourcePointer)
+ *  392:     function deleteElement ($sourcePointer)
  *
  *              SECTION: Processing functions (protected)
- *  436:     function process ($mode, $sourcePointer, $destinationPointer = NULL, $onlyHandleReferences = FALSE)
- *  497:     function process_move ($sourcePointer, $destinationPointer, $sourceReferencesArr, $destinationReferencesArr, $sourceParentRecord, $destinationParentRecord, $elementRecord, $onlyHandleReferences)
- *  578:     function process_copy ($sourceElementUid, $destinationPointer, $destinationReferencesArr, $destinationParentRecord)
- *  612:     function process_copyRecursively ($sourceElementUid, $destinationPointer, $destinationReferencesArr, $destinationParentRecord)
- *  651:     function process_localize ($sourceElementUid, $destinationPointer, $destinationReferencesArr)
- *  693:     function process_reference ($destinationPointer, $destinationReferencesArr, $elementUid)
- *  709:     function process_unlink ($sourcePointer, $sourceReferencesArr)
- *  726:     function process_delete ($sourcePointer, $sourceReferencesArr, $elementUid)
+ *  417:     function process ($mode, $sourcePointer, $destinationPointer = NULL, $onlyHandleReferences = FALSE)
+ *  478:     function process_move ($sourcePointer, $destinationPointer, $sourceReferencesArr, $destinationReferencesArr, $sourceParentRecord, $destinationParentRecord, $elementRecord, $onlyHandleReferences)
+ *  544:     function process_copy ($sourceElementUid, $destinationPointer, $destinationReferencesArr, $destinationParentRecord)
+ *  578:     function process_copyRecursively ($sourceElementUid, $destinationPointer, $destinationReferencesArr, $destinationParentRecord)
+ *  617:     function process_localize ($sourceElementUid, $destinationPointer, $destinationReferencesArr)
+ *  659:     function process_reference ($destinationPointer, $destinationReferencesArr, $elementUid)
+ *  675:     function process_unlink ($sourcePointer, $sourceReferencesArr)
+ *  692:     function process_delete ($sourcePointer, $sourceReferencesArr, $elementUid)
  *
  *              SECTION: Flexform helper functions (public)
- *  769:     function flexform_getValidPointer ($flexformPointer)
- *  808:     function flexform_getPointerFromString ($flexformPointerString)
- *  847:     function flexform_getStringFromPointer ($flexformPointer)
- *  880:     function flexform_getRecordByPointer ($flexformPointer)
- *  904:     function flexform_getPointersByRecord ($elementUid, $pageUid)
- *  930:     function flexform_getElementReferencesFromXML($flexformXML, $flexformPointer)
- *  968:     function flexform_getListOfSubElementUidsRecursively ($table, $uid, &$recordUids, $recursionDepth=0)
- * 1017:     function flexform_getFlexformPointersToSubElementsRecursively ($table, $uid, &$flexformPointers, $recursionDepth=0)
+ *  735:     function flexform_getValidPointer ($flexformPointer)
+ *  774:     function flexform_getPointerFromString ($flexformPointerString)
+ *  813:     function flexform_getStringFromPointer ($flexformPointer)
+ *  846:     function flexform_getRecordByPointer ($flexformPointer)
+ *  870:     function flexform_getPointersByRecord ($elementUid, $pageUid)
+ *  896:     function flexform_getElementReferencesFromXML($flexformXML, $flexformPointer)
+ *  934:     function flexform_getListOfSubElementUidsRecursively ($table, $uid, &$recordUids, $recursionDepth=0)
+ *  983:     function flexform_getFlexformPointersToSubElementsRecursively ($table, $uid, &$flexformPointers, $recursionDepth=0)
  *
  *              SECTION: Flexform helper functions (protected)
- * 1087:     function flexform_insertElementReferenceIntoList($currentReferencesArr, $position, $elementUid)
- * 1127:     function flexform_removeElementReferenceFromList($currentReferencesArr, $position)
- * 1149:     function flexform_storeElementReferencesListInRecord ($referencesArr, $destinationPointer)
+ * 1053:     function flexform_insertElementReferenceIntoList($currentReferencesArr, $position, $elementUid)
+ * 1093:     function flexform_removeElementReferenceFromList($currentReferencesArr, $position)
+ * 1115:     function flexform_storeElementReferencesListInRecord ($referencesArr, $destinationPointer)
  *
  *              SECTION: Data structure helper functions (public)
- * 1209:     function ds_getFieldNameByColumnPosition ($contextPageUid, $columnPosition)
- * 1267:     function ds_getColumnPositionByFieldName ($contextPageUid, $fieldName)
- * 1298:     function ds_getExpandedDataStructure ($table, $row)
- * 1335:     function ds_getAvailablePageTORecords ($pageUid)
+ * 1156:     function ds_getFieldNameByColumnPosition ($contextPageUid, $columnPosition)
+ * 1210:     function ds_getExpandedDataStructure ($table, $row)
+ * 1247:     function ds_getAvailablePageTORecords ($pageUid)
  *
  *              SECTION: Get content structure of page
- * 1378:     function getContentTree($table, $row, $includePreviewData=TRUE)
- * 1408:     function getContentTree_element($table, $row, &$tt_content_elementRegister, $prevRecList='')
- * 1535:     function getContentTree_processSubContent($listOfSubElementUids, &$tt_content_elementRegister, $prevRecList)
- * 1581:     function getContentTree_getLocalizationInfoForElement($contentTreeArr, &$tt_content_elementRegister)
- * 1644:     function getContentTree_fetchPageTemplateObject($row)
+ * 1290:     function getContentTree($table, $row, $includePreviewData=TRUE)
+ * 1320:     function getContentTree_element($table, $row, &$tt_content_elementRegister, $prevRecList='')
+ * 1438:     function getContentTree_processSubContent($listOfSubElementUids, &$tt_content_elementRegister, $prevRecList)
+ * 1484:     function getContentTree_getLocalizationInfoForElement($contentTreeArr, &$tt_content_elementRegister)
+ * 1545:     function getContentTree_fetchPageTemplateObject($row)
  *
  *              SECTION: Miscellaneous functions (protected)
- * 1685:     function setTCEmainRunningFlag ($flag)
- * 1697:     function getTCEmainRunningFlag ()
- * 1708:     function getStorageFolderPid($pageUid)
- * 1734:     function loadWebsiteLanguages()
- * 1769:     public function modifyReferencesInLiveWS ( $enable=true )
+ * 1583:     function setTCEmainRunningFlag ($flag)
+ * 1595:     function getTCEmainRunningFlag ()
+ * 1606:     function getStorageFolderPid($pageUid)
+ * 1624:     function loadWebsiteLanguages()
  *
- * TOTAL FUNCTIONS: 46
+ * TOTAL FUNCTIONS: 44
  * (This index is automatically created/updated by the extension "extdeveval")
  *
  */
@@ -116,6 +114,7 @@ class tx_templavoila_api {
 	var $debug = false;
 	var $allSystemWebsiteLanguages = array();		// ->loadWebsiteLanguages() will set this to content of sys_language
 	var $modifyReferencesInLiveWS = false;
+	protected $cachedModWebTSconfig = array();
 
 	/**
 	 * The constructor.
@@ -219,14 +218,10 @@ class tx_templavoila_api {
 		$tce = t3lib_div::makeInstance('t3lib_TCEmain');
 		/* @var $tce t3lib_TCEmain */
 
-		// set default TCA values specific for the user
-		$TCAdefaultOverride = (array)$GLOBALS['BE_USER']->getTSConfigProp('TCAdefaults');
-		$pageTS = t3lib_BEfunc::getPagesTSconfig($newRecordPid, true);
-		if (isset($pageTS['TCAdefaults.'])) {
-			$TCAdefaultOverride = array_merge($TCAdefaultOverride, $pageTS['TCAdefaults.']);
-		}
-		if (is_array($TCAdefaultOverride))	{
-			$tce->setDefaultsFromUserTS($TCAdefaultOverride);
+			// set default TCA values specific for the page and user
+		$TCAdefaultOverride = t3lib_BEfunc::getModTSconfig($newRecordPid , 'TCAdefaults');
+		if (is_array($TCAdefaultOverride['properties']))	{
+			$tce->setDefaultsFromUserTS($TCAdefaultOverride['properties']);
 		}
 
 		$tce->stripslashes_values = 0;
@@ -1402,10 +1397,11 @@ class tx_templavoila_api {
 	 * @param	array		$row: Record of the root element where the tree starts (Possibly overlaid with workspace content)
 	 * @param	array		$tt_content_elementRegister: Register of used tt_content elements, don't mess with it! (passed by reference since data is built up)
 	 * @param	string		$prevRecList: comma separated list of uids, used internally for recursive calls. Don't mess with it!
+	 * @param	integer		$depth: nexting depth
 	 * @return	array		The content tree
 	 * @access	protected
 	 */
-	function getContentTree_element($table, $row, &$tt_content_elementRegister, $prevRecList='')	{
+	function getContentTree_element($table, $row, &$tt_content_elementRegister, $prevRecList='', $depth=0)	{
 		global $TCA, $LANG;
 
 		$tree = array();
@@ -1415,7 +1411,9 @@ class tx_templavoila_api {
 			'pid' => $row['pid'],
 			'_ORIG_uid' => $row['_ORIG_uid'],
 			'title' => t3lib_div::fixed_lgd_cs(t3lib_BEfunc::getRecordTitle($table, $row),50),
-			'icon' => t3lib_iconWorks::getIcon($table,$row),
+			'fullTitle' => t3lib_BEfunc::getRecordTitle($table, $row),
+			'icon' => t3lib_iconWorks::getIcon($table,$row), // kept because it's not clear if this is used elsewhere
+			'iconTag' => tx_templavoila_icons::getIconForRecord($table,$row),
 			'sys_language_uid' => $row['sys_language_uid'],
 			'l18n_parent' => $row['l18n_parent'],
 			'CType' => $row['CType'],
@@ -1494,6 +1492,7 @@ class tx_templavoila_api {
 
 								if ($fieldData['type'] == 'array')	{
 									$tree['previewData']['sheets'][$sheetKey][$fieldKey]['subElements'][$lKey] = $flexformContentArr['data'][$sheetKey][$lKey][$fieldKey]['el'];
+									$tree['previewData']['sheets'][$sheetKey][$fieldKey]['childElements'][$lKey] = $this->getContentTree_processSubFlexFields($table, $row, array($fieldKey=>$fieldData), $tt_content_elementRegister, $flexformContentArr['data'][$sheetKey][$lKey], $vKeys);
 								}
 							}
 						}
@@ -1505,7 +1504,8 @@ class tx_templavoila_api {
 								foreach($lKeys as $lKey)	{
 									foreach($vKeys as $vKey)	{
 										$listOfSubElementUids = $flexformContentArr['data'][$sheetKey][$lKey][$fieldKey][$vKey];
-										$tree['sub'][$sheetKey][$lKey][$fieldKey][$vKey] = $this->getContentTree_processSubContent($listOfSubElementUids, $tt_content_elementRegister, $prevRecList);
+										$tree['depth'] = $depth;
+										$tree['sub'][$sheetKey][$lKey][$fieldKey][$vKey] = $this->getContentTree_processSubContent($listOfSubElementUids, $tt_content_elementRegister, $prevRecList,$depth);
 										$tree['sub'][$sheetKey][$lKey][$fieldKey][$vKey]['meta']['title'] = $fieldData['TCEforms']['label'];
 									}
 								}
@@ -1524,15 +1524,55 @@ class tx_templavoila_api {
 	}
 
 	/**
+	 * Merge the datastructure and the related content into a proper tree-structure
+	 *
+	 * @param string $table
+	 * @param array $row
+	 * @param array $fieldData
+	 * @param object $tt_content_elementRegister
+	 * @param array $contentArr
+	 * @param array $vKeys
+	 * @return array
+	 */
+	function getContentTree_processSubFlexFields($table, $row, $fieldData, &$tt_content_elementRegister, $contentArr, $vKeys) {
+		if (!is_array($fieldData)) {
+			return array();
+		}
+		$result = array();
+		foreach ($fieldData as $fieldKey=>$fieldValue) {
+			if ($fieldValue['type'] == 'array') {
+				if (is_array($contentArr) && isset($contentArr[$fieldKey]) && is_array($contentArr[$fieldKey]['el'])) {
+					$result[$fieldKey]['config'] = $fieldValue;
+					unset ($result[$fieldKey]['config']['el']);
+					if ($fieldValue['section']==1) {
+						foreach ($contentArr[$fieldKey]['el'] as $i=>$data) {
+							$result[$fieldKey]['data']['el'][$i] = $this->getContentTree_processSubFlexFields($table, $row, $fieldValue['el'], $tt_content_elementRegister, $data, $vKeys);
+						}
+					} else {
+						$result[$fieldKey]['data']['el'] = $this->getContentTree_processSubFlexFields($table, $row, $fieldValue['el'], $tt_content_elementRegister, $contentArr[$fieldKey]['el'], $vKeys);
+					}
+				}
+			} else {
+				$result[$fieldKey]['config'] = $fieldData[$fieldKey];
+				foreach ($vKeys as $vKey) {
+					$result[$fieldKey]['data'][$vKey] = $contentArr[$fieldKey][$vKey];
+				}
+			}
+		}
+		return $result;
+	}
+
+	/**
 	 * Sub function for rendering the content tree. Handles sub content elements of the current element.
 	 *
 	 * @param	string		$listOfSubElementUids: List of tt_content elements to process
 	 * @param	array		$tt_content_elementRegister: Register of tt_content elements used on the page (passed by reference since it is modified)
 	 * @param	string		$prevRecList: List of previously processed record uids
+	 * @param	integer		$depth: nexting depth
 	 * @return	array		The sub tree for these elements
 	 * @access	protected
 	 */
-	function getContentTree_processSubContent($listOfSubElementUids, &$tt_content_elementRegister, $prevRecList) {
+	function getContentTree_processSubContent($listOfSubElementUids, &$tt_content_elementRegister, $prevRecList, $depth=0) {
 		global $TCA;
 
 			// Init variable:
@@ -1552,7 +1592,7 @@ class tx_templavoila_api {
 
 				if (is_array($nextSubRecord))	{
 					$tt_content_elementRegister[$recIdent['id']]++;
-					$subTree['el'][$idStr] = $this->getContentTree_element('tt_content', $nextSubRecord, $tt_content_elementRegister, $prevRecList.','.$idStr);
+					$subTree['el'][$idStr] = $this->getContentTree_element('tt_content', $nextSubRecord, $tt_content_elementRegister, $prevRecList.','.$idStr, $depth+1);
 					$subTree['el'][$idStr]['el']['index'] = $counter;
 					$subTree['el'][$idStr]['el']['isHidden'] = $TCA['tt_content']['ctrl']['enablecolumns']['disabled'] && $nextSubRecord[$TCA['tt_content']['ctrl']['enablecolumns']['disabled']];
 					$subTree['el_list'][$counter] = $idStr;
@@ -1615,7 +1655,7 @@ class tx_templavoila_api {
 							$localizationInfoArr[$sys_language_uid]['localization_uid'] = $attachedLocalizations[$sys_language_uid];
 
 							$tt_content_elementRegister[$attachedLocalizations[$sys_language_uid]]++;
-						} elseif ($contentTreeArr['el']['CType']!='templavoila_pi1') {	// Only localize content elements with "Default" langauge set
+						} elseif ($contentTreeArr['el']['CType'] !== 'templavoila_pi1' || $this->isLocalizationLinkEnabledForFCE($contentTreeArr)) {	// Only localize content elements with "Default" language set
 							if ((int)$contentTreeArr['el']['sys_language_uid']===0)	{
 								$localizationInfoArr[$sys_language_uid] = array();
 								$localizationInfoArr[$sys_language_uid]['mode'] = 'localize';
@@ -1659,7 +1699,26 @@ class tx_templavoila_api {
 		return t3lib_beFunc::getRecordWSOL('tx_templavoila_tmplobj', $templateObjectUid);
 	}
 
+	/**
+	 * Checks that we are really only working on a FCE,
+	 * that it is not inline translatable
+	 * and that the localization for FCEs is enabled through pageTS / userTS
+	 *
+	 * @param	array $contentTreeArr The content element to check
+	 * @return	bool  TRUE, if all conditions are met to enable localization for the FCE through the page module
+	 */
+	protected function isLocalizationLinkEnabledForFCE ($contentTreeArr) {
+		$isLocalizationLinkEnabledForFCE = FALSE;
+		$modTSConfig =& $this->getModWebTSconfig ($contentTreeArr['el']['pid']);
+		if (intval($modTSConfig['properties']['enableLocalizationLinkForFCEs']) === 1 &&
+			$contentTreeArr['el']['CType'] === 'templavoila_pi1' &&
+			isset($contentTreeArr['ds_meta']['langDisable']) &&
+			intval ($contentTreeArr['ds_meta']['langDisable']) === 1) {
+			$isLocalizationLinkEnabledForFCE = TRUE;
+		}
 
+		return $isLocalizationLinkEnabledForFCE;
+	}
 
 
 
@@ -1766,9 +1825,25 @@ class tx_templavoila_api {
 	 *
 	 * @param boolean $enable
 	 * @return void
-	*/
+	 */
 	public function modifyReferencesInLiveWS ( $enable=true ) {
 		$this->modifyReferencesInLiveWS = $enable;
+	}
+
+	/**
+	 * Retrieves the mod.web_txtemplavoilaM1 for a page and stores it in an instance variable.
+	 * This function is e.g. used to determine, if localization is enabled for FCEs.
+	 * Since they can be stored on different pages, different modTSconfigs might be needed.
+	 *
+	 * @param	int	  $pageId The page id to get the modTSconfig for
+	 * @return	array The fetched modTSconfig for the web module
+	 */
+	protected function getModWebTSconfig ($pageId) {
+		if (!isset($this->cachedModWebTSconfig[$pageId])) {
+			$modTSconfig = t3lib_BEfunc::getModTSconfig($pageId, 'mod.web_txtemplavoilaM1');
+			$this->cachedModWebTSconfig[$pageId] = $modTSconfig;
+}
+		return $this->cachedModWebTSconfig[$pageId];
 	}
 }
 

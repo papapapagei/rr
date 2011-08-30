@@ -197,13 +197,7 @@ class tx_dam_selection {
 			$this->hasChanged = true;
 		} else {
 			$this->setCurrentSelectionFromStored();
-			if (t3lib_div::compat_version('4.3')) {
-				$sel = t3lib_div::_GPmerged($this->paramStr);
-			}
-			else {
-				$sel = t3lib_div::GParrayMerged($this->paramStr);
-			}
-			if ($sel) {
+			if ($sel = t3lib_div::_GPmerged($this->paramStr)) {
 				$oldSel = serialize($this->sel);
 				$this->mergeSelection($sel);
 				$this->storeCurrentSelectionAsUndo();
@@ -307,7 +301,6 @@ class tx_dam_selection {
 	function getSelectionWhereClauseArray() {
 		$queryArr = array();
 		$sel = $this->sel;
-
 		foreach (array('SELECT','OR','AND','NOT','SEARCH') as $queryType) {
 			if(is_array($sel[$queryType])) {
 				foreach ($sel[$queryType] as $selectionRuleName => $items) {

@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_Finisher_DB.php 36838 2010-08-16 13:52:00Z mabolek $
+ * $Id: Tx_Formhandler_Finisher_DB.php 46554 2011-04-15 07:46:19Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -91,29 +91,28 @@ class Tx_Formhandler_Finisher_DB extends Tx_Formhandler_AbstractFinisher {
 	public function process() {
 
 		$evaluation = TRUE;
-		if(isset($this->settings['condition'])) {
+		if (isset($this->settings['condition'])) {
 			$condition = $this->parseCondition($this->settings['condition']);
 			eval('$evaluation = ' . $condition . ';');
 			$evaluationMessage = ($evaluation === TRUE) ?  'TRUE' : 'FALSE';
-			Tx_Formhandler_StaticFuncs::debugMessage('condition', $evaluationMessage, $condition);
-				
+			Tx_Formhandler_StaticFuncs::debugMessage('condition', array($evaluationMessage, $condition));
 		}
 
-		if($evaluation) {
+		if ($evaluation) {
 			Tx_Formhandler_StaticFuncs::debugMessage('data_stored');
-				
+
 			//set fields to insert/update
 			$queryFields = $this->parseFields();
-				
+
 			//query the database
 			$this->save($queryFields);
-			
-			if(!is_array($this->gp['saveDB'])) {
+
+			if (!is_array($this->gp['saveDB'])) {
 				$this->gp['saveDB'] = array();
 			}
-			
+
 			//Get DB info, including UID
-			if(!$this->doUpdate) {
+			if (!$this->doUpdate) {
 				$this->gp['inserted_uid'] = $GLOBALS['TYPO3_DB']->sql_insert_id();
 				$this->gp[$this->table . '_inserted_uid'] = $this->gp['inserted_uid'];
 				$info = array(
@@ -131,7 +130,7 @@ class Tx_Formhandler_Finisher_DB extends Tx_Formhandler_AbstractFinisher {
 				);
 				array_push($this->gp['saveDB'], $info);
 			}
-			
+
 			//Insert the data written to DB into GP array
 			$dataKeyName = $this->table;
 			$dataKeyIndex = 1;
@@ -155,16 +154,16 @@ class Tx_Formhandler_Finisher_DB extends Tx_Formhandler_AbstractFinisher {
 	protected function parseCondition($condition) {
 		$pattern = '/[\w]+/is';
 		preg_match_all($pattern, $condition, $fields);
-		foreach($fields[0] as $fieldName) {
+		foreach ($fields[0] as $idx => $fieldName) {
 			if (isset($this->gp[$fieldName])) {
-					
+
 				// Formats the value by surrounding it with '.
 				$value = "'" . str_replace("'", "\'", $this->gp[$fieldName]) . "'";
 
 				// Replace conditions
 				$condition = str_replace($fieldName, $value, $condition);
 			} else {
-                $condition = str_replace($fieldName, 'FALSE', $condition);
+				$condition = str_replace($fieldName, 'FALSE', $condition);
 			}
 		}
 		return $condition;
@@ -179,29 +178,53 @@ class Tx_Formhandler_Finisher_DB extends Tx_Formhandler_AbstractFinisher {
 	protected function save(&$queryFields) {
 
 		//insert query
-		if(!$this->doUpdate) {
+		if (!$this->doUpdate) {
+			$this->doInsert($queryFields);
 
-			$query = $GLOBALS['TYPO3_DB']->INSERTquery($this->table, $queryFields);
-			Tx_Formhandler_StaticFuncs::debugMessage('sql_request', $query);
-			$res = $GLOBALS['TYPO3_DB']->sql_query($query);
-			if($GLOBALS['TYPO3_DB']->sql_error()) {
-				Tx_Formhandler_StaticFuncs::debugMessage($GLOBALS['TYPO3_DB']->sql_error());
-			}
-			
 			//update query
 		} else {
-				
+
 			//check if uid of record to update is in GP
 			$uid = $this->getUpdateUid();
-						
-			if($uid) {
-				$query = $GLOBALS['TYPO3_DB']->UPDATEquery($this->table, $this->key . '=' . $uid, $queryFields);
-				Tx_Formhandler_StaticFuncs::debugMessage('sql_request', $query);
-				$res = $GLOBALS['TYPO3_DB']->sql_query($query);
+			$recordExists = $this->doesRecordExist($uid);
+			
+			if ($recordExists) {
+				$this->doUpdate($uid, $queryFields);
+			} elseif($this->settings['insertIfNoUpdatePossible']) {
+				$this->doInsert($queryFields);
 			} else {
-				Tx_Formhandler_StaticFuncs::debugMessage('no_update_possible');
+				Tx_Formhandler_StaticFuncs::debugMessage('no_update_possible', array(), 2);
 			}
 		}
+	}
+	
+	protected function doesRecordExist($uid) {
+		$exists = FALSE;
+		if($uid) {
+			$uid = $GLOBALS['TYPO3_DB']->fullQuoteStr($uid, $this->table);
+			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery($this->key, $this->table, $this->key . '=' . $uid);
+			if($res && $GLOBALS['TYPO3_DB']->sql_num_rows($res) > 0) {
+				$exists = TRUE;
+			}
+			$GLOBALS['TYPO3_DB']->sql_free_result($res);
+		}
+		return $exists;
+	}
+	
+	protected function doInsert($queryFields) {
+		$query = $GLOBALS['TYPO3_DB']->INSERTquery($this->table, $queryFields);
+		Tx_Formhandler_StaticFuncs::debugMessage('sql_request', array($query));
+		$res = $GLOBALS['TYPO3_DB']->sql_query($query);
+		if ($GLOBALS['TYPO3_DB']->sql_error()) {
+			Tx_Formhandler_StaticFuncs::debugMessage('error', array($GLOBALS['TYPO3_DB']->sql_error()), 3);
+		}
+	}
+	
+	protected function doUpdate($uid, $queryFields) {
+		$uid = $GLOBALS['TYPO3_DB']->fullQuoteStr($uid, $this->table);
+		$query = $GLOBALS['TYPO3_DB']->UPDATEquery($this->table, $this->key . '=' . $uid, $queryFields);
+		Tx_Formhandler_StaticFuncs::debugMessage('sql_request', array($query));
+		$res = $GLOBALS['TYPO3_DB']->sql_query($query);
 	}
 
 	/**
@@ -214,20 +237,25 @@ class Tx_Formhandler_Finisher_DB extends Tx_Formhandler_AbstractFinisher {
 
 		//set table
 		$this->table = $this->settings['table'];
-		if(!$this->table || !is_array($this->settings['fields.'])) {
+		if (!$this->table) {
 			Tx_Formhandler_StaticFuncs::throwException('no_table', 'Tx_Formhandler_Finisher_DB');
+			return;
+		}
+		
+		if(!is_array($this->settings['fields.'])) {
+			Tx_Formhandler_StaticFuncs::throwException('no_fields', 'Tx_Formhandler_Finisher_DB');
 			return;
 		}
 
 		//set primary key field
 		$this->key = Tx_Formhandler_StaticFuncs::getSingle($this->settings, 'key');
-		if(!$this->key) {
+		if (strlen($this->key) === 0) {
 			$this->key = 'uid';
 		}
 
 		//check whether to update or to insert a record
 		$this->doUpdate = FALSE;
-		if($this->settings['updateInsteadOfInsert']) {
+		if ($this->settings['updateInsteadOfInsert']) {
 			$this->doUpdate = TRUE;
 		}
 	}
@@ -241,73 +269,68 @@ class Tx_Formhandler_Finisher_DB extends Tx_Formhandler_AbstractFinisher {
 		$queryFields = array();
 
 		//parse mapping
-		foreach($this->settings['fields.'] as $fieldname => $options) {
+		foreach ($this->settings['fields.'] as $fieldname => $options) {
 			$fieldname = str_replace('.', '', $fieldname);
-				
-			if(isset($options) && is_array($options) && !isset($options['special'])) {
+			if (isset($options) && is_array($options) && !isset($options['special'])) {
 
 				$mapping = $options['mapping'];
+
 				//if no mapping default to the name of the form field
-				if(!$mapping) {
+				if (!$mapping) {
 					$mapping = $fieldname;
 				}
-				
-				
+
 				$fieldValue = $this->gp[$mapping];
-				
-				if($options['mapping.']) {
-					$fieldValue = Tx_Formhandler_StaticFuncs::getSingle($options, 'mapping');
-				}
 
 				//pre process the field value. e.g. to format a date
-				if(is_array($options['preProcessing.'])) {
+				if (is_array($options['preProcessing.'])) {
 					$options['preProcessing.']['value'] = $fieldValue;
 					$fieldValue = Tx_Formhandler_StaticFuncs::getSingle($options, 'preProcessing');
 				}
 
-				if($options['mapping.']) {
+				if ($options['mapping.']) {
 					$queryFields[$fieldname] = Tx_Formhandler_StaticFuncs::getSingle($options, 'mapping');
 				} else {
 					$queryFields[$fieldname] = $fieldValue;
 				}
 
 				//process empty value handling
-				if($options['ifIsEmpty'] && strlen($this->gp[$options['mapping']]) == 0) {
-						
+				if ($options['ifIsEmpty'] && strlen($this->gp[$options['mapping']]) == 0) {
+
 					//if given settings is a TypoScript object
-					if(isset($options['ifIsEmpty.']) && is_array($options['ifIsEmpty.'])) {
+					if (isset($options['ifIsEmpty.']) && is_array($options['ifIsEmpty.'])) {
 						$queryFields[$fieldname] = Tx_Formhandler_StaticFuncs::getSingle($options, 'ifIsEmpty');
 					} else {
 						$queryFields[$fieldname] = $options['ifIsEmpty'];
 					}
 				}
 
-                if($options['nullIfEmpty'] && strlen($this->gp[$options['mapping']]) == 0) {
-                    unset($queryFields[$fieldname]);
-                }
+				if ($options['nullIfEmpty'] && strlen($this->gp[$options['mapping']]) == 0) {
+					unset($queryFields[$fieldname]);
+				}
 
-                if($options['zeroIfEmpty'] && strlen($this->gp[$options['mapping']]) == 0) {
-                    $queryFields[$fieldname] = 0;
-                }
+				if ($options['zeroIfEmpty'] && strlen($this->gp[$options['mapping']]) == 0) {
+					$queryFields[$fieldname] = 0;
+				}
 
 				//process array handling
-				if(isset($this->gp[$options['mapping']]) && is_array($this->gp[$options['mapping']])) {
+				if (isset($this->gp[$options['mapping']]) && is_array($this->gp[$options['mapping']])) {
 					$separator = ',';
-					if($options['separator']) {
+					if ($options['separator']) {
 						$separator = $options['separator'];
 					}
 					$queryFields[$fieldname] = implode($separator, $this->gp[$options['mapping']]);
 				}
 
 				//process uploaded files
-				$files = Tx_Formhandler_Session::get('files');
-				if(isset($files[$fieldname]) && is_array($files[$fieldname])) {
-					$queryFields[$fieldname] = $this->getFileList($fieldname);				
+				$files = Tx_Formhandler_Globals::$session->get('files');
+				if (isset($files[$fieldname]) && is_array($files[$fieldname])) {
+					$queryFields[$fieldname] = $this->getFileList($files, $fieldname);
 				}
 
 				//special mapping
-			} elseif(isset($options) && is_array($options) && isset($options['special'])) {
-				switch($options['special']) {
+			} elseif (isset($options) && is_array($options) && isset($options['special'])) {
+				switch ($options['special']) {
 					case 'sub_datetime':
 						$now = date('Y-m-d H:i:s', time());
 						$queryFields[$fieldname] = $now;
@@ -320,9 +343,9 @@ class Tx_Formhandler_Finisher_DB extends Tx_Formhandler_AbstractFinisher {
 						break;
 					case 'inserted_uid':
 						$table = $options['special.']['table'];
-						if(is_array($this->gp['saveDB'])) {
-							foreach($this->gp['saveDB'] as $info) {
-								if($info['table'] == $table) {
+						if (is_array($this->gp['saveDB'])) {
+							foreach ($this->gp['saveDB'] as $idx => $info) {
+								if ($info['table'] === $table) {
 									$queryFields[$fieldname] = $info['uid'];
 								}
 							}
@@ -332,9 +355,9 @@ class Tx_Formhandler_Finisher_DB extends Tx_Formhandler_AbstractFinisher {
 			} else {
 				$queryFields[$fieldname] = $options;
 			}
-			
+
 			//post process the field value after formhandler did it's magic.
-			if(is_array($options['postProcessing.'])) {
+			if (is_array($options['postProcessing.'])) {
 				$options['postProcessing.']['value'] = $queryFields[$fieldname];
 				$queryFields[$fieldname] = Tx_Formhandler_StaticFuncs::getSingle($options, 'postProcessing');
 			}
@@ -347,29 +370,28 @@ class Tx_Formhandler_Finisher_DB extends Tx_Formhandler_AbstractFinisher {
 	 * @return string list of filenames
 	 * @param string $fieldname
 	 */
-	protected function getFileList($fieldname){
+	protected function getFileList($files, $fieldname){
 		$filenames = array();
-		$files = Tx_Formhandler_Session::get('files');
-		foreach ($files[$fieldname] as $file) {
+		foreach ($files[$fieldname] as $idx => $file) {
 			array_push($filenames, $file['uploaded_name']);
 		}
 		return implode(',', $filenames);
 	}
-	
+
 	/**
 	 * Returns current UID to use for updating the DB.
 	 * @return int UID
 	 */
 	protected function getUpdateUid() {
 		$uid = Tx_Formhandler_StaticFuncs::getSingle($this->settings, 'key_value');
-		if(!$uid) {
+		if (!$uid) {
 			$uid = $this->gp[$this->key];
 		}
-		if(!$uid) {
+		if (!$uid) {
 			$uid = $this->gp['inserted_uid'];
 		}
 		return $uid;
 	}
-	
+
 }
 ?>

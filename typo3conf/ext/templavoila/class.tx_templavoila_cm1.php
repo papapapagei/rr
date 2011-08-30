@@ -24,7 +24,7 @@
 /**
  * Addition of an item to the clickmenu
  *
- * $Id$
+ * $Id: class.tx_templavoila_cm1.php 39959 2010-11-08 22:21:10Z tolleiv $
  *
  * @author		Kasper Skaarhoj <kasper@typo3.com>
  * @coauthor 	Robert Lemke <robert@typo3.org>
@@ -78,12 +78,17 @@ class tx_templavoila_cm1 {
 					if (function_exists('finfo_open')) {
 						$finfoMode = defined('FILEINFO_MIME_TYPE') ? FILEINFO_MIME_TYPE : FILEINFO_MIME;
 						$fi = finfo_open($finfoMode);
-						$enabled = (substr(@finfo_file($fi, $table), 0, 9) == 'text/html');
+						$mimeInformation = @finfo_file($fi, $table);
+						$enabled = FALSE;
+						if (t3lib_div::isFirstPartOfStr($mimeInformation, 'text/html') ||
+							t3lib_div::isFirstPartOfStr($mimeInformation, 'application/xml')) {
+							$enabled = TRUE;
+						}
 						finfo_close($fi);
 					}
 					else {
 						$pi = @pathinfo($table);
-						$enabled = preg_match('/(html?|tmpl)/', $pi['extension']);
+						$enabled = preg_match('/(html?|tmpl|xml)/', $pi['extension']);
 					}
 					if ($enabled) {
 						$url = t3lib_extMgm::extRelPath('templavoila').'cm1/index.php?file='.rawurlencode($table);
@@ -177,7 +182,7 @@ class tx_templavoila_cm1 {
 				if ($res) {
 					while (false != ($referenceRecord = $TYPO3_DB->sql_fetch_assoc ($res))) {
 						$pageRecord = t3lib_beFunc::getRecord('pages', $referenceRecord['pid']);
-						$icon = t3lib_iconWorks::getIconImage('pages', $pageRecord, $backRef->backPath);
+						$icon = tx_templavoila_icons::getIconForRecord('pages', $pageRecord);
 	// To do: Display language flag icon and jump to correct language
 #						if ($referenceRecord['lkey'] != 'lDEF') {
 #							$icon .= ' lKey:'.$referenceRecord['lkey'];

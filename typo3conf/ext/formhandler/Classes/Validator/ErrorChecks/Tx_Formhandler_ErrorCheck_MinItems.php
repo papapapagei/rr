@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_ErrorCheck_MinItems.php 36522 2010-08-09 08:58:58Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_ErrorCheck_MinItems.php 40269 2010-11-16 15:23:54Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -33,11 +33,11 @@ class Tx_Formhandler_ErrorCheck_MinItems extends Tx_Formhandler_AbstractErrorChe
 	 */
 	public function check(&$check, $name, &$gp) {
 		$checkFailed = '';
-		
-		if(isset($gp[$name])) {
+
+		if (isset($gp[$name])) {
 			$value = Tx_Formhandler_StaticFuncs::getSingle($check['params'], 'value');
-			if(is_array($gp[$name])) {
-				if(count($gp[$name]) < $value) {
+			if (is_array($gp[$name])) {
+				if (count($gp[$name]) < $value) {
 					$checkFailed = $this->getCheckFailed($check);
 				}
 			} else {
@@ -46,7 +46,6 @@ class Tx_Formhandler_ErrorCheck_MinItems extends Tx_Formhandler_AbstractErrorChe
 		}
 		return $checkFailed;
 	}
-
 
 }
 ?>

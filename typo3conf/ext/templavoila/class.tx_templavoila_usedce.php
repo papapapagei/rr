@@ -34,14 +34,6 @@
  * [CLASS/FUNCTION INDEX of SCRIPT]
  *
  *
- *
- *   62: class tx_templavoila_usedCE
- *   72:     function init($page_uid)
- *   97:     function filter($table, $uid)
- *
- * TOTAL FUNCTIONS: 2
- * (This index is automatically created/updated by the extension "extdeveval")
- *
  */
 
 
@@ -72,7 +64,7 @@ class tx_templavoila_usedCE {
 	function init($page_uid)	{
 
 			// Initialize TemplaVoila API class:
-		if(version_compare(TYPO3_version,'4.3.0','<')) {
+		if(t3lib_div::int_from_ver(TYPO3_version) < 4003000) {
 			$apiClassName = t3lib_div::makeInstanceClassName('tx_templavoila_api');
 			$apiObj = new $apiClassName ('pages');
 		} else {

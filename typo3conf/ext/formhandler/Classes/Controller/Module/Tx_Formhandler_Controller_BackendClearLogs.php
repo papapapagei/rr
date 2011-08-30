@@ -23,10 +23,10 @@ class Tx_Formhandler_Controller_BackendClearLogs extends Tx_Formhandler_Abstract
 
 
 	/**
-	 * The GimmeFive component manager
+	 * The Formhandler component manager
 	 *
 	 * @access protected
-	 * @var Tx_GimmeFive_Component_Manager
+	 * @var Tx_Formhandler_Component_Manager
 	 */
 	protected $componentManager;
 
@@ -42,11 +42,11 @@ class Tx_Formhandler_Controller_BackendClearLogs extends Tx_Formhandler_Abstract
 	/**
 	 * The constructor for a finisher setting the component manager and the configuration.
 	 *
-	 * @param Tx_GimmeFive_Component_Manager $componentManager
+	 * @param Tx_Formhandler_Component_Manager $componentManager
 	 * @param Tx_Formhandler_Configuration $configuration
 	 * @return void
 	 */
-	public function __construct(Tx_GimmeFive_Component_Manager $componentManager, Tx_Formhandler_Configuration $configuration) {
+	public function __construct(Tx_Formhandler_Component_Manager $componentManager, Tx_Formhandler_Configuration $configuration) {
 		$this->componentManager = $componentManager;
 		$this->configuration = $configuration;
 
@@ -83,7 +83,7 @@ class Tx_Formhandler_Controller_BackendClearLogs extends Tx_Formhandler_Abstract
 		//init gp params
 		$params = t3lib_div::_GP('formhandler');
 		
-		if(isset($params['clearTables']) && is_array($params['clearTables'])) {
+		if (isset($params['clearTables']) && is_array($params['clearTables'])) {
 			$this->clearTables($params['clearTables']);
 		}
 
@@ -97,7 +97,8 @@ class Tx_Formhandler_Controller_BackendClearLogs extends Tx_Formhandler_Abstract
 	 * @return void
 	 */
 	protected function clearTables($tablesArray) {
-		foreach($tablesArray as $table) {
+		$table = array_pop($tablesArray);
+		if($table === 'tx_formhandler_log') {
 			$GLOBALS['TYPO3_DB']->sql_query('TRUNCATE ' . $table);
 		}
 	}
@@ -119,11 +120,11 @@ class Tx_Formhandler_Controller_BackendClearLogs extends Tx_Formhandler_Abstract
 		$markers['###LLL:total_rows###'] = $LANG->getLL('total_rows');
 		
 		$markers['###TABLES###'] = '';
-		foreach($existingTables as $table => $tableSettings) {
+		foreach ($existingTables as $table => $tableSettings) {
 			
-			if(strpos($table, 'tx_formhandler_') > -1) {
+			if (strpos($table, 'tx_formhandler_') > -1) {
 				$res = $GLOBALS['TYPO3_DB']->sql_query('SELECT COUNT(*) as rowCount FROM ' . $table);
-				if($res) {
+				if ($res) {
 					$rowCode = Tx_Formhandler_StaticFuncs::getSubpart($this->templateCode, '###CLEAR_LOGS_TABLE###');
 					$tableMarkers = array();
 					$row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);

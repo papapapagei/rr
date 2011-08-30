@@ -30,18 +30,24 @@
 class tx_templavoila_datastructure_dbbase extends tx_templavoila_datastructure {
 
 	protected $row;
-
+	protected $sortbyField;
 	/**
 	 *
 	 * @param integer $uid
 	 */
 	public function __construct($uid) {
-		$this->row = t3lib_beFunc::getRecordWSOL('tx_templavoila_datastructure', $uid);
+			// getting the DS for the DB and make sure the workspace-overlay is performed (done internally)
+		if (TYPO3_MODE == 'FE') {
+			$this->row = $GLOBALS['TSFE']->sys_page->checkRecord('tx_templavoila_datastructure', $uid);
+		} else {
+			$this->row = t3lib_beFunc::getRecordWSOL('tx_templavoila_datastructure', $uid);
+		}
 
 		$this->setLabel($this->row['title']);
 		$this->setScope($this->row['scope']);
 			// path relative to typo3 maindir
 		$this->setIcon( '../uploads/tx_templavoila/' . $this->row['previewicon']);
+		$this->setSortbyField($GLOBALS['TCA']['tx_templavoila_datastructure']['ctrl']['sortby']);
 	}
 
 	/**
@@ -58,6 +64,15 @@ class tx_templavoila_datastructure_dbbase extends tx_templavoila_datastructure {
 	 */
 	public function getKey() {
 		return $this->row['uid'];
+	}
+
+	/**
+	 * Provides the datastructure configuration as XML
+	 *
+	 * @return string
+	 */
+	public function getDataprotXML() {
+		return $this->row['dataprot'];
 	}
 
 	/**
@@ -92,6 +107,72 @@ class tx_templavoila_datastructure_dbbase extends tx_templavoila_datastructure {
 			$permission = FALSE;
 		}
 		return $permission;
+	}
+
+	/**
+	 * Retrieve the filereference of the template
+	 *
+	 * @return string
+	 */
+	public function getTstamp() {
+		return $this->row['tstamp'];
+	}
+
+	/**
+	 * Retrieve the filereference of the template
+	 *
+	 * @return string
+	 */
+	public function getCrdate() {
+		return $this->row['crdate'];
+	}
+
+	/**
+	 * Retrieve the filereference of the template
+	 *
+	 * @return string
+	 */
+	public function getCruser() {
+		return $this->row['cruser_id'];
+	}
+
+	/**
+	 * @param void
+	 * @return mixed
+	 */
+	public function getBeLayout() {
+		$beLayout = FALSE;
+		if ($this->row['belayout']) {
+			$beLayout = t3lib_div::getURL(t3lib_div::getFileAbsFileName($this->row['belayout']));
+		}
+		return $beLayout;
+	}
+
+	/**
+	 * @param string	$fieldname
+	 * @return void
+	 */
+	protected function setSortbyField($fieldname) {
+		if (isset($this->row[$fieldname])) {
+			$this->sortbyField = $fieldname;
+		} elseif (!$this->sortbyField) {
+			$this->sortbyField = 'sorting';
+		}
+	}
+
+	/**
+	 * @param void
+	 * @return string
+	 */
+	public function getSortingFieldValue() {
+		if ($this->sortbyField == 'title') {
+			$fieldVal = $this->getLabel();		// required to resolve LLL texts
+		} elseif ($this->sortbyField == 'sorting') {
+			$fieldVal = str_pad($this->row[$this->sortbyField], 15, "0", STR_PAD_LEFT);
+		} else {
+			$fieldVal = $this->row[$this->sortbyField];
+		}
+		return $fieldVal;
 	}
 }
 

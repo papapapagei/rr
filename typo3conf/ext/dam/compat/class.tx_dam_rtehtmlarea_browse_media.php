@@ -104,6 +104,8 @@ class tx_dam_rtehtmlarea_browse_media implements t3lib_browseLinksHook {
 		if (!$this->browserRenderObj->isReadOnlyFolder($path)) {
 			$allowedItems[] = 'media_upload';
 		}
+			// Excluding items based on Page TSConfig
+		$allowedItems = array_diff($allowedItems, t3lib_div::trimExplode(',',str_replace( array('file', 'upload'), array('media', 'media_upload'), $this->browserRenderObj->modPageConfig['properties']['removeTabs']),1));
 		return $allowedItems;
 	}
 	
@@ -209,6 +211,7 @@ class tx_dam_rtehtmlarea_browse_media implements t3lib_browseLinksHook {
 		$this->browserRenderObj->mode =& $this->mode;
 		$this->browserRenderObj->act =& $this->act;
 		$this->browserRenderObj->bparams =& $this->bparams;
+		$this->browserRenderObj->thisConfig =& $this->invokingObject->thisConfig;
 			// init the DAM object
 		$this->browserRenderObj->initDAM();
 			// processes MOD_SETTINGS

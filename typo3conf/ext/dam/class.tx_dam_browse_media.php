@@ -74,6 +74,7 @@ if (!defined ('PATH_txdam')) {
 require_once(PATH_txdam.'lib/class.tx_dam_browsetrees.php');
 require_once(PATH_txdam.'lib/class.tx_dam_scbase.php');
 require_once(PATH_txdam.'lib/class.tx_dam_guifunc.php');
+require_once(PATH_site.'typo3/class.browse_links.php');
 
 
 
@@ -93,6 +94,9 @@ class tx_dam_browse_media extends browse_links {
 
 
 	var $MCONF_name = 'txdam_elbrowser';
+	
+		// Page TSConfig for this module (for the current page not the Media sysfolder)
+	public $modPageConfig;
 
 	/**
 	 * Check if this object should be rendered.
@@ -258,19 +262,12 @@ class tx_dam_browse_media extends browse_links {
 				'disallowedFileTypes' => $this->disallowedFileTypes,
 				'addParams' => $this->addParams,
 				'pointer' => $this->damSC->selection->pointer->page,
+				'SLCMD' => t3lib_div::_GPmerged('SLCMD'),
 				'Selection' => $this->damSC->selection->sl->sel,
 				'Query' => $this->damSC->selection->qg->query,
-				'QueryArray' => $this->damSC->selection->qg->getQueryParts()
+				'QueryArray' => $this->damSC->selection->qg->getQueryParts(),
+				'PM' => t3lib_div::_GPmerged('PM'),
 			);
-			
-			if (t3lib_div::compat_version('4.3')) {
-				$debugArr['SLCMD'] = t3lib_div::_GPmerged('SLCMD');
-				$debugArr['PM'] = t3lib_div::_GPmerged('PM');
-			}
-			else {
-				$debugArr['SLCMD'] = t3lib_div::GParrayMerged('SLCMD');
-				$debugArr['PM'] = t3lib_div::GParrayMerged('PM');
-			}
 
 			$this->damSC->debugContent['browse_links'] = '<h4>EB SETTINGS</h4>'.t3lib_div::view_array($debugArr);
 
@@ -330,15 +327,18 @@ class tx_dam_browse_media extends browse_links {
 
 			// Starting content:
 		$content = $this->doc->startPage('TBE file selector');
-
 			// Initializing the action value, possibly removing blinded values etc:
 		$allowedItems = array('file', 'upload');
+			// Excluding items based on Page TSConfig
+		$allowedItems = array_diff($allowedItems, t3lib_div::trimExplode(',',$this->modPageConfig['properties']['removeTabs'],1));
+			// Excluding items based on RTE configuration
 		$allowedItems = array_diff($allowedItems, t3lib_div::trimExplode(',',$this->thisConfig['blindLinkOptions'],1));
+			// Excluding uploads into readOnly folders
 		$path = tx_dam::path_makeAbsolute($this->damSC->path);
 		if ($this->isReadOnlyFolder($path)) {
 			$allowedItems = array_diff($allowedItems, array('upload'));
 		}
-		if (!in_array($this->act, $allowedItems))	{
+		if (!in_array($this->act, $allowedItems)) {
 			$this->act = 'file';
 		}
 		$this->reinitParams();
@@ -360,24 +360,24 @@ class tx_dam_browse_media extends browse_links {
 		}
 		$content .= $this->doc->getTabMenuRaw($menuDef);
 
-
 			// Depending on the current action we will create the actual module content:
-		switch($this->act)	{
-			case 'file':
-				$this->addDisplayOptions();
-				$content.= $this->dam_select($this->allowedFileTypes, $this->disallowedFileTypes);
-				$content.= $this->damSC->getOptions();
-			break;
-			case 'upload':
-				$content.= $this->dam_upload($this->allowedFileTypes, $this->disallowedFileTypes);
-				$content.= $this->damSC->getOptions();
-				$content.='<br /><br />';
-				if ($BE_USER->isAdmin() || $BE_USER->getTSConfigVal('options.createFoldersInEB'))	{
-					$content.= $this->createFolder(tx_dam::path_makeAbsolute($this->damSC->path));
-				}
-			break;
+		if (in_array($this->act, $allowedItems)){
+			switch ($this->act) {
+				case 'file':
+					$this->addDisplayOptions();
+					$content.= $this->dam_select($this->allowedFileTypes, $this->disallowedFileTypes);
+					$content.= $this->damSC->getOptions();
+				break;
+				case 'upload':
+					$content.= $this->dam_upload($this->allowedFileTypes, $this->disallowedFileTypes);
+					$content.= $this->damSC->getOptions();
+					$content.='<br /><br />';
+					if ($BE_USER->isAdmin() || $BE_USER->getTSConfigVal('options.createFoldersInEB'))	{
+						$content.= $this->createFolder(tx_dam::path_makeAbsolute($this->damSC->path));
+					}
+				break;
+			}
 		}
-
 			// Add some space
 		$content.='<br />';
 
@@ -423,6 +423,35 @@ if (is_string($allowedFileTypes)) {
 	$allowedFileTypes = explode(',', $allowedFileTypes);
 }
 
+		$this->doc->inDocStylesArray[] = "
+
+table#typo3-curUrl { margin: 10px 0 0 10px; }
+
+form#ltargetform { margin-left: 10px; }
+
+div#medialistfunctions {
+	background-color: #dadada;
+	font-weight: bold;
+	padding: 2px 5px;
+	margin-top: 2px;
+	clear: both;
+}
+
+#medialistfunctions div.infobar-extraline { float: left; line-height: 26px; }
+#medialistfunctions div#searchbox { float: right; line-height: 26px; }
+#medialistfunctions div#searchbox input#searchString { width: 130px; height: 15px; margin-right: 5px; }
+
+#medialistfunctions label {  min-width: 100px; vertical-align: top; display: block; float: left; }
+
+#medialistfunctions form { padding: 0; }
+#medialistfunctions form.sortingSelector {  line-height: 26px; clear: both; }
+
+div.buttonToggleDisplayWrap { margin-left: 10px; margin-bottom: 5px; clear: both; }
+form.formNoPadding { padding: 0 !important; }
+
+		";
+
+
 		$content = '';
 
 			// the browse trees
@@ -445,17 +474,14 @@ if (is_string($allowedFileTypes)) {
 		$allowed = implode(' / -', $allowed);
 
 		$fileList = '';
-		$fileList .= $allowed ? $this->barheader($allowed.' ') : '<h3 class="bgColor5">&nbsp;</h3>';
-		$fileList .= $this->doc->spacer(5);
+		//$fileList .= $allowed ? $this->barheader($allowed.' ') : '<h3 class="bgColor5">&nbsp;</h3>';
+		//$fileList .= $this->doc->spacer(5);
 		$fileList .= $this->renderFileList($files, $this->mode, $this->act);
 
 
 		$content .= $this->getFormTag();
 		// fix for MSIE 80 breaking the table-layout due to nested forms
 		$content .= '<form action="#" method="post" id="nested-form-bug"></form>';
-		$content .= $this->getSelectionSelector();
-		$content .= $this->damSC->getResultInfoBar();
-
 
 
 			// Putting the parts together, side by side:
@@ -475,14 +501,13 @@ if (is_string($allowedFileTypes)) {
 		$content .= '</form>';
 
 			// current selection box
-		$content .= $this->getFormTag();
+		$content .= $this->getFormTag('','formNoPadding');
 
 		$selectionBox = '<div style="width:70%;">'.$this->damSC->getCurrentSelectionBox().'</div>';
 		$content .= $this->damSC->buttonToggleDisplay('selectionBox', $GLOBALS['LANG']->getLL('selection',1), $selectionBox);
 		$content .= '</form>';
 
 		$content .= $this->getFormTag();
-		$content .= $this->damSC->getSearchBox('simple', false);
 		$content .= '</form>';
 		
 		return $content;
@@ -520,7 +545,7 @@ if (is_string($allowedFileTypes)) {
 
 		$selectionSelector = t3lib_BEfunc::getFuncMenu($this->addParams, 'SET[txdamSel]', $this->getModSettings('txdamSel'), $selectionSelector);
 
-		$content .= '<div class="infobar-extraline">'.$GLOBALS['LANG']->getLL('selection',1).': '.$selectionSelector.'</div>';
+		$content .= '<div class="infobar-extraline"><label>' . $GLOBALS['LANG']->getLL('selection',1) . ':</label> '.$selectionSelector.'</div>';
 
 		return $content;
 	}
@@ -550,7 +575,7 @@ if (is_string($allowedFileTypes)) {
 				$fL = is_array($TCA['tx_dam']['columns'][$field]) ? preg_replace('#:$#', '', $GLOBALS['LANG']->sL($TCA['tx_dam']['columns'][$field]['label'])) : '['.$field.']';
 				$fieldsSelItems[$field] = t3lib_div::fixed_lgd_cs($fL, 15);
 			}
-			$sortingSelector = $GLOBALS['LANG']->sL('LLL:EXT:dam/lib/locallang.xml:labelSorting',1).' ';
+			$sortingSelector = '<label>' . $GLOBALS['LANG']->sL('LLL:EXT:dam/lib/locallang.xml:labelSorting',1).'</label> ';
 			$sortingSelector .= t3lib_befunc::getFuncMenu($this->addParams, 'SET[txdam_sortField]', $this->damSC->MOD_SETTINGS['txdam_sortField'], $fieldsSelItems);
 			
 			if($this->damSC->MOD_SETTINGS['txdam_sortRev'])	{
@@ -566,11 +591,21 @@ if (is_string($allowedFileTypes)) {
 						'<img'.t3lib_iconWorks::skinImg($BACK_PATH,'gfx/pil2down.gif','width="12" height="7"').' alt="" />'.
 						'</button>';
 			}
-			$sortingSelector = $this->getFormTag().$sortingSelector.'</form>';
+			$sortingSelector = $this->getFormTag('','sortingSelector').$sortingSelector.'</form>';
 		}
 
+		$out .= '<div id="medialistfunctions">';
+		$out .= $this->getSelectionSelector();
+		$out .= $this->getFormTag();
+		$out .= $this->damSC->getSearchBox('simple', false,'',true);
+		$out .= '</form>';
 		$out .= $sortingSelector;
-		$out .= $this->doc->spacer(20);
+		$out .= '</div>';
+		$out .= $this->doc->spacer(10);
+		$out .= $this->damSC->getResultInfoBar();
+		$out .= $this->doc->spacer(10);
+
+
 
 			// Listing the files:
 		if (is_array($files) AND count($files))	{
@@ -578,7 +613,12 @@ if (is_string($allowedFileTypes)) {
 			$displayThumbs = $this->displayThumbs();
 			$dragdropImage = ($mode == 'rte' && ($act == 'dragdrop' ||$act == 'media_dragdrop'));
 			$addAllJS = '';
-
+			$displayItems = '';
+			if ($mode == 'rte' && $act == 'media') {
+				if (t3lib_div::inList($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['rtehtmlarea']['plugins']['TYPO3Link']['additionalAttributes'], 'usedamcolumn') && $this->thisConfig['buttons.']['link.'][$act.'.']['properties.']['title.']['useDAMColumn']) {
+					$displayItems = $this->thisConfig['buttons.']['link.'][$act.'.']['properties.']['title.']['useDAMColumn.']['displayItems'] ? $this->thisConfig['buttons.']['link.'][$act.'.']['properties.']['title.']['useDAMColumn.']['displayItems'] : '';
+				}
+			}
 				// Traverse the file list:
 			$lines=array();
 			foreach($files as $fI)	{
@@ -614,12 +654,17 @@ if (is_string($allowedFileTypes)) {
 						);
 						
 					$titleAttrib = tx_dam_guiFunc::icon_getTitleAttribute($fI);
-
 					
 					if ($mode === 'rte' AND $act === 'media') {
 						$onClick = 'return link_folder(\''.t3lib_div::rawUrlEncodeFP(tx_dam::file_relativeSitePath($fI['_ref_file_path'])).'\');';
+						if (t3lib_div::inList($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['rtehtmlarea']['plugins']['TYPO3Link']['additionalAttributes'], 'txdam')) {
+							$onClick = 'browse_links_setAdditionalValue(\'txdam\', \'' . $fI['uid'] . '\');' . $onClick;
+						}
+						if (t3lib_div::inList($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['rtehtmlarea']['plugins']['TYPO3Link']['additionalAttributes'], 'usedamcolumn') && $this->thisConfig['buttons.']['link.'][$act.'.']['properties.']['title.']['useDAMColumn']) {
+							$damTitle = t3lib_div::quoteJSvalue(tx_dam_guiFunc::meta_compileHoverText($fI, $displayItems, ', '));
+							$onClick = 'if (document.getElementById(\'rtehtmlarea-dam-browse-links-useDAMColumn\') && document.getElementById(\'rtehtmlarea-dam-browse-links-useDAMColumn\').checked) { document.getElementById(\'rtehtmlarea-browse-links-anchor_title\').value = ' . $damTitle . '; }' . $onClick;
+						}
 						$ATag_insert = '<a href="#" onclick="'.htmlspecialchars($onClick).'"'.$titleAttrib.'>';
-						
 					} elseif (!$dragdropImage) {
 						$onClick = 'return insertElement('.$onClick_params.');';
 						$ATag_add = '<a href="#" onclick="'.htmlspecialchars($onClick).'"'.$titleAttrib.'>';
@@ -721,6 +766,7 @@ if (is_string($allowedFileTypes)) {
 						</tr>';
 			}
 
+
 			// Wrap all the rows in table tags:
 		$out .= '
 
@@ -745,6 +791,9 @@ if (is_string($allowedFileTypes)) {
 			$addAllButton = '<div class="addAllButton"><span class="button"'.$titleAttrib.'>'.$ATag_add.$addIcon.$label.'</a></span></div>';
 			$out = $out.$addAllButton;
 		}
+
+		$out .= $this->doc->spacer(20);
+		$out .= $this->damSC->getResultInfoBar();
 
 			// Return accumulated content for filelisting:
 		return $out;
@@ -1116,7 +1165,7 @@ if (is_string($allowedFileTypes)) {
 	 * Values:
 	 * 0: form field name reference
 	 * 1: old/unused?
-	 * 2: old/unused?
+	 * 2: RTEConfigParams
 	 * 3: allowed types. Eg. "tt_content" or "gif,jpg,jpeg,tif,bmp,pcx,tga,png,pdf,ai"
 	 * 4: allowed file types when tx_dam table. Eg. "gif,jpg,jpeg,tif,bmp,pcx,tga,png,pdf,ai"
 	 *
@@ -1130,8 +1179,17 @@ if (is_string($allowedFileTypes)) {
 
 		$this->reinitParams();
 
+			// Set Page TSConfig
 		$pArr = explode('|', $this->bparams);
-		$this->formFieldName = $pArr[0];
+		if ($this->mode == 'rte') {
+			$RTEtsConfigParts = explode(':', $pArr[2]);
+			$tscPID = $RTEtsConfigParts[5];
+		} else {
+			$this->formFieldName = $pArr[0];
+			$elementParts = explode('][', preg_replace('/\]$/', '', preg_replace('/^(TSFE_EDIT\[data\]\[|data\[)/', '', $this->formFieldName)));
+			list($tscPID,$thePid) = t3lib_BEfunc::getTSCpid(trim($elementParts[0]), trim($elementParts[1]), $thePidValue);
+		}
+		$this->modPageConfig = $GLOBALS['BE_USER']->getTSConfig('tx_dam.elementBrowser', t3lib_BEfunc::getPagesTSconfig($tscPID));
 
 		$this->allowedFileTypes = array();
 		$this->disallowedFileTypes = array();
@@ -1205,10 +1263,13 @@ if (is_string($allowedFileTypes)) {
 
 	}
 
-	function getFormTag($name='') {
+	function getFormTag($name=false, $class=false) {
 		global $TYPO3_CONF_VARS;
-		
-		return '<form action="'.htmlspecialchars(t3lib_div::linkThisScript($this->addParams)).'" method="post" name="'.$name.'" enctype="'.$TYPO3_CONF_VARS['SYS']['form_enctype'].'">';
+
+		$classAttribute = $class ? ' class="' . $class. '"' : '';
+		$nameAndIdAttributes = $name ? ' name="' . $name . '" id="' . $name . '" ' : '';
+
+		return '<form action="'.htmlspecialchars(t3lib_div::linkThisScript($this->addParams)).'" method="post" ' . $nameAndIdAttributes . $classAttribute . ' enctype="'.$TYPO3_CONF_VARS['SYS']['form_enctype'].'">';
 	}
 
 

@@ -78,9 +78,9 @@
             <label index="tx_damindex_index.indexed_message">%s Dateien indexiert in %s sek.</label>
             <label index="tx_damindex_index.set_options">Ausgewählte Optionen:</label>
             <label index="tx_damindex_index.meta_data_preset">Voreingestellte Metainformationen:</label>
-            <label index="tx_damindex_index.search_files">Suche nach Dateien zum indexieren. Bitte etwas Geduld.</label>
-            <label index="tx_damindex_index.no_files">Es wurden keine Dateine zum indexieren gefunden.</label>
-            <label index="tx_damindex_index.no_new_files">Es wurden keine &lt;b&gt;neuen&lt;/b&gt;Dateine zum indexieren gefunden.</label>
+				<label index="tx_damindex_index.search_files">Suche nach Dateien zum Indexieren. Bitte etwas Geduld.</label>
+				<label index="tx_damindex_index.no_files">Es wurden keine Dateien zum Indexieren gefunden.</label>
+				<label index="tx_damindex_index.no_new_files">Es wurden keine &lt;b&gt;neuen&lt;/b&gt;Dateien zum Indexieren gefunden.</label>
         </languageKey>
     </data>
     <orig_hash type="array">

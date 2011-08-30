@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_Generator_CSV.php 37698 2010-09-06 07:46:06Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_Generator_CSV.php 40269 2010-11-16 15:23:54Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -22,6 +22,7 @@
  * @subpackage	Generator
  * @uses export2CSV in csv.lib.php
  */
+require_once(t3lib_extMgm::extPath('formhandler') . 'Resources/PHP/parsecsv.lib.php');
 class Tx_Formhandler_Generator_CSV {
 
 	/**
@@ -33,22 +34,21 @@ class Tx_Formhandler_Generator_CSV {
 	protected $csv;
 
 	/**
-	 * The GimmeFive component manager
+	 * The Formhandler component manager
 	 *
 	 * @access protected
-	 * @var Tx_GimmeFive_Component_Manager
+	 * @var Tx_Formhandler_Component_Manager
 	 */
 	protected $componentManager;
 
 	/**
 	 * Default Constructor
 	 *
-	 * @param Tx_GimmeFive_Component_Manager $componentManager The component manager of GimmeFive
+	 * @param Tx_Formhandler_Component_Manager $componentManager The component manager of Formhandler
 	 * @return void
 	 */
-	public function __construct(Tx_GimmeFive_Component_Manager $componentManager) {
+	public function __construct(Tx_Formhandler_Component_Manager $componentManager) {
 		$this->componentManager = $componentManager;
-
 	}
 
 	/**
@@ -61,44 +61,44 @@ class Tx_Formhandler_Generator_CSV {
 	 */
 	public function generateModuleCSV($records, $exportParams = array()) {
 
-		require_once(t3lib_extMgm::extPath('formhandler') . 'Resources/PHP/parsecsv.lib.php');
+		
 		$data = array();
 		$dataSorted = array();
 
 		//build data array
-		foreach($records as $record) {
-			if(!is_array($record['params'])) {
+		foreach ($records as $idx => $record) {
+			if (!is_array($record['params'])) {
 				$record['params'] = array();
 			}
-			foreach($record['params'] as &$param) {
-				if(is_array($param)) {
+			foreach ($record['params'] as $subIdx => &$param) {
+				if (is_array($param)) {
 					$param = implode(';', $param);
 				}
 			}
 			$data[] = $record['params'];
 		}
-		if(count($exportParams) > 0) {
-			foreach($data as &$params) {
-				
+		if (count($exportParams) > 0) {
+			foreach ($data as $idx => &$params) {
+
 				// fill missing fields with empty value
-				foreach($exportParams as $key => $param) {
-					if(!array_key_exists($param, $params)) {
+				foreach ($exportParams as $key => $param) {
+					if (!array_key_exists($param, $params)) {
 						$params[$param] = '';
 					}
 				}
-				
+
 				// remove unwanted fields
-				foreach($params as $key => $value) {
-					if(!in_array($key, $exportParams)) {
+				foreach ($params as $key => $value) {
+					if (!in_array($key, $exportParams)) {
 						unset($params[$key]);
 					}
 				}
 			}
 		}
-		
+
 		// sort data
 		$dataSorted = array();
-		foreach($data as $array) {
+		foreach ($data as $idx => $array) {
 			$dataSorted[] = $this->sortArrayByArray($array, $exportParams);
 		}
 		$data = $dataSorted;
@@ -109,40 +109,12 @@ class Tx_Formhandler_Generator_CSV {
 		die();
 	}
 
-	/**
-	 * Function to generate a CSV file from submitted form values. This function is called by Tx_Formhandler_Finisher_SubmittedOK
-	 *
-	 * @param array $params The values to export to CSV
-	 * @param array $exportParams A list of fields to export. If not set all fields are exported
-	 * @see Tx_Formhandler_Finisher_SubmittedOK::process()
-	 * @return void
-	 */
-	public function generateFrontendCSV($params, $exportParams = array()) {
-		require_once(t3lib_extMgm::extPath('formhandler') . 'Resources/PHP/parsecsv.lib.php');
-
-		//build data
-		foreach($params as $key => &$value) {
-			if(is_array($value)) {
-				$value = implode(',', $value);
-			}
-			if(count($exportParams) > 0 && !in_array($key, $exportParams)) {
-				unset($params[$key]);
-			}
-			$value = str_replace('"', '""', $value);
-		}
-
-		// create new parseCSV object.
-		$csv = new parseCSV();
-		$csv->output('formhandler.csv', $data, $exportParams);
-		die();
-	}
-	
 	private function sortArrayByArray($array, $orderArray) {
 		$ordered = array();
-		foreach($orderArray as $key) {
-			if(array_key_exists($key, $array)) {
-					$ordered[$key] = $array[$key];
-					unset($array[$key]);
+		foreach ($orderArray as $idx => $key) {
+			if (array_key_exists($key, $array)) {
+				$ordered[$key] = $array[$key];
+				unset($array[$key]);
 			}
 		}
 		return $ordered + $array;

@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_View_Mail.php 36528 2010-08-09 13:04:41Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_View_Mail.php 42315 2011-01-18 16:13:38Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -31,7 +31,7 @@ class Tx_Formhandler_View_Mail extends Tx_Formhandler_View_Form {
 	 * @return string content
 	 */
 	public function render($gp, $errors) {
-		
+
 		//set GET/POST parameters
 		$this->gp = array();
 		$this->gp = $gp;
@@ -43,53 +43,61 @@ class Tx_Formhandler_View_Mail extends Tx_Formhandler_View_Form {
 		$this->settings = $this->parseSettings();
 
 		//set language file
-		if(!$this->langFiles) {
+		if (!$this->langFiles) {
 			$this->langFiles = Tx_Formhandler_Globals::$langFiles;
 		}
 
 		$componentSettings = $this->getComponentSettings();
-		if($componentSettings[$errors['mode']][$errors['suffix'] . '.']['arrayValueSeparator']) {
+		if ($componentSettings[$errors['mode']][$errors['suffix'] . '.']['arrayValueSeparator']) {
 			$this->settings['arrayValueSeparator'] = $componentSettings[$errors['mode']][$errors['suffix'] . '.']['arrayValueSeparator'];
 			$this->settings['arrayValueSeparator.'] = $componentSettings[$errors['mode']][$errors['suffix'] . '.']['arrayValueSeparator.'];
 		}
-		if($errors['suffix'] != 'plain') {
+		if ($errors['suffix'] != 'plain') {
 			$this->sanitizeMarkers();
 		}
-		
+
 		//read master template
-		if(!$this->masterTemplates) {
+		if (!$this->masterTemplates) {
 			$this->readMasterTemplates();
 		}
-		
-		if(!empty($this->masterTemplates)) {
+
+		if (!empty($this->masterTemplates)) {
 			$this->replaceMarkersFromMaster();
 		}
-		
+
 		//substitute ISSET markers
 		$this->substituteIssetSubparts();
 
 		//fill TypoScript markers
-		if(is_array($this->settings['markers.'])) {
+		if (is_array($this->settings['markers.'])) {
 			$this->fillTypoScriptMarkers();
 		}
 
 		//fill default markers
 		$this->fillDefaultMarkers();
-
-		//fill value_[fieldname] markers
-		$this->fillValueMarkers();
+		
+		if(intval($this->settings['fillValueMarkersBeforeLangMarkers']) === 1) {
+			
+			//fill value_[fieldname] markers
+			$this->fillValueMarkers();
+		}
 
 		//fill LLL:[language_key] markers
 		$this->fillLangMarkers();
+		
+		$this->fillSelectedMarkers();
 
+		if(intval($this->settings['fillValueMarkersBeforeLangMarkers']) !== 1) {
+			
+			//fill value_[fieldname] markers
+			$this->fillValueMarkers();
+		}
 
 		//remove markers that were not substituted
 		$content = Tx_Formhandler_StaticFuncs::removeUnfilledMarkers($this->template);
-
-
 		return trim($content);
 	}
-	
+
 	/**
 	 * Sanitizes GET/POST parameters by processing the 'checkBinaryCrLf' setting in TypoScript
 	 *
@@ -100,15 +108,14 @@ class Tx_Formhandler_View_Mail extends Tx_Formhandler_View_Form {
 		$checkBinaryCrLf = $componentSettings['checkBinaryCrLf'];
 		if ($checkBinaryCrLf != '') {
 			$paramsToCheck = t3lib_div::trimExplode(',', $checkBinaryCrLf);
-			foreach($paramsToCheck as &$field) {
-				if(!is_array($field)) {
+			foreach ($paramsToCheck as $idx => $field) {
+				if (!is_array($field)) {
 					$this->gp[$field] = str_replace (chr(13), '', $this->gp[$field]);
 					$this->gp[$field] = str_replace ('\\', '', $this->gp[$field]);
 					$this->gp[$field] = nl2br($this->gp[$field]);
 				}
 			}
 		}
-		
 	}
 
 }

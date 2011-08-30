@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_Finisher_Redirect.php 37886 2010-09-09 18:06:11Z fabriziobranca $
+ * $Id: Tx_Formhandler_Finisher_Redirect.php 46243 2011-04-05 15:17:49Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -31,9 +31,6 @@
  */
 class Tx_Formhandler_Finisher_Redirect extends Tx_Formhandler_AbstractFinisher {
 
-
-
-
 	/**
 	 * The main method called by the controller
 	 *
@@ -43,12 +40,10 @@ class Tx_Formhandler_Finisher_Redirect extends Tx_Formhandler_AbstractFinisher {
 
 		//read redirect page
 		$redirectPage = Tx_Formhandler_StaticFuncs::getSingle($this->settings, 'redirectPage');
-
-		if(!isset($redirectPage)) {
-			return;
+		if (!isset($redirectPage)) {
+			return $this->gp;
 		}
-		Tx_Formhandler_Session::reset();
-
+		Tx_Formhandler_Globals::$session->reset();
 		Tx_Formhandler_Staticfuncs::doRedirect($redirectPage, $this->settings['correctRedirectUrl'], $this->settings['additionalParams.']);
 		exit();
 	}
@@ -64,7 +59,7 @@ class Tx_Formhandler_Finisher_Redirect extends Tx_Formhandler_AbstractFinisher {
 		$this->gp = $gp;
 		$this->settings = $tsConfig;
 		$redirect = Tx_Formhandler_StaticFuncs::pi_getFFvalue($this->cObj->data['pi_flexform'], 'redirect_page', 'sMISC');
-		if($redirect) {
+		if ($redirect) {
 			$this->settings['redirectPage'] = $redirect;
 		}
 	}

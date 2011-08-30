@@ -1,12 +1,110 @@
+2011-03-05  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #15478: Remove exclude = 1 for required fields of tx_dam table (Thanks Lorenz Ulrich)
+
+2011-03-14  Lorenz Ulrich <lorenz.ulrich@visol.ch>
+	* Fix #17583: ALTER TABLE fails during update of tx_dam (Thanks Tobias Schaefer)
+	* Feature #17530: Enable full stdWrap in tx_dam_tsfe::fetchFileList() (Thanks Francois Suter)
+
+2011-03-05  Dan Osipov <dosipov@phillyburbs.com>
+	* Follow up to #17379: dam is not linkvalidator aware: Added manual section.
+	* Added feature #14009: Feature: Enable secure downloads for DAM files (Thanks Francois Suter)
+	* Update ext_emconf.php following release of 1.2.1
+
+2011-02-27  Dan Osipov <dosipov@phillyburbs.com>
+	* Added feature #17379: dam is not linkvalidator aware (Thanks Michael Miousse)
+
+2011-01-26  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #9777: Usability issues with the DAM media browser (Thanks Lorenz Ulrich)
+	* Fix #16964: Adjust backend layout to TYPO3 4.5
+	* Fix #15078: Add TSConfig documentation
+	* Update ext_emconf.php following release of 1.2.0
+
+2011-01-26  Lorenz Ulrich <lorenz.ulrich@visol.ch>
+	* Fix #17322: DBctrl Icons are not floating
+
+2011-01-25  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #10408: No replacement of special characters after upload in non-UTF-8-installations (Thanks Lorenz Ulrich)
+	* Fix #15342: Call to deprecated function in class.tx_dam_tcefunc.php (Thanks Lorenz Ulrich)
+	* Fix #16297: htmlArea RTE: Unable to create links if DAM is installed.
+
+2011-01-23  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #17218: Media>List>Process doesn't work in 1.1 branch and trunk (Thanks Lorenz Ulrich)
+
+2011-01-22  Lorenz Ulrich <lorenz.ulrich@visol.ch>
+	* Fix #10318: DAM > Info crashes on larger installs (Thanks to Thorsten Kahler)
+
+2011-01-22  Lorenz Ulrich <lorenz.ulrich@visol.ch>
+	* Added feature #15005: browsetree -> folders: Use natcasesort for folder sorting (Thanks to Christian Kuhn)
+
+2011-01-22  Lorenz Ulrich <lorenz.ulrich@visol.ch>
+	* Fix #16896: Term Web>File in extension configuration is outdated (Thanks to Chris Mueller)
+
+2011-01-22  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #13468: Title with quote gets trunked (Thanks Dmitry Dulepov)
+
+2011-01-18  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #13676: Showing meta information in workspace view (Thanks Chris Mueller)
+
+2011-01-17  Lorenz Ulrich <lorenz.ulrich@visol.ch>
+	* Fix #16062: <label> for "Mark entries with missing files as deleted" in Media/Tool/Check index (Thanks to Christian Weiske)
+
+2011-01-16  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #16543: batch edit not working in Typo3 4.5 (Thanks to Lorenz Ulrich)
+
+2010-12-09  Lorenz Ulrich <lorenz.ulrich@visol.ch>
+	* Fix #16390: DAM floods deprecation log by using $ICON_TYPES  (Thanks to Uschi Renziehausen)
+
+2010-11-07  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #15651: Table fields in extension manager (Thanks Chris Mueller)
+	* Upgrade version number in ext_emconf.php
+
+2010-11-06  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #15566: When trying to edit a media link in the RTE, the external url tab is activated (Thanks Stanislas Rolland)
+
+2010-08-21  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #15099: Bugfix: "Reference to main window is not set properly" after selecting an uploaded file in RTE link dialogue (Thanks to Lorenz Ulrich)
+
+2010-08-03  Dmitry Dulepov  <dmitry@typo3.org>
+
+	* Fixed bug #12525: database column is not DBAL-compatible
+
+2010-08-01  Dmitry Dulepov  <dmitry@typo3.org>
+
+	* Added feature #15283: Add copy and move operations for files in the context menu
+
+2010-07-11  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #13555: Bug: tt_content table is hard-coded in tx_dam_tsfe::fetchFileList() (Thanks to Francois Suter)
+	* Fix #13271: Bug: DAM does not recognise ogv as video (Thanks to Lorenz Ulrich)
+
+2010-07-07  Dmitry Dulepov  <dmitry@typo3.org>
+
+	* Fixed bug #14853: Remove all translations from DAM
+	* Fixed bug #11821: Deleting an unused file gives a "file used" warning
+	* Fixed bug #14434: SQL error when creating tables
+
+2010-06-26  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #10936: TSconfig indexing.replaceFile.reindexingMode has no effect (Thanks to Francois Suter)
+	* Fix #13884: Cleanup: Duplicate title attribute in img tag in element browser (Thanks to Chris Mueller)
+
+2010-06-16  Lorenz Ulrich <lorenz.ulrich@visol.ch>
+	* Fix #14724 Bug: Indexing: Only the last chosen option will be shown in step 4 (Thanks to Andy Grunwald)
+
 2010-05-14  Dan Osipov <dosipov@phillyburbs.com>
 	* Fix #11394: Bug: Broken media list view in IE-8 (Thanks to Chetan Thapliyal)
 
 2010-05-08  Dan Osipov <dosipov@phillyburbs.com>
+	* Fix #12778: Add softref parser for related DAM records (Thanks to Steffen Kamper & Thorsten Kahler)
 	* Fix #12050: tx_dam_file_upload = 0 does not hide upload-icon in file-modul (Thanks to Michiel Roos)
 
 2010-05-02  Dan Osipov <dosipov@phillyburbs.com>
-	* Fix #11083: DAM duplicates Medias in Workspace (Thanks to  Martin Kästner)
+	* Fix #11083: DAM duplicates Medias in Workspace (Thanks to  Martin K?stner)
 	* Fix #14164: Bug / Feature: TSFE img tag binding class should not unset txdam attribute (Thanks to Francois Suter)
+
+2010-03-17  Oliver Hader  <oliver@typo3.org>
+
+	* Cleanup: Updated extension version to 1.1.6-dev
+	* Cleanup: Updated ext_emconf.php file
+	* Fixed bug: Calling tx_dam::_addItem() with undefined items produces PHP warnings
 
 2010-02-18  Michiel Roos <michiel@netcreators.com>
 	* Fix #13298: Indexing problems when lockingMode is disabled (Thanks to ste)
@@ -25,29 +123,23 @@
 
 2010-01-11  Michiel Roos <michiel@netcreators.com>
 	* Fix #13198: Selecting dam items by click on category title causes an SQL-error (Thanks to Uschi Renziehausen)
+	* Fix #13203: Duplication of tool 'Media types' in trunk version (Thanks to Uschi Renziehausen)
 
 2010-01-10  Michiel Roos <michiel@netcreators.com>
 	* Fix #12918: Respect $TCA['tx_dam_cat']['ctrl']['default_sortby'] = 'mychoice'; everywhere (Thanks to Uschi Renziehausen)
 
-2010-01-01  Michiel Roos <michiel@netcreators.com>
-	* Change: Updated manual
-	* Change: DAM requires PHP 5.2 and TYPO3 4.2.10
-
 2009-12-30  Michiel Roos <michiel@netcreators.com>
-	* Change on #11700: use t3lib_div::compat_version instead of version_compare
-
-2009-12-30  Michiel Roos <michiel@netcreators.com>
-	* Fixed bug #11700: use _GPmerged instead of GParrayMerged (Thanks to Georg Ringer)
+	* Fixed bug #11700: use _GPmerged instead of GParrayMerged (Thanks to Ringer Georg)
+	* Change: dam 1.2 requires TYPO3 4.3 and PHP 5.2.6
 	* Fixed bug #12538: Generated contain an invalid relational operator [DBAL] (Thanks to Xavier Perseguers)
+	* Fixed bug #11936: search in media->list does not work (Thanks to Andreas Kiessling)
 	* Change for #9177: Indexing files is not working in NFS Filesystems (Thanks to Ingo Schmitt, Dan Osipov)
 
 2009-12-29  Michiel Roos <michiel@netcreators.com>
 	* Feature: #12408: Integrate flash uploader into DAM (Thanks to Dan Osipov)
 	* Fixed bug #9177: Indexing files is not working in NFS Filesystems (Thanks to Ingo Schmitt, Dan Osipov)
+	* Fixed bug #13031: table definition in tx_dam_media_types (Thanks to Chris Mueller)
 	* Fixed bug #12967: Element browser upload page doesn't highlight the actual folder (Thanks to Oliver Krause)
-
-2009-12-22  Michiel Roos <michiel@netcreators.com>
-	* Fixed bug #10008: OpenType font not recognized as font (Thanks to Michiel Roos)
 
 2009-12-21  Michiel Roos <michiel@netcreators.com>
 	* Fixed bug #9830: Not responing queries using category selections (Thanks to Peter Kuehn)
@@ -86,6 +178,10 @@
 	* #10194: Cannot confirm "delete file" operation
 	* #11070: modfunc_list_thumbs: rendering on "no files found"
 
+2009-07-14  Dan Osipov  <dosipov@phillyburbs.com>
+
+	* #10556: Flexible media types
+
 2009-07-04  Oliver Hader  <oliver@typo3.org>
 
 	* Fixed bug #10817: Upload doesn't work for admins under 4.3
@@ -106,6 +202,14 @@
 
 	* #10350: Form problems using MSIE (Thanks to Michael Stucki)
 
+2009-02-11  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Added feature #10293: Better link title handling in htmlArea RTE
+
+2009-02-09  Michiel Roos <michiel@netcreators.com>
+
+	* #10077 Add Icons to page:module TCEform
+
 2009-02-08  Michael Stucki  <michael@typo3.org>
 
 	* #10347: Categories valid for "All" languages are not fetched by category tree selector (Thanks to Francois Suter)
@@ -122,6 +226,10 @@
 	* #10271: dam calls deprecated function t3lib_div::uniqueArray() (Thanks to Uschi Renziehausen)
 	* #10270: dam has multiple calls to deprecated function t3lib_div::fixed_lgd() (Thanks to Uschi Renziehausen)
 
+2009-01-27  Stanislas Rolland  <typo3@sjbr.ca>
+
+	* Added feature #9951: Add Page TSConfig option to remove upload tab in media browser
+
 2009-01-18  Michiel Roos <michiel@netcreators.com>
 
 	* #8646: Click on icon before title does not react (Thanks to Uschi Renziehausen)
@@ -134,10 +242,6 @@
 2009-01-15  Michiel Roos <michiel@netcreators.com>
 
 	* #10149 dam should conflict with dam_info (Thanks to Michael Stucki)
-
-2009-01-12  Michiel Roos <michiel@netcreators.com>
-
-	* #10077 Add Icons to page:module TCEform
 
 2008-12-26  Michiel Roos <michiel@netcreators.com>
 

@@ -700,7 +700,7 @@ class tx_dam_cmd extends tx_dam_SCbase {
 
 		return '<div style="margin-bottom:0.8em">
 					<strong>'.tx_dam_guifunc::getFieldLabel($field).'</strong><br />
-					<input type="text" name="data['.$field.']" value="'.$value.'" style="width:'.$size.'em;" maxlength="'.$max.'" />
+					<input type="text" name="data['.htmlspecialchars($field).']" value="'.htmlspecialchars($value).'" style="width:'.$size.'em;" maxlength="'.$max.'" />
 				</div>';
 	}
 }

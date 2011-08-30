@@ -24,7 +24,7 @@
 /**
  * Module 'TemplaVoila' for the 'templavoila' extension.
  *
- * $Id$
+ * $Id: index.php 45628 2011-03-25 15:35:19Z tolleiv $
  *
  * @author   Kasper Sk�rh�j <kasper@typo3.com>
  */
@@ -101,7 +101,6 @@ require_once (t3lib_extMgm::extPath('templavoila') . 'classes/class.tx_templavoi
 class tx_templavoila_module2 extends t3lib_SCbase {
 
 		// External static:
-	var $templatesDir;
 	var $importPageUid = 0;	// Import as first page in root!
 
 
@@ -115,16 +114,14 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	var $errorsWarnings=array();
 
 	var $extConf;							// holds the extconf configuration
-	var $staticDS = FALSE;					// Boolean; if true DS records are file based
 
 	var $cm1Link = '../cm1/index.php';
 
 
 	function init() {
 		parent::init();
-		$this->templatesDir = $GLOBALS['TYPO3_CONF_VARS']['BE']['fileadminDir'] . 'templates/';
+
 		$this->extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['templavoila']);
-		$this->staticDS = ($this->extConf['staticDS.']['enable']);
 	}
 
 	/**
@@ -136,6 +133,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 		$this->MOD_MENU = array(
 #			'set_showDSxml' => '',
 			'set_details' => '',
+			'set_unusedDs' => '',
 			'wiz_step' => ''
 		);
 
@@ -159,14 +157,21 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 		$this->pageinfo = t3lib_BEfunc::readPageAccess($this->id,$this->perms_clause);
 		$access = is_array($this->pageinfo) ? 1 : 0;
 
-		if ($access)    {
+		$this->doc = t3lib_div::makeInstance('template');
+		$this->doc->docType= 'xhtml_trans';
+		$this->doc->backPath = $BACK_PATH;
+		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
+			$this->doc->setModuleTemplate('EXT:templavoila/resources/templates/mod2_default.html');
+		} else {
+			$this->doc->setModuleTemplate(t3lib_extMgm::extRelPath('templavoila') . 'resources/templates/mod2_default.html');
+		}
+		$this->doc->bodyTagId = 'typo3-mod-php';
+		$this->doc->divClass = '';
+		$this->doc->form='<form action="'.htmlspecialchars('index.php?id='.$this->id).'" method="post" autocomplete="off">';
 
+
+		if ($access)    {
 				// Draw the header.
-			$this->doc = t3lib_div::makeInstance('noDoc');
-			$this->doc->docType= 'xhtml_trans';
-			$this->doc->backPath = $BACK_PATH;
-			$this->doc->divClass = '';
-			$this->doc->form='<form action="'.htmlspecialchars('index.php?id='.$this->id).'" method="post" autocomplete="off">';
 
 				// Add custom styles
 			$this->doc->styleSheetFile2 = t3lib_extMgm::extRelPath($this->extKey)."mod2/styles.css";
@@ -188,7 +193,18 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 						}
 					}
 				}
-			').$this->doc->getDynTabMenuJScode();
+			');
+
+			if(t3lib_div::int_from_ver(TYPO3_version) < 4003000) {
+				$this->doc->JScode.=$this->doc->getDynTabMenuJScode();
+			} elseif(t3lib_div::int_from_ver(TYPO3_version) < 4005000) {
+				$this->doc->getDynTabMenuJScode();
+			} else {
+				$this->doc->loadJavascriptLib('js/tabmenu.js');
+			}
+
+
+			$this->renderModuleContent();
 
 				// Setting up support for context menus (when clicking the items icon)
 			$CMparts = $this->doc->getContextMenuCode();
@@ -196,25 +212,30 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 			$this->doc->JScode.= $CMparts[0];
 			$this->doc->postCode.= $CMparts[2];
 
-			$this->content.=$this->doc->startPage($LANG->getLL('title'));
-
-				// Rendering module content
-			$this->renderModuleContent();
-
-			if ($BE_USER->mayMakeShortcut()) {
-				$this->content.='<br /><br />'.$this->doc->makeShortcutIcon('id',implode(',',array_keys($this->MOD_MENU)),$this->MCONF['name']);
+		} else {
+			if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
+				$flashMessage = t3lib_div::makeInstance(
+					't3lib_FlashMessage',
+					$GLOBALS['LANG']->getLL('noaccess'),
+					'',
+					t3lib_FlashMessage::ERROR
+				);
+				$this->content = $flashMessage->render();
+			} else {
+				$this->content = tx_templavoila_icons::getIcon('status-dialog-error') . '<strong>' . $GLOBALS['LANG']->getLL('error') . '</strong> ' . $GLOBALS['LANG']->getLL('noaccess');
 			}
-		} else {	// No access or no current uid:
-
-				// Draw the header.
-			$this->doc = t3lib_div::makeInstance('noDoc');
-			$this->doc->docType= 'xhtml_trans';
-			$this->doc->backPath = $BACK_PATH;
-			$this->doc->divClass = '';
-			$this->doc->form='<form action="'.htmlspecialchars('index.php?id='.$this->id).'" method="post" autocomplete="off">';
-			$this->content.=$this->doc->startPage($LANG->getLL('title'));
 		}
-		$this->content.=$this->doc->endPage();
+			// Place content inside template
+		$content  = $this->doc->startPage($GLOBALS['LANG']->getLL('title'));
+		$content .= $this->doc->moduleBody(
+			$this->pageinfo,
+			$this->getDocHeaderButtons(),
+			array('CONTENT' => $this->content)
+		);
+		$content .= $this->doc->endPage();
+
+			// Replace content with templated content
+		$this->content = $content;
 	}
 
 	/**
@@ -227,7 +248,32 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	}
 
 
+	/**
+	 * Gets the buttons that shall be rendered in the docHeader.
+	 *
+	 * @return	array		Available buttons for the docHeader
+	 */
+	protected function getDocHeaderButtons() {
+		$buttons = array(
+			'csh'      => t3lib_BEfunc::cshItem('_MOD_web_txtemplavoilaM2', '', $this->backPath),
+			'shortcut' => $this->getShortcutButton(),
+		);
+		return $buttons;
+	}
 
+	/**
+	 * Gets the button to set a new shortcut in the backend (if current user is allowed to).
+	 *
+	 * @return	string		HTML representiation of the shortcut button
+	 */
+	protected function getShortcutButton() {
+		$result = '';
+		if ($GLOBALS['BE_USER']->mayMakeShortcut()) {
+			$result = $this->doc->makeShortcutIcon('id', implode(',', array_keys($this->MOD_MENU)), $this->MCONF['name']);
+		}
+
+		return $result;
+	}
 
 
 
@@ -288,29 +334,9 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	function renderModuleContent_searchForTODS()	{
 		global $LANG;
 
-			// Select all Data Structures in the PID and put into an array:
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-					'pid,count(*)',
-					'tx_templavoila_datastructure',
-					'pid>=0'.t3lib_BEfunc::deleteClause('tx_templavoila_datastructure'),
-					'pid'
-				);
-		while($res && false !== ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)))	{
-			$list[$row['pid']]['DS'] = $row['count(*)'];
-		}
-		$GLOBALS['TYPO3_DB']->sql_free_result($res);
-
-			// Select all Template Records in PID:
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-					'pid,count(*)',
-					'tx_templavoila_tmplobj',
-					'pid>=0'.t3lib_BEfunc::deleteClause('tx_templavoila_tmplobj'),
-					'pid'
-				);
-		while($res && false !== ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)))	{
-			$list[$row['pid']]['TO'] = $row['count(*)'];
-		}
-		$GLOBALS['TYPO3_DB']->sql_free_result($res);
+		$dsRepo = t3lib_div::makeInstance('tx_templavoila_datastructureRepository');
+		$toRepo = t3lib_div::makeInstance('tx_templavoila_templateRepository');
+		$list = $toRepo->getTemplateStoragePids();
 
 			// Traverse the pages found and list in a table:
 		$tRows = array();
@@ -322,22 +348,22 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 			</tr>';
 
 		if (is_array($list))	{
-			foreach($list as $pid => $stat)	{
+			foreach($list as $pid) {
 				$path = $this->findRecordsWhereUsed_pid($pid);
 				if ($path)	{
 					$tRows[] = '
 						<tr class="bgColor4">
 							<td><a href="index.php?id=' . $pid . '" onclick="setHighlight(' . $pid . ')">' .
-								t3lib_iconWorks::getIconImage('pages', t3lib_BEfunc::getRecord('pages', $pid), $this->doc->backPath, 'class="absmiddle" title="'. htmlspecialchars($alttext) . '"') .
-								htmlspecialchars($path).'</a></td>
-							<td>'.htmlspecialchars($stat['DS']).'</td>
-							<td>'.htmlspecialchars($stat['TO']).'</td>
+							tx_templavoila_icons::getIconForRecord('pages', t3lib_BEfunc::getRecord('pages', $pid)).
+							htmlspecialchars($path).'</a></td>
+							<td>' . $dsRepo->getDatastructureCountForPid($pid) . '</td>
+							<td>' . $toRepo->getTemplateCountForPid($pid) . '</td>
 						</tr>';
 				}
 			}
 
 				// Create overview
-			$outputString = $LANG->getLL('description');
+			$outputString = $LANG->getLL('description_pagesWithCertainDsTo');
 			$outputString .= '<br /><table border="0" cellpadding="1" cellspacing="1" class="typo3-dblist">'.implode('',$tRows).'</table>';
 
 				// Add output:
@@ -353,71 +379,33 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	function renderModuleContent_mainView()	{
 		global $LANG;
 
-
-		$dsRecords = array();
-
-			// Select all static Data Structures and add to array:
-		if (is_array($GLOBALS['TBE_MODULES_EXT']['xMOD_tx_templavoila_cm1']['staticDataStructures'])) {
-			foreach($GLOBALS['TBE_MODULES_EXT']['xMOD_tx_templavoila_cm1']['staticDataStructures'] as $staticDS)	{
-				if ($this->staticDS || (!$this->staticDS && $staticDS['scope'] != 1 && $staticDS['scope'] != 2)) {
-					$staticDS['_STATIC'] = 1;
-					$dsRecords[$staticDS['scope']][] = $staticDS;
-				}
-			}
-		}
-		if (!$this->staticDS) {
-				// Select all Data Structures in the PID and put into an array:
-			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-						'*',
-						'tx_templavoila_datastructure',
-						'pid='.intval($this->id).t3lib_BEfunc::deleteClause('tx_templavoila_datastructure'),
-						'',
-						'title'
-					);
-			while($res && false !== ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)))	{
-				t3lib_BEfunc::workspaceOL('tx_templavoila_datastructure',$row);
-				$dsRecords[$row['scope']][] = $row;
-			}
-			$GLOBALS['TYPO3_DB']->sql_free_result($res);
-		}
-
-
-			// Select all Template Records in PID:
-		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
-					'cruser_id,crdate,tstamp,uid,title, parent, fileref, sys_language_uid, datastructure, rendertype,localprocessing, previewicon,description,fileref_mtime,fileref_md5',
-					'tx_templavoila_tmplobj',
-					'pid='.intval($this->id).t3lib_BEfunc::deleteClause('tx_templavoila_tmplobj'),
-					'',
-					'title'
-				);
-		$toRecords = array();
-		while($res && false !== ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)))	{
-			t3lib_BEfunc::workspaceOL('tx_templavoila_tmplobj',$row);
-			$toRecords[$row['parent']][] = $row;
-		}
-		$GLOBALS['TYPO3_DB']->sql_free_result($res);
-
 			// Traverse scopes of data structures display template records belonging to them:
 			// Each scope is places in its own tab in the tab menu:
-		$dsScopes = array_unique(array_merge(array(1,2,0),array_keys($dsRecords)));
-		$parts = array();
+		$dsScopes = array(
+			tx_templavoila_datastructure::SCOPE_PAGE,
+			tx_templavoila_datastructure::SCOPE_FCE,
+			tx_templavoila_datastructure::SCOPE_UNKNOWN
+		);
+
+		$toIdArray = $parts = array();
 		foreach($dsScopes as $scopePointer)	{
 
 				// Create listing for a DS:
-			list($content,$dsCount,$toCount) = $this->renderDSlisting($dsRecords[$scopePointer],$toRecords,$scopePointer);
+			list($content,$dsCount,$toCount,$toIdArrayTmp) = $this->renderDSlisting($scopePointer);
+			$toIdArray = array_merge($toIdArrayTmp, $toIdArray);
 			$scopeIcon = '';
 
 				// Label for the tab:
 			switch((string)$scopePointer)	{
-				case '1':
+				case tx_templavoila_datastructure::SCOPE_PAGE:
 					$label = $LANG->getLL('pagetemplates');
-					$scopeIcon = t3lib_iconWorks::getIconImage('pages',array(),$this->doc->backPath,'class="absmiddle"');
+					$scopeIcon = tx_templavoila_icons::getIconForRecord('pages', array());
 				break;
-				case '2':
+				case tx_templavoila_datastructure::SCOPE_FCE:
 					$label = $LANG->getLL('fces');
-					$scopeIcon = t3lib_iconWorks::getIconImage('tt_content',array(),$this->doc->backPath,'class="absmiddle"');
+					$scopeIcon = tx_templavoila_icons::getIconForRecord('tt_content', array());
 				break;
-				case '0':
+				case tx_templavoila_datastructure::SCOPE_UNKNOWN:
 					$label = $LANG->getLL('other');
 				break;
 				default:
@@ -441,9 +429,12 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 			// Find lost Template Objects and add them to a TAB if any are found:
 		$lostTOs = '';
 		$lostTOCount = 0;
-		foreach($toRecords as $TOcategories)	{
-			foreach($TOcategories as $toObj)	{
-				$rTODres = $this->renderTODisplay($toObj, $toRecords, 1);
+
+		$toRepo = t3lib_div::makeInstance('tx_templavoila_templateRepository');
+		$toList = $toRepo->getAll($this->id);
+		foreach($toList as $toObj)	{
+			if(!in_array($toObj->getKey(), $toIdArray)) {
+				$rTODres = $this->renderTODisplay($toObj, -1, 1);
 				$lostTOs.= $rTODres['HTML'];
 				$lostTOCount++;
 			}
@@ -474,94 +465,93 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 			// Create setting handlers:
 		$settings = '<p>'.
 				t3lib_BEfunc::getFuncCheck('','SET[set_details]',$this->MOD_SETTINGS['set_details'],'',t3lib_div::implodeArrayForUrl('',$_GET,'',1,1)).' Show Details &nbsp;&nbsp;&nbsp;'.
+				t3lib_BEfunc::getFuncCheck('','SET[set_unusedDs]',$this->MOD_SETTINGS['set_unusedDs'],'',t3lib_div::implodeArrayForUrl('',$_GET,'',1,1)).' Show unused datastructures &nbsp;&nbsp;&nbsp;'.
 			'</p>';
 
 			// Add output:
 		$this->content.=$this->doc->section($LANG->getLL('title'),
 			$settings.
-			$this->doc->getDynTabMenu($parts,'TEMPLAVOILA:templateModule:'.$this->id, 0,0,300)
+			$this->doc->getDynTabMenu($parts,'TEMPLAVOILA:templateOverviewModule:'.$this->id, 0,0,300)
 		,0,1);
 	}
 
 	/**
 	 * Renders Data Structures from $dsScopeArray
 	 *
-	 * @param	array		Data Structures in a numeric array
-	 * @param	array		Array of template objects (passed by reference).
 	 * @param	[type]		$scope: ...
 	 * @return	array		Returns array with three elements: 0: content, 1: number of DS shown, 2: number of root-level template objects shown.
 	 */
-	function renderDSlisting($dsScopeArray, &$toRecords,$scope)	{
+	function renderDSlisting($scope)	{
+
+		$currentPid = intval(t3lib_div::_GP('id'));
+		$dsRepo = t3lib_div::makeInstance('tx_templavoila_datastructureRepository');
+		$toRepo = t3lib_div::makeInstance('tx_templavoila_templateRepository');
+
+		if ($this->MOD_SETTINGS['set_unusedDs']) {
+			$dsList = $dsRepo->getDatastructuresByScope($scope);
+		} else {
+			$dsList = $dsRepo->getDatastructuresByStoragePidAndScope($currentPid, $scope);
+		}
+
 		$dsCount=0;
 		$toCount=0;
 		$content='';
 		$index='';
+		$toIdArray = array(-1);
 
 			// Traverse data structures to list:
-		if (is_array($dsScopeArray))	{
-			foreach($dsScopeArray as $dsR)	{
-
-					// Set relation ID of data structure used by template objects:
-				$dsID = $dsR['_STATIC'] ? $dsR['path'] : $dsR['uid'];
+		if (count($dsList))	{
+			foreach($dsList as $dsObj)	{
 
 					// Traverse template objects which are not children of anything:
 				$TOcontent = '';
 				$indexTO = '';
-				$toIdArray = array(-1);
-				if (is_array($toRecords[0]))	{
-					$newPid = $dsR['pid'];
-					$newFileRef = '';
-					$newTitle = ($dsR['_STATIC'] && substr($dsR['title'], 0, 4) == 'LLL:' ? $GLOBALS['LANG']->sL($dsR['title']) : $dsR['title']) . ' [TEMPLATE]';
-					foreach($toRecords[0] as $toIndex => $toObj)	{
-						if (!strcmp($toObj['datastructure'], $dsID))	{	// If the relation ID matches, render the template object:
-							$rTODres = $this->renderTODisplay($toObj, $toRecords, $scope);
-							$TOcontent.= '<a name="to-'.$toObj['uid'].'"></a>'.$rTODres['HTML'];
-							$indexTO.='
-								<tr class="bgColor4">
-									<td>&nbsp;&nbsp;&nbsp;</td>
-									<td><a href="#to-' . $toObj['uid'] . '">' . htmlspecialchars($GLOBALS['LANG']->sL($toObj['title'])) . '</a></td>
-									<td>&nbsp;</td>
-									<td>&nbsp;</td>
-									<td align="center">'.$rTODres['mappingStatus'].'</td>
-									<td align="center">'.$rTODres['usage'].'</td>
-								</tr>';
-							$toCount++;
-								// Unset it so we can eventually see what is left:
-							unset($toRecords[0][$toIndex]);
 
-							$newPid=-$toObj['uid'];
-							$newFileRef = $toObj['fileref'];
-							$newTitle = $toObj['title'].' [ALT]';
-							$toIdArray[] = $toObj['uid'];
+				$toList = $toRepo->getTemplatesByDatastructure($dsObj, $currentPid);
+
+				$newPid = intval(t3lib_div::_GP('id'));
+				$newFileRef = '';
+				$newTitle = $dsObj->getLabel() . ' [TEMPLATE]';
+				if (count($toList))	{
+					foreach($toList as $toObj)	{
+						$toIdArray[] = $toObj->getKey();
+						if ($toObj->hasParentTemplate()) {
+							continue;
 						}
+						$rTODres = $this->renderTODisplay($toObj, $scope);
+						$TOcontent.= '<a name="to-' . $toObj->getKey() . '"></a>'.$rTODres['HTML'];
+						$indexTO.='
+							<tr class="bgColor4">
+								<td>&nbsp;&nbsp;&nbsp;</td>
+								<td><a href="#to-' . $toObj->getKey() . '">' . htmlspecialchars($toObj->getLabel()) . $toObj->hasParentTemplate() . '</a></td>
+								<td>&nbsp;</td>
+								<td>&nbsp;</td>
+								<td align="center">'.$rTODres['mappingStatus'].'</td>
+								<td align="center">'.$rTODres['usage'].'</td>
+							</tr>';
+						$toCount++;
+
+						$newPid=-$toObj->getKey();
+						$newFileRef = $toObj->getFileref();
+						$newTitle = $toObj->getLabel() . ' [ALT]';
 					}
-
-						// For static DS we use the current page id as the PID:
-                    if (is_null($newPid)) {
-                        $newPid = t3lib_div::_GP('id');
-                    }
-
-                    if ($newFileRef == '' && $dsR['_STATIC'] && isset($dsR['fileref'])) {
-                    	$newFileRef = $dsR['fileref'];
-                    }
-
-						// New-TO link:
-					$TOcontent.= '<a href="#" onclick="'.htmlspecialchars(t3lib_BEfunc::editOnClick(
-								'&edit[tx_templavoila_tmplobj]['.$newPid.']=new'.
-								'&defVals[tx_templavoila_tmplobj][datastructure]='.rawurlencode($dsID).
-								'&defVals[tx_templavoila_tmplobj][title]='.rawurlencode($newTitle).
-								'&defVals[tx_templavoila_tmplobj][fileref]='.rawurlencode($newFileRef)
-								,$this->doc->backPath)).'"><img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/new_el.gif','width="11" height="12"').' alt="" class="absmiddle" />Create new Template Object</a>';
 				}
+					// New-TO link:
+				$TOcontent.= '<a href="#" onclick="'.htmlspecialchars(t3lib_BEfunc::editOnClick(
+							'&edit[tx_templavoila_tmplobj]['.$newPid.']=new'.
+							'&defVals[tx_templavoila_tmplobj][datastructure]='.rawurlencode($dsObj->getKey()).
+							'&defVals[tx_templavoila_tmplobj][title]='.rawurlencode($newTitle).
+							'&defVals[tx_templavoila_tmplobj][fileref]='.rawurlencode($newFileRef)
+							,$this->doc->backPath)).'">' . tx_templavoila_icons::getIcon('actions-document-new') . $GLOBALS['LANG']->getLL('createnewto', 1) . '</a>';
 
 					// Render data structure display
-				$rDSDres = $this->renderDataStructureDisplay($dsR, $toIdArray, $scope);
-				$content.= '<a name="ds-'.md5($dsID).'"></a>'.$rDSDres['HTML'];
+				$rDSDres = $this->renderDataStructureDisplay($dsObj, $scope, $toIdArray);
+				$content.= '<a name="ds-' . md5($dsObj->getKey()) . '"></a>' . $rDSDres['HTML'];
 				$index.='
 					<tr class="bgColor4-20">
-						<td colspan="2"><a href="#ds-'.md5($dsID).'">'.htmlspecialchars($dsR['title'] ? $GLOBALS['LANG']->sL($dsR['title']) : $dsR['path']).'</a></td>
+						<td colspan="2"><a href="#ds-'.md5($dsObj->getKey()).'">'.htmlspecialchars($dsObj->getLabel()).'</a></td>
 						<td align="center">'.$rDSDres['languageMode'].'</td>
-						<td align="center">'.$rDSDres['container'].'</td>
+						<td>'.$rDSDres['container'].'</td>
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 					</tr>';
@@ -592,7 +582,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 						$content;
 		}
 
-		return array($content,$dsCount,$toCount);
+		return array($content,$dsCount,$toCount,$toIdArray);
 	}
 
 	/**
@@ -603,149 +593,95 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	 * @param	integer		Scope.
 	 * @return	string		HTML content
 	 */
-	function renderDataStructureDisplay($dsR, $toIdArray, $scope)	{
+	function renderDataStructureDisplay(tx_templavoila_datastructure $dsObj, $scope, $toIdArray)	{
 
 		$tableAttribs = ' border="0" cellpadding="1" cellspacing="1" width="98%" style="margin-top: 10px;" class="lrPadding"';
 
 		$XMLinfo = array();
-		$dsID = $dsR['_STATIC'] ? $dsR['path'] : $dsR['uid'];
+		if ($this->MOD_SETTINGS['set_details'])	{
+			$XMLinfo = $this->DSdetails($dsObj->getDataprotXML());
+		}
 
-			// If ds was a true record:
-		if (!$dsR['_STATIC'])	{
-				// Record icon:
-				// Put together the records icon including content sensitive menu link wrapped around it:
-			$recordIcon = t3lib_iconWorks::getIconImage('tx_templavoila_datastructure',$dsR,$this->doc->backPath,'class="absmiddle"');
-			$recordIcon = $this->doc->wrapClickMenuOnIcon($recordIcon, 'tx_templavoila_datastructure', $dsR['uid'], 1, '&callingScriptId='.rawurlencode($this->doc->scriptID));
+		if ($dsObj->isFilebased()) {
+			$onClick = 'document.location=\'' . $this->doc->backPath . 'file_edit.php?target=' . rawurlencode(PATH_site . $dsObj->getKey()) . '&returnUrl=' . rawurlencode(tx_templavoila_div::sanitizeLocalUrl(t3lib_div::getIndpEnv('REQUEST_URI'))) . '\';';
+			$dsIcon = '<a href="#" onclick="' . htmlspecialchars($onClick) . '"><img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/fileicons/xml.gif','width="18" height="16"').' alt="" title="' . $dsObj->getKey() . '" class="absmiddle" /></a>';
+		} else {
+			$dsIcon = tx_templavoila_icons::getIconForRecord('tx_templavoila_datastructure' ,array(), array('title' => $dsObj->getKey()));
+			$dsIcon = $this->doc->wrapClickMenuOnIcon($dsIcon, 'tx_templavoila_datastructure', $dsObj->getKey(), 1, '&callingScriptId='.rawurlencode($this->doc->scriptID));
+		}
 
-				// Preview icon:
-			if ($dsR['previewicon'])	{
-				if (isset($this->modTSconfig['properties']['dsPreviewIconThumb']) && $this->modTSconfig['properties']['dsPreviewIconThumb'] != '0') {
-					$icon = t3lib_BEfunc::getThumbNail($this->doc->backPath . 'thumbs.php', PATH_site . 'uploads/tx_templavoila/' . $dsR['previewicon'],
+			// Preview icon:
+		if ($dsObj->getIcon())	{
+			if (isset($this->modTSconfig['properties']['dsPreviewIconThumb']) && $this->modTSconfig['properties']['dsPreviewIconThumb'] != '0') {
+				$path = realpath(dirname(__FILE__) . '/' . preg_replace('/\w+\/\.\.\//', '', $GLOBALS['BACK_PATH'] . $dsObj->getIcon()));
+				$path = str_replace(realpath(PATH_site) . '/', PATH_site, $path);
+				if($path == FALSE) {
+					$previewIcon = $GLOBALS['LANG']->getLL('noicon', 1);
+				} else {
+					$previewIcon = t3lib_BEfunc::getThumbNail($this->doc->backPath . 'thumbs.php', $path,
 						'hspace="5" vspace="5" border="1"',
 						strpos($this->modTSconfig['properties']['dsPreviewIconThumb'], 'x') ? $this->modTSconfig['properties']['dsPreviewIconThumb'] : '');
-				} else {
-					$icon = '<img src="'.$this->doc->backPath.'../uploads/tx_templavoila/'.$dsR['previewicon'].'" alt="" />';
 				}
 			} else {
-				$icon = $GLOBALS['LANG']->getLL('noicon', 1);
+				$previewIcon = '<img src="' . $this->doc->backPath . $dsObj->getIcon() . '" alt="" />';
 			}
+		} else {
+			$previewIcon = $GLOBALS['LANG']->getLL('noicon', 1);
+		}
 
-				// Links:
-			$editLink = $lpXML.= '<a href="#" onclick="'.htmlspecialchars(t3lib_BEfunc::editOnClick('&edit[tx_templavoila_datastructure]['.$dsR['uid'].']=edit',$this->doc->backPath)).'"><img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/edit2.gif','width="11" height="12"').' alt="" class="absmiddle" /></a>';
-			$dsTitle = '<a href="'.htmlspecialchars('../cm1/index.php?table=tx_templavoila_datastructure&uid=' . $dsR['uid'] . '&returnUrl=' . rawurlencode(tx_templavoila_div::sanitizeLocalUrl(t3lib_div::getIndpEnv('REQUEST_URI')))) . '">' . htmlspecialchars($GLOBALS['LANG']->sL($dsR['title'])) . '</a>';
+			// Links:
+		if ($dsObj->isFilebased()) {
+			$editLink = $editDataprotLink = '';
+			$dsTitle = $dsObj->getLabel();
+		} else {
+			$editLink = $lpXML.= '<a href="#" onclick="'.htmlspecialchars(t3lib_BEfunc::editOnClick('&edit[tx_templavoila_datastructure]['.$dsObj->getKey().']=edit',$this->doc->backPath)).'">' . tx_templavoila_icons::getIcon('actions-document-open') .'</a>';
+			$editDataprotLink =  '<a href="#" onclick="'.htmlspecialchars(t3lib_BEfunc::editOnClick('&edit[tx_templavoila_datastructure]['.$dsObj->getKey().']=edit&columnsOnly=dataprot',$this->doc->backPath)).'">' . tx_templavoila_icons::getIcon('actions-document-open') . '</a>';
+			$dsTitle = '<a href="'.htmlspecialchars('../cm1/index.php?table=tx_templavoila_datastructure&uid=' . $dsObj->getKey() . '&id=' . $this->id . '&returnUrl=' . rawurlencode(tx_templavoila_div::sanitizeLocalUrl(t3lib_div::getIndpEnv('REQUEST_URI')))) . '">' . htmlspecialchars($dsObj->getLabel()) . '</a>';
+		}
 
-			if ($this->MOD_SETTINGS['set_details'])	{
-				$XMLinfo = $this->DSdetails($dsR['dataprot']);
+			// Compile info table:
+		$content.='
+		<table'.$tableAttribs.'>
+			<tr class="bgColor5">
+				<td colspan="3" style="border-top: 1px solid black;">'.
+					$dsIcon.
+					$dsTitle.
+					$editLink.
+					'</td>
+			</tr>
+			<tr class="bgColor4">
+				<td rowspan="'.($this->MOD_SETTINGS['set_details'] ? 4 : 2).'" style="width: 100px; text-align: center;">'.$previewIcon.'</td>
+				' .
+				($this->MOD_SETTINGS['set_details'] ? '<td style="width:200px">' . $GLOBALS['LANG']->getLL('templatestatus', 1) . '</td>
+				<td>' . $this->findDSUsageWithImproperTOs($dsObj, $scope, $toIdArray) . '</td>' : '' ) .
+			'</tr>
+			<tr class="bgColor4">
+				<td>' . $GLOBALS['LANG']->getLL('globalprocessing_xml') . '</td>
+				<td>
+					'.$lpXML.($dsObj->getDataprotXML() ?
+					t3lib_div::formatSize(strlen($dsObj->getDataprotXML())).' bytes'.
+					($this->MOD_SETTINGS['set_details'] ? '<hr/>'.$XMLinfo['HTML'] : '') : '').'
+				</td>
+			</tr>'.($this->MOD_SETTINGS['set_details'] ? '
+			<tr class="bgColor4">
+				<td>' . $GLOBALS['LANG']->getLL('created', 1) . '</td>
+				<td>' . t3lib_BEfunc::datetime($dsObj->getCrdate()) . ' ' . $GLOBALS['LANG']->getLL('byuser', 1) . ' [' . $dsObj->getCruser() . ']</td>
+			</tr>
+			<tr class="bgColor4">
+				<td>' . $GLOBALS['LANG']->getLL('updated', 1) . '</td>
+				<td>'.t3lib_BEfunc::datetime($dsObj->getTstamp()).'</td>
+			</tr>' : '').'
+		</table>
+		';
+
+			// Format XML if requested (renders VERY VERY slow)
+		if ($this->MOD_SETTINGS['set_showDSxml'])	{
+			if ($dsObj->getDataprotXML())	{
+				require_once(PATH_t3lib.'class.t3lib_syntaxhl.php');
+				$hlObj = t3lib_div::makeInstance('t3lib_syntaxhl');
+				$content.='<pre>'.str_replace(chr(9),'&nbsp;&nbsp;&nbsp;',$hlObj->highLight_DS($dsObj->getDataprotXML())).'</pre>';
 			}
-
-				// Template status / link:
-		//	$linkUrl = '../cm1/index.php?file='..'&_load_ds_xml=1';
-
-			$templateStatus = $this->findDSUsageWithImproperTOs($dsID, $toIdArray, $scope);
-		//	$templateStatus.='<br/><a href="'.htmlspecialchars($linkUrl).'">[ Edit datastructure ]</a>';
-
-				// Compile info table:
-			$content.='
-			<table'.$tableAttribs.'>
-				<tr class="bgColor5">
-					<td colspan="3" style="border-top: 1px solid black;">'.
-						$recordIcon.
-						$dsTitle.
-						$editLink.
-						'</td>
-				</tr>
-				<tr class="bgColor4">
-					<td rowspan="'.($this->MOD_SETTINGS['set_details'] ? 4 : 2).'" style="width: 100px; text-align: center;">'.$icon.'</td>
-					<td>' . $GLOBALS['LANG']->getLL('templatestatus', 1) . '</td>
-					<td>'.$templateStatus.'</td>
-				</tr>
-				<tr class="bgColor4">
-					<td>' . $GLOBALS['LANG']->getLL('globalprocessing_xml') . '</td>
-					<td>
-						'.$lpXML.($dsR['dataprot'] ?
-						t3lib_div::formatSize(strlen($dsR['dataprot'])).' bytes'.
-						($this->MOD_SETTINGS['set_details'] ? '<hr/>'.$XMLinfo['HTML'] : '') : '').'
-					</td>
-				</tr>'.($this->MOD_SETTINGS['set_details'] ? '
-				<tr class="bgColor4">
-					<td>' . $GLOBALS['LANG']->getLL('created', 1) . '</td>
-					<td>' . t3lib_BEfunc::datetime($dsR['crdate']) . ' ' . $GLOBALS['LANG']->getLL('byuser', 1) . ' [' . $dsR['cruser_id'] . ']</td>
-				</tr>
-				<tr class="bgColor4">
-					<td>' . $GLOBALS['LANG']->getLL('updated', 1) . '</td>
-					<td>'.t3lib_BEfunc::datetime($dsR['tstamp']).'</td>
-				</tr>' : '').'
-			</table>
-			';
-
-				// Format XML if requested (renders VERY VERY slow)
-			if ($this->MOD_SETTINGS['set_showDSxml'])	{
-				if ($dsR['dataprot'])	{
-					require_once(PATH_t3lib.'class.t3lib_syntaxhl.php');
-					$hlObj = t3lib_div::makeInstance('t3lib_syntaxhl');
-					$content.='<pre>'.str_replace(chr(9),'&nbsp;&nbsp;&nbsp;',$hlObj->highLight_DS($dsR['dataprot'])).'</pre>';
-				}
-				$lpXML.= '<a href="#" onclick="'.htmlspecialchars(t3lib_BEfunc::editOnClick('&edit[tx_templavoila_datastructure]['.$dsR['uid'].']=edit&columnsOnly=dataprot',$this->doc->backPath)).'"><img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/edit2.gif','width="11" height="12"').' alt="" class="absmiddle" /></a>';
-			}
-		} else {	// DS was a file:
-
-				// XML file icon:
-			if (strpos($dsR['path'], 'EXT:') === FALSE) {
-				$onClick = 'document.location=\'' . $this->doc->backPath . 'file_edit.php?target=' . rawurlencode(PATH_site . $dsR['path']) . '&returnUrl=' . rawurlencode(tx_templavoila_div::sanitizeLocalUrl(t3lib_div::getIndpEnv('REQUEST_URI'))) . '\';';
-				$recordIcon = '<a href="#" onclick="' . htmlspecialchars($onClick) . '"><img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/fileicons/xml.gif','width="18" height="16"').' alt="" class="absmiddle" /></a>';
-			} else {
-				$recordIcon = '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/fileicons/xml.gif','width="18" height="16"').' alt="" class="absmiddle" />';
-			}
-
-				// Preview icon:
-			if ($dsR['icon'] && $iconPath = t3lib_div::getFileAbsFileName($dsR['icon']))	{
-				if (isset($this->modTSconfig['properties']['dsPreviewIconThumb']) && $this->modTSconfig['properties']['dsPreviewIconThumb'] != '0') {
-					$icon = t3lib_BEfunc::getThumbNail($this->doc->backPath . 'thumbs.php', PATH_site . 'uploads/tx_templavoila/' . $dsR['previewicon'],
-						'hspace="5" vspace="5" border="1"',
-						strpos($this->modTSconfig['properties']['dsPreviewIconThumb'], 'x') ? $this->modTSconfig['properties']['dsPreviewIconThumb'] : '');
-				} else {
-					$icon = '<img src="'.$this->doc->backPath.'../'.substr($iconPath,strlen(PATH_site)).'" alt="" />';
-				}
-			} else {
-				$icon = $GLOBALS['LANG']->getLL('noicon', 1);
-			}
-
-			$fileReference = t3lib_div::getFileAbsFileName($dsR['path']);
-			if (@is_file($fileReference))	{
-				$fileRef = '<a href="'.htmlspecialchars($this->doc->backPath.'../'.substr($fileReference,strlen(PATH_site))).'" target="_blank">'.
-							htmlspecialchars($dsR['path']).
-							'</a>';
-
-				if ($this->MOD_SETTINGS['set_details'])	{
-					$XMLinfo = $this->DSdetails(t3lib_div::getUrl($fileReference));
-				}
-			} else {
-				$fileRef = htmlspecialchars($dsR['path']) . ' ' . $GLOBALS['LANG']->getLL('filenotfound', 1);
-			}
-
-			$dsRecTitle = (substr($dsR['title'], 0, 4) == 'LLL:' ? $GLOBALS['LANG']->sL($dsR['title']) : $dsR['title']);
-
-				// Compile table:
-			$content.='
-			<table'.$tableAttribs.'>
-				<tr class="bgColor2">
-					<td colspan="3" style="border-top: 1px solid black;">'.
-						$recordIcon.
-						htmlspecialchars($dsRecTitle).
-						'</td>
-				</tr>
-				<tr class="bgColor4">
-					<td rowspan="'.($this->MOD_SETTINGS['set_details'] ? 2 : 1).'" style="width: 100px; text-align: center;">'.$icon.'</td>
-					<td>' . $GLOBALS['LANG']->getLL('xmlfile', 1) . '</td>
-					<td>'.$fileRef.
-						($this->MOD_SETTINGS['set_details'] ? '<hr/>'.$XMLinfo['HTML'] : '').'</td>
-				</tr>'.($this->MOD_SETTINGS['set_details'] ? '
-				<tr class="bgColor4">
-					<td>' . $GLOBALS['LANG']->getLL('templatestatus', 1) . '</td>
-					<td>'.$this->findDSUsageWithImproperTOs($dsID, $toIdArray, $scope).'</td>
-				</tr>' : '').'
-			</table>
-			';
+			$lpXML.= $editDataprotLink;
 		}
 
 		if ($this->MOD_SETTINGS['set_details'])	{
@@ -785,60 +721,66 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	 * @param	boolean		If set, the function is asked to render children to template objects (and should not call it self recursively again).
 	 * @return	string		HTML content
 	 */
-	function renderTODisplay($toObj, &$toRecords, $scope, $children=0)	{
+	function renderTODisplay($toObj, $scope, $children=0)	{
 
 			// Put together the records icon including content sensitive menu link wrapped around it:
-		$recordIcon = t3lib_iconWorks::getIconImage('tx_templavoila_tmplobj',$toObj,$this->doc->backPath,'class="absmiddle"');
-		$recordIcon = $this->doc->wrapClickMenuOnIcon($recordIcon, 'tx_templavoila_tmplobj', $toObj['uid'], 1, '&callingScriptId='.rawurlencode($this->doc->scriptID));
+		$recordIcon = tx_templavoila_icons::getIconForRecord('tx_templavoila_tmplobj', array(), array('title' => $toObj->getKey()));
+		$recordIcon = $this->doc->wrapClickMenuOnIcon($recordIcon, 'tx_templavoila_tmplobj', $toObj->getKey(), 1, '&callingScriptId='.rawurlencode($this->doc->scriptID));
 
 			// Preview icon:
-		if ($toObj['previewicon'])	{
+		if ($toObj->getIcon())	{
 			if (isset($this->modTSconfig['properties']['toPreviewIconThumb']) && $this->modTSconfig['properties']['toPreviewIconThumb'] != '0') {
-					$icon = t3lib_BEfunc::getThumbNail($this->doc->backPath . 'thumbs.php', PATH_site . 'uploads/tx_templavoila/' . $toObj['previewicon'],
-						'hspace="5" vspace="5" border="1"',
-						strpos($this->modTSconfig['properties']['toPreviewIconThumb'], 'x') ? $this->modTSconfig['properties']['toPreviewIconThumb'] : '');
+					$path = realpath(dirname(__FILE__) . '/' . preg_replace('/\w+\/\.\.\//', '', $GLOBALS['BACK_PATH'] . $toObj->getIcon()));
+					$path = str_replace(realpath(PATH_site) . '/', PATH_site, $path);
+					if($path == FALSE) {
+						$icon = $GLOBALS['LANG']->getLL('noicon', 1);
+					} else {
+						$icon = t3lib_BEfunc::getThumbNail($this->doc->backPath . 'thumbs.php', $path,
+							'hspace="5" vspace="5" border="1"',
+							strpos($this->modTSconfig['properties']['toPreviewIconThumb'], 'x') ? $this->modTSconfig['properties']['toPreviewIconThumb'] : '');
+					}
 				} else {
-					$icon = '<img src="'.$this->doc->backPath.'../uploads/tx_templavoila/'.$toObj['previewicon'].'" alt="" />';
+					$icon = '<img src="' . $this->doc->backPath . $toObj->getIcon() . '" alt="" />';
 				}
 		} else {
 			$icon = $GLOBALS['LANG']->getLL('noicon', 1);
 		}
 
 			// Mapping status / link:
-		$linkUrl = '../cm1/index.php?table=tx_templavoila_tmplobj&uid='.$toObj['uid'].'&_reload_from=1&returnUrl='.rawurlencode(t3lib_div::getIndpEnv('REQUEST_URI'));
+		$linkUrl = '../cm1/index.php?table=tx_templavoila_tmplobj&uid=' . $toObj->getKey() . '&_reload_from=1&id=' . $this->id . '&returnUrl='.rawurlencode(t3lib_div::getIndpEnv('REQUEST_URI'));
 
-		$fileReference = t3lib_div::getFileAbsFileName($toObj['fileref']);
+		$fileReference = t3lib_div::getFileAbsFileName($toObj->getFileref());
 		if (@is_file($fileReference))	{
 			$this->tFileList[$fileReference]++;
-			$fileRef = '<a href="'.htmlspecialchars($this->doc->backPath.'../'.substr($fileReference,strlen(PATH_site))).'" target="_blank">'.htmlspecialchars($toObj['fileref']).'</a>';
+			$fileRef = '<a href="'.htmlspecialchars($this->doc->backPath.'../'.substr($fileReference,strlen(PATH_site))).'" target="_blank">'.htmlspecialchars($toObj->getFileref()).'</a>';
 			$fileMsg = '';
 			$fileMtime = filemtime($fileReference);
 		} else {
-			$fileRef = htmlspecialchars($toObj['fileref']);
+			$fileRef = htmlspecialchars($toObj->getFileref());
 			$fileMsg = '<div class="typo3-red">ERROR: File not found</div>';
 			$fileMtime = 0;
 		}
 
 		$mappingStatus = $mappingStatus_index = '';
-		if ($fileMtime && $toObj['fileref_mtime']) {
-			if ($toObj['fileref_md5'] != '') {
-				$modified = (@md5_file($fileReference) != $toObj['fileref_md5']);
+		if ($fileMtime && $toObj->getFilerefMtime()) {
+			if ($toObj->getFilerefMD5() != '') {
+				$modified = (@md5_file($fileReference) != $toObj->getFilerefMD5());
 			} else {
-				$modified = ($toObj['fileref_mtime'] != $fileMtime);
+				$modified = ($toObj->getFilerefMtime() != $fileMtime);
 			}
 			if ($modified)	{
-				$mappingStatus = $mappingStatus_index = '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_warning2.gif','width="18" height="16"').' alt="" class="absmiddle" />';
-				$mappingStatus.= sprintf($GLOBALS['LANG']->getLL('towasupdated', 1), t3lib_BEfunc::datetime($toObj['tstamp']));
-				$this->setErrorLog($scope, 'warning', sprintf($GLOBALS['LANG']->getLL('warning_mappingstatus', 1), $mappingStatus, $toObj['title']));
+				$mappingStatus = $mappingStatus_index = tx_templavoila_icons::getIcon('status-dialog-warning');
+				$mappingStatus.= sprintf($GLOBALS['LANG']->getLL('towasupdated', 1), t3lib_BEfunc::datetime($toObj->getTstamp()));
+				$this->setErrorLog($scope, 'warning', sprintf($GLOBALS['LANG']->getLL('warning_mappingstatus', 1), $mappingStatus, $toObj->getLabel()));
 			} else {
-				$mappingStatus = $mappingStatus_index = '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_ok2.gif','width="18" height="16"').' alt="" class="absmiddle" />';
+				$mappingStatus = $mappingStatus_index = tx_templavoila_icons::getIcon('status-dialog-ok');
 				$mappingStatus.= $GLOBALS['LANG']->getLL('mapping_uptodate', 1);
 			}
 			$mappingStatus .= '<br/><input type="button" onclick="jumpToUrl(\'' . htmlspecialchars($linkUrl) . '\');" value="' . $GLOBALS['LANG']->getLL('update_mapping', 1) . '" />';
 		} elseif (!$fileMtime) {
-			$mappingStatus = $mappingStatus_index = '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_fatalerror.gif','width="18" height="16"').' alt="" class="absmiddle" />';
+			$mappingStatus = $mappingStatus_index = tx_templavoila_icons::getIcon('status-dialog-error');
 			$mappingStatus.= $GLOBALS['LANG']->getLL('notmapped', 1);
-			$this->setErrorLog($scope, 'fatal', sprintf($GLOBALS['LANG']->getLL('warning_mappingstatus', 1), $mappingStatus, $toObj['title']));
+			$this->setErrorLog($scope, 'fatal', sprintf($GLOBALS['LANG']->getLL('warning_mappingstatus', 1), $mappingStatus, $toObj->getLabel()));
 
 			$mappingStatus .= $GLOBALS['LANG']->getLL('updatemapping_info');
 			$mappingStatus .= '<br/><input type="button" onclick="jumpToUrl(\'' . htmlspecialchars($linkUrl) . '\');" value="' . $GLOBALS['LANG']->getLL('map', 1) . '" />';
@@ -849,25 +791,25 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 		}
 
 		if ($this->MOD_SETTINGS['set_details'])	{
-			$XMLinfo = $this->DSdetails($toObj['localprocessing']);
+			$XMLinfo = $this->DSdetails($toObj->getLocalDataprotXML(TRUE));
 		}
 
 			// Format XML if requested
 		if ($this->MOD_SETTINGS['set_details'])	{
-			if ($toObj['localprocessing'])	{
+			if ($toObj->getLocalDataprotXML(TRUE))	{
 				require_once(PATH_t3lib.'class.t3lib_syntaxhl.php');
 				$hlObj = t3lib_div::makeInstance('t3lib_syntaxhl');
-				$lpXML = '<pre>'.str_replace(chr(9),'&nbsp;&nbsp;&nbsp;',$hlObj->highLight_DS($toObj['localprocessing'])).'</pre>';
+				$lpXML = '<pre>'.str_replace(chr(9),'&nbsp;&nbsp;&nbsp;',$hlObj->highLight_DS($toObj->getLocalDataprotXML(TRUE))).'</pre>';
 			} else $lpXML = '';
 		}
-		$lpXML.= '<a href="#" onclick="'.htmlspecialchars(t3lib_BEfunc::editOnClick('&edit[tx_templavoila_tmplobj]['.$toObj['uid'].']=edit&columnsOnly=localprocessing',$this->doc->backPath)).'"><img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/edit2.gif','width="11" height="12"').' alt="" class="absmiddle" /></a>';
+		$lpXML.= '<a href="#" onclick="'.htmlspecialchars(t3lib_BEfunc::editOnClick('&edit[tx_templavoila_tmplobj]['.$toObj->getKey().']=edit&columnsOnly=localprocessing',$this->doc->backPath)).'">' . tx_templavoila_icons::getIcon('actions-document-open') . '</a>';
 
 			// Compile info table:
 		$tableAttribs = ' border="0" cellpadding="1" cellspacing="1" width="98%" style="margin-top: 3px;" class="lrPadding"';
 
 			// Links:
-		$editLink = '<a href="#" onclick="'.htmlspecialchars(t3lib_BEfunc::editOnClick('&edit[tx_templavoila_tmplobj]['.$toObj['uid'].']=edit',$this->doc->backPath)).'"><img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/edit2.gif','width="11" height="12"').' alt="" class="absmiddle" /></a>';
-		$toTitle = '<a href="' . htmlspecialchars($linkUrl) . '">' . htmlspecialchars($GLOBALS['LANG']->sL($toObj['title'])) . '</a>';
+		$toTitle = '<a href="' . htmlspecialchars($linkUrl) . '">' . htmlspecialchars($GLOBALS['LANG']->sL($toObj->getLabel())) . '</a>';
+		$editLink = '<a href="#" onclick="'.htmlspecialchars(t3lib_BEfunc::editOnClick('&edit[tx_templavoila_tmplobj]['.$toObj->getKey().']=edit',$this->doc->backPath)).'">' . tx_templavoila_icons::getIcon('actions-document-open') . '</a>';
 
 		$fRWTOUres = array();
 
@@ -887,12 +829,12 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 				</tr>
 				<tr class="bgColor4">
 					<td rowspan="'.($this->MOD_SETTINGS['set_details'] ? 7 : 4).'" style="width: 100px; text-align: center;">'.$icon.'</td>
-					<td>' . $GLOBALS['LANG']->getLL('filereference', 1) . ':</td>
+					<td style="width:200px;">' . $GLOBALS['LANG']->getLL('filereference', 1) . ':</td>
 					<td>'.$fileRef.$fileMsg.'</td>
 				</tr>
 				<tr class="bgColor4">
 					<td>' . $GLOBALS['LANG']->getLL('description', 1) . ':</td>
-					<td>'.htmlspecialchars($toObj['description']).'</td>
+					<td>'.htmlspecialchars($toObj->getDescription()).'</td>
 				</tr>
 				<tr class="bgColor4">
 					<td>' . $GLOBALS['LANG']->getLL('mappingstatus', 1) . ':</td>
@@ -901,8 +843,8 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 				<tr class="bgColor4">
 					<td>' . $GLOBALS['LANG']->getLL('localprocessing_xml') . ':</td>
 					<td>
-						'.$lpXML.($toObj['localprocessing'] ?
-						t3lib_div::formatSize(strlen($toObj['localprocessing'])).' bytes'.
+						'.$lpXML.($toObj->getLocalDataprotXML(TRUE) ?
+						t3lib_div::formatSize(strlen($toObj->getLocalDataprotXML(TRUE))).' bytes'.
 						($this->MOD_SETTINGS['set_details'] ? '<hr/>'.$XMLinfo['HTML'] : '') : '').'
 					</td>
 				</tr>'.($this->MOD_SETTINGS['set_details'] ? '
@@ -912,11 +854,11 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 				</tr>
 				<tr class="bgColor4">
 					<td>' . $GLOBALS['LANG']->getLL('created', 1) . ':</td>
-					<td>' . t3lib_BEfunc::datetime($toObj['crdate']) . ' ' . $GLOBALS['LANG']->getLL('byuser', 1) . ' [' . $toObj['cruser_id'] . ']</td>
+					<td>' . t3lib_BEfunc::datetime($toObj->getCrdate()) . ' ' . $GLOBALS['LANG']->getLL('byuser', 1) . ' [' . $toObj->getCruser() . ']</td>
 				</tr>
 				<tr class="bgColor4">
 					<td>' . $GLOBALS['LANG']->getLL('updated', 1) . ':</td>
-					<td>'.t3lib_BEfunc::datetime($toObj['tstamp']).'</td>
+					<td>'.t3lib_BEfunc::datetime($toObj->getTstamp()).'</td>
 				</tr>' : '').'
 			</table>
 			';
@@ -931,7 +873,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 						'</td>
 				</tr>
 				<tr class="bgColor4">
-					<td>' . $GLOBALS['LANG']->getLL('filereference', 1) . ':</td>
+					<td style="width:200px;">' . $GLOBALS['LANG']->getLL('filereference', 1) . ':</td>
 					<td>'.$fileRef.$fileMsg.'</td>
 				</tr>
 				<tr class="bgColor4">
@@ -940,41 +882,45 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 				</tr>
 				<tr class="bgColor4">
 					<td>' . $GLOBALS['LANG']->getLL('rendertype', 1) . ':</td>
-					<td>'.t3lib_BEfunc::getProcessedValue('tx_templavoila_tmplobj','rendertype',$toObj['rendertype']).'</td>
+					<td>' . $this->getProcessedValue('tx_templavoila_tmplobj', 'rendertype', $toObj->getRendertype()) . '</td>
 				</tr>
 				<tr class="bgColor4">
 					<td>' . $GLOBALS['LANG']->getLL('language', 1) . ':</td>
-					<td>'.t3lib_BEfunc::getProcessedValue('tx_templavoila_tmplobj','sys_language_uid',$toObj['sys_language_uid']).'</td>
+					<td>' . $this->getProcessedValue('tx_templavoila_tmplobj', 'sys_language_uid', $toObj->getSyslang()) . '</td>
 				</tr>
 				<tr class="bgColor4">
 					<td>' . $GLOBALS['LANG']->getLL('localprocessing_xml') . ':</td>
 					<td>
-						'.$lpXML.($toObj['localprocessing'] ?
-						t3lib_div::formatSize(strlen($toObj['localprocessing'])).' bytes'.
+						'.$lpXML.($toObj->getLocalDataprotXML(TRUE) ?
+						t3lib_div::formatSize(strlen($toObj->getLocalDataprotXML(TRUE))).' bytes'.
 						($this->MOD_SETTINGS['set_details'] ? '<hr/>'.$XMLinfo['HTML'] : '') : '').'
 					</td>
 				</tr>'.($this->MOD_SETTINGS['set_details'] ? '
 				<tr class="bgColor4">
 					<td>' . $GLOBALS['LANG']->getLL('created', 1) . ':</td>
-					<td>'.t3lib_BEfunc::datetime($toObj['crdate']) . ' ' . $GLOBALS['LANG']->getLL('byuser', 1) . ' [' . $toObj['cruser_id'] . ']</td>
+					<td>'.t3lib_BEfunc::datetime($toObj->getCrdate()) . ' ' . $GLOBALS['LANG']->getLL('byuser', 1) . ' [' . $toObj->getCruser() . ']</td>
 				</tr>
 				<tr class="bgColor4">
 					<td>' . $GLOBALS['LANG']->getLL('updated', 1) . ':</td>
-					<td>'.t3lib_BEfunc::datetime($toObj['tstamp']).'</td>
+					<td>'.t3lib_BEfunc::datetime($toObj->getTstamp()).'</td>
 				</tr>' : '').'
 			</table>
 			';
 		}
 
 			// Traverse template objects which are not children of anything:
-		if (!$children && is_array($toRecords[$toObj['uid']]))	{
-			$TOchildrenContent = '';
-			foreach($toRecords[$toObj['uid']] as $toIndex => $childToObj)	{
-				$rTODres = $this->renderTODisplay($childToObj, $toRecords, $scope, 1);
-				$TOchildrenContent.= $rTODres['HTML'];
+		if(!$childRen) {
+			$toRepo = t3lib_div::makeInstance('tx_templavoila_templateRepository');
+			$toChildren = $toRepo->getTemplatesByParentTemplate($toObj);
+		} else {
+			$toChildren = array();
+		}
 
-					// Unset it so we can eventually see what is left:
-				unset($toRecords[$toObj['uid']][$toIndex]);
+		if (!$children && count($toChildren))	{
+			$TOchildrenContent = '';
+			foreach($toChildren as $toChild)	{
+				$rTODres = $this->renderTODisplay($toChild, $scope, 1);
+				$TOchildrenContent.= $rTODres['HTML'];
 			}
 			$content.='<div style="margin-left: 102px;">'.$TOchildrenContent.'</div>';
 		}
@@ -1006,12 +952,13 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 							</tr>';
 
 					// Main templates:
+				$dsKey = $toObj->getDatastructure()->getKey();
 				$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
 					'uid,title,pid,t3ver_wsid,t3ver_id',
 					'pages',
 					'(
-						(tx_templavoila_to='.intval($toObj['uid']).' AND tx_templavoila_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($toObj['datastructure'],'pages').') OR
-						(tx_templavoila_next_to='.intval($toObj['uid']).' AND tx_templavoila_next_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($toObj['datastructure'],'pages').')
+						(tx_templavoila_to='.intval($toObj->getKey()).' AND tx_templavoila_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($dsKey,'pages').') OR
+						(tx_templavoila_next_to='.intval($toObj->getKey()).' AND tx_templavoila_next_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($dsKey,'pages').')
 					)'.
 						t3lib_BEfunc::deleteClause('pages')
 				);
@@ -1057,8 +1004,8 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 					'uid,header,pid,t3ver_wsid,t3ver_id',
 					'tt_content',
 					'CType='.$GLOBALS['TYPO3_DB']->fullQuoteStr('templavoila_pi1','tt_content').
-						' AND tx_templavoila_to='.intval($toObj['uid']).
-						' AND tx_templavoila_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($toObj['datastructure'],'tt_content').
+						' AND tx_templavoila_to='.intval($toObj->getKey()).
+						' AND tx_templavoila_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($toObj->getDatastructure()->getKey(),'tt_content').
 						t3lib_BEfunc::deleteClause('tt_content'),
 					'',
 					'pid'
@@ -1118,8 +1065,8 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 					. implode('', $output) . '
 				</table>';
 			} else {
-				$outputString = '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_warning2.gif','width="18" height="16"').' alt="" class="absmiddle" />No usage!';
-				$this->setErrorLog($scope, 'warning', sprintf($GLOBALS['LANG']->getLL('warning_mappingstatus', 1), $outputString , $GLOBALS['LANG']->sL($toObj['title'])));
+				$outputString = tx_templavoila_icons::getIcon('status-dialog-warning') . 'No usage!';
+				$this->setErrorLog($scope, 'warning', sprintf($GLOBALS['LANG']->getLL('warning_mappingstatus', 1), $outputString , $toObj->getLabel()));
 			}
 		}
 
@@ -1130,11 +1077,11 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	 * Creates listings of pages / content elements where NO or WRONG template objects are used.
 	 *
 	 * @param	array		Data Structure ID
-	 * @param	array		Array with numerical toIDs. Must be integers and never be empty. You can always put in "-1" as dummy element.
 	 * @param	integer		Scope value. 1) page,  2) content elements
+	 * @param	array		Array with numerical toIDs. Must be integers and never be empty. You can always put in "-1" as dummy element.
 	 * @return	string		HTML table listing usages.
 	 */
-	function findDSUsageWithImproperTOs($dsID, $toIdArray, $scope)	{
+	function findDSUsageWithImproperTOs($dsObj, $scope, $toIdArray)	{
 
 		$output = array();
 
@@ -1152,8 +1099,8 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 					'uid,title,pid',
 					'pages',
 					'(
-						(tx_templavoila_to NOT IN ('.implode(',',$toIdArray).') AND tx_templavoila_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($dsID,'pages').') OR
-						(tx_templavoila_next_to NOT IN ('.implode(',',$toIdArray).') AND tx_templavoila_next_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($dsID,'pages').')
+						(tx_templavoila_to NOT IN ('.implode(',',$toIdArray).') AND tx_templavoila_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($dsObj->getKey(),'pages').') OR
+						(tx_templavoila_next_to NOT IN ('.implode(',',$toIdArray).') AND tx_templavoila_next_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($dsObj->getKey(),'pages').')
 					)'.
 						t3lib_BEfunc::deleteClause('pages')
 				);
@@ -1190,7 +1137,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 					'tt_content',
 					'CType='.$GLOBALS['TYPO3_DB']->fullQuoteStr('templavoila_pi1','tt_content').
 						' AND tx_templavoila_to NOT IN ('.implode(',',$toIdArray).')'.
-						' AND tx_templavoila_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($dsID,'tt_content').
+						' AND tx_templavoila_ds='.$GLOBALS['TYPO3_DB']->fullQuoteStr($dsObj->getKey(),'tt_content').
 						t3lib_BEfunc::deleteClause('tt_content'),
 					'',
 					'pid'
@@ -1233,13 +1180,13 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 			// Create final output table:
 		if (count($output))	{
 			if (count($output)>1)	{
-				$outputString = '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_fatalerror.gif','width="18" height="16"').' alt="" class="absmiddle" />'.
+				$outputString = tx_templavoila_icons::getIcon('status-dialog-error').
 								sprintf($GLOBALS['LANG']->getLL('invalidtemplatevalues', 1), count($output) - 1);
 				$this->setErrorLog($scope,'fatal',$outputString);
 
 				$outputString.='<table border="0" cellspacing="1" cellpadding="1" class="lrPadding">'.implode('',$output).'</table>';
 			} else {
-				$outputString = '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_ok2.gif','width="18" height="16"').' alt="" class="absmiddle" />' .
+				$outputString = tx_templavoila_icons::getIcon('status-dialog-ok') .
 				$GLOBALS['LANG']->getLL('noerrorsfound', 1);
 			}
 		}
@@ -1278,7 +1225,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 				// USED FILES:
 			$tRows = array();
 			$tRows[] = '
-				<tr class="c-headLineTable" style="font-weight: bold; color: #FFFFFF;">
+				<tr class="bgColor5 tableheader">
 					<td>' . $GLOBALS['LANG']->getLL('file', 1) . '</td>
 					<td align="center">' . $GLOBALS['LANG']->getLL('usagecount', 1) . '</td>
 					<td>' . $GLOBALS['LANG']->getLL('newdsto', 1) . '</td>
@@ -1290,12 +1237,12 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 					<tr class="' . ($i++ % 2 == 0 ? 'bgColor4' : 'bgColor6') . '">
 						<td>'.
 							'<a href="'.htmlspecialchars($this->doc->backPath.'../'.substr($tFile,strlen(PATH_site))).'" target="_blank">'.
-							'<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/zoom.gif','width="11" height="12"').' alt="" class="absmiddle" /> ' . htmlspecialchars(substr($tFile,strlen(PATH_site))) .
+							tx_templavoila_icons::getIcon('actions-document-view') . ' ' . htmlspecialchars(substr($tFile,strlen(PATH_site))) .
 							'</a></td>
 						<td align="center">'.$count.'</td>
 						<td>'.
 							'<a href="'.htmlspecialchars($this->cm1Link . '?id=' . $this->id . '&file=' . rawurlencode($tFile)) . '&mapElPath=%5BROOT%5D">'.
-							'<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/new_el.gif','width="11" height="12"').' alt="" class="absmiddle" /> ' . htmlspecialchars('Create...') .
+							tx_templavoila_icons::getIcon('actions-document-new') . ' ' . htmlspecialchars('Create...') .
 							'</a></td>
 					</tr>';
 			}
@@ -1309,62 +1256,68 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 				';
 			}
 
+			$files = $this->getTemplateFiles();
+
 				// TEMPLATE ARCHIVE:
-			if ($this->modTSconfig['properties']['templatePath'])	{
-				$paths = t3lib_div::trimExplode(',', $this->modTSconfig['properties']['templatePath'], true);
-				$prefix = t3lib_div::getFileAbsFileName($GLOBALS['TYPO3_CONF_VARS']['BE']['fileadminDir']);
-				if (count($paths) > 0 && is_array($GLOBALS['FILEMOUNTS']))	{
-					foreach($GLOBALS['FILEMOUNTS'] as $mountCfg)	{
-						// look in paths if it's part of mounted path
-						$isPart = false;
-						$files = array();
-						foreach ($paths as $path) {
-							if (t3lib_div::isFirstPartOfStr($prefix . $path, $mountCfg['path'])) {
-								$isPart = true;
-								$files = array_merge(t3lib_div::getFilesInDir($prefix . $path, 'html,htm,tmpl',1), $files);
-							}
-						}
-						if ($isPart) {
-								// USED FILES:
-							$tRows = array();
-							$tRows[] = '
-								<tr class="c-headLineTable" style="font-weight: bold; color: #FFFFFF;">
-									<td>' . $GLOBALS['LANG']->getLL('file', 1) . '</td>
-									<td align="center">' . $GLOBALS['LANG']->getLL('usagecount', 1) . '</td>
-									<td>' . $GLOBALS['LANG']->getLL('newdsto', 1) . '</td>
-								</tr>';
+			if (count($files)) {
 
-                            $i = 0;
-							foreach($files as $tFile)	{
-								$tRows[] = '
-									<tr class="' . ($i++ % 2 == 0 ? 'bgColor4' : 'bgColor6') . '">
-										<td>'.
-											'<a href="'.htmlspecialchars($this->doc->backPath.'../'.substr($tFile,strlen(PATH_site))).'" target="_blank">'.
-											'<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/zoom.gif','width="11" height="12"').' alt="" class="absmiddle" /> ' . htmlspecialchars(substr($tFile, strlen(PATH_site))) .
-											'</a></td>
-										<td align="center">'.($this->tFileList[$tFile]?$this->tFileList[$tFile]:'-').'</td>
-										<td>'.
-											'<a href="' . htmlspecialchars($this->cm1Link . '?id=' . $this->id . '&file=' . rawurlencode($tFile)) . '&mapElPath=%5BROOT%5D">' .
-											'<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/new_el.gif','width="11" height="12"').' alt="" class="absmiddle" /> ' . htmlspecialchars('Create...') .
-											'</a></td>
-									</tr>';
-							}
+				$tRows = array();
+				$tRows[] = '
+					<tr class="bgColor5 tableheader">
+						<td>' . $GLOBALS['LANG']->getLL('file', 1) . '</td>
+						<td align="center">' . $GLOBALS['LANG']->getLL('usagecount', 1) . '</td>
+						<td>' . $GLOBALS['LANG']->getLL('newdsto', 1) . '</td>
+					</tr>';
 
-							if (count($tRows)>1)	{
-								$output.= '
-								<h3>' . $GLOBALS['LANG']->getLL('templatearchive', 1) . ':</h3>
-								<table border="0" cellpadding="1" cellspacing="1" class="typo3-dblist">
-									'.implode('',$tRows).'
-								</table>
-								';
-							}
-						}
-					}
+				$i = 0;
+				foreach($files as $tFile)	{
+					$tRows[] = '
+						<tr class="' . ($i++ % 2 == 0 ? 'bgColor4' : 'bgColor6') . '">
+							<td>'.
+								'<a href="'.htmlspecialchars($this->doc->backPath.'../'.substr($tFile,strlen(PATH_site))).'" target="_blank">'.
+								tx_templavoila_icons::getIcon('actions-document-view') . ' ' . htmlspecialchars(substr($tFile, strlen(PATH_site))) .
+								'</a></td>
+							<td align="center">'.($this->tFileList[$tFile]?$this->tFileList[$tFile]:'-').'</td>
+							<td>'.
+								'<a href="' . htmlspecialchars($this->cm1Link . '?id=' . $this->id . '&file=' . rawurlencode($tFile)) . '&mapElPath=%5BROOT%5D">' .
+								tx_templavoila_icons::getIcon('actions-document-new') . ' ' . htmlspecialchars('Create...') .
+								'</a></td>
+						</tr>';
+				}
+
+				if (count($tRows)>1)	{
+					$output.= '
+					<h3>' . $GLOBALS['LANG']->getLL('templatearchive', 1) . ':</h3>
+					<table border="0" cellpadding="1" cellspacing="1" class="typo3-dblist">
+						'.implode('',$tRows).'
+					</table>
+					';
 				}
 			}
 		}
 
 		return $output;
+	}
+
+	/**
+	 * Get the processed value analog to t3lib_beFunc::getProcessedValue
+	 * but take additional TSconfig values into account
+	 *
+	 * @param  $table
+	 * @param  $typeField
+	 * @param  $typeValue
+	 * @return
+	 */
+	protected function getProcessedValue($table, $typeField, $typeValue) {
+		$value =  t3lib_beFunc::getProcessedValue($table, $typeField, $typeValue);
+		if (!$value) {
+			$TSConfig = t3lib_beFunc::getPagesTSconfig($this->id);
+			if (isset($TSConfig['TCEFORM.'][$table . '.'][$typeField . '.']['addItems.'][$typeValue])) {
+				$value = $TSConfig['TCEFORM.'][$table . '.'][$typeField . '.']['addItems.'][$typeValue];
+			}
+		}
+
+		return $value;
 	}
 
 	/**
@@ -1421,6 +1374,11 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 			$HTML .= '<dl class="DS-details">';
 
 			foreach ($DStree as $elm => $def) {
+				if (!is_array($def)) {
+					$HTML .= '<p>' . tx_templavoila_icons::getIcon('status-dialog-error') . sprintf($GLOBALS['LANG']->getLL('invaliddatastructure_xmlbroken', 1), $elm) . '</p>';
+					break;
+				}
+
 				$HTML .= '<dt>';
 				$HTML .= ($elm == "meta" ? $GLOBALS['LANG']->getLL('configuration', 1) : $def['tx_templavoila']['title'] . ' ('. $elm . ')');
 				$HTML .= '</dt>';
@@ -1443,18 +1401,18 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 					$conf = '';
 					if (isset($def['langDisable'])) $conf .= '<li>' .
 						(($def['langDisable'] == 1)
-? '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_fatalerror.gif','width="18" height="16"').' alt="" class="absmiddle" />'
-: '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_ok2.gif','width="18" height="16"').' alt="" class="absmiddle" />'
+? tx_templavoila_icons::getIcon('status-dialog-error')
+: tx_templavoila_icons::getIcon('status-dialog-ok')
 						) . ' ' . $GLOBALS['LANG']->getLL('fceislocalized', 1) . '</li>';
 					if (isset($def['langChildren'])) $conf .= '<li>' .
 						(($def['langChildren'] == 1)
-? '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_ok2.gif','width="18" height="16"').' alt="" class="absmiddle" />'
-: '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_fatalerror.gif','width="18" height="16"').' alt="" class="absmiddle" />'
+? tx_templavoila_icons::getIcon('status-dialog-ok')
+: tx_templavoila_icons::getIcon('status-dialog-error')
 						) . ' ' . $GLOBALS['LANG']->getLL('fceinlineislocalized', 1) . '</li>';
 					if (isset($def['sheetSelector'])) $conf .= '<li>' .
 						(($def['sheetSelector'] != '')
-? '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_ok2.gif','width="18" height="16"').' alt="" class="absmiddle" />'
-: '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_fatalerror.gif','width="18" height="16"').' alt="" class="absmiddle" />'
+? tx_templavoila_icons::getIcon('status-dialog-ok')
+: tx_templavoila_icons::getIcon('status-dialog-error')
 						) . ' custom sheet-selector' .
 						(($def['sheetSelector'] != '')
 ? ' [<em>' . $def['sheetSelector'] . '</em>]'
@@ -1512,13 +1470,13 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 						$proc = '';
 						if (isset($tv['proc']) && isset($tv['proc']['int'])) $proc .= '<li>' .
 						(($tv['proc']['int'] == 1)
-? '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_ok2.gif','width="18" height="16"').' alt="" class="absmiddle" />'
-: '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_fatalerror.gif','width="18" height="16"').' alt="" class="absmiddle" />'
+? tx_templavoila_icons::getIcon('status-dialog-ok')
+: tx_templavoila_icons::getIcon('status-dialog-error')
 						) . ' ' . $GLOBALS['LANG']->getLL('casttointeger', 1) . '</li>';
 						if (isset($tv['proc']) && isset($tv['proc']['HSC'])) $proc .= '<li>' .
 						(($tv['proc']['HSC'] == 1)
-? '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_ok2.gif','width="18" height="16"').' alt="" class="absmiddle" />'
-: '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_fatalerror.gif','width="18" height="16"').' alt="" class="absmiddle" />'
+? tx_templavoila_icons::getIcon('status-dialog-ok')
+: tx_templavoila_icons::getIcon('status-dialog-error')
 						) . ' ' . $GLOBALS['LANG']->getLL('hsced', 1) .
 						(($tv['proc']['HSC'] == 1)
 ? ' ' . $GLOBALS['LANG']->getLL('hsc_on', 1)
@@ -1526,8 +1484,8 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 						) . '</li>';
 						if (isset($tv['proc']) && isset($tv['proc']['stdWrap'])) $proc .= '<li>' .
 						(($tv['proc']['stdWrap'] != '')
-? '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_ok2.gif','width="18" height="16"').' alt="" class="absmiddle" />'
-: '<img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_fatalerror.gif','width="18" height="16"').' alt="" class="absmiddle" />'
+? tx_templavoila_icons::getIcon('status-dialog-ok')
+: tx_templavoila_icons::getIcon('status-dialog-error')
 						) . ' ' . $GLOBALS['LANG']->getLL('stdwrap', 1) . '</li>';
 
 						if ($proc != '')
@@ -1627,7 +1585,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 			$HTML .= '</dl>';
 		}
 		else
-			$HTML .= '<p><img'.t3lib_iconWorks::skinImg($this->doc->backPath,'gfx/icon_warning2.gif','width="18" height="16"').' alt="" class="absmiddle" /> The element has no children!</p>';
+			$HTML .= '<p>' . tx_templavoila_icons::getIcon('status-dialog-warning') . ' The element has no children!</p>';
 
 		return $HTML;
 	}
@@ -1660,7 +1618,12 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 				unset($elCfg['tx_templavoila']['sample_data']);
 				unset($elCfg['tx_templavoila']['tags']);
 				unset($elCfg['tx_templavoila']['eType']);
-				$rootElementsHTML.='<b>'.$elCfg['tx_templavoila']['title'].'</b>'.t3lib_div::view_array($elCfg);
+
+				if (t3lib_div::int_from_ver(TYPO3_version) < 4005000){
+					$rootElementsHTML.='<b>'.$elCfg['tx_templavoila']['title'].'</b>'.t3lib_div::view_array($elCfg);
+				} else {
+					$rootElementsHTML.='<b>'.$elCfg['tx_templavoila']['title'].'</b>'.t3lib_utility_Debug::viewArray($elCfg);
+				}
 			}
 		}
 
@@ -1723,7 +1686,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 		if ($BE_USER->isAdmin())	{
 
 				// Introduction:
-			$outputString.= nl2br(sprintf($LANG->getLL('newsitewizard_intro', 1), $this->templatesDir));
+			$outputString.= nl2br(sprintf($LANG->getLL('newsitewizard_intro', 1), implode('", "', $this->getTemplatePaths(true, false))));
 
 				// Checks:
 			$missingExt = $this->wizard_checkMissingExtensions();
@@ -1744,17 +1707,32 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 
 				// Missing extension warning:
 			if ($missingExt)	{
-				$this->content.= $this->doc->section($LANG->getLL('newsitewizard_missingext'), $missingExt, 0, 1, 3);
+				if(t3lib_div::int_from_ver(TYPO3_version) < 4003000) {
+					$this->content.= $this->doc->section($LANG->getLL('newsitewizard_missingext'), $missingExt, 0, 1, 3);
+				} else {
+					$msg = t3lib_div::makeInstance('t3lib_FlashMessage', $missingExt, $LANG->getLL('newsitewizard_missingext'), t3lib_FlashMessage::ERROR);
+					$this->content .= $msg->render();
+				}
 			}
 
 				// Missing configuration warning:
 			if ($missingConf)	{
-				$this->content.= $this->doc->section($LANG->getLL('newsitewizard_missingconf'), $missingConf, 0, 1, 3);
+				if(t3lib_div::int_from_ver(TYPO3_version) < 4003000) {
+					$this->content.= $this->doc->section($LANG->getLL('newsitewizard_missingconf'), $LANG->getLL('newsitewizard_missingconf_description'), 0, 1, 3);
+				} else {
+					$msg = t3lib_div::makeInstance('t3lib_FlashMessage', $LANG->getLL('newsitewizard_missingconf_description'), $LANG->getLL('newsitewizard_missingconf'), t3lib_FlashMessage::ERROR);
+					$this->content .= $msg->render();
+				}
 			}
 
 				// Missing directory warning:
 			if ($missingDir)	{
-				$this->content.= $this->doc->section($LANG->getLL('newsitewizard_missingdir'), $missingDir, 0, 1, 3);
+				if(t3lib_div::int_from_ver(TYPO3_version) < 4003000) {
+					$this->content.= $this->doc->section($LANG->getLL('newsitewizard_missingdir'), $missingDir, 0, 1, 3);
+				} else {
+					$msg = t3lib_div::makeInstance('t3lib_FlashMessage', $missingDir, $LANG->getLL('newsitewizard_missingdir'), t3lib_FlashMessage::ERROR);
+					$this->content .= $msg->render();
+				}
 			}
 		}
 	}
@@ -1851,8 +1829,8 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	 * @return	string		If string is returned, an error occured.
 	 */
 	function wizard_checkConfiguration()	{
-
 		$TVconfig = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['templavoila']);
+		return !is_array($TVconfig);
 	}
 
 	/**
@@ -1861,8 +1839,9 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	 * @return	string		If string is returned, an error occured.
 	 */
 	function wizard_checkDirectory()	{
-		if (!@is_dir(PATH_site.$this->templatesDir))	{
-			return nl2br(sprintf($GLOBALS['LANG']->getLL('newsitewizard_missingdir_instruction'), $this->templatesDir, $GLOBALS['TYPO3_CONF_VARS']['BE']['fileadminDir']));
+		$paths = $this->getTemplatePaths(true);
+		if(empty($paths)) {
+			return nl2br(sprintf($GLOBALS['LANG']->getLL('newsitewizard_missingdir_instruction'), implode(' or ', $this->getTemplatePaths(true, false)), $GLOBALS['TYPO3_CONF_VARS']['BE']['fileadminDir']));
 		}
 		return false;
 	}
@@ -1873,16 +1852,16 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	 * @return	void
 	 */
 	function wizard_step1()	{
-
-		if (@is_dir(PATH_site.$this->templatesDir))	{
+		$paths = $this->getTemplatePaths();
+		$files = $this->getTemplateFiles();
+		if (!empty($paths) && !empty($files))	{
 
 			$this->wizardData = array();
-
-			$outputString .= sprintf($GLOBALS['LANG']->getLL('newsitewizard_firststep'), $this->templatesDir). '<br/>';
+			$pathArr = t3lib_div::removePrefixPathFromList($paths, PATH_site);
+			$outputString .= sprintf($GLOBALS['LANG']->getLL('newsitewizard_firststep'), implode('", "', $pathArr)). '<br/>';
 
 				// Get all HTML files:
-			$fileArr = t3lib_div::getAllFilesAndFoldersInPath(array(),PATH_site.$this->templatesDir,'html,htm',0,1);
-			$fileArr = t3lib_div::removePrefixPathFromList($fileArr,PATH_site);
+			$fileArr = t3lib_div::removePrefixPathFromList($files, PATH_site);
 
 				// Prepare header:
 			$tRows = array();
@@ -1925,7 +1904,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 			$this->content .= $this->doc->section($GLOBALS['LANG']->getLL('newsitewizard_selecttemplate', 1), $outputString, 0, 1);
 
 		} else {
-			$this->content .= $this->doc->section('TemplaVoila wizard error', sprintf($GLOBALS['LANG']->getLL('newsitewizard_errornodir', 1), $this->templatesDir), 0, 1);
+			$this->content .= $this->doc->section('TemplaVoila wizard error', $GLOBALS['LANG']->getLL('newsitewizard_errornodir', 1), 0, 1);
 		}
 	}
 
@@ -2065,11 +2044,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 					$this->wizardData['templateObjectId'] = t3lib_BEfunc::wsMapId('tx_templavoila_tmplobj',$import->import_mapId['tx_templavoila_tmplobj'][1]);
 					$this->wizardData['typoScriptTemplateID'] = t3lib_BEfunc::wsMapId('sys_template',$import->import_mapId['sys_template'][1]);
 
-					if (version_compare(TYPO3_version, '4.3', '>')) {
-						t3lib_BEfunc::setUpdateSignal('updatePageTree');
-					} else {
-						t3lib_BEfunc::getSetUpdateSignal('updatePageTree');
-					}
+					t3lib_BEfunc::setUpdateSignal('updatePageTree');
 
 					$outputString .= $GLOBALS['LANG']->getLL('newsitewizard_maintemplate', 1) . '<hr/>';
 				}
@@ -2080,7 +2055,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 
 			// If a template Object id was found, continue with mapping:
 		if ($this->wizardData['templateObjectId'])	{
-			$url = '../cm1/index.php?table=tx_templavoila_tmplobj&uid='.$this->wizardData['templateObjectId'].'&SET[selectHeaderContent]=0&_reload_from=1&returnUrl='.rawurlencode('../mod2/index.php?SET[wiz_step]=4');
+			$url = '../cm1/index.php?table=tx_templavoila_tmplobj&uid='.$this->wizardData['templateObjectId'].'&SET[selectHeaderContent]=0&_reload_from=1&id=' . $this->id . '&returnUrl='.rawurlencode('../mod2/index.php?SET[wiz_step]=4');
 
 			$outputString.= $GLOBALS['LANG']->getLL('newsitewizard_step3ready') . '
 				<br/>
@@ -2101,7 +2076,7 @@ class tx_templavoila_module2 extends t3lib_SCbase {
 	 * @return	void
 	 */
 	function wizard_step4()	{
-		$url = '../cm1/index.php?table=tx_templavoila_tmplobj&uid='.$this->wizardData['templateObjectId'].'&SET[selectHeaderContent]=1&_reload_from=1&returnUrl='.rawurlencode('../mod2/index.php?SET[wiz_step]=5');
+		$url = '../cm1/index.php?table=tx_templavoila_tmplobj&uid='.$this->wizardData['templateObjectId'].'&SET[selectHeaderContent]=1&_reload_from=1&id=' . $this->id . '&returnUrl='.rawurlencode('../mod2/index.php?SET[wiz_step]=5');
 		$outputString .= $GLOBALS['LANG']->getLL('newsitewizard_headerinclude') . '
 			<br/>
 			<img src="maphead_animation.gif" style="border: 2px black solid;" alt=""><br/>
@@ -2490,6 +2465,53 @@ lib.'.$menuType.'.1.ACT {
 			return $color;
 		}
 		return false;
+	}
+
+	/**
+	 * Find and check all template paths
+	 *
+	 * @param	boolean		if true returned paths are relative
+	 * @param	boolean		if true the patchs are checked
+	 * @return	array		all relevant template paths
+	 */
+	protected function getTemplatePaths($relative = false, $check = true) {
+		$templatePaths = array();
+		if (strlen($this->modTSconfig['properties']['templatePath'])) {
+			$paths = t3lib_div::trimExplode(',', $this->modTSconfig['properties']['templatePath'], true);
+		} else {
+			$paths = array ('templates');
+		}
+
+		$prefix = t3lib_div::getFileAbsFileName($GLOBALS['TYPO3_CONF_VARS']['BE']['fileadminDir']);
+		if (count($paths) > 0 && is_array($GLOBALS['FILEMOUNTS']))	{
+			foreach($GLOBALS['FILEMOUNTS'] as $mountCfg)	{
+					// look in paths if it's part of mounted path
+				$isPart = false;
+				foreach ($paths as $path) {
+					if (t3lib_div::isFirstPartOfStr($prefix . $path, $mountCfg['path']) &&
+						is_dir($prefix . $path)) {
+						$templatePaths[] = ($relative ? $GLOBALS['TYPO3_CONF_VARS']['BE']['fileadminDir'] : $prefix) . $path;
+					} else if (!$check) {
+						$templatePaths[] = ($relative ? $GLOBALS['TYPO3_CONF_VARS']['BE']['fileadminDir'] : $prefix) . $path;
+					}
+				}
+			}
+		}
+		return $templatePaths;
+	}
+
+	/**
+	 * Find and check all templates within the template paths
+	 *
+	 * @return	array		all relevant templates
+	 */
+	protected function getTemplateFiles() {
+		$paths = $this->getTemplatePaths();
+		$files = array();
+		foreach ($paths as $path) {
+			$files = array_merge(t3lib_div::getAllFilesAndFoldersInPath(array(), $prefix . $path . ((substr($path, -1) != '/') ? '/' : ''), 'html,htm,tmpl', 0), $files);
+		}
+		return $files;
 	}
 }
 

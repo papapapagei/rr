@@ -175,8 +175,23 @@ class tx_dam_tsfemediatag {
 				// Setting title if blank value to link:
 			if ($linktxt=='') $linktxt = $media->getContent('title');
 
-			if ($GLOBALS['TSFE']->config['config']['jumpurl_enable'])	{
-				$this->cObj->lastTypoLinkUrl = $GLOBALS['TSFE']->absRefPrefix.$GLOBALS['TSFE']->config['mainScript'].$initP.'&jumpurl='.rawurlencode($media->getPathForSite()).$GLOBALS['TSFE']->getMethodUrlIdToken;
+			if ($GLOBALS['TSFE']->config['config']['jumpurl_enable'] || $conf['jumpurl']) {
+				$mediaUrl = $media->getPathForSite();
+				$url = $GLOBALS['TSFE']->absRefPrefix . $GLOBALS['TSFE']->config['mainScript'] . $initP . $GLOBALS['TSFE']->getMethodUrlIdToken;
+				if (!empty($conf['jumpurl.']['secure'])) {
+					$secureConfiguration = array();
+					if (isset($conf['jumpurl.']['secure.']) && is_array($conf['jumpurl.']['secure.'])) {
+						$secureConfiguration = $conf['jumpurl.']['secure.'];
+					}
+					$temporaryCurrentRecordCopy = $this->cObj->currentRecord;
+					$this->cObj->currentRecord = 'tx_dam:' . $this->cObj->data['txdam_uid'];
+					$jumpUrlParameters = $this->cObj->locDataJU($mediaUrl, $secureConfiguration);
+					$this->cObj->currentRecord = $temporaryCurrentRecordCopy;
+					$url .= $jumpUrlParameters;
+				} else {
+					$url .= '&jumpurl=' . rawurlencode($mediaUrl);
+				}
+				$this->cObj->lastTypoLinkUrl = $url;
 			} else {
 				$this->cObj->lastTypoLinkUrl = $media->getURL();
 			}

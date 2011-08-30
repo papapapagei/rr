@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_Interceptor_ParseValues.php 30986 2010-03-10 18:34:49Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_Interceptor_ParseValues.php 40269 2010-11-16 15:23:54Z reinhardfuehricht $
  *                                                                       
  */
 
@@ -37,7 +37,7 @@ class Tx_Formhandler_Interceptor_ParseValues extends Tx_Formhandler_AbstractInte
 		
 		return $this->gp;
 	}
-	
+
 	/**
 	 * parses the given field values from strings to floats
 	 * 
@@ -46,8 +46,8 @@ class Tx_Formhandler_Interceptor_ParseValues extends Tx_Formhandler_AbstractInte
 	 */
 	protected function parseFloats($fields){
 		if (is_array($fields)) {
-			foreach($fields as $field) {
-				if(isset($this->gp[$field])) {
+			foreach ($fields as $idx => $field) {
+				if (isset($this->gp[$field])) {
 					$this->gp[$field] = $this->getFloat($this->gp[$field]);
 				}
 			}
@@ -63,8 +63,8 @@ class Tx_Formhandler_Interceptor_ParseValues extends Tx_Formhandler_AbstractInte
 	 * @param string $value formated float
 	 */
 	protected function getFloat($value) {
-     	return floatval(preg_replace('#^([-]*[0-9\.,\' ]+?)((\.|,){1}([0-9-]{1,2}))*$#e', "str_replace(array('.', ',', \"'\", ' '), '', '\\1') . '.\\4'", $value));
-	} 
+		return floatval(preg_replace('#^([-]*[0-9\.,\' ]+?)((\.|,){1}([0-9-]{1,2}))*$#e', "str_replace(array('.', ',', \"'\", ' '), '', '\\1') . '.\\4'", $value));
+	}
 
 }
 ?>

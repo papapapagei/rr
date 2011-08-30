@@ -36,14 +36,21 @@ class tx_templavoila_datastructure_staticbase extends tx_templavoila_datastructu
 	 */
 	public function __construct($key) {
 
-		$conf = $GLOBALS['TBE_MODULES_EXT']['xMOD_tx_templavoila_cm1']['staticDataStructures'][$key];
+		$conf = tx_templavoila_datastructureRepository::getStaticDatastructureConfiguration();
 
-		$this->filename = $conf['path'];
+		if (!isset($conf[$key])) {
+			throw new InvalidArgumentException(
+				'Argument was supposed to be an existing datastructure',
+				1283192644
+			);
+		}
 
-		$this->setLabel($conf['title']);
-		$this->setScope($conf['scope']);
+		$this->filename = $conf[$key]['path'];
+
+		$this->setLabel($conf[$key]['title']);
+		$this->setScope($conf[$key]['scope']);
 			// path relative to typo3 maindir
-		$this->setIcon( '../' . $conf['icon']);
+		$this->setIcon( '../' . $conf[$key]['icon']);
 	}
 
 	/**
@@ -72,6 +79,22 @@ class tx_templavoila_datastructure_staticbase extends tx_templavoila_datastructu
 	}
 
 	/**
+	 * Provides the datastructure configuration as XML
+	 *
+	 * @return string
+	 */
+	public function getDataprotXML() {
+		$xml = '';
+		$file = t3lib_div::getFileAbsFileName($this->filename);
+		if (is_readable($file)) {
+			$xml = file_get_contents($file);
+		} else {
+			// @todo find out if that happens and whether there's a "useful" reaction for that
+		}
+		return $xml;
+	}
+
+	/**
 	 * Determine whether the current user has permission to create elements based on this
 	 * datastructure or not - not really useable for static datastructure but relevant for
 	 * the overall system
@@ -82,6 +105,76 @@ class tx_templavoila_datastructure_staticbase extends tx_templavoila_datastructu
 	 */
 	public function isPermittedForUser($parentRow = array(), $removeItems = array()) {
 		return TRUE;
+	}
+
+	/**
+	 * Enables to determine whether this element is based on a record or on a file
+	 * Required for view-related tasks (edit-icons)
+	 *
+	 * @return boolean
+	 */
+	public function isFilebased() {
+		return TRUE;
+	}
+
+	/**
+	 * Retrieve the filereference of the template
+	 *
+	 * @return string
+	 */
+	public function getTstamp() {
+		$file = t3lib_div::getFileAbsFileName($this->filename);
+		if (is_readable($file)) {
+			$tstamp = filemtime($file);
+		} else {
+			$tstamp = 0;
+		}
+		return $tstamp;
+	}
+
+	/**
+	 * Retrieve the filereference of the template
+	 *
+	 * @return string
+	 */
+	public function getCrdate() {
+		$file = t3lib_div::getFileAbsFileName($this->filename);
+		if (is_readable($file)) {
+			$tstamp = filectime($file);
+		} else {
+			$tstamp = 0;
+		}
+		return $tstamp;
+	}
+
+	/**
+	 * Retrieve the filereference of the template
+	 *
+	 * @return string
+	 */
+	public function getCruser() {
+		return 0;
+	}
+
+	/**
+	 * @param void
+	 * @return mixed
+	 */
+	public function getBeLayout() {
+		$beLayout = FALSE;		
+		$file = substr(t3lib_div::getFileAbsFileName($this->filename), 0, -3) . 'html';
+		if (file_exists($file)) {
+			$beLayout = t3lib_div::getURL($file);
+		}
+		return $beLayout;
+	}
+
+	/**
+	 * @param void
+	 * @return string
+	 */
+	public function getSortingFieldValue() {
+		return $this->getLabel();		// required to resolve LLL texts
 	}
 }
 

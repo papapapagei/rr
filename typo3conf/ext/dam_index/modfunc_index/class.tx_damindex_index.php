@@ -119,7 +119,7 @@ class tx_damindex_index extends t3lib_extobjbase {
 
 		$this->pObj->doc->form = $this->pObj->getFormTag();
 		#TODO ??? onSubmit="return TBE_EDITOR_checkSubmit(1);"
-		
+
 		$this->pObj->doc->form.= '<input type="hidden" name="SET[tx_dam_folder]" value="'.$this->pObj->path.'" />';
 
 
@@ -435,13 +435,13 @@ class tx_damindex_index extends t3lib_extobjbase {
 				$code.= '
 					<div id="message" style="margin-top:1em;"></div>
 					<div id="table1" style="display:none;margin-top:1em;">
-					 <table cellpadding="1" cellspacing="1" border="0" width="100%">
-					 <tr id="table1header" class="bgColor5">
-						 <th>&nbsp;</th>
-						 <th>'.$LANG->sL('LLL:EXT:dam/locallang_db.xml:tx_dam_item.file_name',1).'</th>
-						 <th>'.$LANG->sL('LLL:EXT:dam/locallang_db.xml:tx_dam_item.file_type',1).'</th>
-						 <th>'.$LANG->sL('LLL:EXT:dam/locallang_db.xml:tx_dam_item.abstract',1).'</th>
-						 <th>'.$LANG->sL('LLL:EXT:dam/locallang_db.xml:tx_dam_item.file_path',1).'</th>
+					<table cellpadding="1" cellspacing="1" border="0" width="100%">
+					<tr id="table1header" class="bgColor5">
+						<th>&nbsp;</th>
+						<th>'.$LANG->sL('LLL:EXT:dam/locallang_db.xml:tx_dam_item.file_name',1).'</th>
+						<th>'.$LANG->sL('LLL:EXT:dam/locallang_db.xml:tx_dam_item.file_type',1).'</th>
+						<th>'.$LANG->sL('LLL:EXT:dam/locallang_db.xml:tx_dam_item.abstract',1).'</th>
+						<th>'.$LANG->sL('LLL:EXT:dam/locallang_db.xml:tx_dam_item.file_path',1).'</th>
 					</tr>
 					</table>
 					</div>
@@ -456,7 +456,7 @@ class tx_damindex_index extends t3lib_extobjbase {
 
 					// reload at this time
 				$max_execution_time = ini_get('max_execution_time');
-				$max_execution_time = intval(($max_execution_time/3)*2);
+								$max_execution_time = intval($max_execution_time) ? intval(($max_execution_time/3)*2) : 60;
 				$this->indexEndtime = time()+$max_execution_time;
 
 				echo '<head>
@@ -500,7 +500,7 @@ class tx_damindex_index extends t3lib_extobjbase {
 	 */
 	function getPresetForm ($rec, $fixedFields, $langKeyDesc) {
 		global $LANG, $BACK_PATH, $TCA, $TYPO3_CONF_VARS;
-		
+
 
 
 		$content = '';
@@ -572,7 +572,7 @@ class tx_damindex_index extends t3lib_extobjbase {
 	 */
 	function showPresetData ($rec,$fixedFields) {
 		global $LANG, $BACK_PATH, $TCA, $TYPO3_CONF_VARS;
-		
+
 
 		$content = '';
 
@@ -684,7 +684,7 @@ class tx_damindex_index extends t3lib_extobjbase {
 	/**
 	 *
 	 */
-	function doIndexingCallback($type, $meta, $absFile, $fileArrKey, &$pObj) {
+	function doIndexingCallback($type, $meta, $absFile, $fileArrKey, $pObj) {
 		global $LANG, $TYPO3_CONF_VARS;
 
 			// get session data

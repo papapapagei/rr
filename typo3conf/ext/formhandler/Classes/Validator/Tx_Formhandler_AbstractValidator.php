@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_AbstractValidator.php 27708 2009-12-15 09:22:07Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_AbstractValidator.php 40269 2010-11-16 15:23:54Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -30,7 +30,7 @@ abstract class Tx_Formhandler_AbstractValidator extends Tx_Formhandler_AbstractC
 	 * @return boolean
 	 */
 	abstract public function validate(&$errors);
-	
+
 	public function process() {
 		return;
 	}

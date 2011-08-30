@@ -36,11 +36,11 @@
  *
  *
  *
- *   65: class tx_templavoila_unusedce extends tx_lowlevel_cleaner_core
- *   79:     function tx_templavoila_unusedce()
- *  103:     function main()
- *  140:     function main_parseTreeCallBack($tableName,$uid,$echoLevel,$versionSwapmode,$rootIsVersion)
- *  230:     function main_autoFix($resultArray)
+ *   57: class tx_lowlevel_cleanflexform extends tx_lowlevel_cleaner_core
+ *   64:     function tx_lowlevel_cleanflexform()
+ *   89:     function main()
+ *  117:     function main_parseTreeCallBack(&$pObj,$tableName,$uid,$echoLevel,$versionSwapmode,$rootIsVersion)
+ *  148:     function main_autoFix($resultArray, $dryrun=TRUE)
  *
  * TOTAL FUNCTIONS: 4
  * (This index is automatically created/updated by the extension "extdeveval")
@@ -145,7 +145,7 @@ Automatic Repair:
 			if (!$versionSwapmode)	{
 
 					// Initialize TemplaVoila API class:
-				if(version_compare(TYPO3_version,'4.3.0','<')) {
+				if(t3lib_div::int_from_ver(TYPO3_version) < 4003000) {
 					$apiClassName = t3lib_div::makeInstanceClassName('tx_templavoila_api');
 					$apiObj = new $apiClassName ('pages');
 				} else {

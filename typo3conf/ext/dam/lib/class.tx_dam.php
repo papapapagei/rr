@@ -111,7 +111,6 @@
  * 2219:     function register_fileTrigger ($idName, $class, $position='')
  * 2231:     function register_selection ($idName, $class, $position='')
  * 2244:     function register_indexingRule ($idName, $class, $position='')
- * 2258:     function register_fileType ($fileExtension, $mimeType, $mediaType='')
  * 2279:     function register_previewer ($idName, $class, $position='')
  * 2293:     function register_editor ($idName, $class, $position='')
  * 2307:     function register_action ($idName, $class, $position='')
@@ -447,11 +446,9 @@ class tx_dam {
 			$filename .= '_';
 		}
 
-			// handle UTF-8 characters
-		if ($GLOBALS['TYPO3_CONF_VARS']['BE']['forceCharset'] == 'utf-8' && $GLOBALS['TYPO3_CONF_VARS']['SYS']['UTF8filesystem'])	{
-				// allow ".", "-", 0-9, a-z, A-Z and everything beyond U+C0 (latin capital letter a with grave)
-			$filename = preg_replace('/[\x00-\x2C\/\x3A-\x3F\x5B-\x60\x7B-\xBF]/u','_', $filename);
-		}
+			// use TYPO3 cleanFileName function
+		$basicFileFuncObj = t3lib_div::makeInstance('t3lib_basicFileFunctions');
+		$filename = $basicFileFuncObj->cleanFileName($filename);
 		
 		$maxFileNameLength = $GLOBALS['TYPO3_CONF_VARS']['SYS']['maxFileNameLength'] ? $GLOBALS['TYPO3_CONF_VARS']['SYS']['maxFileNameLength'] : 60;
 		if ($crop AND strlen($filename) > $maxFileNameLength) {
@@ -1129,6 +1126,7 @@ class tx_dam {
 
 
 
+
 	/***************************************
 	 *
 	 *	 Media objects functions
@@ -1767,7 +1765,7 @@ class tx_dam {
 				// index the file
 			$setup = array(
 				'recursive' => false,
-				'doReindexing' => tx_dam::config_checkValueEnabled('indexing.editFile.reindexingMode', 1), // reindexPreserve - preserve old data if new is empty
+				'doReindexing' => tx_dam::config_checkValueEnabled('setup.indexing.editFile.reindexingMode', 1), // reindexPreserve - preserve old data if new is empty
 				);
 			tx_dam::index_process ($filepath, $setup);
 		}
@@ -1849,7 +1847,7 @@ class tx_dam {
 					// reindex the file
 				$setup = array(
 						'recursive' => false,
-						'doReindexing' => tx_dam::config_checkValueEnabled('indexing.replaceFile.reindexingMode', 2), // reindexPreserve - preserve old data if new is empty
+						'doReindexing' => tx_dam::config_checkValueEnabled('setup.indexing.replaceFile.reindexingMode', 2), // reindexPreserve - preserve old data if new is empty
 					);
 				tx_dam::index_process ($newFile, $setup);
 
@@ -2373,7 +2371,7 @@ class tx_dam {
 	function icon_getFileType ($mimeType, $absolutePath=false, $mode=TYPO3_MODE) {
 		static $iconCache = array();
 		static $iconCacheRel = array();
-
+        
 		$iconfile = false;
 
 			// first see if the icon is in the icon cache
@@ -2382,18 +2380,26 @@ class tx_dam {
 			if (!$absolutePath && $cached = $iconCacheRel[$mimeType['file_type']]) {
 				return $cached;
 
-			} elseif (!$absolutePath && $cached = $iconCacheRel['_mtype_'.$mimeType['media_type']]) {
-				return $cached;
-
 			} elseif ($cached = $iconCache[$mimeType['file_type']]) {
 				$iconfile = $cached;
 
-			} elseif ($cached = $iconCache['_mtype_'.$mimeType['media_type']]) {
-				$iconfile = $cached;
-
-			} else {
+			} else { 
 				foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['dam']['fileIconPaths_'.$mode] as $pathIcons ) {
-						// first try PNG
+						// Check defined icons
+					$fileType = tx_dam_db::getMediaExtension($mimeType['file_type']);
+                    
+						// See if the icon is a DAM reference
+					if(t3lib_div::testInt($fileType['icon'])) {
+						$fileType['icon'] = tx_dam::file_getPathByUid($fileType['icon']);
+					}
+					
+					if (@file_exists($fileType['icon'])) {
+						$iconfile = $fileType['icon'];
+						$cacheKey = $mimeType['file_type'];
+						$iconCache[$cacheKey] = $iconfile;
+						break;						
+					}
+						// then try default PNG
 					if (@file_exists($pathIcons.$mimeType['file_type'].'.png')) {
 						$iconfile = $pathIcons.$mimeType['file_type'].'.png';
 						$cacheKey = $mimeType['file_type'];
@@ -2401,7 +2407,7 @@ class tx_dam {
 						break;
 					}
 
-						// then go for GIF
+						// then go for default GIF
 					if (@file_exists($pathIcons.$mimeType['file_type'].'.gif')) {
 						$iconfile = $pathIcons.$mimeType['file_type'].'.gif';
 						$cacheKey = $mimeType['file_type'];
@@ -2678,24 +2684,6 @@ class tx_dam {
 
 
 	/**
-	 * Register a file type
-	 * This extends or overwrite the internal list of mime types which is used to detect a media type and a file type.
-	 *
-	 * @param	string		$fileExtension File extension. Eg. jpg, pdf, ...
-	 * @param	string		$mimeType Eg. image/tiff, audio/x-mpeg
-	 * @param	string		$mediaType Optional, if mime type is different. Eg. 'text','image','audio','video','interactive', 'service','font','model','dataset','collection','software','application'
-	 * @return	void
-	 */
-	function register_fileType ($fileExtension, $mimeType, $mediaType='') {
-		$fileExtension = strtolower($fileExtension);
-		$GLOBALS['T3_VAR']['ext']['dam']['file2mime'][$fileExtension] = $mimeType;
-		if ($mediaType) {
-			$GLOBALS['T3_VAR']['ext']['dam']['file2mediaCode'][$fileExtension] = tx_dam::convert_mediaType($mediaType);
-		}
-	}
-
-
-	/**
 	 * Register a class which renders a "previewer".
 	 * A previewer will render a - yes - preview of a file. This can be a thumbnail or a small embedded mp3 player.
 	 * A previewer can be used in thumbnail view or at the top of a record.
@@ -2943,6 +2931,10 @@ class tx_dam {
 	 * @return	void
 	 */
 	function _addItem($idName, $value, &$items, $position='')	{
+
+		if (is_null($items)) {
+			$items = array();
+		}
 
 		$position .= ';bottom';
 		$posList = t3lib_div::trimExplode(';', $position, 1);

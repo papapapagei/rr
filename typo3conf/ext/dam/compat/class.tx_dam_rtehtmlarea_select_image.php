@@ -223,7 +223,10 @@ class tx_dam_rtehtmlarea_select_image extends tx_dam_browse_media {
 	 */
 	function main_rte()	{
 		global $LANG, $TYPO3_CONF_VARS, $FILEMOUNTS, $BE_USER;
-		
+
+			// Excluding items based on Page TSConfig
+		$this->allowedItems = array_diff($this->allowedItems, t3lib_div::trimExplode(',', $this->modPageConfig['properties']['removeTabs'], 1));
+			// Excluding upload into readOnly folders
 		$path = tx_dam::path_makeAbsolute($this->damSC->path);
 		if ($this->isReadOnlyFolder($path)) {
 			$this->allowedItems = array_diff($this->allowedItems, array('upload'));

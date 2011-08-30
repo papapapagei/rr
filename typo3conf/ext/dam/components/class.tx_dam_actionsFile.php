@@ -749,7 +749,7 @@ class tx_dam_action_deleteFile extends tx_dam_action_renameFile {
 		}
 		return $valid;
 	}
-	
+
 	/**
 	 * Returns the icon image tag.
 	 * Additional attributes to the image tagcan be added.
@@ -1022,9 +1022,155 @@ class tx_dam_action_editFile extends tx_dam_actionbase {
 
 
 
+class tx_dam_action_copyFile extends tx_dam_action_renameFile {
+
+	var $cmd = 'tx_dam_cmd_filecopy';
+
+	/**
+	 * Returns true if the action is of the wanted type
+	 *
+	 * @param	string		$type Action type
+	 * @param	array		$itemInfo Item info array. Eg pathInfo, meta data array
+	 * @param	array		$env Environment array. Can be set with setEnv() too.
+	 * @return	boolean
+	 */
+	function isValid ($type, $itemInfo=NULL, $env=NULL) {
+		$valid = $this->isTypeValid ($type, $itemInfo, $env);
+		if ($valid)	{
+			$valid = (($this->itemInfo['__type'] === 'file') OR ($this->itemInfo['__type'] === 'record' AND $this->itemInfo['__table'] === 'tx_dam')) AND ($itemInfo['file_status'] != TXDAM_status_file_missing);
+		}
+		return $valid;
+	}
+
+
+	/**
+	 * Returns the icon image tag.
+	 * Additional attributes to the image tagcan be added.
+	 *
+	 * @param	string		$addAttribute Additional attributes
+	 * @return	string
+	 */
+	function getIcon ($addAttribute='') {
+
+		$iconFile = 'gfx/clip_copy.gif';
+		$icon = '<img'.t3lib_iconWorks::skinImg($this->env['backPath'], $iconFile, 'width="13" height="12"').$this->_cleanAttribute($addAttribute).' alt="" />';
+
+		return $icon;
+	}
+
+
+	/**
+	 * Returns the short label like: Delete
+	 *
+	 * @return	string
+	 */
+	function getLabel () {
+		return $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.xml:cm.copy');
+	}
+
+
+	/**
+	 * Returns a command array for the current type
+	 *
+	 * @return	array		Command array
+	 * @access private
+	 */
+	function _getCommand() {
+
+		$filepath = tx_dam::file_absolutePath($this->itemInfo);
+
+		$script = $this->env['defaultCmdScript'];
+		$script .= '?CMD='.$this->cmd;
+		$script .= '&vC='.$GLOBALS['BE_USER']->veriCode();
+		$script .= '&file[]='.rawurlencode($filepath);
+
+		if ($this->type === 'context') {
+			$commands['url'] = $script;
+		} else {
+			$script .= '&returnUrl='.rawurlencode($this->env['returnUrl']);
+			$commands['href'] = $script;
+		}
+
+		return $commands;
+	}
+
+}
 
 
 
+class tx_dam_action_moveFile extends tx_dam_action_renameFile {
+
+	var $cmd = 'tx_dam_cmd_filemove';
+
+	/**
+	 * Returns true if the action is of the wanted type
+	 *
+	 * @param	string		$type Action type
+	 * @param	array		$itemInfo Item info array. Eg pathInfo, meta data array
+	 * @param	array		$env Environment array. Can be set with setEnv() too.
+	 * @return	boolean
+	 */
+	function isValid ($type, $itemInfo=NULL, $env=NULL) {
+		$valid = $this->isTypeValid ($type, $itemInfo, $env);
+		if ($valid)	{
+			$valid = (($this->itemInfo['__type'] === 'file') OR ($this->itemInfo['__type'] === 'record' AND $this->itemInfo['__table'] === 'tx_dam')) AND ($itemInfo['file_status'] != TXDAM_status_file_missing);
+		}
+		return $valid;
+	}
+
+
+	/**
+	 * Returns the icon image tag.
+	 * Additional attributes to the image tagcan be added.
+	 *
+	 * @param	string		$addAttribute Additional attributes
+	 * @return	string
+	 */
+	function getIcon ($addAttribute='') {
+
+		$iconFile = 'gfx/move_page.gif';
+		$icon = '<img'.t3lib_iconWorks::skinImg($this->env['backPath'], $iconFile, 'width="13" height="12"').$this->_cleanAttribute($addAttribute).' alt="" />';
+
+		return $icon;
+	}
+
+
+	/**
+	 * Returns the short label like: Delete
+	 *
+	 * @return	string
+	 */
+	function getLabel () {
+		return $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_common.xml:move');
+	}
+
+
+	/**
+	 * Returns a command array for the current type
+	 *
+	 * @return	array		Command array
+	 * @access private
+	 */
+	function _getCommand() {
+
+		$filepath = tx_dam::file_absolutePath($this->itemInfo);
+
+		$script = $this->env['defaultCmdScript'];
+		$script .= '?CMD='.$this->cmd;
+		$script .= '&vC='.$GLOBALS['BE_USER']->veriCode();
+		$script .= '&file[]='.rawurlencode($filepath);
+
+		if ($this->type === 'context') {
+			$commands['url'] = $script;
+		} else {
+			$script .= '&returnUrl='.rawurlencode($this->env['returnUrl']);
+			$commands['href'] = $script;
+		}
+
+		return $commands;
+	}
+
+}
 
 
 class tx_dam_actionsFile {

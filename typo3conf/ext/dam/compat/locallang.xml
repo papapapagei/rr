@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description></description>
+		<type>module</type>
+		<csh_table></csh_table>
+		<fileId>EXT:dam/compat/locallang.xml</fileId>
+		<labelContext type="array">
+			<label index="useDAMColumn"></label>
+		</labelContext>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="useDAMColumn">Make title from media data</label>
+		</languageKey>
+	</data>
+</T3locallang>

@@ -25,7 +25,7 @@
 /**
  * Class 'tx_templavoila_access' for the templavoila extension.
  *
- * $Id$
+ * $Id: class.tx_templavoila_access.php 16605 2009-02-06 12:21:14Z dmitry $
  *
  * @author     Dmitry Dulepov <dmitry@typo3.org>
  */
@@ -36,7 +36,7 @@
  *
  *   55: class tx_templavoila_access
  *   64:     function recordEditAccessInternals($params, $ref)
- *  108:     function checkObjectAccess($table, $uid, $be_user)
+ *   93:     function checkObjectAccess($table, $uid, $be_user)
  *
  * TOTAL FUNCTIONS: 2
  * (This index is automatically created/updated by the extension "extdeveval")

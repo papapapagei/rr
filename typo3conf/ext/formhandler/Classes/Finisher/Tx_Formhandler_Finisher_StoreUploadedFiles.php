@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_Finisher_StoreUploadedFiles.php 34197 2010-06-11 13:52:49Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_Finisher_StoreUploadedFiles.php 46243 2011-04-05 15:17:49Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -43,12 +43,11 @@ class Tx_Formhandler_Finisher_StoreUploadedFiles extends Tx_Formhandler_Abstract
 	 */
 	public function process() {
 
-		if($this->settings['finishedUploadFolder']) {
-				
+		if ($this->settings['finishedUploadFolder']) {
+
 			//move the uploaded files
 			$this->moveUploadedFiles();
 		}
-
 		return $this->gp;
 	}
 
@@ -58,9 +57,8 @@ class Tx_Formhandler_Finisher_StoreUploadedFiles extends Tx_Formhandler_Abstract
 	 *
 	 * TypoScript example:
 	 *
-	 * 1. Set the temporary upload folder and set cleaning
+	 * 1. Set the temporary upload folder
 	 * <code>
-	 * plugin.Tx_Formhandler.settings.files.clearTempFilesOlderThanHours = 24
 	 * plugin.Tx_Formhandler.settings.files.tmpUploadFolder = uploads/formhandler/tmp
 	 * </code>
 	 *
@@ -78,30 +76,35 @@ class Tx_Formhandler_Finisher_StoreUploadedFiles extends Tx_Formhandler_Abstract
 		$newFolder = $this->settings['finishedUploadFolder'];
 		$newFolder = Tx_Formhandler_StaticFuncs::sanitizePath($newFolder);
 		$uploadPath = Tx_Formhandler_StaticFuncs::getDocumentRoot() . $newFolder;
-		$sessionFiles = Tx_Formhandler_Session::get('files');
-		if(is_array($sessionFiles) && !empty($sessionFiles) && strlen($newFolder) > 0 ) {
-			foreach($sessionFiles as $field => $files) {
+		$sessionFiles = Tx_Formhandler_Globals::$session->get('files');
+		if (is_array($sessionFiles) && !empty($sessionFiles) && strlen($newFolder) > 0 ) {
+			foreach ($sessionFiles as $field => $files) {
 				$this->gp[$field] = array();
-				foreach($files as $key => $file) {
-					if($file['uploaded_path'] != $uploadPath) {
+				foreach ($files as $key => $file) {
+					if ($file['uploaded_path'] != $uploadPath) {
 						$newFilename = $this->getNewFilename($file['uploaded_name']);
-	
-						Tx_Formhandler_StaticFuncs::debugMessage('copy_file', ($file['uploaded_path'] . $file['uploaded_name']), ($uploadPath . $newFilename));
+						Tx_Formhandler_StaticFuncs::debugMessage(
+							'copy_file', 
+							array(
+								($file['uploaded_path'] . $file['uploaded_name']),
+								($uploadPath . $newFilename)
+							)
+						);
 						copy(($file['uploaded_path'] . $file['uploaded_name']), ($uploadPath . $newFilename));
+						t3lib_div::fixPermissions($uploadPath . $newFilename);
 						unlink(($file['uploaded_path'] . $file['uploaded_name']));
-	
 						$sessionFiles[$field][$key]['uploaded_path'] = $uploadPath;
 						$sessionFiles[$field][$key]['uploaded_name'] = $newFilename;
 						$sessionFiles[$field][$key]['uploaded_folder'] = $newFolder;
 						$sessionFiles[$field][$key]['uploaded_url'] = t3lib_div::getIndpEnv('TYPO3_SITE_URL') . $newFolder . $newFilename;
-						if(!is_array($this->gp[$field])) {
+						if (!is_array($this->gp[$field])) {
 							$this->gp[$field] = array();
 						}
 						array_push($this->gp[$field], $newFilename);
 					}
 				}
 			}
-			Tx_Formhandler_Session::set('files', $sessionFiles);
+			Tx_Formhandler_Globals::$session->set('files', $sessionFiles);
 		}
 	}
 
@@ -119,7 +122,7 @@ class Tx_Formhandler_Finisher_StoreUploadedFiles extends Tx_Formhandler_Abstract
 		$filename = implode('.', $fileparts);
 
 		$namingScheme = $this->settings['renameScheme'];
-		if(!$namingScheme) {
+		if (!$namingScheme) {
 			$namingScheme = '[filename]_[time]';
 		}
 		$newFilename = $namingScheme;
@@ -127,24 +130,22 @@ class Tx_Formhandler_Finisher_StoreUploadedFiles extends Tx_Formhandler_Abstract
 		$newFilename = str_replace('[time]', time(), $newFilename);
 		$newFilename = str_replace('[md5]', md5($filename), $newFilename);
 		$newFilename = str_replace('[pid]', $GLOBALS['TSFE']->id, $newFilename);
-		if(is_array($this->settings['schemeMarkers.'])) {
-			foreach($this->settings['schemeMarkers.'] as $markerName => $options) {
-				if(!(strpos($markerName, '.') > 0)) {
+		if (is_array($this->settings['schemeMarkers.'])) {
+			foreach ($this->settings['schemeMarkers.'] as $markerName => $options) {
+				if (!(strpos($markerName, '.') > 0)) {
 					$value = $options;
 
 					//use field value
-					if(isset($this->settings['schemeMarkers.'][$markerName.'.']) && !strcmp($options, 'fieldValue')) {
-						
+					if (isset($this->settings['schemeMarkers.'][$markerName.'.']) && !strcmp($options, 'fieldValue')) {
 						$value = $this->gp[$this->settings['schemeMarkers.'][$markerName . '.']['field']];
-
-					} elseif(isset($this->settings['schemeMarkers.'][$markerName . '.'])) {
-
+					} elseif (isset($this->settings['schemeMarkers.'][$markerName . '.'])) {
 						$value = Tx_Formhandler_StaticFuncs::getSingle($this->settings['schemeMarkers.'], $markerName);
 					}
 					$newFilename = str_replace('[' . $markerName . ']', $value, $newFilename);
 				}
 			}
 		}
+
 		//remove ',' from filename, would be handled as file separator 
 		$newFilename = str_replace(',', '', $newFilename);
 

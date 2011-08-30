@@ -24,7 +24,7 @@
 /**
  * templavoila module cm2
  *
- * $Id$
+ * $Id: index.php 39016 2010-10-10 14:14:45Z tolleiv $
  *
  * @author		Kasper Skaarhoj <kasper@typo3.com>
  * @co-author	Robert Lemke <robert@typo3.org>
@@ -87,23 +87,19 @@ class tx_templavoila_cm2 extends t3lib_SCbase {
 			// Check admin: If this is changed some day to other than admin users we HAVE to check if there is read access to the record being selected!
 		if (!$GLOBALS['BE_USER']->isAdmin())	die('no access.');
 
-			// Draw the header.
-		$this->doc = t3lib_div::makeInstance('noDoc');
-		$this->doc->backPath = $BACK_PATH;
-		$this->doc->docType = 'xhtml_trans';
-
 		$this->returnUrl = tx_templavoila_div::sanitizeLocalUrl(t3lib_div::_GP('returnUrl'));
 
-		$this->content.=$this->doc->startPage($LANG->getLL('title'));
-		$this->content.=$this->doc->header($LANG->getLL('title'));
-		$this->content.=$this->doc->spacer(5);
-
-		if ($this->returnUrl)	{
-			$this->content.='<a href="' . htmlspecialchars($this->returnUrl) . '" class="typo3-goBack">' .
-				'<img' . t3lib_iconWorks::skinImg($this->doc->backPath, 'gfx/goback.gif', 'width="14" height="14"') . ' alt="" />' .
-				$LANG->sL('LLL:EXT:lang/locallang_misc.xml:goBack', 1) .
-				'</a><br/><br/>';
+			// Draw the header.
+		$this->doc = t3lib_div::makeInstance('template');
+		$this->doc->docType = 'xhtml_trans';
+		$this->doc->backPath = $BACK_PATH;
+		if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
+			$this->doc->setModuleTemplate('EXT:templavoila/resources/templates/cm2_default.html');
+		} else {
+			$this->doc->setModuleTemplate(t3lib_extMgm::extRelPath('templavoila') . 'resources/templates/cm2_default.html');
 		}
+		$this->doc->bodyTagId = 'typo3-mod-php';
+		$this->doc->divClass = '';
 
 			// XML code:
 		$this->viewTable = t3lib_div::_GP('viewRec');
@@ -146,9 +142,19 @@ class tx_templavoila_cm2 extends t3lib_SCbase {
 				$t3lib_diff_Obj = t3lib_div::makeInstance('t3lib_diff');
 				$diffres = $t3lib_diff_Obj->makeDiffDisplay($currentXML,$cleanXML);
 
-				$xmlContentMarkedUp = '
-				<b>'.$this->doc->icons(1).$LANG->getLL('needsCleaning',1).'</b>
-				<table border="0">
+			if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
+				$flashMessage = t3lib_div::makeInstance(
+					't3lib_FlashMessage',
+					$LANG->getLL('needsCleaning',1),
+					'',
+					t3lib_FlashMessage::INFO
+				);
+				$xmlContentMarkedUp = $flashMessage->render();
+			} else {
+				$xmlContentMarkedUp = '<b>' . $this->doc->icons(1) . $LANG->getLL('needsCleaning',1) . '</b>';
+			}
+
+			$xmlContentMarkedUp .= '<table border="0">
 					<tr class="bgColor5 tableheader">
 						<td>'.$LANG->getLL('current',1).'</td>
 					</tr>
@@ -180,7 +186,17 @@ class tx_templavoila_cm2 extends t3lib_SCbase {
 			} else {
 				$xmlContentMarkedUp = '';
 				if ($cleanXML)	{
-					$xmlContentMarkedUp.= '<b>'.$this->doc->icons(-1).$LANG->getLL('XMLclean',1).'</b><br/>';
+					if (t3lib_div::int_from_ver(TYPO3_version) >= 4003000) {
+						$flashMessage = t3lib_div::makeInstance(
+							't3lib_FlashMessage',
+							$LANG->getLL('XMLclean',1),
+							'',
+							t3lib_FlashMessage::OK
+						);
+						$xmlContentMarkedUp = $flashMessage->render();
+					} else {
+						$xmlContentMarkedUp .= '<b>' . $this->doc->icons(-1) . $LANG->getLL('XMLclean', 1) . '</b><br/>';
+					}
 				}
 				$xmlContentMarkedUp.= $this->markUpXML($currentXML);
 			}
@@ -190,6 +206,23 @@ class tx_templavoila_cm2 extends t3lib_SCbase {
 
 			// Add spacer:
 		$this->content.=$this->doc->spacer(10);
+
+		$docHeaderButtons = $this->getDocHeaderButtons();
+		$docContent = array(
+			'CSH' => $docHeaderButtons['csh'],
+			'CONTENT' => $this->content
+		);
+
+		$content  = $this->doc->startPage($GLOBALS['LANG']->getLL('title'));
+		$content .= $this->doc->moduleBody(
+			array(),
+			$docHeaderButtons,
+			$docContent
+		);
+		$content .= $this->doc->endPage();
+
+			// Replace content with templated content
+		$this->content = $content;
 	}
 
 	/**
@@ -198,9 +231,43 @@ class tx_templavoila_cm2 extends t3lib_SCbase {
 	 * @return	void
 	 */
 	function printContent()	{
-		$this->content.=$this->doc->middle();
-		$this->content.=$this->doc->endPage();
 		echo $this->content;
+	}
+
+	/**
+	 * Gets the buttons that shall be rendered in the docHeader.
+	 *
+	 * @return	array		Available buttons for the docHeader
+	 */
+	protected function getDocHeaderButtons() {
+		$buttons = array(
+			'csh'		=> t3lib_BEfunc::cshItem('_MOD_web_txtemplavoilaCM1', '', $this->backPath),
+			'back'		=> '',
+			'shortcut'	=> $this->getShortcutButton(),
+		);
+
+			// Back
+		if ($this->returnUrl) {
+			$backIcon = tx_templavoila_icons::getIcon('actions-view-go-back');
+			$buttons['back'] = '<a href="' . htmlspecialchars(t3lib_div::linkThisUrl($this->returnUrl)) . '" class="typo3-goBack" title="' . $GLOBALS['LANG']->sL('LLL:EXT:lang/locallang_core.php:labels.goBack', TRUE) . '">' .
+								$backIcon .
+							   '</a>';
+		}
+		return $buttons;
+	}
+
+	/**
+	 * Gets the button to set a new shortcut in the backend (if current user is allowed to).
+	 *
+	 * @return	string		HTML representiation of the shortcut button
+	 */
+	protected function getShortcutButton() {
+		$result = '';
+		if ($GLOBALS['BE_USER']->mayMakeShortcut()) {
+			$result = $this->doc->makeShortcutIcon('id', implode(',', array_keys($this->MOD_MENU)), $this->MCONF['name']);
+		}
+
+		return $result;
 	}
 
 	/**

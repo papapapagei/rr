@@ -1,5 +1,20 @@
 /* PAGEMODULE CSS */
 
+.typo3-templavoila-pagemodule > #typo3-docbody {
+	top:22px;
+}
+
+.typo3-templavoila-pagemodule > #typo3-docbody > #typo3-docheader-row2 {
+	height:auto;
+	padding-top:1px;
+}
+
+.typo3-templavoila-pagemodule > #typo3-docbody  > #typo3-docheader-row2 > .docheader-row2-inner {
+	margin-left:10px;
+	margin-right:10px;
+	width:auto;
+}
+
 /* general */
 table {
 	position:relative;
@@ -51,42 +66,87 @@ div.warning a {
 	border: 1px dashed #000;
 }
 .tpm-container-element {
-	width: 100%; 
+	display:block;
 	border: 1px solid black; 
 	margin-bottom:5px;
 }
-.tpm-container-element tr.tpm-titlebar-page {
+.tpm-container-element.pagecontainer {
+	display:inline-block;
+	min-width:100%;
+}
+
+.tpm-container-element .tpm-titlebar-page {
 	background-color: #B8BEC9;
 }
-.tpm-container-element tr.tpm-titlebar {
+.tpm-container-element .tpm-titlebar {
 	background-color: #f8f9fb;
 }
-.tpm-container-element tr.tpm-titlebar-fromOtherPage {
+.tpm-container-element .tpm-titlebar-fromOtherPage {
 	background-color: #e6e9eb;
 }
-.tpm-container-element tr.tpm-titlebar img, 
-.tpm-container-element tr.tpm-titlebar-fromOtherPage img,
-.tpm-container-element tr.tpm-titlebar-page img {
+.tpm-container-element .tpm-titlebar img, 
+.tpm-container-element .tpm-titlebar-fromOtherPage img,
+.tpm-container-element .tpm-titlebar-page img {
 	vertical-align: middle;
 	padding: 2px 1px;
 }
-.tpm-container-element tr.tpm-titlebar span img, 
-.tpm-container-element tr.tpm-titlebar-fromOtherPage span img,
-.tpm-container-element tr.tpm-titlebar-page span img {
+.tpm-container-element .tpm-titlebar span img, 
+.tpm-container-element .tpm-titlebar-fromOtherPage span img,
+.tpm-container-element .tpm-titlebar-page span img {
 	padding-right: 3px;
 }
 
+.tpm-titlebar {
+	position:relative;
+}
+
 .tpm-element-control {
+	position:relative;
+	right:0px;
+	float:right;
 	text-align: right; 
 	vertical-align:top;
 }
 .tpm-element-title {
+	padding-right:130px;
 	vertical-align:top;
+	overflow: hidden;
+}
+
+.tpm-element-title > a, .tpm-element-title > .tpm-langIcon {
+	float:left;
+}
+
+.tpm-element-title > div {
+	padding-top:2px;
+}
+
+.tpm-preview {
+	padding:1px 3px 1px 3px
+}
+
+.tpm-preview ul {
+	padding:0 0 0 20px;
+	margin:0
+}
+
+.tpm-langIcon {
+	padding-top:2px;
+	padding-left:2px;
 }
 
 /* non-used elements */
-.tpm-nonused-element {
-	
+
+.tpm-nonused-elements td:first-child {
+	padding:3px;
+}
+
+.tpm-nonused-element td {
+	padding:2px 3px;
+	vertical-align:middle;
+}
+.tpm-nonused-element:nth-child(odd) {
+	background:#ffffff;
 }
 .tpm-nonused-controls {
 	width: 40px;
@@ -94,6 +154,7 @@ div.warning a {
 }
 .tpm-nonused-ref {
 	width: 20px;
+	white-space:nowrap;
 }
 .tpm-nonused-element img,
 .tpm-nonused-deleteall img {
@@ -114,9 +175,9 @@ div.warning a {
 	vertical-align: middle;
 	padding: 0 1px;
 }
-.tpm-outline-table .tpm-container td.nobr img,
-.tpm-outline-table .tpm-element td.nobr img,
-.tpm-outline-table .tpm-elementRef td.nobr img {
+.tpm-outline-table .tpm-container .nobr img,
+.tpm-outline-table .tpm-element .nobr img,
+.tpm-outline-table .tpm-elementRef .nobr img {
 	padding-right: 3px;
 }
 .tpm-outline-table .tpm-outline-level0 {
@@ -124,4 +185,8 @@ div.warning a {
 }
 .tpm-outline-table .tpm-outline-level1 {
 	background-color: #f8f9fb;
+}
+
+#typo3-docbody > .typo3-message {
+		margin:5px 8px;
 }

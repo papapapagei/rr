@@ -142,6 +142,18 @@ class tx_dam_db {
 
 		if ($res) {
 			while ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
+
+				// Is there a workspace overlay?
+				if (isset($GLOBALS['BE_USER']->workspace) && ($GLOBALS['BE_USER']->workspace !== 0)) {
+					if (isset($GLOBALS['TSFE'])) {
+						// we are in frontend
+						$GLOBALS['TSFE']->sys_page->versionOL('tx_dam', $row);
+					} else {
+						// it's the backend
+						t3lib_befunc::workspaceOL('tx_dam', $row);
+					}
+				}
+
 				if(isset($row['uid'])) {
 					$rows[$row['uid']] = $row;
 				} else {
@@ -977,6 +989,7 @@ class tx_dam_db {
 		}
 		$where['ref'] = $local_table.'.uid='.$softRef_table.'.ref_uid';
 		$where['ref'] .= $foreign_table ? ' AND ' . $foreign_table . '.uid=' . $softRef_table . '.recuid' : '';
+		$where['refTable'] = $softRef_table . '.ref_table=' . $GLOBALS['TYPO3_DB']->fullQuoteStr('tx_dam', $softRef_table);
 		$where = array_merge($where, $whereClauses);
 
 		if ($foreign_table) {
@@ -1091,6 +1104,8 @@ class tx_dam_db {
 		if ($uploadsPath) {
 			$where[] = 'tx_dam_file_tracking.file_path='.$GLOBALS['TYPO3_DB']->fullQuoteStr($uploadsPath,'tx_dam_file_tracking');
 		}
+			// use index to preselect records
+		$where[] = $softRef_table . '.ref_string = CONCAT(' . $tracking_table . '.file_path,' . $tracking_table . '.file_name)';
 		$where[] = $softRef_table . '.ref_string LIKE CONCAT(' . $tracking_table . '.file_path,' . $tracking_table . '.file_name)';
 		$selectFields = implode(',', $fields);
 		$whereClause = implode(' AND ', $where);
@@ -1271,6 +1286,38 @@ class tx_dam_db {
 
 		return $infoFields;
 	}
+
+	
+	/**
+	 * Get the extension record from the DB. 
+	 *
+	 * @param	string		$ext: Extension, for which to fetch the record. Optional
+	 * @param	boolean		$mimeType: Mime Type, for which to fetch the record. Optional, but must be provided if the extension is blank.
+	 * @return	array		File type record.
+	 */	
+	function getMediaExtension($ext='', $mimeType='') {
+		// Check we have enough information to proceed
+		if ($ext == '' && $mimeType == '') {
+			return array();
+		}
+		if ($ext != '') {
+			$where[] = "ext=" . $GLOBALS['TYPO3_DB']->fullQuoteStr($ext, 'tx_dam_media_types');
+		}
+		if ($mimeType != '') {
+			$where[] = "mime=" . $GLOBALS['TYPO3_DB']->fullQuoteStr($mimeType, 'tx_dam_media_types');
+		}
+		
+		// Query the DB 
+		$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
+												'*',
+												'tx_dam_media_types',
+												implode(' AND ', $where)
+											);
+		if ($row = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res)) {
+			$GLOBALS['TYPO3_DB']->sql_free_result($res);
+			return $row;
+		}
+	}	
 
 
 

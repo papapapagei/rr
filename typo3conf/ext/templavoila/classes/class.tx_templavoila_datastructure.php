@@ -114,6 +114,27 @@ abstract class tx_templavoila_datastructure {
 	abstract public function getStoragePids();
 
 	/**
+	 * Provides the datastructure configuration as XML
+	 *
+	 * @return string
+	 */
+	abstract public function getDataprotXML();
+
+	/**
+	 * Provides the datastructure configuration as array
+	 *
+	 * @return array
+	 */
+	public function getDataprotArray() {
+		$arr = array();
+		$ds = $this->getDataprotXML();
+		if (strlen($ds) > 1) {
+			$arr = t3lib_div::xml2array($ds);
+		}
+		return $arr;
+	}
+
+	/**
 	 * Determine whether the current user has permission to create elements based on this
 	 * datastructure or not
 	 *
@@ -122,6 +143,49 @@ abstract class tx_templavoila_datastructure {
 	 * @return boolean
 	 */
 	abstract public function isPermittedForUser($parentRow = array(), $removeItems = array());
+
+	/**
+	 * Enables to determine whether this element is based on a record or on a file
+	 * Required for view-related tasks (edit-icons)
+	 *
+	 * @return boolean
+	 */
+	public function isFilebased() {
+		return FALSE;
+	}
+
+	/**
+	 * Retrieve the filereference of the template
+	 *
+	 * @return string
+	 */
+	abstract public function getTstamp();
+
+	/**
+	 * Retrieve the filereference of the template
+	 *
+	 * @return string
+	 */
+	abstract public function getCrdate();
+
+	/**
+	 * Retrieve the filereference of the template
+	 *
+	 * @return string
+	 */
+	abstract public function getCruser();
+
+	/**
+	 * @param void
+	 * @return mixed
+	 */
+	abstract public function getBeLayout();
+
+	/**
+	 * @param void
+	 * @return string
+	 */
+	abstract public function getSortingFieldValue();
 
 }
 

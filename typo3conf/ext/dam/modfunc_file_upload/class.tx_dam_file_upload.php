@@ -100,6 +100,8 @@ class tx_dam_file_upload extends t3lib_extobjbase {
 
 
 	var $enableBatchProcessing = true;
+	/** Module is being called from RTE */
+	protected $rteMode = false;
 
 
 	/**
@@ -288,10 +290,11 @@ class tx_dam_file_upload extends t3lib_extobjbase {
 		$content = '';
 		$header = '';
 
-
-
-
-
+		// check if function is called from RTE
+		if (t3lib_div::_GP('mode') === 'rte') {
+			$this->rteMode = true;
+		}
+		
 		$uidList = $GLOBALS['TYPO3_DB']->cleanIntList(t3lib_div::_POST('batch_items'));
 
 		if ((t3lib_div::_GP('batch') OR t3lib_div::_GP('process')) AND ($uidList)) {
@@ -637,7 +640,7 @@ class tx_dam_file_upload extends t3lib_extobjbase {
 		global $BACK_PATH, $LANG;
 
 		$content = '';
-
+		
 			// init table layout
 		$tableLayout = array(
 			'table' => array('<table border="0" cellpadding="1" cellspacing="1" id="typo3-filelist">', '</table>'),
@@ -654,7 +657,6 @@ class tx_dam_file_upload extends t3lib_extobjbase {
 			),
 		);
 
-
 		$table=array();
 		$tr=0;
 
@@ -668,7 +670,7 @@ class tx_dam_file_upload extends t3lib_extobjbase {
 		$table[$tr][$td++] = $LANG->getLL('c_size');
 		# $table[$tr][$td++] = $LANG->getLL('c_rw');
 		$table[$tr][$td++] = '&nbsp;';
-		if (is_object($this->ebObj)) {
+		if (is_object($this->ebObj) && !$this->rteMode) {
 			$table[$tr][$td++] = '&nbsp;';
 		}
 
@@ -688,7 +690,17 @@ class tx_dam_file_upload extends t3lib_extobjbase {
 				#$table[$tr][$td++] = $this->pObj->doc->icons(-1); // Ok;
 				$table[$tr][$td++] = $this->enableBatchProcessing ? '<input type="checkbox" name="process_recs[]" value="'.$row['uid'].'" />': '';
 				$table[$tr][$td++] = $fileIcon;
-				$table[$tr][$td++] = htmlspecialchars(t3lib_div::fixed_lgd_cs($row['file_name'], 30));
+
+					// if upload is called from RTE, allow direct linking by a click on file name
+				if ($this->rteMode && is_object($this->ebObj)) {
+					$row = $this->ebObj->enhanceItemArray($row, $this->ebObj->mode);
+					$onClick = 'return link_folder(' . t3lib_div::quoteJSvalue(t3lib_div::rawUrlEncodeFP(tx_dam::file_relativeSitePath($row['_ref_file_path']))) . ');';
+					$ATag_insert = '<a href="#" onclick="' . htmlspecialchars($onClick) . '"' . $titleAttrib . '>';
+					$table[$tr][$td++] = $ATag_insert . htmlspecialchars(t3lib_div::fixed_lgd_cs($row['file_name'], 30)) . '</a>';
+				} else {
+					$table[$tr][$td++] = htmlspecialchars(t3lib_div::fixed_lgd_cs($row['file_name'], 30));
+				}
+				
 				$table[$tr][$td++] = htmlspecialchars(strtoupper($row['file_type']));
 				$table[$tr][$td++] = date($GLOBALS['TYPO3_CONF_VARS']['SYS']['ddmmyy'], $row['file_ctime']);
 				$table[$tr][$td++] = htmlspecialchars(t3lib_div::formatSize($row['file_size']));
@@ -696,7 +708,7 @@ class tx_dam_file_upload extends t3lib_extobjbase {
 				
 				if (is_object($this->ebObj)) {
 					
-					if (intval($row['uid'])) {
+					if (intval($row['uid']) && !$this->rteMode) {
 						$row = $this->ebObj->enhanceItemArray($row, $this->ebObj->mode);
 						$iconFile = tx_dam::icon_getFileType($row);
 						$titleAttrib = tx_dam_guiFunc::icon_getTitleAttribute($row);
@@ -719,6 +731,8 @@ class tx_dam_file_upload extends t3lib_extobjbase {
 						$addAllJS .= 'insertElement('.$onClick_params.'); ';
 						
 						$table[$tr][$td++] = $ATag_add.'<img'.t3lib_iconWorks::skinImg($GLOBALS['BACK_PATH'], 'gfx/plusbullet2.gif', 'width="18" height="16"').' title="'.$LANG->getLL('addToList',1).'" alt="" /></a>';
+					} elseif ($this->rteMode) {
+						continue;
 					} else {
 						$table[$tr][$td++] = '';
 					}
@@ -740,7 +754,14 @@ class tx_dam_file_upload extends t3lib_extobjbase {
 
 			// render table
 		if ($tr) {
-			$code = $this->pObj->doc->table($table, $tableLayout);
+			$code = '';
+			
+				// folder_link expects a form named ltargetform to look for link settings, so we need this if it's called from RTE
+			if($this->rteMode) {
+				$code .= '<form action="" name="ltargetform" id="ltargetform"></form>';
+			}
+			
+			$code .= $this->pObj->doc->table($table, $tableLayout);
 
 			if ($addAllJS) {
 				$label = $LANG->getLL('eb_addAllToList', true);

@@ -11,7 +11,7 @@
  * TABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General      *
  * Public License for more details.                                       *
  *
- * $Id: Tx_Formhandler_ErrorCheck_NotDefaultValue.php 36522 2010-08-09 08:58:58Z reinhardfuehricht $
+ * $Id: Tx_Formhandler_ErrorCheck_NotDefaultValue.php 40269 2010-11-16 15:23:54Z reinhardfuehricht $
  *                                                                        */
 
 /**
@@ -35,7 +35,7 @@ class Tx_Formhandler_ErrorCheck_NotDefaultValue extends Tx_Formhandler_AbstractE
 	 */
 	public function check(&$check, $name, &$gp) {
 		$checkFailed = '';
-		if(isset($gp[$name]) && strlen(trim($gp[$name])) > 0) {
+		if (isset($gp[$name]) && strlen(trim($gp[$name])) > 0) {
 			$defaultValue = Tx_Formhandler_StaticFuncs::getSingle($check['params'], 'defaultValue');
 			if (strlen($defaultValue) > 0) {
 				if (!strcmp($defaultValue, $gp[$name])) {
@@ -45,7 +45,6 @@ class Tx_Formhandler_ErrorCheck_NotDefaultValue extends Tx_Formhandler_AbstractE
 		}
 		return $checkFailed;
 	}
-
 
 }
 ?>
