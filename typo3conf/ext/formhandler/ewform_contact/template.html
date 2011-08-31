@@ -1,0 +1,66 @@
+<!-- ###TEMPLATE_FORM1### begin -->
+<div id="formhandler_contact_form">
+	<form id="mailform" method="post" action="###REL_URL###" enctype="multipart/form-data">
+		<input type="hidden" id="submitted" name="noname" value="###value_submitted###" />
+		<div class="errors">
+			###is_error###
+		</div>
+		<div class="inputRow">
+			<label class="block" for="name">###LLL:title_name###</label>
+			<input type="text" class="text-input ###error_name###" name="name" id="name" value="###value_name###"/>
+		</div>
+		<div class="inputRow">
+			<label class="block" for="name">###LLL:title_email###</label>
+			<input type="text" class="text-input ###error_email###" name="email" id="email" value="###value_email###"/>
+		</div>
+		<div class="checkBoxContainer">
+			<div class="inputRow">
+				<input type="checkbox" name="newsletter" id="newsletter" value="yes" class="checkbox" ###checked_newsletter_yes### />
+				<label for="newsletter">###LLL:check_newsletter###</label>
+			</div>
+			<div class="inputRow">
+				<input type="checkbox" name="check_message" id="check_message" value="yes" class="checkbox" ###checked_check_message_yes### />
+				<label for="check_message">###LLL:check_message###</label>
+			</div>
+		</div>
+		<div class="inputRow">
+			<label for="message" id="messageTitle">###LLL:title_message###</label>
+			<textarea class="###error_message###" name="message" id="message" rows="10" cols="38">###value_message###</textarea>
+		</div>
+		<div class="inputRow inputRowSubmit">
+			<input class="submit" type="submit" value="###LLL:submit###" ###submit_nextStep###/>
+		</div>
+	</form>
+</div>
+<!-- ###TEMPLATE_FORM1### end -->
+
+<!-- ###TEMPLATE_EMAIL_USER_PLAIN### begin -->
+
+<!-- ###TEMPLATE_EMAIL_USER_PLAIN### end -->
+
+<!-- ###TEMPLATE_EMAIL_USER_HTML### begin -->
+<!-- ###TEMPLATE_EMAIL_USER_HTML### end -->
+
+<!-- ###TEMPLATE_EMAIL_ADMIN_PLAIN### begin -->
+Hallo RR,
+
+Ein Website-Benutzer hat gerade das Kontaktformular ausgefuellt.
+
+###LLL:title_name###: ###value_name###
+###LLL:title_email###: ###value_email###
+###LLL:title_newsletter###: ###value_newsletter###
+###LLL:title_message###:
+###value_message###
+<!-- ###TEMPLATE_EMAIL_ADMIN_PLAIN### end -->
+<!-- ###TEMPLATE_EMAIL_ADMIN_HTML### begin -->
+<!-- ###TEMPLATE_EMAIL_ADMIN_HTML### end -->
+
+<!-- ###TEMPLATE_SUBMITTEDOK### begin -->
+<div id="formhandler_contact_form">
+<input type="hidden" id="submitted" name="noname" value="###value_submitted###" />
+<p>###LLL:message_sent###</p>
+<br/>
+<p>###LLL:thanks###</p>
+<p>###LLL:team###</p>
+</div>
+<!-- ###TEMPLATE_SUBMITTEDOK### end -->

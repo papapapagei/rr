@@ -94,6 +94,15 @@ jQuery(document).ready( function() {
 			killTimer();
 		}
 	});
+	videoPlayer.addListener('volume', function(volume) {
+		if ( volume == 0 ) {
+			jQuery('.ppvmax').show();
+			jQuery('.ppmute').hide();
+		} else {
+			jQuery('.ppvmax').hide();
+			jQuery('.ppmute').show();
+		}
+	});
 	
 	galleriesGetReady();
 	
@@ -134,7 +143,7 @@ jQuery(document).ready( function() {
 		});
 		return true;
 	});
-	
+		
 	// auto play of background gallery
 	autoSlideInterval = parseInt(jQuery('.slideDuration').val())*1000;
 	if ( jQuery(".ewgallery").length > 0 ) {

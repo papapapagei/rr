@@ -1,6 +1,0 @@
-# Mehrsprachigkeit
-# Typoscript wird 'on the fly' in tx_golanguage->writeLanguageTSConfig erstellt
-
-# language menu for testing
-#page.15 = USER
-#page.15.userFunc = tx_golanguage_piMenu->getMenu

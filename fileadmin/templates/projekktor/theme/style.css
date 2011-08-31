@@ -134,7 +134,7 @@ background: url("maccaco.png") no-repeat right -106x transparent;
 position: absolute;
 display: block;
 left: 55px;
-right: 170px;
+right: 140px;
 top: 12px;
 height: 5px;
 background: url("maccaco-load.gif") repeat-x left top transparent;
@@ -204,10 +204,11 @@ background: url("maccaco.png") no-repeat -91px top transparent;
 .ppvmax  {
 position: absolute;
 top: 0;
-right: 20px;
+right: 95px;
 width: 30px;
 border-left:none;
 background: url("maccaco.png") no-repeat -842px top transparent;
+display: none;
 }
 .ppvmax:hover  {
 background: url("maccaco.png") no-repeat -842px -35px transparent;
@@ -220,7 +221,7 @@ background: url("maccaco.png") no-repeat -842px -36px transparent;
 position: absolute;
 top: 0;
 width: 30px;
-right: 125px;
+right: 95px;
 border-right:none;
 background: url("maccaco.png") no-repeat -750px top transparent;
 }
@@ -233,27 +234,27 @@ background: url("maccaco.png") no-repeat -750px -36px transparent;
 
 .ppvslider {
 position: absolute;
-right:62px;
-top: 9px;
-height: 13px;
-width: 60px;
-background: url("maccaco.png") no-repeat -781px -13px transparent;
+right:32px;
+top: 3px;
+height: 22px;
+width: 62px;
+background: url("maccaco.png") no-repeat -781px 0px transparent;
 }
 
 .ppvmarker {
 position: absolute;
 right:0;
 left: 0;
-height: 13px;
+height: 22px;
 width: 100%;
-background: url("maccaco.png") no-repeat -634px -10px transparent;
+background: url("maccaco.png") no-repeat -634px 0px transparent;
 }
 
 .ppvknob  {
 cursor: pointer;
 z-index: 201;
 position: absolute;
-background: url("maccaco.png") no-repeat -699px -4px transparent;
+/*background: url("maccaco.png") no-repeat -699px -4px transparent;*/
 top:-5px;
 left:0px;
 width: 6px;
