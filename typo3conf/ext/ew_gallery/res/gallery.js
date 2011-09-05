@@ -77,6 +77,7 @@ jQuery(document).ready( function() {
 	var videoParameters = {
 		_width: "100%",
 		_height: "100%",
+		_platformPriority: ['flash','native'],
 		playerFlashMP4: "fileadmin/templates/projekktor/jarisplayer.swf"
 	};
 	//jQuery('video').attr('height',jQuery('video').parent().height());
@@ -452,7 +453,8 @@ function playVideo(videoFile,bPlayInBackground) {
 		videoString = 'video = {';
 		var i = 0;
 		videoFiles.each( function() {
-			var v = i+":{ src: '"+$(this).attr('src')+"', type: '"+$(this).attr('type')+"' }";
+			var videoFileName = baseUrl + $(this).val();
+			var v = i+":{ src: '"+videoFileName+"', type: '"+$(this).attr('name')+"' }";
 			if ( i ) {
 				v = ',' + v;
 			}
@@ -461,9 +463,7 @@ function playVideo(videoFile,bPlayInBackground) {
 		});
 		videoString += '}';
 		eval(videoString);
-//		videoFile = jQuery(this).parents('.ewgallery,.ewgalleryVideoButton').children('.videoFiles').val();
-//		var video = { 0:{src: videoFile, type: 'video/mp4'} }
-		videoPlayer.setItem( video, 1, true );
+		videoPlayer.setItem( video, 0, true );
 		videoPlayer.setActiveItem('next');
 		videoPlayer.setPlay();
 	}

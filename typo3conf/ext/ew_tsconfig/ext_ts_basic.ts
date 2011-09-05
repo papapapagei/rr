@@ -50,7 +50,13 @@ page.includeCSS {
 	content = fileadmin/templates/css/content.css
 }
 [browser = msie]
+	page.includeCSS.ie = fileadmin/templates/css/ie.css
+[global]
+[browser = msie] && [version = 7]
 	page.includeCSS.ie7 = fileadmin/templates/css/ie7.css
+[global]
+[browser = msie] && [version = 8]
+	page.includeCSS.ie8 = fileadmin/templates/css/ie8.css
 [global]
 
 page.includeJS {

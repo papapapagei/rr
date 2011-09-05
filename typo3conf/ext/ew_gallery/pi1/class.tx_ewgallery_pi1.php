@@ -126,7 +126,7 @@ class tx_ewgallery_pi1 extends tx_ewpibase {
 		$videoFiles = '';
 		foreach( $this->videos as $video ) {
 			$type = $this->getMimeType(PATH_site.$video['path']);
-			$videoFiles .= '<source src="'.$video['path'].'" type="'.$type.'" />';
+			$videoFiles .= '<input type="hidden" value="'.$video['path'].'" name="'.$type.'" />';
 		}
 		$this->addMarker('FIRST_IMAGE',$firstImage);
 		$this->addMarker('IMAGE_LIST',$imageList);

@@ -41,8 +41,8 @@ mainMenu.10 {
 		}
 	}
 }
-# Home & Realitäten Revue: show ticker in menu
-[globalVar = TSFE:id=3]
+# Home: show ticker in menu
+[globalVar = TSFE:id=99999]
 # CLEAR CACHE ONCE A DAY IN ORDER TO UPDATE THE TICKER
 config.cache_clearAtMidnight = 1
 mainMenu.10.1.NO {
